@@ -1,0 +1,556 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>05 · Radar — AI Model Capability Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.15"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.2"/>
+  </pattern>
+  <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <!-- Radial gradient for sweep fan — anchored to radar center in user space,
+       so when wedge rotates the gradient stays put and lights up whatever sector
+       the wedge reveals (proper radar "phosphor trail" effect). -->
+  <radialGradient id="sweepFan" cx="470" cy="430" r="200" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#c4a35a" stop-opacity="0.35"/>
+    <stop offset="60%" stop-color="#c4a35a" stop-opacity="0.12"/>
+    <stop offset="100%" stop-color="#c4a35a" stop-opacity="0"/>
+  </radialGradient>
+  <!-- Per-model gradients (subtle fill tint) -->
+  <radialGradient id="gptGrad"><stop offset="0%" stop-color="#5dade2" stop-opacity="0.18"/><stop offset="100%" stop-color="#5dade2" stop-opacity="0.03"/></radialGradient>
+  <radialGradient id="clauGrad"><stop offset="0%" stop-color="#c4a35a" stop-opacity="0.22"/><stop offset="100%" stop-color="#c4a35a" stop-opacity="0.04"/></radialGradient>
+  <radialGradient id="gemGrad"><stop offset="0%" stop-color="#3daa5a" stop-opacity="0.18"/><stop offset="100%" stop-color="#3daa5a" stop-opacity="0.03"/></radialGradient>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">05</text>
+</g>
+
+<!-- Header (re-centered to canvas center x=700 because overall-score cards have moved to middle-lower,
+     freeing up the top-right band. Full-width titleLine for stronger banner presence. -->
+<text x="700" y="45" text-anchor="middle" font-family="Noto Serif SC" font-size="22" font-weight="900" fill="#c4a35a" opacity="0" class="title">AI 模型能力雷达评估</text>
+<text x="700" y="68" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">CAPABILITY ASSESSMENT · GPT-4 vs CLAUDE 3.5 vs GEMINI 1.5</text>
+<line x1="200" y1="82" x2="1200" y2="82" stroke="#c4a35a" stroke-width="0.4" opacity="0" class="titleLine"/>
+
+<!-- ==================== RADAR CHART (Left) ==================== -->
+<!-- Center (470, 430), r=200. 6 axes. -->
+
+<!-- Back layer · Swept-sector trail: dynamic fan from center to recent history arc on hex.
+     Represents "the area just scanned" — dashed cool-blue fan filling inside the hex.
+     d is rebuilt each frame from (center) + 18 samples along the last TRAIL_LEN units of perimeter.
+     Opacity boosted: fill 0.10→0.22, stroke 0.45→0.8 — the data polygons partially occlude the
+     trail fan, so we need ≥0.2 fill-opacity for the blue to read through on black bg. -->
+<path id="sweepTrail" d="M 470,430 Z"
+  fill="#5dade2" fill-opacity="0.22"
+  stroke="#5dade2" stroke-width="1.3" stroke-opacity="0.8"
+  stroke-dasharray="5,3" opacity="0"/>
+
+<!-- Middle layer · Hex-perimeter scan glow: 120-unit bright segment walking clockwise along outer hex.
+     Colour changed from gold to cool blue #5dade2 (contrast with the warm gold hex ring
+     behind it — gold-on-gold was indistinguishable). stroke-dasharray="120 1080" →
+     1 bright 120 + 1 dark 1080 = 1200 = hex perimeter. -->
+<polygon id="hexScan" points="470,230 643,330 643,530 470,630 297,530 297,330"
+  fill="none" stroke="#5dade2" stroke-width="2.8"
+  stroke-dasharray="120 1080" stroke-dashoffset="0"
+  filter="url(#glow)" stroke-linecap="round" opacity="0"/>
+
+<!-- Concentric hexagon rings -->
+<g id="rings">
+  <polygon class="ring" data-r="50" points="470,380 513,405 513,455 470,480 427,455 427,405" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0" stroke-dasharray="3,4"/>
+  <polygon class="ring" data-r="100" points="470,330 557,380 557,480 470,530 383,480 383,380" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0" stroke-dasharray="3,4"/>
+  <polygon class="ring" data-r="150" points="470,280 600,355 600,505 470,580 340,505 340,355" fill="none" stroke="#c4a35a" stroke-width="0.5" opacity="0"/>
+  <polygon class="ring" data-r="200" points="470,230 643,330 643,530 470,630 297,530 297,330" fill="none" stroke="#c4a35a" stroke-width="0.7" opacity="0"/>
+</g>
+
+<!-- Ring % labels (top axis) -->
+<g id="ringLabels">
+  <text class="rLabel" x="476" y="385" font-family="JetBrains Mono" font-size="9" fill="#8a8578" opacity="0">25</text>
+  <text class="rLabel" x="476" y="335" font-family="JetBrains Mono" font-size="9" fill="#8a8578" opacity="0">50</text>
+  <text class="rLabel" x="476" y="285" font-family="JetBrains Mono" font-size="9" fill="#8a8578" opacity="0">75</text>
+  <text class="rLabel" x="476" y="235" font-family="JetBrains Mono" font-size="9" fill="#8a8578" opacity="0">100</text>
+</g>
+
+<!-- Axis lines from center -->
+<g id="axes">
+  <line class="axis" x1="470" y1="430" x2="470" y2="230" stroke="#c4a35a" stroke-width="0.4" opacity="0"/>
+  <line class="axis" x1="470" y1="430" x2="643" y2="330" stroke="#c4a35a" stroke-width="0.4" opacity="0"/>
+  <line class="axis" x1="470" y1="430" x2="643" y2="530" stroke="#c4a35a" stroke-width="0.4" opacity="0"/>
+  <line class="axis" x1="470" y1="430" x2="470" y2="630" stroke="#c4a35a" stroke-width="0.4" opacity="0"/>
+  <line class="axis" x1="470" y1="430" x2="297" y2="530" stroke="#c4a35a" stroke-width="0.4" opacity="0"/>
+  <line class="axis" x1="470" y1="430" x2="297" y2="330" stroke="#c4a35a" stroke-width="0.4" opacity="0"/>
+</g>
+
+<!-- Axis labels (outside the polygon) -->
+<g id="axisLabels">
+  <text class="aLabel" x="470" y="215" text-anchor="middle" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df" opacity="0">推理 Reasoning</text>
+  <text class="aLabel" x="665" y="318" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df" opacity="0">代码 Coding</text>
+  <text class="aLabel" x="665" y="548" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df" opacity="0">写作 Writing</text>
+  <text class="aLabel" x="470" y="655" text-anchor="middle" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df" opacity="0">多模态 Multimodal</text>
+  <text class="aLabel" x="275" y="548" text-anchor="end" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df" opacity="0">指令 Instruction</text>
+  <text class="aLabel" x="275" y="318" text-anchor="end" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df" opacity="0">速度 Speed</text>
+</g>
+
+<!-- Data polygons (drawn in order: GPT-4, Gemini, Claude [top layer for gold]) -->
+<g id="dataPolys">
+  <!-- GPT-4: [92, 88, 90, 82, 90, 75] -->
+  <polygon id="polyGPT" points="470,246 622,342 626,520 470,594 314,520 340,355" fill="url(#gptGrad)" stroke="#5dade2" stroke-width="1.8" stroke-opacity="0" opacity="0"/>
+  <!-- Gemini: [86, 84, 82, 92, 86, 88] -->
+  <polygon id="polyGemini" points="470,258 615,346 612,512 470,614 321,516 318,342" fill="url(#gemGrad)" stroke="#3daa5a" stroke-width="1.8" stroke-opacity="0" opacity="0"/>
+  <!-- Claude (top layer): [95, 90, 94, 75, 92, 82] -->
+  <polygon id="polyClaude" points="470,240 626,340 633,524 470,580 311,522 328,348" fill="url(#clauGrad)" stroke="#c4a35a" stroke-width="2.2" stroke-opacity="0" opacity="0" filter="url(#glow)"/>
+</g>
+
+<!-- Data point dots -->
+<g id="dataDots">
+  <!-- GPT-4 -->
+  <circle class="dot dot-gpt" cx="470" cy="246" r="3.5" fill="#5dade2" opacity="0"/>
+  <circle class="dot dot-gpt" cx="622" cy="342" r="3.5" fill="#5dade2" opacity="0"/>
+  <circle class="dot dot-gpt" cx="626" cy="520" r="3.5" fill="#5dade2" opacity="0"/>
+  <circle class="dot dot-gpt" cx="470" cy="594" r="3.5" fill="#5dade2" opacity="0"/>
+  <circle class="dot dot-gpt" cx="314" cy="520" r="3.5" fill="#5dade2" opacity="0"/>
+  <circle class="dot dot-gpt" cx="340" cy="355" r="3.5" fill="#5dade2" opacity="0"/>
+  <!-- Gemini -->
+  <circle class="dot dot-gem" cx="470" cy="258" r="3.5" fill="#3daa5a" opacity="0"/>
+  <circle class="dot dot-gem" cx="615" cy="346" r="3.5" fill="#3daa5a" opacity="0"/>
+  <circle class="dot dot-gem" cx="612" cy="512" r="3.5" fill="#3daa5a" opacity="0"/>
+  <circle class="dot dot-gem" cx="470" cy="614" r="3.5" fill="#3daa5a" opacity="0"/>
+  <circle class="dot dot-gem" cx="321" cy="516" r="3.5" fill="#3daa5a" opacity="0"/>
+  <circle class="dot dot-gem" cx="318" cy="342" r="3.5" fill="#3daa5a" opacity="0"/>
+  <!-- Claude (top) -->
+  <circle class="dot dot-clau" cx="470" cy="240" r="4.2" fill="#c4a35a" opacity="0" filter="url(#glow)"/>
+  <circle class="dot dot-clau" cx="626" cy="340" r="4.2" fill="#c4a35a" opacity="0" filter="url(#glow)"/>
+  <circle class="dot dot-clau" cx="633" cy="524" r="4.2" fill="#c4a35a" opacity="0" filter="url(#glow)"/>
+  <circle class="dot dot-clau" cx="470" cy="580" r="4.2" fill="#c4a35a" opacity="0" filter="url(#glow)"/>
+  <circle class="dot dot-clau" cx="311" cy="522" r="4.2" fill="#c4a35a" opacity="0" filter="url(#glow)"/>
+  <circle class="dot dot-clau" cx="328" cy="348" r="4.2" fill="#c4a35a" opacity="0" filter="url(#glow)"/>
+</g>
+
+<!-- Scan beams: TWO lines bracketing the blue trail fan.
+     - beamA (front): gold line at the HEAD of the fan (scanDist position). Has its own
+       glow filter for a subtle aura, no separate halo line needed.
+     - beamB (back): blue DASHED line at the TAIL of the fan (scanDist - TRAIL_LEN).
+       Marks the trailing edge of the "just swept" region.
+     Between them is the #sweepTrail blue fan. -->
+<g id="sweepBeam" opacity="0">
+  <!-- Back (tail) line — end of the swept trail. Visibility boosted: width 1.1→1.5, opacity 0.55→0.85. -->
+  <line id="beamB" x1="470" y1="430" x2="470" y2="230" stroke="#5dade2" stroke-width="1.5" opacity="0.85" stroke-dasharray="5,3"/>
+  <!-- Front (head) line — gold beam at leading edge. Width 1.6→2.0 for stronger presence. -->
+  <line id="beamA" x1="470" y1="430" x2="470" y2="230" stroke="#c4a35a" stroke-width="2" opacity="0.95" filter="url(#glow)"/>
+</g>
+
+<!-- Legend (below radar) -->
+<g id="legend" opacity="0" transform="translate(300, 690)">
+  <g transform="translate(0, 0)">
+    <rect width="14" height="14" fill="none" stroke="#5dade2" stroke-width="1.5"/>
+    <rect width="14" height="14" fill="#5dade2" opacity="0.2"/>
+    <text x="22" y="11" font-family="Space Grotesk" font-size="12" fill="#e8e4df">GPT-4 Turbo</text>
+  </g>
+  <g transform="translate(140, 0)">
+    <rect width="14" height="14" fill="none" stroke="#c4a35a" stroke-width="1.8"/>
+    <rect width="14" height="14" fill="#c4a35a" opacity="0.25"/>
+    <text x="22" y="11" font-family="Space Grotesk" font-size="12" fill="#c4a35a" font-weight="700">Claude 3.5 Sonnet ★</text>
+  </g>
+  <g transform="translate(330, 0)">
+    <rect width="14" height="14" fill="none" stroke="#3daa5a" stroke-width="1.5"/>
+    <rect width="14" height="14" fill="#3daa5a" opacity="0.2"/>
+    <text x="22" y="11" font-family="Space Grotesk" font-size="12" fill="#e8e4df">Gemini 1.5 Pro</text>
+  </g>
+</g>
+
+<!-- ==================== RIGHT PANEL ==================== -->
+
+<!-- Overall scores row (y=480-560). Moved from top-right (y=130) to middle-lower per user feedback
+     "右上角不应该放那三个东西，应该放到中间偏下面一点". Cards now form a climactic row
+     BELOW the breakdown analysis, semantically "summary after detail". -->
+<g id="overallScores">
+  <g class="score-card" data-i="0" opacity="0" transform="translate(760, 480)">
+    <rect width="200" height="80" rx="3" fill="#0a0a0b" fill-opacity="0.6" stroke="#5dade2" stroke-width="0.8" stroke-opacity="0.5"/>
+    <text x="12" y="24" font-family="JetBrains Mono" font-size="10" fill="#5dade2" opacity="0.8">GPT-4 TURBO</text>
+    <text x="12" y="66" font-family="Space Grotesk" font-size="36" font-weight="700" fill="#5dade2"><tspan id="avg_gpt">0</tspan></text>
+    <text x="188" y="66" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#8a8578">avg / 100</text>
+  </g>
+  <g class="score-card score-winner" data-i="1" opacity="0" transform="translate(980, 480)">
+    <rect width="200" height="80" rx="3" fill="#1a1410" fill-opacity="0.9" stroke="#c4a35a" stroke-width="1.8" stroke-opacity="1"/>
+    <rect width="4" height="80" fill="#c4a35a"/>
+    <text x="16" y="24" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.95" letter-spacing="1">CLAUDE 3.5 ★ WINNER</text>
+    <text x="16" y="66" font-family="Space Grotesk" font-size="36" font-weight="700" fill="#c4a35a"><tspan id="avg_clau">0</tspan></text>
+    <text x="188" y="66" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7">avg / 100</text>
+  </g>
+  <g class="score-card" data-i="2" opacity="0" transform="translate(1200, 480)">
+    <rect width="180" height="80" rx="3" fill="#0a0a0b" fill-opacity="0.6" stroke="#3daa5a" stroke-width="0.8" stroke-opacity="0.5"/>
+    <text x="12" y="24" font-family="JetBrains Mono" font-size="10" fill="#3daa5a" opacity="0.8">GEMINI 1.5 PRO</text>
+    <text x="12" y="66" font-family="Space Grotesk" font-size="36" font-weight="700" fill="#3daa5a"><tspan id="avg_gem">0</tspan></text>
+    <text x="168" y="66" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#8a8578">avg / 100</text>
+  </g>
+</g>
+
+<!-- Per-dimension breakdown (6 rows × ~55px). Moved UP to y=130 since cards vacated the top-right.
+     Fills the space right under the titleLine. -->
+<g id="breakdown" transform="translate(760, 130)">
+  <text x="0" y="0" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="3">DIMENSION BREAKDOWN</text>
+  <line x1="0" y1="6" x2="620" y2="6" stroke="#c4a35a" stroke-width="0.3" opacity="0.3"/>
+
+  <!-- Row template per axis -->
+  <!-- Axis 0: 推理 -->
+  <g class="brk-row" data-i="0" opacity="0" transform="translate(0, 20)">
+    <text x="0" y="12" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df">推理 Reasoning</text>
+    <g transform="translate(130, 0)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#5dade2">GPT</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#5dade2" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="184" x="26" y="4" width="0" height="10" fill="#5dade2" fill-opacity="0.6"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#5dade2">92</text>
+    </g>
+    <g transform="translate(130, 14)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#c4a35a">CLA</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#c4a35a" stroke-width="0.3" stroke-opacity="0.4"/>
+      <rect class="brk-bar" data-w="190" x="26" y="4" width="0" height="10" fill="#c4a35a" fill-opacity="0.7"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#c4a35a">95</text>
+    </g>
+    <g transform="translate(130, 28)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#3daa5a">GEM</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#3daa5a" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="172" x="26" y="4" width="0" height="10" fill="#3daa5a" fill-opacity="0.6"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#3daa5a">86</text>
+    </g>
+    <text x="580" y="26" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" letter-spacing="2" opacity="0.95"><tspan font-family="Space Grotesk" font-size="16" font-weight="700" dy="2">★</tspan><tspan dy="-2" dx="5">WIN CLAUDE</tspan></text>
+  </g>
+
+  <!-- Axis 1: 代码 -->
+  <g class="brk-row" data-i="1" opacity="0" transform="translate(0, 75)">
+    <text x="0" y="12" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df">代码 Coding</text>
+    <g transform="translate(130, 0)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#5dade2">GPT</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#5dade2" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="176" x="26" y="4" width="0" height="10" fill="#5dade2" fill-opacity="0.6"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#5dade2">88</text>
+    </g>
+    <g transform="translate(130, 14)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#c4a35a">CLA</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#c4a35a" stroke-width="0.3" stroke-opacity="0.4"/>
+      <rect class="brk-bar" data-w="180" x="26" y="4" width="0" height="10" fill="#c4a35a" fill-opacity="0.7"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#c4a35a">90</text>
+    </g>
+    <g transform="translate(130, 28)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#3daa5a">GEM</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#3daa5a" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="168" x="26" y="4" width="0" height="10" fill="#3daa5a" fill-opacity="0.6"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#3daa5a">84</text>
+    </g>
+    <text x="580" y="26" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" letter-spacing="2" opacity="0.95"><tspan font-family="Space Grotesk" font-size="16" font-weight="700" dy="2">★</tspan><tspan dy="-2" dx="5">WIN CLAUDE</tspan></text>
+  </g>
+
+  <!-- Axis 2: 写作 -->
+  <g class="brk-row" data-i="2" opacity="0" transform="translate(0, 130)">
+    <text x="0" y="12" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df">写作 Writing</text>
+    <g transform="translate(130, 0)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#5dade2">GPT</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#5dade2" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="180" x="26" y="4" width="0" height="10" fill="#5dade2" fill-opacity="0.6"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#5dade2">90</text>
+    </g>
+    <g transform="translate(130, 14)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#c4a35a">CLA</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#c4a35a" stroke-width="0.3" stroke-opacity="0.4"/>
+      <rect class="brk-bar" data-w="188" x="26" y="4" width="0" height="10" fill="#c4a35a" fill-opacity="0.7"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#c4a35a">94</text>
+    </g>
+    <g transform="translate(130, 28)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#3daa5a">GEM</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#3daa5a" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="164" x="26" y="4" width="0" height="10" fill="#3daa5a" fill-opacity="0.6"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#3daa5a">82</text>
+    </g>
+    <text x="580" y="26" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" letter-spacing="2" opacity="0.95"><tspan font-family="Space Grotesk" font-size="16" font-weight="700" dy="2">★</tspan><tspan dy="-2" dx="5">WIN CLAUDE</tspan></text>
+  </g>
+
+  <!-- Axis 3: 多模态 -->
+  <g class="brk-row" data-i="3" opacity="0" transform="translate(0, 185)">
+    <text x="0" y="12" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df">多模态 Multimodal</text>
+    <g transform="translate(130, 0)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#5dade2">GPT</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#5dade2" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="164" x="26" y="4" width="0" height="10" fill="#5dade2" fill-opacity="0.6"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#5dade2">82</text>
+    </g>
+    <g transform="translate(130, 14)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#c4a35a">CLA</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#c4a35a" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="150" x="26" y="4" width="0" height="10" fill="#c4a35a" fill-opacity="0.5"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">75</text>
+    </g>
+    <g transform="translate(130, 28)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#3daa5a">GEM</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#3daa5a" stroke-width="0.3" stroke-opacity="0.4"/>
+      <rect class="brk-bar" data-w="184" x="26" y="4" width="0" height="10" fill="#3daa5a" fill-opacity="0.75"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#3daa5a">92</text>
+    </g>
+    <text x="580" y="26" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#3daa5a" letter-spacing="2" opacity="0.95"><tspan font-family="Space Grotesk" font-size="16" font-weight="700" dy="2">★</tspan><tspan dy="-2" dx="5">WIN GEMINI</tspan></text>
+  </g>
+
+  <!-- Axis 4: 指令 -->
+  <g class="brk-row" data-i="4" opacity="0" transform="translate(0, 240)">
+    <text x="0" y="12" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df">指令 Instruction</text>
+    <g transform="translate(130, 0)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#5dade2">GPT</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#5dade2" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="180" x="26" y="4" width="0" height="10" fill="#5dade2" fill-opacity="0.6"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#5dade2">90</text>
+    </g>
+    <g transform="translate(130, 14)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#c4a35a">CLA</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#c4a35a" stroke-width="0.3" stroke-opacity="0.4"/>
+      <rect class="brk-bar" data-w="184" x="26" y="4" width="0" height="10" fill="#c4a35a" fill-opacity="0.7"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#c4a35a">92</text>
+    </g>
+    <g transform="translate(130, 28)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#3daa5a">GEM</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#3daa5a" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="172" x="26" y="4" width="0" height="10" fill="#3daa5a" fill-opacity="0.6"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#3daa5a">86</text>
+    </g>
+    <text x="580" y="26" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" letter-spacing="2" opacity="0.95"><tspan font-family="Space Grotesk" font-size="16" font-weight="700" dy="2">★</tspan><tspan dy="-2" dx="5">WIN CLAUDE</tspan></text>
+  </g>
+
+  <!-- Axis 5: 速度 -->
+  <g class="brk-row" data-i="5" opacity="0" transform="translate(0, 295)">
+    <text x="0" y="12" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df">速度 Speed</text>
+    <g transform="translate(130, 0)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#5dade2">GPT</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#5dade2" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="150" x="26" y="4" width="0" height="10" fill="#5dade2" fill-opacity="0.5"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#5dade2">75</text>
+    </g>
+    <g transform="translate(130, 14)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#c4a35a">CLA</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#c4a35a" stroke-width="0.3" stroke-opacity="0.3"/>
+      <rect class="brk-bar" data-w="164" x="26" y="4" width="0" height="10" fill="#c4a35a" fill-opacity="0.6"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">82</text>
+    </g>
+    <g transform="translate(130, 28)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#3daa5a">GEM</text>
+      <rect x="26" y="4" width="200" height="10" fill="#1a1a1a" stroke="#3daa5a" stroke-width="0.3" stroke-opacity="0.4"/>
+      <rect class="brk-bar" data-w="176" x="26" y="4" width="0" height="10" fill="#3daa5a" fill-opacity="0.75"/>
+      <text x="234" y="12" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#3daa5a">88</text>
+    </g>
+    <text x="580" y="26" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#3daa5a" letter-spacing="2" opacity="0.95"><tspan font-family="Space Grotesk" font-size="16" font-weight="700" dy="2">★</tspan><tspan dy="-2" dx="5">WIN GEMINI</tspan></text>
+  </g>
+</g>
+
+<!-- Verdict stripe (bottom of right panel). Sits directly below the overall-score cards row. -->
+<g id="verdict" opacity="0" transform="translate(760, 580)">
+  <rect width="620" height="80" rx="3" fill="#1a1410" fill-opacity="0.8" stroke="#c4a35a" stroke-width="1" stroke-opacity="0.7"/>
+  <text x="20" y="22" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="3">VERDICT</text>
+  <text x="20" y="46" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#c4a35a">Claude 在 4/6 维度领先 — 综合最佳</text>
+  <text x="20" y="66" font-family="Noto Serif SC" font-size="11" fill="#e8e4df" opacity="0.85">Gemini 多模态 / 速度优势显著 · GPT-4 各项均衡略低</text>
+  <text x="600" y="56" text-anchor="end" font-family="Space Grotesk" font-size="28" font-weight="700" fill="#c4a35a">★</text>
+</g>
+
+<!-- Corner stamps -->
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-RADAR-05 / REV.B — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">ASYRE BENCHMARK</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  // Corner ring
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+  // Header
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3')
+    .to('.titleLine', { opacity: 0.4, duration: 0.4 }, '-=0.3');
+
+  // Radar: rings draw-on (expanding outward)
+  tl.to('.ring', { opacity: 0.6, duration: 0.4, stagger: 0.1, ease: 'power2.out' }, 0.8);
+  tl.to('.rLabel', { opacity: 0.7, duration: 0.4, stagger: 0.06 }, 0.9);
+
+  // Axes
+  tl.to('.axis', { opacity: 0.4, duration: 0.4, stagger: 0.05 }, 1.1);
+
+  // Axis labels
+  tl.to('.aLabel', { opacity: 1, duration: 0.4, stagger: 0.06 }, 1.3);
+
+  // Hex-scan glow + swept-sector trail + beam fade in (back to front)
+  tl.to('#sweepTrail', { opacity: 1, duration: 0.6 }, 1.4);
+  tl.to('#hexScan', { opacity: 1, duration: 0.5 }, 1.5);
+  tl.to('#sweepBeam', { opacity: 1, duration: 0.4 }, 1.5);
+
+  // Data polygons stagger draw-on (opacity + stroke appear, fade to fill)
+  tl.to('#polyGPT', { opacity: 1, strokeOpacity: 1, duration: 0.7, ease: 'power2.out' }, 1.8);
+  tl.to('#polyGemini', { opacity: 1, strokeOpacity: 1, duration: 0.7, ease: 'power2.out' }, 2.0);
+  tl.to('#polyClaude', { opacity: 1, strokeOpacity: 1, duration: 0.8, ease: 'power2.out' }, 2.2);
+
+  // Data dots pop
+  tl.to('.dot-gpt', { opacity: 0.8, duration: 0.3, stagger: 0.04 }, 2.0);
+  tl.to('.dot-gem', { opacity: 0.8, duration: 0.3, stagger: 0.04 }, 2.2);
+  tl.to('.dot-clau', { opacity: 1, scale: 1, duration: 0.4, stagger: 0.05, ease: 'back.out(2)' }, 2.4);
+
+  // Legend
+  tl.to('#legend', { opacity: 1, duration: 0.5 }, 2.8);
+
+  // Right panel: overall scores cards.
+  // BUG-FIX: must NOT set y: 0 in the tween — GSAP would clobber the static
+  // transform="translate(X, 480)" y-component, dropping cards to y=0 (top of canvas).
+  // Only tween opacity; static translate stays intact.
+  tl.to('.score-card', { opacity: 1, duration: 0.5, stagger: 0.15, ease: 'power2.out' }, 1.0);
+
+  // Breakdown rows
+  tl.to('.brk-row', { opacity: 1, x: 0, duration: 0.4, stagger: 0.1, ease: 'power2.out' }, 2.0);
+
+  // Breakdown bars grow
+  tl.to('.brk-bar', {
+    attr: { width: (i, el) => parseFloat(el.dataset.w) },
+    duration: 0.7,
+    stagger: 0.04,
+    ease: 'power2.out'
+  }, 2.2);
+
+  // Verdict
+  tl.to('#verdict', { opacity: 1, duration: 0.6 }, 3.2);
+
+  // Overall score counters
+  [
+    { sel: '#avg_gpt', target: 86, delay: 1.2 },
+    { sel: '#avg_clau', target: 88, delay: 1.4 },
+    { sel: '#avg_gem', target: 86, delay: 1.6 }
+  ].forEach(c => {
+    gsap.to({ v: 0 }, {
+      v: c.target, duration: 1.1, delay: c.delay, ease: 'power2.out',
+      onUpdate: function () {
+        document.querySelector(c.sel).textContent = Math.round(this.targets()[0].v);
+      }
+    });
+  });
+
+  // ============ PERPETUAL: Hex-perimeter scan (3 layers, cold-blue palette) ============
+  // LAYER 1 (back)  · sweepTrail : 30°-wide fan from center to hex edge between beamA and beamB
+  // LAYER 2 (mid)   · hexScan    : 100-unit bright segment walking along hex edges
+  // LAYER 3 (front) · sweepBeam  : beamA (gold, head) + beamB (blue dashed, tail)
+  // Per user request: two beams form an EXACT 30° angle at center (not perimeter-distance-based).
+  // Head walks hex perimeter at scanDist; tail is computed by ray-casting at head_angle - 30°.
+  const hexScanEl = document.getElementById('hexScan');
+  const trailEl = document.getElementById('sweepTrail');
+  const beamA = document.getElementById('beamA');
+  const beamB = document.getElementById('beamB');
+  const CX = 470, CY = 430;
+  const hexVerts = [
+    [470, 230], [643, 330], [643, 530],
+    [470, 630], [297, 530], [297, 330]
+  ];
+  const PERIM = 1200;                        // hex perimeter (6 edges × side 200)
+  const scanSpeed = PERIM / (16 * 60);       // 16s per full loop @ ~60fps
+  const FAN_ANGLE = Math.PI / 6;             // 30° fan between head and tail beams
+  const FAN_SAMPLES = 20;                    // resolution of the fan polygon (higher = smoother edge)
+  const SCAN_BRIGHT = 100;                   // hex-scan bright-segment length (~30° on perimeter)
+  let scanDist = 0;
+
+  // Position on hex perimeter at arc-length d (used to drive the head beam)
+  function posAtPerim(d) {
+    d = ((d % PERIM) + PERIM) % PERIM;
+    const i = Math.floor(d / 200) % 6;
+    const t = (d - i * 200) / 200;
+    const v1 = hexVerts[i];
+    const v2 = hexVerts[(i + 1) % 6];
+    return [v1[0] + (v2[0] - v1[0]) * t, v1[1] + (v2[1] - v1[1]) * t];
+  }
+
+  // Cast a ray from (CX, CY) at `angle`, return intersection with the hex perimeter.
+  // Returns { x, y, edge, s } — we need edge+s so callers can compute the point's
+  // arc-length along the perimeter (= edge·200 + s·200). This is critical for keeping
+  // the hex-perimeter bright segment (hexScan) in sync with the two beams.
+  function rayToHex(angle) {
+    const dx = Math.cos(angle), dy = Math.sin(angle);
+    let minT = Infinity, best = { x: CX, y: CY, edge: 0, s: 0 };
+    for (let i = 0; i < 6; i++) {
+      const v1 = hexVerts[i];
+      const v2 = hexVerts[(i + 1) % 6];
+      const ex = v2[0] - v1[0], ey = v2[1] - v1[1];  // e = edge direction
+      const vx = v1[0] - CX, vy = v1[1] - CY;         // V = center → edge-start
+      const dxe = dx * ey - dy * ex;                  // d × e (denominator)
+      if (Math.abs(dxe) < 1e-9) continue;             // ray parallel to edge
+      const t = (vx * ey - vy * ex) / dxe;            // V × e / (d × e)
+      const s = (vx * dy - vy * dx) / dxe;            // V × d / (d × e)
+      if (t > 0 && s >= -1e-6 && s <= 1 + 1e-6 && t < minT) {
+        minT = t;
+        best = { x: CX + t * dx, y: CY + t * dy, edge: i, s: Math.max(0, Math.min(1, s)) };
+      }
+    }
+    return best;
+  }
+
+  function scanTick() {
+    scanDist = (scanDist + scanSpeed) % PERIM;
+    // Head (front gold beam): walks hex perimeter at scanDist
+    const [hx, hy] = posAtPerim(scanDist);
+    const headAngle = Math.atan2(hy - CY, hx - CX);
+    // Tail (back blue dashed beam): exactly 30° behind head
+    const tailAngle = headAngle - FAN_ANGLE;
+    const tailHit = rayToHex(tailAngle);
+    const tx = tailHit.x, ty = tailHit.y;
+    // Tail's arc-length along hex perimeter (for syncing hex-scan bright segment)
+    const tailDist = tailHit.edge * 200 + tailHit.s * 200;
+    beamA.setAttribute('x2', hx.toFixed(1));
+    beamA.setAttribute('y2', hy.toFixed(1));
+    beamB.setAttribute('x2', tx.toFixed(1));
+    beamB.setAttribute('y2', ty.toFixed(1));
+    // Rebuild the 30° fan polygon: center + samples on hex edge at angles [head, tail]
+    let d = 'M ' + CX + ',' + CY;
+    for (let i = 0; i <= FAN_SAMPLES; i++) {
+      const ang = headAngle - FAN_ANGLE * (i / FAN_SAMPLES);
+      const hit = rayToHex(ang);
+      d += ' L ' + hit.x.toFixed(1) + ',' + hit.y.toFixed(1);
+    }
+    d += ' Z';
+    trailEl.setAttribute('d', d);
+    // Hex-perimeter bright segment: span EXACTLY from tail-arc-length to head-arc-length
+    // so the two beams' endpoints align with the ends of the bright edge glow.
+    const brightLen = (scanDist - tailDist + PERIM) % PERIM;
+    hexScanEl.setAttribute('stroke-dasharray', brightLen.toFixed(1) + ' ' + (PERIM - brightLen).toFixed(1));
+    hexScanEl.setAttribute('stroke-dashoffset', (-tailDist).toFixed(1));
+    requestAnimationFrame(scanTick);
+  }
+  scanTick();
+
+  // ============ PERPETUAL: Claude dots pulse (winner highlight) ============
+  gsap.to('.dot-clau', {
+    attr: { r: 5.5 }, duration: 1.5, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: 0.2, delay: 3.2
+  });
+
+  // ============ PERPETUAL: Winner card border breath ============
+  gsap.to('.score-winner rect:first-child', {
+    strokeWidth: 2.2, duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.5
+  });
+
+  // ============ PERPETUAL: Claude polygon subtle breathing ============
+  gsap.to('#polyClaude', {
+    opacity: 0.85, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.8
+  });
+
+  // ============ PERPETUAL: Axis labels tick highlight ============
+  gsap.utils.toArray('.aLabel').forEach((el, i) => {
+    gsap.to(el, {
+      fill: '#c4a35a', duration: 1.4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4 + i * 0.5
+    });
+  });
+})();
+</script></body></html>

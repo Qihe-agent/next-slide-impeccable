@@ -1,0 +1,296 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>13 · Venn — AI Success Triangle</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <!-- Filter regions expanded to x/y=-50% width/height=200% so blur doesn't clip into "square glow" -->
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <!-- Center intersection radial glow (gold) -->
+  <radialGradient id="centerGrad">
+    <stop offset="0%" stop-color="#c4a35a" stop-opacity="0.5"/>
+    <stop offset="60%" stop-color="#c4a35a" stop-opacity="0.15"/>
+    <stop offset="100%" stop-color="#c4a35a" stop-opacity="0"/>
+  </radialGradient>
+  <!-- Per-circle halo gradients (让三要素 label 在圆心上发出一点光晕) -->
+  <radialGradient id="aiHalo"><stop offset="0%" stop-color="#c4a35a" stop-opacity="0.38"/><stop offset="55%" stop-color="#c4a35a" stop-opacity="0.08"/><stop offset="100%" stop-color="#c4a35a" stop-opacity="0"/></radialGradient>
+  <radialGradient id="bizHalo"><stop offset="0%" stop-color="#5dade2" stop-opacity="0.38"/><stop offset="55%" stop-color="#5dade2" stop-opacity="0.08"/><stop offset="100%" stop-color="#5dade2" stop-opacity="0"/></radialGradient>
+  <radialGradient id="dataHalo"><stop offset="0%" stop-color="#3daa5a" stop-opacity="0.38"/><stop offset="55%" stop-color="#3daa5a" stop-opacity="0.08"/><stop offset="100%" stop-color="#3daa5a" stop-opacity="0"/></radialGradient>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">13</text>
+</g>
+
+<!-- Header -->
+<text x="700" y="50" text-anchor="middle" font-family="Noto Serif SC" font-size="20" font-weight="700" fill="#c4a35a" opacity="0" class="title">AI 成功三要素 · Success Triangle</text>
+<text x="700" y="72" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">TECH · STRATEGY · DATA · 三者交集 = 真正的 AI 落地</text>
+
+<!-- ============ LEFT SIDE: Venn circles ============
+     Centers:
+       AI 技术 (top):     cx=450, cy=310, r=200
+       业务战略 (BL):     cx=330, cy=490, r=200
+       数据基建 (BR):     cx=570, cy=490, r=200
+     Triple intersection around (450, 430). -->
+
+<!-- Background radial glow at center intersection -->
+<circle cx="450" cy="430" r="110" fill="url(#centerGrad)" opacity="0" id="centerGlow"/>
+
+<!-- 3 circles (fill very transparent, strong stroke) -->
+<circle id="c-ai" cx="450" cy="310" r="200" fill="#c4a35a" fill-opacity="0.04" stroke="#c4a35a" stroke-width="2" opacity="0"/>
+<circle id="c-biz" cx="330" cy="490" r="200" fill="#5dade2" fill-opacity="0.04" stroke="#5dade2" stroke-width="2" opacity="0"/>
+<circle id="c-data" cx="570" cy="490" r="200" fill="#3daa5a" fill-opacity="0.04" stroke="#3daa5a" stroke-width="2" opacity="0"/>
+
+<!-- Halo glows behind each circle-center label (faint point 光晕，让 label 更清晰) -->
+<circle id="aiHaloEl" cx="450" cy="310" r="56" fill="url(#aiHalo)" opacity="0"/>
+<circle id="bizHaloEl" cx="330" cy="490" r="56" fill="url(#bizHalo)" opacity="0"/>
+<circle id="dataHaloEl" cx="570" cy="490" r="56" fill="url(#dataHalo)" opacity="0"/>
+
+<!-- Circle labels AT circle geometric centers (圆心上，用户死规定) -->
+<g id="circleLabels" opacity="0">
+  <text x="450" y="296" text-anchor="middle" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#c4a35a">AI 技术</text>
+  <text x="450" y="316" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.75" letter-spacing="3">TECHNOLOGY</text>
+  <text x="330" y="476" text-anchor="middle" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#5dade2">业务战略</text>
+  <text x="330" y="496" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.75" letter-spacing="3">STRATEGY</text>
+  <text x="570" y="476" text-anchor="middle" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#3daa5a">数据基建</text>
+  <text x="570" y="496" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.75" letter-spacing="3">DATA</text>
+</g>
+
+<!-- Zone labels (7 regions) — small markers inside each region + connector line to right panel -->
+<!-- Each marker is a dot with zone # and is connected to its detail on the right panel -->
+
+<!-- Z1: AI only (top of AI circle, outside Biz/Data) -->
+<g class="zone" data-i="0">
+  <circle cx="450" cy="200" r="6" fill="#c4a35a" opacity="0" class="zdot"/>
+  <text x="450" y="204" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#0a0a0b" opacity="0" class="znum">1</text>
+</g>
+<!-- Z2: Biz only (left of Biz circle) -->
+<g class="zone" data-i="1">
+  <circle cx="200" cy="510" r="6" fill="#5dade2" opacity="0" class="zdot"/>
+  <text x="200" y="514" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#0a0a0b" opacity="0" class="znum">2</text>
+</g>
+<!-- Z3: Data only (right of Data circle) -->
+<g class="zone" data-i="2">
+  <circle cx="700" cy="510" r="6" fill="#3daa5a" opacity="0" class="zdot"/>
+  <text x="700" y="514" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#0a0a0b" opacity="0" class="znum">3</text>
+</g>
+<!-- Z4: AI ∩ Biz (left intersection, between AI and Biz) -->
+<g class="zone" data-i="3">
+  <circle cx="305" cy="410" r="6" fill="#bb8fce" opacity="0" class="zdot"/>
+  <text x="305" y="414" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#0a0a0b" opacity="0" class="znum">4</text>
+</g>
+<!-- Z5: AI ∩ Data (right intersection, between AI and Data) -->
+<g class="zone" data-i="4">
+  <circle cx="595" cy="410" r="6" fill="#f4845f" opacity="0" class="zdot"/>
+  <text x="595" y="414" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#0a0a0b" opacity="0" class="znum">5</text>
+</g>
+<!-- Z6: Biz ∩ Data (bottom intersection, between Biz and Data) -->
+<g class="zone" data-i="5">
+  <circle cx="450" cy="570" r="6" fill="#45b7a0" opacity="0" class="zdot"/>
+  <text x="450" y="574" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#0a0a0b" opacity="0" class="znum">6</text>
+</g>
+<!-- Z7: Triple intersection (center, GOLDEN ZONE) -->
+<g class="zone zone-center" data-i="6">
+  <circle cx="450" cy="430" r="14" fill="#c4a35a" opacity="0" class="zdot" filter="url(#glow)" id="centerDot"/>
+  <text x="450" y="436" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#0a0a0b" opacity="0" class="znum">★</text>
+</g>
+
+<!-- ============ RIGHT PANEL: 7 zones detail (x=840+) ============ -->
+<g id="rightPanel" opacity="0">
+  <rect x="840" y="100" width="540" height="620" rx="4" fill="#0a0a0b" fill-opacity="0.5" stroke="#c4a35a" stroke-width="0.8" stroke-opacity="0.5"/>
+  <rect x="840" y="100" width="540" height="4" fill="#c4a35a"/>
+  <text x="860" y="128" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" letter-spacing="3">7 ZONES · 哪个区域落地失败</text>
+
+  <!-- Z1 AI only -->
+  <g class="zr" data-i="0" opacity="0" transform="translate(860, 150)">
+    <circle cx="10" cy="10" r="10" fill="#c4a35a"/>
+    <text x="10" y="14" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#0a0a0b">1</text>
+    <text x="30" y="8" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#c4a35a">AI · 独有</text>
+    <text x="30" y="24" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.85">有模型但没策略没数据</text>
+    <text x="485" y="16" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#b33a3a">炫技 demo</text>
+  </g>
+
+  <!-- Z2 Biz only -->
+  <g class="zr" data-i="1" opacity="0" transform="translate(860, 198)">
+    <circle cx="10" cy="10" r="10" fill="#5dade2"/>
+    <text x="10" y="14" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#0a0a0b">2</text>
+    <text x="30" y="8" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#5dade2">业务 · 独有</text>
+    <text x="30" y="24" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.85">有愿景但没技术没数据</text>
+    <text x="485" y="16" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#b33a3a">PPT 战略</text>
+  </g>
+
+  <!-- Z3 Data only -->
+  <g class="zr" data-i="2" opacity="0" transform="translate(860, 246)">
+    <circle cx="10" cy="10" r="10" fill="#3daa5a"/>
+    <text x="10" y="14" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#0a0a0b">3</text>
+    <text x="30" y="8" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#3daa5a">数据 · 独有</text>
+    <text x="30" y="24" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.85">有数据但不会用也没业务价值</text>
+    <text x="485" y="16" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#b33a3a">数据坟场</text>
+  </g>
+
+  <!-- Z4 AI ∩ Biz (no data) -->
+  <g class="zr" data-i="3" opacity="0" transform="translate(860, 294)">
+    <circle cx="10" cy="10" r="10" fill="#bb8fce"/>
+    <text x="10" y="14" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#0a0a0b">4</text>
+    <text x="30" y="8" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#bb8fce">AI ∩ 业务（缺数据）</text>
+    <text x="30" y="24" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.85">有策略+模型，喂不饱</text>
+    <text x="485" y="16" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">能 PoC 但不规模化</text>
+  </g>
+
+  <!-- Z5 AI ∩ Data (no biz) -->
+  <g class="zr" data-i="4" opacity="0" transform="translate(860, 342)">
+    <circle cx="10" cy="10" r="10" fill="#f4845f"/>
+    <text x="10" y="14" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#0a0a0b">5</text>
+    <text x="30" y="8" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#f4845f">AI ∩ 数据（缺战略）</text>
+    <text x="30" y="24" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.85">能跑通但对客户无价值</text>
+    <text x="485" y="16" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">研究成果多 ROI 低</text>
+  </g>
+
+  <!-- Z6 Biz ∩ Data (no AI) -->
+  <g class="zr" data-i="5" opacity="0" transform="translate(860, 390)">
+    <circle cx="10" cy="10" r="10" fill="#45b7a0"/>
+    <text x="10" y="14" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#0a0a0b">6</text>
+    <text x="30" y="8" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#45b7a0">业务 ∩ 数据（缺 AI）</text>
+    <text x="30" y="24" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.85">传统数据分析，无智能</text>
+    <text x="485" y="16" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">BI 停留期</text>
+  </g>
+
+  <!-- Z7 Triple (GOLDEN) -->
+  <g class="zr zr-center" data-i="6" opacity="0" transform="translate(860, 440)">
+    <rect x="0" y="0" width="500" height="80" rx="3" fill="#1a1410" fill-opacity="0.85" stroke="#c4a35a" stroke-width="1" stroke-opacity="0.8" filter="url(#glow)" id="centerCard"/>
+    <circle cx="20" cy="20" r="14" fill="#c4a35a" filter="url(#softGlow)"/>
+    <text x="20" y="26" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#0a0a0b">★</text>
+    <text x="44" y="18" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#c4a35a">黄金三交集 · 真正的 AI 落地</text>
+    <text x="44" y="34" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.85">AI × Strategy × Data · 能规模化创造客户价值</text>
+    <text x="44" y="54" font-family="Noto Serif SC" font-size="11" fill="#e8e4df" opacity="0.9">业务人说得出 metric + 工程能跑通模型 + 数据能持续喂</text>
+    <text x="44" y="72" font-family="JetBrains Mono" font-size="9" fill="#8a8578">← 所有 AI 项目最终应该落到这里，否则就是在 1-6 中徘徊</text>
+    <text x="485" y="26" text-anchor="end" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#c4a35a">★</text>
+  </g>
+
+  <!-- Stats summary at bottom of right panel -->
+  <g transform="translate(860, 546)">
+    <text x="0" y="0" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="3">INDUSTRY DISTRIBUTION · 企业落点</text>
+    <line x1="0" y1="8" x2="500" y2="8" stroke="#c4a35a" stroke-width="0.3" opacity="0.3"/>
+    <!-- Distribution bars -->
+    <g transform="translate(0, 20)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#e8e4df">Z1-3 独有</text>
+      <rect x="100" y="3" width="380" height="12" fill="#1a1a1a"/>
+      <rect class="distBar" data-w="160" x="100" y="3" width="0" height="12" fill="#b33a3a" fill-opacity="0.6"/>
+      <text x="485" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#b33a3a">42%</text>
+    </g>
+    <g transform="translate(0, 42)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#e8e4df">Z4-6 双交</text>
+      <rect x="100" y="3" width="380" height="12" fill="#1a1a1a"/>
+      <rect class="distBar" data-w="175" x="100" y="3" width="0" height="12" fill="#c4a35a" fill-opacity="0.6"/>
+      <text x="485" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#c4a35a">46%</text>
+    </g>
+    <g transform="translate(0, 64)">
+      <text x="0" y="12" font-family="JetBrains Mono" font-size="9" fill="#e8e4df">Z7 黄金 ★</text>
+      <rect x="100" y="3" width="380" height="12" fill="#1a1a1a"/>
+      <rect class="distBar" data-w="46" x="100" y="3" width="0" height="12" fill="#3daa5a" fill-opacity="0.8"/>
+      <text x="485" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#3daa5a">12%</text>
+    </g>
+    <text x="0" y="102" font-family="JetBrains Mono" font-size="9" fill="#8a8578" letter-spacing="2">仅 12% 企业真正落到 AI × Strategy × Data 三交集</text>
+  </g>
+</g>
+
+<!-- Bottom summary -->
+<g id="footerSum" opacity="0">
+  <line x1="30" y1="738" x2="1370" y2="738" stroke="#c4a35a" stroke-width="0.3" opacity="0.3"/>
+  <text x="30" y="752" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7" letter-spacing="2">★ 黄金区 = 三者同时存在才能规模化 · 缺任何一个都会卡在区域 1-6</text>
+</g>
+
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-VENN-13 / REV.B — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">ASYRE FRAMEWORK</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  // 3 circles slide in from their outer positions (grow r from 0 to 200 + fade in)
+  tl.fromTo('#c-ai', { attr: { r: 0 }, opacity: 0 }, { attr: { r: 200 }, opacity: 1, duration: 0.9, ease: 'power2.out' }, 0.8);
+  tl.fromTo('#c-biz', { attr: { r: 0 }, opacity: 0 }, { attr: { r: 200 }, opacity: 1, duration: 0.9, ease: 'power2.out' }, 1.0);
+  tl.fromTo('#c-data', { attr: { r: 0 }, opacity: 0 }, { attr: { r: 200 }, opacity: 1, duration: 0.9, ease: 'power2.out' }, 1.2);
+
+  // Circle labels
+  tl.to('#circleLabels', { opacity: 1, duration: 0.5 }, 1.8);
+  // Halos fade in with labels (each circle center gets a colored glow point)
+  tl.to('#aiHaloEl, #bizHaloEl, #dataHaloEl', { opacity: 1, duration: 0.6, stagger: 0.1 }, 1.8);
+
+  // Center glow
+  tl.to('#centerGlow', { opacity: 1, duration: 0.8 }, 2.0);
+
+  // Zone markers pop in (dots + numbers)
+  tl.to('.zdot', { opacity: 1, duration: 0.4, stagger: 0.08, ease: 'back.out(2)' }, 2.2);
+  tl.to('.znum', { opacity: 1, duration: 0.3, stagger: 0.08 }, 2.3);
+
+  // Right panel
+  tl.to('#rightPanel', { opacity: 1, duration: 0.5 }, 2.3);
+  tl.to('.zr', { opacity: 1, duration: 0.4, stagger: 0.1, ease: 'power2.out' }, 2.5);
+
+  // Distribution bars grow
+  tl.to('.distBar', {
+    attr: { width: (i, el) => parseFloat(el.dataset.w) },
+    duration: 0.8, stagger: 0.15, ease: 'power2.out'
+  }, 3.4);
+
+  // Footer
+  tl.to('#footerSum', { opacity: 1, duration: 0.5 }, 3.8);
+
+  // ============ PERPETUAL: Center dot pulse (triple intersection star) ============
+  gsap.to('#centerDot', {
+    attr: { r: 18 }, duration: 1.4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4
+  });
+
+  // ============ PERPETUAL: Center card in right panel glow ============
+  gsap.to('#centerCard', {
+    strokeWidth: 1.6, duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4.2
+  });
+
+  // ============ PERPETUAL: Center glow breath ============
+  gsap.to('#centerGlow', {
+    opacity: 0.55, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4.5
+  });
+
+  // ============ PERPETUAL: 3 circle-center halos breath (staggered so they're not synced) ============
+  gsap.to('#aiHaloEl', { opacity: 0.55, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4.2 });
+  gsap.to('#bizHaloEl', { opacity: 0.55, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4.5 });
+  gsap.to('#dataHaloEl', { opacity: 0.55, duration: 2.8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4.8 });
+
+  // ============ PERPETUAL: 3 circles subtle breath on stroke ============
+  gsap.to('#c-ai, #c-biz, #c-data', {
+    strokeWidth: 2.8, duration: 2.8, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: 0.3, delay: 4
+  });
+
+  // ============ PERPETUAL: Zone dots blink ============
+  gsap.to('.zdot:not(#centerDot)', {
+    opacity: 0.55, duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: 0.15, delay: 4.8
+  });
+})();
+</script></body></html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>18 · Dense Modules — AI Full Stack Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">18</text>
+</g>
+
+<!-- Header -->
+<text x="700" y="50" text-anchor="middle" font-family="Noto Serif SC" font-size="20" font-weight="700" fill="#c4a35a" opacity="0" class="title">AI 应用全栈架构 · Dense Modules Blueprint</text>
+<text x="700" y="72" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">16 MODULES · 4 LAYERS · DATA FLOW TOP → BOTTOM</text>
+
+<!-- ============ BLUEPRINT FRAME ============ -->
+<g id="frame" opacity="0">
+  <rect x="30" y="95" width="1340" height="610" fill="none" stroke="#c4a35a" stroke-width="0.6" stroke-opacity="0.3" stroke-dasharray="8,6"/>
+  <!-- Corner markers -->
+  <path d="M 30 115 L 30 95 L 50 95" fill="none" stroke="#c4a35a" stroke-width="1.4"/>
+  <path d="M 1370 115 L 1370 95 L 1350 95" fill="none" stroke="#c4a35a" stroke-width="1.4"/>
+  <path d="M 30 685 L 30 705 L 50 705" fill="none" stroke="#c4a35a" stroke-width="1.4"/>
+  <path d="M 1370 685 L 1370 705 L 1350 705" fill="none" stroke="#c4a35a" stroke-width="1.4"/>
+  <text x="40" y="112" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" opacity="0.6" letter-spacing="2">A01</text>
+  <text x="1360" y="112" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" opacity="0.6" letter-spacing="2">A16</text>
+  <text x="40" y="700" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" opacity="0.6" letter-spacing="2">D01</text>
+  <text x="1360" y="700" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" opacity="0.6" letter-spacing="2">D16</text>
+</g>
+
+<!-- Scan line (perpetual) -->
+<line id="scanLine" x1="40" x2="1360" y1="100" y2="100" stroke="#c4a35a" stroke-width="0.8" opacity="0"/>
+
+<!-- ============ LAYER LABELS (left sidebar) ============ -->
+<g class="layer-label" data-i="0" opacity="0">
+  <rect x="40" y="130" width="84" height="116" rx="2" fill="#1a1410" fill-opacity="0.7" stroke="#c4a35a" stroke-width="0.6" stroke-opacity="0.6"/>
+  <text x="82" y="152" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="2">L1</text>
+  <text x="82" y="185" text-anchor="middle" font-family="Noto Serif SC" font-size="14" font-weight="700" fill="#c4a35a">模型层</text>
+  <text x="82" y="204" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" opacity="0.7" letter-spacing="1">MODELS</text>
+  <text x="82" y="228" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">$0.003—12/1M</text>
+</g>
+<g class="layer-label" data-i="1" opacity="0">
+  <rect x="40" y="256" width="84" height="116" rx="2" fill="#10161e" fill-opacity="0.7" stroke="#5dade2" stroke-width="0.6" stroke-opacity="0.6"/>
+  <text x="82" y="278" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="2">L2</text>
+  <text x="82" y="311" text-anchor="middle" font-family="Noto Serif SC" font-size="14" font-weight="700" fill="#5dade2">编排层</text>
+  <text x="82" y="330" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#5dade2" opacity="0.7" letter-spacing="1">ORCH</text>
+  <text x="82" y="354" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">4 frameworks</text>
+</g>
+<g class="layer-label" data-i="2" opacity="0">
+  <rect x="40" y="382" width="84" height="116" rx="2" fill="#1e1410" fill-opacity="0.7" stroke="#f4845f" stroke-width="0.6" stroke-opacity="0.6"/>
+  <text x="82" y="404" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#f4845f" letter-spacing="2">L3</text>
+  <text x="82" y="437" text-anchor="middle" font-family="Noto Serif SC" font-size="14" font-weight="700" fill="#f4845f">基础设施</text>
+  <text x="82" y="456" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#f4845f" opacity="0.7" letter-spacing="1">INFRA</text>
+  <text x="82" y="480" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">GPU · VecDB</text>
+</g>
+<g class="layer-label" data-i="3" opacity="0">
+  <rect x="40" y="508" width="84" height="116" rx="2" fill="#101e12" fill-opacity="0.7" stroke="#3daa5a" stroke-width="0.6" stroke-opacity="0.6"/>
+  <text x="82" y="530" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="2">L4</text>
+  <text x="82" y="563" text-anchor="middle" font-family="Noto Serif SC" font-size="14" font-weight="700" fill="#3daa5a">应用层</text>
+  <text x="82" y="582" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#3daa5a" opacity="0.7" letter-spacing="1">APPS</text>
+  <text x="82" y="606" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">chat · IDE · API</text>
+</g>
+
+<!-- ============ L1: MODEL LAYER · 4 modules ============ -->
+<!-- Row y=130-246, x=140-1240 for modules (1100w), 4 blocks @ 260w + 20 gaps -->
+<g class="mod" data-layer="0" data-i="0" opacity="0">
+  <rect x="140" y="130" width="260" height="116" rx="2" fill="#1a1410" fill-opacity="0.85" stroke="#c4a35a" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="140" y="130" width="260" height="3" fill="#c4a35a"/>
+  <text x="154" y="152" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="1">M01 · FRONTIER</text>
+  <text x="386" y="152" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7">★</text>
+  <text x="154" y="176" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">Claude Opus 4.7</text>
+  <text x="154" y="194" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">Anthropic · 1M context · thinking</text>
+  <text x="154" y="215" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">$15 · $75 / 1M tok</text>
+  <text x="154" y="232" font-family="JetBrains Mono" font-size="9" fill="#8a8578">SWE-bench 74% · HumanEval 97</text>
+</g>
+<g class="mod" data-layer="0" data-i="1" opacity="0">
+  <rect x="420" y="130" width="260" height="116" rx="2" fill="#1a1410" fill-opacity="0.85" stroke="#c4a35a" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="420" y="130" width="260" height="3" fill="#c4a35a"/>
+  <text x="434" y="152" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="1">M02 · GPT</text>
+  <text x="666" y="152" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7">API</text>
+  <text x="434" y="176" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">GPT-5 Turbo</text>
+  <text x="434" y="194" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">OpenAI · 256K ctx · realtime voice</text>
+  <text x="434" y="215" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">$8 · $40 / 1M tok</text>
+  <text x="434" y="232" font-family="JetBrains Mono" font-size="9" fill="#8a8578">MMLU 89 · 市场领先</text>
+</g>
+<g class="mod" data-layer="0" data-i="2" opacity="0">
+  <rect x="700" y="130" width="260" height="116" rx="2" fill="#1a1410" fill-opacity="0.85" stroke="#c4a35a" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="700" y="130" width="260" height="3" fill="#c4a35a"/>
+  <text x="714" y="152" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="1">M03 · GEMINI</text>
+  <text x="946" y="152" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7">API</text>
+  <text x="714" y="176" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">Gemini 3 Pro</text>
+  <text x="714" y="194" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">Google · 2M ctx · 原生多模态</text>
+  <text x="714" y="215" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">$1.25 · $10 / 1M tok</text>
+  <text x="714" y="232" font-family="JetBrains Mono" font-size="9" fill="#8a8578">视频理解 · 图像生成</text>
+</g>
+<g class="mod" data-layer="0" data-i="3" opacity="0">
+  <rect x="980" y="130" width="260" height="116" rx="2" fill="#1a1410" fill-opacity="0.85" stroke="#c4a35a" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="980" y="130" width="260" height="3" fill="#c4a35a"/>
+  <text x="994" y="152" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="1">M04 · OSS</text>
+  <text x="1226" y="152" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7">SELF-HOST</text>
+  <text x="994" y="176" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">DeepSeek · Qwen · Llama</text>
+  <text x="994" y="194" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">开源 · 自部署 · 合规优先</text>
+  <text x="994" y="215" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">GPU 自担 · 可本地化</text>
+  <text x="994" y="232" font-family="JetBrains Mono" font-size="9" fill="#8a8578">R1 编码 · V3.5 通用</text>
+</g>
+
+<!-- ============ L2: ORCHESTRATION · 4 modules ============ -->
+<!-- y=256-372 -->
+<g class="mod" data-layer="1" data-i="0" opacity="0">
+  <rect x="140" y="256" width="260" height="116" rx="2" fill="#10161e" fill-opacity="0.85" stroke="#5dade2" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="140" y="256" width="260" height="3" fill="#5dade2"/>
+  <text x="154" y="278" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="1">M05 · PROTOCOL</text>
+  <text x="386" y="278" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.7">★ 新标准</text>
+  <text x="154" y="302" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">MCP</text>
+  <text x="154" y="320" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">Model Context Protocol</text>
+  <text x="154" y="341" font-family="JetBrains Mono" font-size="10" fill="#5dade2">Anthropic 主导 · 生态爆发</text>
+  <text x="154" y="358" font-family="JetBrains Mono" font-size="9" fill="#8a8578">stdio / SSE · 200+ servers</text>
+</g>
+<g class="mod" data-layer="1" data-i="1" opacity="0">
+  <rect x="420" y="256" width="260" height="116" rx="2" fill="#10161e" fill-opacity="0.85" stroke="#5dade2" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="420" y="256" width="260" height="3" fill="#5dade2"/>
+  <text x="434" y="278" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="1">M06 · GRAPH</text>
+  <text x="666" y="278" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.7">98K ★</text>
+  <text x="434" y="302" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">LangGraph</text>
+  <text x="434" y="320" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">有状态 · 可中断 · 循环 graph</text>
+  <text x="434" y="341" font-family="JetBrains Mono" font-size="10" fill="#5dade2">生产级 agent 首选</text>
+  <text x="434" y="358" font-family="JetBrains Mono" font-size="9" fill="#8a8578">checkpoint · resume</text>
+</g>
+<g class="mod" data-layer="1" data-i="2" opacity="0">
+  <rect x="700" y="256" width="260" height="116" rx="2" fill="#10161e" fill-opacity="0.85" stroke="#5dade2" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="700" y="256" width="260" height="3" fill="#5dade2"/>
+  <text x="714" y="278" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="1">M07 · MULTI-AGENT</text>
+  <text x="946" y="278" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.7">70K ★</text>
+  <text x="714" y="302" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">AutoGen · CrewAI</text>
+  <text x="714" y="320" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">角色化协作 · 任务拆分</text>
+  <text x="714" y="341" font-family="JetBrains Mono" font-size="10" fill="#5dade2">Microsoft · CrewAI Inc</text>
+  <text x="714" y="358" font-family="JetBrains Mono" font-size="9" fill="#8a8578">research · debate</text>
+</g>
+<g class="mod" data-layer="1" data-i="3" opacity="0">
+  <rect x="980" y="256" width="260" height="116" rx="2" fill="#10161e" fill-opacity="0.85" stroke="#5dade2" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="980" y="256" width="260" height="3" fill="#5dade2"/>
+  <text x="994" y="278" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="1">M08 · SDK</text>
+  <text x="1226" y="278" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.7">OFFICIAL</text>
+  <text x="994" y="302" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">Claude Agent SDK</text>
+  <text x="994" y="320" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">tool use · subagent · memory</text>
+  <text x="994" y="341" font-family="JetBrains Mono" font-size="10" fill="#5dade2">harness · skill · hooks</text>
+  <text x="994" y="358" font-family="JetBrains Mono" font-size="9" fill="#8a8578">py / ts / node</text>
+</g>
+
+<!-- ============ L3: INFRASTRUCTURE · 4 modules ============ -->
+<!-- y=382-498 -->
+<g class="mod" data-layer="2" data-i="0" opacity="0">
+  <rect x="140" y="382" width="260" height="116" rx="2" fill="#1e1410" fill-opacity="0.85" stroke="#f4845f" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="140" y="382" width="260" height="3" fill="#f4845f"/>
+  <text x="154" y="404" font-family="JetBrains Mono" font-size="9" fill="#f4845f" letter-spacing="1">M09 · COMPUTE</text>
+  <text x="386" y="404" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.7">92%</text>
+  <text x="154" y="428" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">GPU Cloud</text>
+  <text x="154" y="446" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">H100 · B200 · CUDA</text>
+  <text x="154" y="467" font-family="JetBrains Mono" font-size="10" fill="#f4845f">NVIDIA · Lambda · RunPod</text>
+  <text x="154" y="484" font-family="JetBrains Mono" font-size="9" fill="#8a8578">按需 · 训练 + 推理</text>
+</g>
+<g class="mod" data-layer="2" data-i="1" opacity="0">
+  <rect x="420" y="382" width="260" height="116" rx="2" fill="#1e1410" fill-opacity="0.85" stroke="#f4845f" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="420" y="382" width="260" height="3" fill="#f4845f"/>
+  <text x="434" y="404" font-family="JetBrains Mono" font-size="9" fill="#f4845f" letter-spacing="1">M10 · VECTOR</text>
+  <text x="666" y="404" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.7">RAG</text>
+  <text x="434" y="428" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">Vector DB</text>
+  <text x="434" y="446" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">Pinecone · Weaviate · pgvector</text>
+  <text x="434" y="467" font-family="JetBrains Mono" font-size="10" fill="#f4845f">1536 dim · cosine · HNSW</text>
+  <text x="434" y="484" font-family="JetBrains Mono" font-size="9" fill="#8a8578">embedding 检索</text>
+</g>
+<g class="mod" data-layer="2" data-i="2" opacity="0">
+  <rect x="700" y="382" width="260" height="116" rx="2" fill="#1e1410" fill-opacity="0.85" stroke="#f4845f" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="700" y="382" width="260" height="3" fill="#f4845f"/>
+  <text x="714" y="404" font-family="JetBrains Mono" font-size="9" fill="#f4845f" letter-spacing="1">M11 · CACHE</text>
+  <text x="946" y="404" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.7">5min TTL</text>
+  <text x="714" y="428" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">Prompt Cache</text>
+  <text x="714" y="446" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">Anthropic ephemeral · Redis</text>
+  <text x="714" y="467" font-family="JetBrains Mono" font-size="10" fill="#f4845f">90% cost ↓ · 80% latency ↓</text>
+  <text x="714" y="484" font-family="JetBrains Mono" font-size="9" fill="#8a8578">long prompt 必备</text>
+</g>
+<g class="mod" data-layer="2" data-i="3" opacity="0">
+  <rect x="980" y="382" width="260" height="116" rx="2" fill="#1e1410" fill-opacity="0.85" stroke="#f4845f" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="980" y="382" width="260" height="3" fill="#f4845f"/>
+  <text x="994" y="404" font-family="JetBrains Mono" font-size="9" fill="#f4845f" letter-spacing="1">M12 · STORE</text>
+  <text x="1226" y="404" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.7">CRUD</text>
+  <text x="994" y="428" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">Object Storage</text>
+  <text x="994" y="446" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">S3 · R2 · Supabase</text>
+  <text x="994" y="467" font-family="JetBrains Mono" font-size="10" fill="#f4845f">文件 · 图片 · 日志</text>
+  <text x="994" y="484" font-family="JetBrains Mono" font-size="9" fill="#8a8578">pre-signed URL</text>
+</g>
+
+<!-- ============ L4: APPLICATION · 4 modules ============ -->
+<!-- y=508-624 -->
+<g class="mod" data-layer="3" data-i="0" opacity="0">
+  <rect x="140" y="508" width="260" height="116" rx="2" fill="#101e12" fill-opacity="0.85" stroke="#3daa5a" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="140" y="508" width="260" height="3" fill="#3daa5a"/>
+  <text x="154" y="530" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="1">M13 · CONSUMER</text>
+  <text x="386" y="530" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.7">600M/wk</text>
+  <text x="154" y="554" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">Chat UI</text>
+  <text x="154" y="572" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">ChatGPT · Claude.ai · Gemini</text>
+  <text x="154" y="593" font-family="JetBrains Mono" font-size="10" fill="#3daa5a">通用对话入口</text>
+  <text x="154" y="610" font-family="JetBrains Mono" font-size="9" fill="#8a8578">web + mobile</text>
+</g>
+<g class="mod" data-layer="3" data-i="1" opacity="0">
+  <rect x="420" y="508" width="260" height="116" rx="2" fill="#101e12" fill-opacity="0.85" stroke="#3daa5a" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="420" y="508" width="260" height="3" fill="#3daa5a"/>
+  <text x="434" y="530" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="1">M14 · DEV</text>
+  <text x="666" y="530" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.7">12M dev</text>
+  <text x="434" y="554" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">Claude Code · Cursor</text>
+  <text x="434" y="572" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">AI-first IDE / CLI · 代码 agent</text>
+  <text x="434" y="593" font-family="Jetbrains Mono" font-size="10" fill="#3daa5a">Windsurf · Zed · Aider</text>
+  <text x="434" y="610" font-family="JetBrains Mono" font-size="9" fill="#8a8578">plan · edit · verify</text>
+</g>
+<g class="mod" data-layer="3" data-i="2" opacity="0">
+  <rect x="700" y="508" width="260" height="116" rx="2" fill="#101e12" fill-opacity="0.85" stroke="#3daa5a" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="700" y="508" width="260" height="3" fill="#3daa5a"/>
+  <text x="714" y="530" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="1">M15 · API</text>
+  <text x="946" y="530" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.7">REST + SSE</text>
+  <text x="714" y="554" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">API Gateway</text>
+  <text x="714" y="572" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">Kong · Cloudflare · 自研</text>
+  <text x="714" y="593" font-family="JetBrains Mono" font-size="10" fill="#3daa5a">rate-limit · auth · cost</text>
+  <text x="714" y="610" font-family="JetBrains Mono" font-size="9" fill="#8a8578">LiteLLM 代理层</text>
+</g>
+<g class="mod" data-layer="3" data-i="3" opacity="0">
+  <rect x="980" y="508" width="260" height="116" rx="2" fill="#101e12" fill-opacity="0.85" stroke="#3daa5a" stroke-width="0.7" stroke-opacity="0.6" class="mb"/>
+  <rect x="980" y="508" width="260" height="3" fill="#3daa5a"/>
+  <text x="994" y="530" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="1">M16 · WORKFLOW</text>
+  <text x="1226" y="530" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.7">biz</text>
+  <text x="994" y="554" font-family="Space Grotesk" font-size="15" font-weight="700" fill="#e8e4df">Agent Workflow</text>
+  <text x="994" y="572" font-family="Noto Sans SC" font-size="10" fill="#c4bdb4">n8n · Zapier · 自建</text>
+  <text x="994" y="593" font-family="JetBrains Mono" font-size="10" fill="#3daa5a">定时 · 事件 · webhook</text>
+  <text x="994" y="610" font-family="JetBrains Mono" font-size="9" fill="#8a8578">OpenClaw · Asyre</text>
+</g>
+
+<!-- Right side: Cross-cutting concerns column -->
+<g class="mod-side" opacity="0">
+  <rect x="1260" y="130" width="100" height="494" rx="2" fill="#1a1410" fill-opacity="0.6" stroke="#c4a35a" stroke-width="0.6" stroke-dasharray="4,4" stroke-opacity="0.5"/>
+  <text x="1310" y="152" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="2">CROSS-CUT</text>
+  <text x="1310" y="182" text-anchor="middle" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#c4a35a">观测</text>
+  <text x="1310" y="199" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">Langfuse · PostHog</text>
+  <line x1="1270" y1="215" x2="1350" y2="215" stroke="#c4a35a" stroke-width="0.3" opacity="0.4"/>
+  <text x="1310" y="242" text-anchor="middle" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#c4a35a">评测</text>
+  <text x="1310" y="259" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">evals · braintrust</text>
+  <line x1="1270" y1="275" x2="1350" y2="275" stroke="#c4a35a" stroke-width="0.3" opacity="0.4"/>
+  <text x="1310" y="302" text-anchor="middle" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#c4a35a">计量</text>
+  <text x="1310" y="319" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">tok · cost · cache</text>
+  <line x1="1270" y1="335" x2="1350" y2="335" stroke="#c4a35a" stroke-width="0.3" opacity="0.4"/>
+  <text x="1310" y="362" text-anchor="middle" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#c4a35a">合规</text>
+  <text x="1310" y="379" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">SOC2 · HIPAA</text>
+  <line x1="1270" y1="395" x2="1350" y2="395" stroke="#c4a35a" stroke-width="0.3" opacity="0.4"/>
+  <text x="1310" y="422" text-anchor="middle" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#c4a35a">权限</text>
+  <text x="1310" y="439" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">OAuth · API key</text>
+  <line x1="1270" y1="455" x2="1350" y2="455" stroke="#c4a35a" stroke-width="0.3" opacity="0.4"/>
+  <text x="1310" y="482" text-anchor="middle" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#c4a35a">审计</text>
+  <text x="1310" y="499" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">trace · replay</text>
+  <line x1="1270" y1="515" x2="1350" y2="515" stroke="#c4a35a" stroke-width="0.3" opacity="0.4"/>
+  <text x="1310" y="542" text-anchor="middle" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#c4a35a">缓存</text>
+  <text x="1310" y="559" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">CDN · KV</text>
+  <line x1="1270" y1="575" x2="1350" y2="575" stroke="#c4a35a" stroke-width="0.3" opacity="0.4"/>
+  <text x="1310" y="602" text-anchor="middle" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#c4a35a">容错</text>
+  <text x="1310" y="619" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">retry · fallback</text>
+</g>
+
+<!-- Bottom metrics strip -->
+<g id="metricsStrip" opacity="0">
+  <line x1="30" y1="720" x2="1370" y2="720" stroke="#c4a35a" stroke-width="0.3" opacity="0.3"/>
+  <text x="60" y="742" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7" letter-spacing="2">DATA FLOW : USER → L4 APP → L2 ORCH → L1 MODEL → L3 INFRA → RESPONSE</text>
+  <text x="1340" y="742" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7" letter-spacing="2">16 MOD · 4 L · 8 CROSS-CUT</text>
+</g>
+
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-DENSE-18 / REV.A — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">AI FULL-STACK BLUEPRINT</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  const ns = 'http://www.w3.org/2000/svg';
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  // Frame
+  tl.to('#frame', { opacity: 1, duration: 0.6 }, 0.8);
+
+  // Layer labels
+  tl.to('.layer-label', { opacity: 1, duration: 0.4, stagger: 0.1 }, 1.2);
+
+  // Modules cascade by layer
+  tl.to('.mod', { opacity: 1, duration: 0.35, stagger: { each: 0.04, from: 'start' }, ease: 'power2.out' }, 1.6);
+
+  // Side panel
+  tl.to('.mod-side', { opacity: 1, duration: 0.5 }, 2.6);
+
+  // Bottom metrics
+  tl.to('#metricsStrip', { opacity: 1, duration: 0.5 }, 3.0);
+
+  // ============ PERPETUAL: Scan line sweeping down ============
+  const scan = document.getElementById('scanLine');
+  let scanY = 110;
+  function scanTick() {
+    scanY += 1.6;
+    if (scanY > 700) scanY = 110;
+    scan.setAttribute('y1', scanY);
+    scan.setAttribute('y2', scanY);
+    const inZone = scanY > 120 && scanY < 690 ? 0.35 : 0;
+    scan.setAttribute('opacity', inZone);
+    requestAnimationFrame(scanTick);
+  }
+  setTimeout(scanTick, 3200);
+
+  // ============ PERPETUAL: Module border breath ============
+  gsap.to('.mb', {
+    strokeOpacity: 0.95, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: 0.05, delay: 3.5
+  });
+
+  // ============ PERPETUAL: Inter-layer data flow particles ============
+  // Each flow goes from M(i) bottom to M(i) top of next layer
+  const flowGroup = document.createElementNS(ns, 'g');
+  flowGroup.style.pointerEvents = 'none';
+  document.getElementById('svg').appendChild(flowGroup);
+
+  const flows = [];
+  // 4 modules per layer, 3 inter-layer gaps → 12 flow columns
+  for (let col = 0; col < 4; col++) {
+    const x = 270 + col * 280;  // module centers: 140+130=270, 420+130=550, 700+130=830, 980+130=1110
+    // Layer 1→2 (y 246→256), 2→3 (y 372→382), 3→4 (y 498→508)
+    [[246, 256], [372, 382], [498, 508]].forEach(([y0, y1]) => {
+      const c = document.createElementNS(ns, 'circle');
+      c.setAttribute('r', 1.8);
+      c.setAttribute('fill', '#c4a35a');
+      c.setAttribute('opacity', 0);
+      c.setAttribute('filter', 'url(#glow)');
+      flowGroup.appendChild(c);
+      flows.push({ el: c, x, y0, y1, phase: Math.random(), speed: 0.012 + Math.random() * 0.008 });
+    });
+  }
+  function flowTick() {
+    flows.forEach(f => {
+      f.phase += f.speed;
+      if (f.phase > 1) f.phase = 0;
+      const y = f.y0 + (f.y1 - f.y0) * f.phase;
+      f.el.setAttribute('cx', f.x);
+      f.el.setAttribute('cy', y);
+      f.el.setAttribute('opacity', 0.9);
+    });
+    requestAnimationFrame(flowTick);
+  }
+  setTimeout(flowTick, 3800);
+})();
+</script></body></html>

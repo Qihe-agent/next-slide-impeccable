@@ -1,0 +1,290 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>16 · Story Mountain — LLM Agent 5 幕</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow" x="-75%" y="-75%" width="250%" height="250%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="arcGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#5dade2"/>
+    <stop offset="25%" stop-color="#f4845f"/>
+    <stop offset="50%" stop-color="#c4a35a"/>
+    <stop offset="75%" stop-color="#b33a3a"/>
+    <stop offset="100%" stop-color="#3daa5a"/>
+  </linearGradient>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">16</text>
+</g>
+
+<!-- Header -->
+<text x="700" y="50" text-anchor="middle" font-family="Noto Serif SC" font-size="20" font-weight="700" fill="#c4a35a" opacity="0" class="title">LLM Agent 技术发展 · 五幕故事山</text>
+<text x="700" y="72" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">2020 SETUP · 2022 RISING · 2024 CLIMAX · 2025 FALLING · 2026 RESOLUTION</text>
+
+<!-- ============ ARC (BACKGROUND + MAIN) ============
+     Peak at (700, 110) — story climax; valley endpoints at (100, 440) and (1300, 440).
+     Card zone strictly y ≥ 530, arc zone strictly y ≤ 480 → no overlap. -->
+<path id="arcBg" d="M 100,440 C 220,320 300,180 370,150 C 500,90 610,110 700,110 C 790,110 900,90 1030,150 C 1100,180 1180,320 1300,440" fill="none" stroke="#c4a35a" stroke-width="18" stroke-linecap="round" opacity="0.05"/>
+<path id="arc" d="M 100,440 C 220,320 300,180 370,150 C 500,90 610,110 700,110 C 790,110 900,90 1030,150 C 1100,180 1180,320 1300,440" fill="none" stroke="url(#arcGrad)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2200" stroke-dashoffset="2200" filter="url(#glow)"/>
+
+<!-- Axis reference line y=500, subtle -->
+<line x1="30" y1="500" x2="1370" y2="500" stroke="#c4a35a" stroke-width="0.2" stroke-dasharray="3,8" opacity="0.2"/>
+
+<!-- Act labels along arc (muted, y <= 495) -->
+<text x="170" y="492" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0" letter-spacing="2" class="act-lab">ACT I · SETUP</text>
+<text x="420" y="492" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0" letter-spacing="2" class="act-lab">ACT II · RISING</text>
+<text x="700" y="492" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0" letter-spacing="2" class="act-lab">ACT III · CLIMAX</text>
+<text x="980" y="492" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" opacity="0" letter-spacing="2" class="act-lab">ACT IV · FALLING</text>
+<text x="1245" y="492" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0" letter-spacing="2" class="act-lab">ACT V · RESOLUTION</text>
+
+<!-- ============ 5 STAGE MARKERS ON ARC ============ -->
+<!-- Stage 1 Setup · (100, 440) -->
+<g class="stage" data-i="0" opacity="0">
+  <circle cx="100" cy="440" r="12" fill="#0a0a0b" stroke="#5dade2" stroke-width="2.4"/>
+  <text x="100" y="445" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#5dade2">1</text>
+</g>
+<!-- Stage 2 Rising · (370, 150) -->
+<g class="stage" data-i="1" opacity="0">
+  <circle cx="370" cy="150" r="12" fill="#0a0a0b" stroke="#f4845f" stroke-width="2.4"/>
+  <text x="370" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#f4845f">2</text>
+</g>
+<!-- Stage 3 Climax PEAK · (700, 110) — larger + glow -->
+<g class="stage climax" data-i="2" opacity="0">
+  <circle id="climaxPulse" cx="700" cy="110" r="22" fill="none" stroke="#c4a35a" stroke-width="0.8" opacity="0.5"/>
+  <circle cx="700" cy="110" r="16" fill="#0a0a0b" stroke="#c4a35a" stroke-width="2.8" filter="url(#softGlow)"/>
+  <text x="700" y="116" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="#c4a35a">3</text>
+  <text x="700" y="150" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" opacity="0.75" letter-spacing="3">PEAK</text>
+</g>
+<!-- Stage 4 Falling · (1030, 150) -->
+<g class="stage" data-i="3" opacity="0">
+  <circle cx="1030" cy="150" r="12" fill="#0a0a0b" stroke="#b33a3a" stroke-width="2.4"/>
+  <text x="1030" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#b33a3a">4</text>
+</g>
+<!-- Stage 5 Resolution · (1300, 440) -->
+<g class="stage" data-i="4" opacity="0">
+  <circle cx="1300" cy="440" r="12" fill="#0a0a0b" stroke="#3daa5a" stroke-width="2.4"/>
+  <text x="1300" y="445" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#3daa5a">5</text>
+</g>
+
+<!-- Light dot traveling along arc (perpetual) -->
+<circle id="arcDot" cx="100" cy="440" r="4" fill="#c4a35a" opacity="0" filter="url(#glow)"/>
+
+<!-- Climax particles rising (DOM pool) -->
+<g id="peakParticles" style="pointer-events:none"></g>
+
+<!-- ============ 5 DASHED CONNECTORS (marker → card top) ============ -->
+<g id="connectors">
+  <line x1="100" y1="452" x2="155" y2="530" stroke="#5dade2" stroke-width="0.8" stroke-dasharray="3,5" opacity="0" class="conn"/>
+  <line x1="370" y1="162" x2="420" y2="530" stroke="#f4845f" stroke-width="0.8" stroke-dasharray="3,5" opacity="0" class="conn"/>
+  <line x1="700" y1="126" x2="700" y2="530" stroke="#c4a35a" stroke-width="1" stroke-dasharray="3,5" opacity="0" class="conn"/>
+  <line x1="1030" y1="162" x2="980" y2="530" stroke="#b33a3a" stroke-width="0.8" stroke-dasharray="3,5" opacity="0" class="conn"/>
+  <line x1="1300" y1="452" x2="1245" y2="530" stroke="#3daa5a" stroke-width="0.8" stroke-dasharray="3,5" opacity="0" class="conn"/>
+</g>
+
+<!-- ============ 5 STAGE CARDS (y=530 — 710) ============
+     Card width 250, x positions: 30 / 295 / 575 / 855 / 1120 -->
+
+<!-- Card 1 · Setup 2020 -->
+<g class="card" data-i="0" opacity="0">
+  <rect x="30" y="530" width="250" height="180" rx="3" fill="#0f1620" fill-opacity="0.85" stroke="#5dade2" stroke-width="0.8" stroke-opacity="0.6"/>
+  <rect x="30" y="530" width="4" height="180" fill="#5dade2"/>
+  <text x="44" y="552" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="2">ACT I · 2020</text>
+  <text x="265" y="552" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.7">SETUP</text>
+  <text x="44" y="580" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#e8e4df">GPT-3 诞生</text>
+  <text x="44" y="600" font-family="Space Grotesk" font-size="10" fill="#8a8578" letter-spacing="1">THE FOUNDATION ERA</text>
+  <line x1="44" y1="614" x2="110" y2="614" stroke="#5dade2" stroke-width="0.6" opacity="0.6"/>
+  <text x="44" y="636" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 175B 参数，scaling law 验证</text>
+  <text x="44" y="654" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· few-shot 学习能力涌现</text>
+  <text x="44" y="672" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 仅限 API，无消费级产品</text>
+  <text x="44" y="698" font-family="JetBrains Mono" font-size="10" fill="#5dade2">CONTEXT 2K · $0.06/1K tok</text>
+</g>
+
+<!-- Card 2 · Rising 2022 -->
+<g class="card" data-i="1" opacity="0">
+  <rect x="295" y="530" width="250" height="180" rx="3" fill="#1f1410" fill-opacity="0.85" stroke="#f4845f" stroke-width="0.8" stroke-opacity="0.6"/>
+  <rect x="295" y="530" width="4" height="180" fill="#f4845f"/>
+  <text x="309" y="552" font-family="JetBrains Mono" font-size="9" fill="#f4845f" letter-spacing="2">ACT II · 2022</text>
+  <text x="530" y="552" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.7">RISING</text>
+  <text x="309" y="580" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#e8e4df">ChatGPT 引爆</text>
+  <text x="309" y="600" font-family="Space Grotesk" font-size="10" fill="#8a8578" letter-spacing="1">THE VIRAL BREAKTHROUGH</text>
+  <line x1="309" y1="614" x2="375" y2="614" stroke="#f4845f" stroke-width="0.6" opacity="0.6"/>
+  <text x="309" y="636" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 5 天破 100 万用户</text>
+  <text x="309" y="654" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· RLHF 让对话真正可用</text>
+  <text x="309" y="672" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 国内外全面军备竞赛</text>
+  <text x="309" y="698" font-family="JetBrains Mono" font-size="10" fill="#f4845f">MAU 100M · 2 个月破纪录</text>
+</g>
+
+<!-- Card 3 · Climax 2024 (PEAK, center-highlighted) -->
+<g class="card climax-card" data-i="2" opacity="0">
+  <rect x="575" y="530" width="250" height="180" rx="3" fill="#1a1410" fill-opacity="0.92" stroke="#c4a35a" stroke-width="1.4" filter="url(#glow)"/>
+  <rect x="575" y="530" width="4" height="180" fill="#c4a35a"/>
+  <text x="589" y="552" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="2">ACT III · 2024</text>
+  <text x="810" y="552" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" font-weight="700">★ CLIMAX</text>
+  <text x="589" y="580" font-family="Noto Serif SC" font-size="18" font-weight="900" fill="#c4a35a">Agent 元年</text>
+  <text x="589" y="600" font-family="Space Grotesk" font-size="10" fill="#c4a35a" opacity="0.8" letter-spacing="1">THE PEAK · TOOL USE</text>
+  <line x1="589" y1="614" x2="655" y2="614" stroke="#c4a35a" stroke-width="0.9" opacity="0.85"/>
+  <text x="589" y="636" font-family="Noto Sans SC" font-size="11" fill="#e8e4df">· Claude computer use 发布</text>
+  <text x="589" y="654" font-family="Noto Sans SC" font-size="11" fill="#e8e4df">· MCP 成为 Agent 标准协议</text>
+  <text x="589" y="672" font-family="Noto Sans SC" font-size="11" fill="#e8e4df">· Cursor / Devin 爆发式增长</text>
+  <text x="589" y="698" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" font-weight="700">200K CTX · 多模态 · Agent-Native</text>
+</g>
+
+<!-- Card 4 · Falling 2025 -->
+<g class="card" data-i="3" opacity="0">
+  <rect x="855" y="530" width="250" height="180" rx="3" fill="#1a0a0a" fill-opacity="0.85" stroke="#b33a3a" stroke-width="0.8" stroke-opacity="0.6"/>
+  <rect x="855" y="530" width="4" height="180" fill="#b33a3a"/>
+  <text x="869" y="552" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" letter-spacing="2">ACT IV · 2025</text>
+  <text x="1090" y="552" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" opacity="0.7">FALLING</text>
+  <text x="869" y="580" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#e8e4df">估值回调</text>
+  <text x="869" y="600" font-family="Space Grotesk" font-size="10" fill="#8a8578" letter-spacing="1">THE RECKONING</text>
+  <line x1="869" y1="614" x2="935" y2="614" stroke="#b33a3a" stroke-width="0.6" opacity="0.6"/>
+  <text x="869" y="636" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· AI 泡沫质疑升温</text>
+  <text x="869" y="654" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 大厂暂缓超大模型训练</text>
+  <text x="869" y="672" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 市场进入 pivot 期</text>
+  <text x="869" y="698" font-family="JetBrains Mono" font-size="10" fill="#b33a3a">VC 资本收紧 42%</text>
+</g>
+
+<!-- Card 5 · Resolution 2026 -->
+<g class="card" data-i="4" opacity="0">
+  <rect x="1120" y="530" width="250" height="180" rx="3" fill="#0f1a10" fill-opacity="0.85" stroke="#3daa5a" stroke-width="0.8" stroke-opacity="0.6"/>
+  <rect x="1120" y="530" width="4" height="180" fill="#3daa5a"/>
+  <text x="1134" y="552" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="2">ACT V · 2026</text>
+  <text x="1355" y="552" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.7">RESOLUTION</text>
+  <text x="1134" y="580" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#e8e4df">商业闭环</text>
+  <text x="1134" y="600" font-family="Space Grotesk" font-size="10" fill="#8a8578" letter-spacing="1">THE NEW EQUILIBRIUM</text>
+  <line x1="1134" y1="614" x2="1200" y2="614" stroke="#3daa5a" stroke-width="0.6" opacity="0.6"/>
+  <text x="1134" y="636" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· Agent 按效果订阅普及</text>
+  <text x="1134" y="654" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 垂直场景 ROI 跑通</text>
+  <text x="1134" y="672" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 协议 + 合规 + 运维成熟</text>
+  <text x="1134" y="698" font-family="JetBrains Mono" font-size="10" fill="#3daa5a">Agent 市场 $520B ▲</text>
+</g>
+
+<!-- Footer -->
+<g id="footerSum" opacity="0">
+  <line x1="30" y1="735" x2="1370" y2="735" stroke="#c4a35a" stroke-width="0.3" opacity="0.3"/>
+  <text x="30" y="752" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7" letter-spacing="2">5 幕 · 峰值在 ACT III · 弧线区 y≤480 与卡片区 y≥530 完全分离（硬规则 #19）</text>
+</g>
+
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-MOUNTAIN-16 / REV.A — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">NARRATIVE ARC · 2020—2026</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  const ns = 'http://www.w3.org/2000/svg';
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  // Arc draws on (left to right)
+  tl.to('#arc', { strokeDashoffset: 0, duration: 2.0, ease: 'power2.inOut' }, 0.7);
+
+  // Act labels fade in along arc
+  tl.to('.act-lab', { opacity: 0.8, duration: 0.4, stagger: 0.12 }, 1.3);
+
+  // Stage markers pop in sequence
+  tl.to('.stage', { opacity: 1, duration: 0.45, stagger: 0.18, ease: 'back.out(2.2)' }, 1.6);
+
+  // Connectors draw in
+  tl.to('.conn', { opacity: 0.55, duration: 0.4, stagger: 0.1 }, 2.4);
+
+  // Cards cascade up from below
+  tl.fromTo('.card', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.55, stagger: 0.12, ease: 'power2.out' }, 2.7);
+
+  // Footer
+  tl.to('#footerSum', { opacity: 1, duration: 0.5 }, 3.6);
+
+  // ============ PERPETUAL: Climax pulse ring ============
+  gsap.to('#climaxPulse', { attr: { r: 36 }, opacity: 0, duration: 2.2, repeat: -1, ease: 'power1.out', delay: 3.5 });
+
+  // ============ PERPETUAL: Light dot traveling along arc ============
+  const arcPath = document.getElementById('arc');
+  const arcLen = arcPath.getTotalLength();
+  const arcDot = document.getElementById('arcDot');
+  let t = 0;
+  function arcTick() {
+    t = (t + 0.0016) % 1;
+    const pt = arcPath.getPointAtLength(t * arcLen);
+    arcDot.setAttribute('cx', pt.x);
+    arcDot.setAttribute('cy', pt.y);
+    const fade = Math.min(t, 1 - t) * 2;
+    arcDot.setAttribute('opacity', Math.min(fade * 1.4, 0.95));
+    requestAnimationFrame(arcTick);
+  }
+  setTimeout(arcTick, 3200);
+
+  // ============ PERPETUAL: Peak particles rising ============
+  const pG = document.getElementById('peakParticles');
+  const particles = [];
+  for (let i = 0; i < 14; i++) {
+    const c = document.createElementNS(ns, 'circle');
+    c.setAttribute('r', 1 + Math.random() * 1.4);
+    c.setAttribute('fill', '#c4a35a');
+    c.setAttribute('opacity', 0);
+    c.setAttribute('filter', 'url(#glow)');
+    pG.appendChild(c);
+    particles.push({
+      el: c,
+      x: 700 + (Math.random() - 0.5) * 24,
+      y: 105,
+      life: Math.random(),
+      speed: 0.003 + Math.random() * 0.004,
+      drift: (Math.random() - 0.5) * 0.4
+    });
+  }
+  function peakTick() {
+    particles.forEach(p => {
+      p.life += p.speed;
+      if (p.life > 1) {
+        p.life = 0;
+        p.x = 700 + (Math.random() - 0.5) * 24;
+      }
+      const yOff = p.life * 70;
+      p.el.setAttribute('cx', p.x + p.drift * yOff);
+      p.el.setAttribute('cy', p.y - yOff);
+      const op = p.life < 0.15 ? (p.life / 0.15) * 0.8 : (1 - p.life) * 0.8;
+      p.el.setAttribute('opacity', op);
+    });
+    requestAnimationFrame(peakTick);
+  }
+  setTimeout(peakTick, 3500);
+
+  // ============ PERPETUAL: Climax card breath ============
+  gsap.to('.climax-card rect:first-child', { strokeWidth: 2, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4 });
+
+  // ============ PERPETUAL: Non-climax card border subtle breathing (strokeOpacity, not filter brightness — brightness tween without explicit starting value makes GSAP interpolate from 0) ============
+  gsap.to('.card:not(.climax-card) rect:first-child', {
+    strokeOpacity: 0.95,
+    duration: 3.4,
+    repeat: -1,
+    yoyo: true,
+    ease: 'sine.inOut',
+    stagger: 0.2,
+    delay: 4.2
+  });
+})();
+</script></body></html>

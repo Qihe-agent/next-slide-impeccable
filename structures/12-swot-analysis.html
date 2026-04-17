@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>12 · SWOT — Enterprise AI Adoption</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <!-- Drop shadow for "floating" score badges — elevation 感 -->
+  <filter id="floatShadow" x="-30%" y="-30%" width="160%" height="180%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.55"/>
+  </filter>
+  <!-- Per-quadrant gradient tints -->
+  <radialGradient id="sGrad" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#3daa5a" stop-opacity="0.15"/><stop offset="100%" stop-color="#3daa5a" stop-opacity="0"/></radialGradient>
+  <radialGradient id="wGrad" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#b33a3a" stop-opacity="0.15"/><stop offset="100%" stop-color="#b33a3a" stop-opacity="0"/></radialGradient>
+  <radialGradient id="oGrad" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#5dade2" stop-opacity="0.15"/><stop offset="100%" stop-color="#5dade2" stop-opacity="0"/></radialGradient>
+  <radialGradient id="tGrad" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#bb8fce" stop-opacity="0.15"/><stop offset="100%" stop-color="#bb8fce" stop-opacity="0"/></radialGradient>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">12</text>
+</g>
+
+<!-- Header -->
+<text x="700" y="46" text-anchor="middle" font-family="Noto Serif SC" font-size="20" font-weight="700" fill="#c4a35a" opacity="0" class="title">企业 AI 采用 SWOT 分析</text>
+<text x="700" y="68" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">STRATEGIC SWOT · ENTERPRISE AI ADOPTION 2025</text>
+
+<!-- Axis labels -->
+<text x="700" y="96" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0" letter-spacing="4" class="axis-label">内部 INTERNAL  ←——————————→  外部 EXTERNAL</text>
+<text x="14" y="420" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0" letter-spacing="4" transform="rotate(-90,14,420)" class="axis-label">正面 HELPFUL ↑    ·    ↓ HARMFUL 负面</text>
+
+<!-- Cross dividers -->
+<line id="divV" x1="700" y1="110" x2="700" y2="720" stroke="#c4a35a" stroke-width="0.4" opacity="0" stroke-dasharray="2,5"/>
+<line id="divH" x1="30" y1="415" x2="1370" y2="415" stroke="#c4a35a" stroke-width="0.4" opacity="0" stroke-dasharray="2,5"/>
+
+<!-- Cross center marker -->
+<circle cx="700" cy="415" r="4" fill="#c4a35a" opacity="0" id="crossDot"/>
+
+<!-- ============ QUADRANT: S (top-left, Strengths) ============ -->
+<g class="quad q-s" data-i="0" opacity="0">
+  <rect x="30" y="110" width="670" height="300" rx="4" fill="url(#sGrad)" stroke="#3daa5a" stroke-width="0.8" stroke-opacity="0.5" class="quad-border"/>
+  <text x="52" y="172" font-family="Space Grotesk" font-size="64" font-weight="700" fill="#3daa5a" opacity="0.12">S</text>
+  <text x="128" y="142" font-family="Noto Serif SC" font-size="17" font-weight="700" fill="#3daa5a">Strengths · 优势</text>
+  <text x="128" y="160" font-family="JetBrains Mono" font-size="9" fill="#8a8578" letter-spacing="2">INTERNAL · HELPFUL</text>
+  <!-- Score badge at top-right of S quad · floating elevation · label and number on separate rows -->
+  <g transform="translate(508, 128)" class="score-badge score-s">
+    <rect width="172" height="54" rx="3" fill="#0a1a10" fill-opacity="0.92" stroke="#3daa5a" stroke-width="1" stroke-opacity="0.9" filter="url(#floatShadow)"/>
+    <text x="14" y="20" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.85" letter-spacing="3">STRENGTH INDEX</text>
+    <line x1="14" y1="28" x2="158" y2="28" stroke="#3daa5a" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="158" y="46" text-anchor="end" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#3daa5a"><tspan class="sNum" data-target="8.2">0</tspan><tspan font-size="11" opacity="0.55"> / 10</tspan></text>
+  </g>
+
+  <!-- Bullets -->
+  <g class="bullet" data-q="s" data-i="0">
+    <circle cx="64" cy="210" r="3.5" fill="#3daa5a"/>
+    <text x="78" y="214" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">长期数据资产</text>
+    <text x="78" y="230" font-family="JetBrains Mono" font-size="9" fill="#8a8578">23PB 历史数据 · 5 年运营沉淀</text>
+    <text x="680" y="222" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#3daa5a">23 PB</text>
+  </g>
+  <g class="bullet" data-q="s" data-i="1">
+    <circle cx="64" cy="258" r="3.5" fill="#3daa5a"/>
+    <text x="78" y="262" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">工程团队 GPU 经验</text>
+    <text x="78" y="278" font-family="JetBrains Mono" font-size="9" fill="#8a8578">5 年分布式训练积累 · 10 篇论文</text>
+    <text x="680" y="270" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#3daa5a">5 yrs</text>
+  </g>
+  <g class="bullet" data-q="s" data-i="2">
+    <circle cx="64" cy="306" r="3.5" fill="#3daa5a"/>
+    <text x="78" y="310" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">CEO 亲自推动 AI 战略</text>
+    <text x="78" y="326" font-family="JetBrains Mono" font-size="9" fill="#8a8578">季度 OKR · AI 进入董事会 agenda</text>
+    <text x="680" y="318" text-anchor="end" font-family="JetBrains Mono" font-size="12" font-weight="600" fill="#3daa5a">★★★★★</text>
+  </g>
+  <g class="bullet" data-q="s" data-i="3">
+    <circle cx="64" cy="354" r="3.5" fill="#3daa5a"/>
+    <text x="78" y="358" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">客户基础广 · 反馈环短</text>
+    <text x="78" y="374" font-family="JetBrains Mono" font-size="9" fill="#8a8578">10M+ MAU · 周均迭代可能</text>
+    <text x="680" y="366" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#3daa5a">10M+</text>
+  </g>
+</g>
+
+<!-- ============ QUADRANT: W (top-right, Weaknesses) ============ -->
+<g class="quad q-w" data-i="1" opacity="0">
+  <rect x="710" y="110" width="660" height="300" rx="4" fill="url(#wGrad)" stroke="#b33a3a" stroke-width="0.8" stroke-opacity="0.5" class="quad-border"/>
+  <!-- Big letter W at LEFT-TOP corner of W quad (mirrors S's layout); title/subtitle shifted right to x=808 to clear letter -->
+  <text x="732" y="172" font-family="Space Grotesk" font-size="64" font-weight="700" fill="#b33a3a" opacity="0.12">W</text>
+  <text x="808" y="142" font-family="Noto Serif SC" font-size="17" font-weight="700" fill="#b33a3a">Weaknesses · 劣势</text>
+  <text x="808" y="160" font-family="JetBrains Mono" font-size="9" fill="#8a8578" letter-spacing="2">INTERNAL · HARMFUL</text>
+  <!-- Score badge at top-right of W quad · floating elevation · 2 rows -->
+  <g transform="translate(1178, 128)" class="score-badge score-w">
+    <rect width="172" height="54" rx="3" fill="#1a0a0a" fill-opacity="0.92" stroke="#b33a3a" stroke-width="1" stroke-opacity="0.9" filter="url(#floatShadow)"/>
+    <text x="14" y="20" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" opacity="0.85" letter-spacing="3">WEAKNESS INDEX</text>
+    <line x1="14" y1="28" x2="158" y2="28" stroke="#b33a3a" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="158" y="46" text-anchor="end" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#b33a3a"><tspan class="sNum" data-target="6.4">0</tspan><tspan font-size="11" opacity="0.55"> / 10</tspan></text>
+  </g>
+
+  <g class="bullet" data-q="w" data-i="0">
+    <circle cx="744" cy="210" r="3.5" fill="#b33a3a"/>
+    <text x="758" y="214" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">模型自研能力弱</text>
+    <text x="758" y="230" font-family="JetBrains Mono" font-size="9" fill="#8a8578">依赖外部 API · 供应链风险</text>
+    <text x="1350" y="222" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#b33a3a">90% 外采</text>
+  </g>
+  <g class="bullet" data-q="w" data-i="1">
+    <circle cx="744" cy="258" r="3.5" fill="#b33a3a"/>
+    <text x="758" y="262" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">数据治理碎片化</text>
+    <text x="758" y="278" font-family="JetBrains Mono" font-size="9" fill="#8a8578">30+ 孤岛 · 质量参差不齐</text>
+    <text x="1350" y="270" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#b33a3a">32 孤岛</text>
+  </g>
+  <g class="bullet" data-q="w" data-i="2">
+    <circle cx="744" cy="306" r="3.5" fill="#b33a3a"/>
+    <text x="758" y="310" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">AI 人才缺口大</text>
+    <text x="758" y="326" font-family="JetBrains Mono" font-size="9" fill="#8a8578">岗位空置 28% · 招聘周期 4+ 月</text>
+    <text x="1350" y="318" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#b33a3a">28%</text>
+  </g>
+  <g class="bullet" data-q="w" data-i="3">
+    <circle cx="744" cy="354" r="3.5" fill="#b33a3a"/>
+    <text x="758" y="358" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">预算压力 · 周期紧</text>
+    <text x="758" y="374" font-family="JetBrains Mono" font-size="9" fill="#8a8578">AI spend cap ¥2M/季 · ROI 压力</text>
+    <text x="1350" y="366" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#b33a3a">¥2M</text>
+  </g>
+</g>
+
+<!-- ============ QUADRANT: O (bottom-left, Opportunities) ============ -->
+<g class="quad q-o" data-i="2" opacity="0">
+  <rect x="30" y="420" width="670" height="300" rx="4" fill="url(#oGrad)" stroke="#5dade2" stroke-width="0.8" stroke-opacity="0.5" class="quad-border"/>
+  <text x="52" y="482" font-family="Space Grotesk" font-size="64" font-weight="700" fill="#5dade2" opacity="0.12">O</text>
+  <text x="128" y="452" font-family="Noto Serif SC" font-size="17" font-weight="700" fill="#5dade2">Opportunities · 机会</text>
+  <text x="128" y="470" font-family="JetBrains Mono" font-size="9" fill="#8a8578" letter-spacing="2">EXTERNAL · HELPFUL</text>
+  <!-- Score badge at top-right of O quad · floating elevation · 2 rows -->
+  <g transform="translate(508, 438)" class="score-badge score-o">
+    <rect width="172" height="54" rx="3" fill="#0a141a" fill-opacity="0.92" stroke="#5dade2" stroke-width="1" stroke-opacity="0.9" filter="url(#floatShadow)"/>
+    <text x="14" y="20" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.85" letter-spacing="3">OPPORTUNITY IDX</text>
+    <line x1="14" y1="28" x2="158" y2="28" stroke="#5dade2" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="158" y="46" text-anchor="end" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#5dade2"><tspan class="sNum" data-target="9.1">0</tspan><tspan font-size="11" opacity="0.55"> / 10</tspan></text>
+  </g>
+
+  <g class="bullet" data-q="o" data-i="0">
+    <circle cx="64" cy="520" r="3.5" fill="#5dade2"/>
+    <text x="78" y="524" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">自动化需求爆发</text>
+    <text x="78" y="540" font-family="JetBrains Mono" font-size="9" fill="#8a8578">客户搜索量 3× · 市场窗口打开</text>
+    <text x="680" y="532" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#5dade2">3× YoY</text>
+  </g>
+  <g class="bullet" data-q="o" data-i="1">
+    <circle cx="64" cy="568" r="3.5" fill="#5dade2"/>
+    <text x="78" y="572" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">开源模型成熟</text>
+    <text x="78" y="588" font-family="JetBrains Mono" font-size="9" fill="#8a8578">Llama 3 · DeepSeek · Qwen 2.5</text>
+    <text x="680" y="580" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#5dade2">成本 −85%</text>
+  </g>
+  <g class="bullet" data-q="o" data-i="2">
+    <circle cx="64" cy="616" r="3.5" fill="#5dade2"/>
+    <text x="78" y="620" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">政策扶持 · 数字化补贴</text>
+    <text x="78" y="636" font-family="JetBrains Mono" font-size="9" fill="#8a8578">省级 AI 产业基金 · 税收抵扣</text>
+    <text x="680" y="628" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#5dade2">¥3.5B</text>
+  </g>
+  <g class="bullet" data-q="o" data-i="3">
+    <circle cx="64" cy="664" r="3.5" fill="#5dade2"/>
+    <text x="78" y="668" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">竞对 AI 战略滞后</text>
+    <text x="78" y="684" font-family="JetBrains Mono" font-size="9" fill="#8a8578">主要对手 6-12 月落后 · 先发窗口</text>
+    <text x="680" y="676" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#5dade2">+9 mo</text>
+  </g>
+</g>
+
+<!-- ============ QUADRANT: T (bottom-right, Threats) ============ -->
+<g class="quad q-t" data-i="3" opacity="0">
+  <rect x="710" y="420" width="660" height="300" rx="4" fill="url(#tGrad)" stroke="#bb8fce" stroke-width="0.8" stroke-opacity="0.5" class="quad-border"/>
+  <!-- Big letter T at LEFT-TOP corner of T quad (mirrors O's layout); title/subtitle shifted right to x=808 to clear letter -->
+  <text x="732" y="482" font-family="Space Grotesk" font-size="64" font-weight="700" fill="#bb8fce" opacity="0.12">T</text>
+  <text x="808" y="452" font-family="Noto Serif SC" font-size="17" font-weight="700" fill="#bb8fce">Threats · 威胁</text>
+  <text x="808" y="470" font-family="JetBrains Mono" font-size="9" fill="#8a8578" letter-spacing="2">EXTERNAL · HARMFUL</text>
+  <!-- Score badge at top-right of T quad · floating elevation · 2 rows -->
+  <g transform="translate(1178, 438)" class="score-badge score-t">
+    <rect width="172" height="54" rx="3" fill="#14081a" fill-opacity="0.92" stroke="#bb8fce" stroke-width="1" stroke-opacity="0.9" filter="url(#floatShadow)"/>
+    <text x="14" y="20" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.85" letter-spacing="3">THREAT INDEX</text>
+    <line x1="14" y1="28" x2="158" y2="28" stroke="#bb8fce" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="158" y="46" text-anchor="end" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#bb8fce"><tspan class="sNum" data-target="7.6">0</tspan><tspan font-size="11" opacity="0.55"> / 10</tspan></text>
+  </g>
+
+  <g class="bullet" data-q="t" data-i="0">
+    <circle cx="744" cy="520" r="3.5" fill="#bb8fce"/>
+    <text x="758" y="524" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">OpenAI · Anthropic 下沉</text>
+    <text x="758" y="540" font-family="JetBrains Mono" font-size="9" fill="#8a8578">自有 agent / workflow 产品直接打</text>
+    <text x="1350" y="532" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#bb8fce">高威胁</text>
+  </g>
+  <g class="bullet" data-q="t" data-i="1">
+    <circle cx="744" cy="568" r="3.5" fill="#bb8fce"/>
+    <text x="758" y="572" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">合规风险上升</text>
+    <text x="758" y="588" font-family="JetBrains Mono" font-size="9" fill="#8a8578">GDPR · 数据出境新规 · 审计成本</text>
+    <text x="1350" y="580" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#bb8fce">监管 × 5</text>
+  </g>
+  <g class="bullet" data-q="t" data-i="2">
+    <circle cx="744" cy="616" r="3.5" fill="#bb8fce"/>
+    <text x="758" y="620" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">人才被大厂挖角</text>
+    <text x="758" y="636" font-family="JetBrains Mono" font-size="9" fill="#8a8578">主动离职率 +12pp · offer 差 +80%</text>
+    <text x="1350" y="628" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#bb8fce">+12pp</text>
+  </g>
+  <g class="bullet" data-q="t" data-i="3">
+    <circle cx="744" cy="664" r="3.5" fill="#bb8fce"/>
+    <text x="758" y="668" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">投资人预期过热</text>
+    <text x="758" y="684" font-family="JetBrains Mono" font-size="9" fill="#8a8578">hype cycle 拐点 · 估值压力</text>
+    <text x="1350" y="676" text-anchor="end" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#bb8fce">风险中</text>
+  </g>
+</g>
+
+<!-- Strategic recommendation (bottom strip) -->
+<g id="recommend" opacity="0" transform="translate(30, 730)">
+  <line x1="0" y1="0" x2="1340" y2="0" stroke="#c4a35a" stroke-width="0.3" opacity="0.3"/>
+  <text x="0" y="18" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7" letter-spacing="2">VERDICT · SO 型战略（用优势抓机会）· 先发 12-18 月窗口</text>
+  <text x="1340" y="18" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7">净值 +1.3 · 推荐 · 立即行动</text>
+</g>
+
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-SWOT-12 / REV.B — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">ASYRE STRATEGY</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  tl.to('.axis-label', { opacity: 0.8, duration: 0.5, stagger: 0.12 }, 0.8);
+  tl.to('#divV, #divH', { opacity: 0.4, duration: 0.6 }, 1.0);
+  tl.to('#crossDot', { opacity: 1, duration: 0.3 }, 1.3);
+
+  // Quadrants appear in diagonal order (S → T diagonal, W → O diagonal)
+  tl.to('.q-s', { opacity: 1, duration: 0.5 }, 1.5);
+  tl.to('.q-t', { opacity: 1, duration: 0.5 }, 1.55);
+  tl.to('.q-w', { opacity: 1, duration: 0.5 }, 1.7);
+  tl.to('.q-o', { opacity: 1, duration: 0.5 }, 1.75);
+
+  // Bullets per-quadrant stagger (already inside quad, so opacity is inherited; add subtle emphasis)
+  // Done via quad opacity
+
+  // Counters
+  document.querySelectorAll('.sNum').forEach((el, i) => {
+    const target = parseFloat(el.dataset.target);
+    gsap.to({ v: 0 }, {
+      v: target, duration: 1.0, delay: 2.0 + i * 0.12, ease: 'power2.out',
+      onUpdate: function () {
+        el.textContent = this.targets()[0].v.toFixed(1);
+      }
+    });
+  });
+
+  // Recommendation
+  tl.to('#recommend', { opacity: 1, duration: 0.5 }, 2.5);
+
+  // ============ PERPETUAL: Quadrant highlight cycle (every 1.6s one quadrant lights up) ============
+  const quads = document.querySelectorAll('.quad-border');
+  let q = 0;
+  function cycleQuad() {
+    quads.forEach((el, i) => {
+      gsap.to(el, {
+        strokeOpacity: i === q ? 1 : 0.5,
+        strokeWidth: i === q ? 1.6 : 0.8,
+        duration: 0.5, ease: 'power2.out'
+      });
+    });
+    q = (q + 1) % quads.length;
+  }
+  setInterval(cycleQuad, 1600);
+  setTimeout(cycleQuad, 3000);
+
+  // ============ PERPETUAL: Cross dot breath ============
+  gsap.to('#crossDot', {
+    attr: { r: 7 }, opacity: 0.3, duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut'
+  });
+
+  // ============ PERPETUAL: Bullet dots subtle pulse ============
+  gsap.to('.bullet circle', {
+    attr: { r: 4.5 }, duration: 1.4, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: { amount: 1.2, from: 'start' }, delay: 3.2
+  });
+})();
+</script></body></html>

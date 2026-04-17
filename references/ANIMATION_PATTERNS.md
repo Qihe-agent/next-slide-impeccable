@@ -4,7 +4,7 @@
 
 ## 动画素材库（实时预览）
 
-打开 [animation-showcase.html](animation-showcase.html) 可查看 110 种动画效果的实时演示。所有效果持续循环运行，可直接从中选取代码使用。
+打开 [animation-showcase.html](../animation-showcase.html) 可查看 110 种动画效果的实时演示。所有效果持续循环运行，可直接从中选取代码使用。
 
 ```bash
 open ~/.claude/skills/next-slide-impeccable/animation-showcase.html

@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>03 · Iceberg — Enterprise AI Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.15"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.2"/>
+  </pattern>
+  <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="deepGlow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0e2338" stop-opacity="0.92"/>
+    <stop offset="100%" stop-color="#040d18" stop-opacity="0.99"/>
+  </linearGradient>
+  <linearGradient id="tipGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#f8fcff"/>
+    <stop offset="60%" stop-color="#c4d8ea"/>
+    <stop offset="100%" stop-color="#a8c4dc"/>
+  </linearGradient>
+  <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#7ba0c0"/>
+    <stop offset="30%" stop-color="#4a7898"/>
+    <stop offset="70%" stop-color="#254868"/>
+    <stop offset="100%" stop-color="#0f2440"/>
+  </linearGradient>
+  <clipPath id="underwaterClip">
+    <rect x="0" y="320" width="1400" height="468"/>
+  </clipPath>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">03</text>
+</g>
+
+<!-- Title -->
+<text x="700" y="50" text-anchor="middle" font-family="Space Grotesk" font-size="16" fill="#c4a35a" letter-spacing="6" opacity="0" class="title">ENTERPRISE AI ARCHITECTURE</text>
+<text x="700" y="78" text-anchor="middle" font-family="Noto Serif SC" font-size="14" fill="#e8e4df" opacity="0" class="subtitle">你看到的 vs 你看不到的 · 表层 vs 深水区</text>
+
+<!-- ============ WATER BACKGROUND BELOW WATERLINE ============
+     waterGrad stop opacity raised to 0.92/0.99 → underwater grid is masked, no ugly
+     gold-on-blue stripes bleeding through. Light shafts removed (were clashing with
+     waterline + grid at y=320). 水下气氛由 gradient + 气泡承担。 -->
+<rect x="0" y="320" width="1400" height="468" fill="url(#waterGrad)"/>
+
+<!-- Bubbles container (DOM pool, rAF) -->
+<g id="bubbles" clip-path="url(#underwaterClip)" style="pointer-events:none"></g>
+
+<!-- ============ WATERLINE (morphing wave, perpetual) ============ -->
+<path id="waterline" d="M 0,320 Q 87,310 175,320 T 350,320 T 525,320 T 700,320 T 875,320 T 1050,320 T 1225,320 T 1400,320" fill="none" stroke="#c4a35a" stroke-width="1.6" opacity="0"/>
+<text x="1350" y="312" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0" class="wl-label" letter-spacing="2">WATERLINE ───</text>
+
+<!-- ============ ICEBERG (left side) ============ -->
+<g id="icebergGroup">
+  <!-- Tip (above water) -->
+  <g id="icebergTip" opacity="0">
+    <polygon points="350,130 210,320 490,320" fill="url(#tipGrad)" opacity="0.92" stroke="#f0f6fc" stroke-width="0.6"/>
+    <!-- Subtle highlight lines on tip -->
+    <line x1="350" y1="130" x2="340" y2="320" stroke="#ffffff" stroke-width="0.4" opacity="0.3"/>
+    <line x1="300" y1="200" x2="330" y2="280" stroke="#ffffff" stroke-width="0.3" opacity="0.2"/>
+    <text x="350" y="148" text-anchor="middle" font-family="Noto Serif SC" font-size="9" fill="#0a0a0b" opacity="0.6" letter-spacing="2" font-weight="700">TIP · 20%</text>
+  </g>
+
+  <!-- Body (below water) -->
+  <g id="icebergBody" opacity="0" clip-path="url(#underwaterClip)">
+    <polygon points="210,320 130,430 80,560 110,680 220,740 360,760 500,745 580,680 560,560 500,430 490,320" fill="url(#bodyGrad)" opacity="0.75" stroke="#7ba0c0" stroke-width="0.5"/>
+    <!-- Depth line indicators -->
+    <text x="100" y="450" font-family="JetBrains Mono" font-size="9" fill="#7ba0c0" opacity="0.5">− 40m</text>
+    <text x="100" y="590" font-family="JetBrains Mono" font-size="9" fill="#7ba0c0" opacity="0.5">− 120m</text>
+    <text x="100" y="720" font-family="JetBrains Mono" font-size="9" fill="#7ba0c0" opacity="0.5">− 280m</text>
+    <text x="350" y="540" text-anchor="middle" font-family="Noto Serif SC" font-size="11" fill="#e8f0f8" opacity="0.35" letter-spacing="3" font-weight="700">BODY · 80%</text>
+  </g>
+</g>
+
+<!-- ============ ABOVE-WATER ITEMS (visible, 3 cards, RIGHT side) ============ -->
+<g id="aboveItems">
+  <g class="above-card" data-i="0" opacity="0">
+    <rect x="620" y="130" width="760" height="50" rx="2" fill="#0a0a0b" fill-opacity="0.6" stroke="#c4a35a" stroke-width="0.8" stroke-opacity="0.6"/>
+    <rect x="620" y="130" width="4" height="50" fill="#c4a35a"/>
+    <text x="640" y="152" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#c4a35a">智能聊天机器人 · ChatBot UI</text>
+    <text x="640" y="170" font-family="Noto Serif SC" font-size="11" fill="#e8e4df" opacity="0.75">用户直接感知的对话界面、输入框、回复流</text>
+    <text x="1360" y="166" text-anchor="end" font-family="JetBrains Mono" font-size="13" font-weight="600" fill="#c4a35a">VISIBLE</text>
+  </g>
+  <g class="above-card" data-i="1" opacity="0">
+    <rect x="620" y="196" width="760" height="50" rx="2" fill="#0a0a0b" fill-opacity="0.6" stroke="#c4a35a" stroke-width="0.8" stroke-opacity="0.6"/>
+    <rect x="620" y="196" width="4" height="50" fill="#c4a35a"/>
+    <text x="640" y="218" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#c4a35a">API 响应 · API Response</text>
+    <text x="640" y="236" font-family="Noto Serif SC" font-size="11" fill="#e8e4df" opacity="0.75">JSON 结构 · 延迟 p99 ·ErrorCode 标准</text>
+    <text x="1360" y="232" text-anchor="end" font-family="JetBrains Mono" font-size="13" font-weight="600" fill="#c4a35a">VISIBLE</text>
+  </g>
+  <g class="above-card" data-i="2" opacity="0">
+    <rect x="620" y="262" width="760" height="50" rx="2" fill="#0a0a0b" fill-opacity="0.6" stroke="#c4a35a" stroke-width="0.8" stroke-opacity="0.6"/>
+    <rect x="620" y="262" width="4" height="50" fill="#c4a35a"/>
+    <text x="640" y="284" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#c4a35a">推荐结果 · Recommendation</text>
+    <text x="640" y="302" font-family="Noto Serif SC" font-size="11" fill="#e8e4df" opacity="0.75">首页卡片 · 相关阅读 · 个性化内容流</text>
+    <text x="1360" y="298" text-anchor="end" font-family="JetBrains Mono" font-size="13" font-weight="600" fill="#c4a35a">VISIBLE</text>
+  </g>
+</g>
+
+<!-- ============ BELOW-WATER ITEMS (hidden, 7 cards, RIGHT side, 2 columns) ============ -->
+<g id="belowItems">
+  <!-- Col 1: 4 cards -->
+  <g class="below-card" data-i="0" opacity="0">
+    <rect x="620" y="348" width="370" height="80" rx="2" fill="#081828" fill-opacity="0.7" stroke="#4a7898" stroke-width="0.6" stroke-opacity="0.7"/>
+    <rect x="620" y="348" width="4" height="80" fill="#4a7898"/>
+    <text x="640" y="370" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#a8c4dc">模型训练管道</text>
+    <text x="640" y="388" font-family="Noto Serif SC" font-size="10" fill="#8aa4bc">数据采集 · 清洗 · 特征工程 · 分布式训练</text>
+    <text x="970" y="380" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#7ba0c0"><tspan class="cnt" data-target="240">0</tspan>h</text>
+    <text x="970" y="408" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#7ba0c0" opacity="0.6">每次训练</text>
+  </g>
+  <g class="below-card" data-i="1" opacity="0">
+    <rect x="620" y="436" width="370" height="80" rx="2" fill="#081828" fill-opacity="0.7" stroke="#4a7898" stroke-width="0.6" stroke-opacity="0.7"/>
+    <rect x="620" y="436" width="4" height="80" fill="#4a7898"/>
+    <text x="640" y="458" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#a8c4dc">向量数据库 + 索引</text>
+    <text x="640" y="476" font-family="Noto Serif SC" font-size="10" fill="#8aa4bc">HNSW 索引 · 千亿级 embedding · 毫秒检索</text>
+    <text x="970" y="468" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#7ba0c0"><tspan class="cnt" data-target="128">0</tspan>B</text>
+    <text x="970" y="496" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#7ba0c0" opacity="0.6">向量规模</text>
+  </g>
+  <g class="below-card" data-i="2" opacity="0">
+    <rect x="620" y="524" width="370" height="80" rx="2" fill="#081828" fill-opacity="0.7" stroke="#4a7898" stroke-width="0.6" stroke-opacity="0.7"/>
+    <rect x="620" y="524" width="4" height="80" fill="#4a7898"/>
+    <text x="640" y="546" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#a8c4dc">GPU 编排 + 成本控制</text>
+    <text x="640" y="564" font-family="Noto Serif SC" font-size="10" fill="#8aa4bc">动态调度 · Spot 实例 · 成本归因</text>
+    <text x="970" y="556" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#7ba0c0">$<tspan class="cnt" data-target="480">0</tspan>K</text>
+    <text x="970" y="584" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#7ba0c0" opacity="0.6">月度成本</text>
+  </g>
+  <g class="below-card" data-i="3" opacity="0">
+    <rect x="620" y="612" width="370" height="80" rx="2" fill="#081828" fill-opacity="0.7" stroke="#4a7898" stroke-width="0.6" stroke-opacity="0.7"/>
+    <rect x="620" y="612" width="4" height="80" fill="#4a7898"/>
+    <text x="640" y="634" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#a8c4dc">监控 + 异常检测</text>
+    <text x="640" y="652" font-family="Noto Serif SC" font-size="10" fill="#8aa4bc">P99 延迟 · 漂移预警 · Drift 回滚</text>
+    <text x="970" y="644" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#7ba0c0"><tspan class="cnt" data-target="52">0</tspan></text>
+    <text x="970" y="672" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#7ba0c0" opacity="0.6">告警规则</text>
+  </g>
+  <!-- Col 2: 3 cards -->
+  <g class="below-card" data-i="4" opacity="0">
+    <rect x="1010" y="348" width="370" height="80" rx="2" fill="#081828" fill-opacity="0.7" stroke="#4a7898" stroke-width="0.6" stroke-opacity="0.7"/>
+    <rect x="1010" y="348" width="4" height="80" fill="#4a7898"/>
+    <text x="1030" y="370" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#a8c4dc">数据标注 · 质量把关</text>
+    <text x="1030" y="388" font-family="Noto Serif SC" font-size="10" fill="#8aa4bc">众包 + 专家审核 · 标注一致性校验</text>
+    <text x="1360" y="380" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#7ba0c0"><tspan class="cnt" data-target="96">0</tspan>%</text>
+    <text x="1360" y="408" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#7ba0c0" opacity="0.6">标注一致性</text>
+  </g>
+  <g class="below-card" data-i="5" opacity="0">
+    <rect x="1010" y="436" width="370" height="80" rx="2" fill="#081828" fill-opacity="0.7" stroke="#4a7898" stroke-width="0.6" stroke-opacity="0.7"/>
+    <rect x="1010" y="436" width="4" height="80" fill="#4a7898"/>
+    <text x="1030" y="458" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#a8c4dc">模型评估 + A/B 测试</text>
+    <text x="1030" y="476" font-family="Noto Serif SC" font-size="10" fill="#8aa4bc">离线指标 + 在线多臂赌博机 · 稳定灰度</text>
+    <text x="1360" y="468" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#7ba0c0"><tspan class="cnt" data-target="18">0</tspan></text>
+    <text x="1360" y="496" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#7ba0c0" opacity="0.6">并行实验</text>
+  </g>
+  <g class="below-card" data-i="6" opacity="0">
+    <rect x="1010" y="524" width="370" height="80" rx="2" fill="#081828" fill-opacity="0.7" stroke="#4a7898" stroke-width="0.6" stroke-opacity="0.7"/>
+    <rect x="1010" y="524" width="4" height="80" fill="#4a7898"/>
+    <text x="1030" y="546" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#a8c4dc">安全合规 · 隐私保护</text>
+    <text x="1030" y="564" font-family="Noto Serif SC" font-size="10" fill="#8aa4bc">PII 脱敏 · GDPR · SOC2 · 审计日志</text>
+    <text x="1360" y="556" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#3daa5a"><tspan class="cnt" data-target="3">0</tspan></text>
+    <text x="1360" y="584" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#7ba0c0" opacity="0.6">合规认证</text>
+  </g>
+  <!-- Summary card (col 2, bottom) -->
+  <g class="below-card summary-card" data-i="7" opacity="0">
+    <rect x="1010" y="612" width="370" height="80" rx="2" fill="#0a1a28" fill-opacity="0.85" stroke="#c4a35a" stroke-width="0.8" stroke-opacity="0.6"/>
+    <rect x="1010" y="612" width="4" height="80" fill="#c4a35a"/>
+    <text x="1030" y="634" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#c4a35a">隐藏比例 · HIDDEN RATIO</text>
+    <text x="1030" y="652" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.75">用户看到的仅是冰山一角</text>
+    <text x="1360" y="684" text-anchor="end" font-family="Space Grotesk" font-size="26" font-weight="700" fill="#c4a35a"><tspan class="cnt" data-target="80">0</tspan>%</text>
+  </g>
+</g>
+
+<!-- Corner stamps -->
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-BERG-03 / REV.B — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">ASYRE ARCHITECTURE</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  const ns = 'http://www.w3.org/2000/svg';
+
+  // ============ PERPETUAL: Corner ring ============
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  // ============ PERPETUAL: Waterline wave morph (continuous d attribute interpolation) ============
+  // Use a parameterized wave with sin-time offset, 8 Q segments across the full width
+  const waterPath = document.getElementById('waterline');
+  const baseY = 320;
+  const amp = 6;  // wave height
+  function waveTick() {
+    const t = performance.now() / 1600;
+    // 8 control + anchor pairs
+    let d = `M 0,${baseY + Math.sin(t) * amp}`;
+    for (let i = 1; i <= 8; i++) {
+      const x = i * 175;
+      const cx = x - 87;
+      const cy = baseY + Math.sin(t + i * 0.5) * amp;
+      const ay = baseY + Math.sin(t + i) * amp * 0.5;
+      d += ` Q ${cx},${cy} ${x},${ay}`;
+    }
+    waterPath.setAttribute('d', d);
+    requestAnimationFrame(waveTick);
+  }
+  waveTick();
+
+  // ============ PERPETUAL: Bubble rise (DOM pool) ============
+  const bg = document.getElementById('bubbles');
+  const POOL = 18;
+  const bubbles = [];
+  for (let i = 0; i < POOL; i++) {
+    const c = document.createElementNS(ns, 'circle');
+    c.setAttribute('fill', '#c4d8ea');
+    c.setAttribute('opacity', 0);
+    bg.appendChild(c);
+    bubbles.push({ el: c, busy: false, x: 0, y: 0, vy: 0, r: 1, drift: 0, life: 0, maxLife: 0 });
+  }
+  function spawnBubble(b) {
+    b.busy = true;
+    b.x = 80 + Math.random() * 1240; // full-width pool
+    b.y = 780 + Math.random() * 20;
+    b.vy = 0.6 + Math.random() * 0.8;
+    b.r = 0.8 + Math.random() * 1.8;
+    b.drift = (Math.random() - 0.5) * 0.4;
+    b.life = 0;
+    b.maxLife = 300 + Math.random() * 220;
+    b.el.setAttribute('r', b.r);
+    b.el.setAttribute('opacity', 0);
+  }
+  let bSpawn = 0;
+  function bubbleTick() {
+    bSpawn++;
+    if (bSpawn > 10) {
+      bSpawn = 0;
+      const free = bubbles.find(b => !b.busy);
+      if (free) spawnBubble(free);
+    }
+    bubbles.forEach(b => {
+      if (!b.busy) return;
+      b.y -= b.vy;
+      b.x += b.drift;
+      b.life++;
+      b.el.setAttribute('cx', b.x);
+      b.el.setAttribute('cy', b.y);
+      const fade = Math.min(b.life / 40, 1) * Math.max(1 - (b.life - b.maxLife * 0.7) / (b.maxLife * 0.3), 0);
+      b.el.setAttribute('opacity', Math.min(fade * 0.55, 0.55));
+      if (b.y < 325 || b.life > b.maxLife) {
+        b.busy = false;
+        b.el.setAttribute('opacity', 0);
+      }
+    });
+    requestAnimationFrame(bubbleTick);
+  }
+  bubbleTick();
+
+  // ============ PERPETUAL: Iceberg tip gentle sway ============
+  // svgOrigin (SVG user-space) not transformOrigin — see STRUCTURE_PRESETS §硬规则 5
+  gsap.to('#icebergTip', { rotation: 1, duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut', svgOrigin: '350 320', delay: 3 });
+
+  // ============ ENTRANCE TIMELINE ============
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  // Waterline fade in
+  tl.to('#waterline', { opacity: 1, duration: 0.7 }, 0.6);
+  tl.to('.wl-label', { opacity: 0.65, duration: 0.5 }, 0.7);
+
+  // Iceberg tip draws in
+  tl.fromTo('#icebergTip',
+    { opacity: 0, y: -20 },
+    { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }, 1.0);
+
+  // Iceberg body reveals (mask from waterline down)
+  tl.fromTo('#icebergBody',
+    { opacity: 0, scaleY: 0, transformOrigin: '350px 320px' },
+    { opacity: 1, scaleY: 1, duration: 1.2, ease: 'power2.out' }, 1.3);
+
+  // Above cards cascade in (right side)
+  tl.to('.above-card', { opacity: 1, x: 0, duration: 0.5, stagger: 0.12, ease: 'power2.out' }, 1.2);
+
+  // Below cards cascade in (deeper the later)
+  tl.to('.below-card', { opacity: 1, y: 0, duration: 0.5, stagger: 0.09, ease: 'power2.out' }, 1.9);
+
+  // Counters (below cards + summary)
+  document.querySelectorAll('.cnt').forEach((el, i) => {
+    const target = parseFloat(el.dataset.target);
+    gsap.to({ v: 0 }, {
+      v: target, duration: 1.0, delay: 2.3 + i * 0.1, ease: 'power2.out',
+      onUpdate: function () {
+        const v = this.targets()[0].v;
+        el.textContent = Math.round(v);
+      }
+    });
+  });
+
+  // ============ PERPETUAL: Card border breathing (below cards) ============
+  gsap.to('.below-card rect:first-child', {
+    strokeOpacity: 0.95, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut',
+    stagger: 0.1, delay: 3.5
+  });
+
+  // ============ PERPETUAL: Above cards gentle pulse ============
+  gsap.to('.above-card rect:first-child', {
+    strokeOpacity: 0.9, duration: 2.8, repeat: -1, yoyo: true, ease: 'sine.inOut',
+    stagger: 0.12, delay: 3.8
+  });
+})();
+</script></body></html>

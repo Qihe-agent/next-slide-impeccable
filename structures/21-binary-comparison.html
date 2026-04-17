@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>21 · Binary Comparison — Cursor vs Claude Code</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow" x="-75%" y="-75%" width="250%" height="250%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">21</text>
+</g>
+
+<!-- Header -->
+<text x="700" y="50" text-anchor="middle" font-family="Noto Serif SC" font-size="20" font-weight="700" fill="#c4a35a" opacity="0" class="title">AI 编码 IDE 对决 · Cursor vs Claude Code</text>
+<text x="700" y="72" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">GUI IDE · VS · TERMINAL-NATIVE AGENT · 2026</text>
+
+<!-- ============ LEFT PANEL · CURSOR (x=30-610, w=580) · wider central gap for VS badge ============ -->
+<g id="leftPanel" opacity="0">
+  <!-- panel frame -->
+  <rect x="30" y="100" width="580" height="610" rx="4" fill="#10141c" fill-opacity="0.55" stroke="#5dade2" stroke-width="0.8" stroke-opacity="0.5"/>
+  <rect x="30" y="100" width="4" height="610" fill="#5dade2"/>
+
+  <!-- Brand header -->
+  <text x="50" y="128" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="3">CHALLENGER · SIDE A</text>
+  <text x="590" y="128" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.7">EST. 2023</text>
+  <text x="50" y="172" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#5dade2">Cursor</text>
+  <text x="50" y="198" font-family="Space Grotesk" font-size="13" fill="#e8e4df" letter-spacing="2">THE AI-FIRST CODE EDITOR</text>
+  <line x1="50" y1="216" x2="120" y2="216" stroke="#5dade2" stroke-width="1.2"/>
+  <text x="50" y="236" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">Anysphere · VSCode fork · GUI 全功能</text>
+
+  <!-- 6 feature rows, y_start=265, each 73h -->
+  <g class="feat" data-i="0" opacity="0">
+    <text x="50" y="284" font-family="JetBrains Mono" font-size="8" fill="#5dade2" letter-spacing="2" opacity="0.7">01 · FORM</text>
+    <text x="50" y="308" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">图形化 IDE</text>
+    <text x="50" y="326" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">可视化编辑 · 左侧文件树 · 多光标 · 插件市场</text>
+    <line x1="50" y1="338" x2="590" y2="338" stroke="#5dade2" stroke-width="0.25" opacity="0.35"/>
+  </g>
+  <g class="feat" data-i="1" opacity="0">
+    <text x="50" y="357" font-family="JetBrains Mono" font-size="8" fill="#5dade2" letter-spacing="2" opacity="0.7">02 · EDIT</text>
+    <text x="50" y="381" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">Tab 自动补全 + Composer</text>
+    <text x="50" y="399" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">inline diff · 多文件改动 · Chat 侧栏引用文件</text>
+    <line x1="50" y1="411" x2="590" y2="411" stroke="#5dade2" stroke-width="0.25" opacity="0.35"/>
+  </g>
+  <g class="feat" data-i="2" opacity="0">
+    <text x="50" y="430" font-family="JetBrains Mono" font-size="8" fill="#5dade2" letter-spacing="2" opacity="0.7">03 · ECOSYSTEM</text>
+    <text x="50" y="454" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">VSCode extensions 兼容</text>
+    <text x="50" y="472" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">Marketplace · 主题 · language server · 20K+ 插件</text>
+    <line x1="50" y1="484" x2="590" y2="484" stroke="#5dade2" stroke-width="0.25" opacity="0.35"/>
+  </g>
+  <g class="feat" data-i="3" opacity="0">
+    <text x="50" y="503" font-family="JetBrains Mono" font-size="8" fill="#5dade2" letter-spacing="2" opacity="0.7">04 · SCALE</text>
+    <text x="50" y="527" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">12M+ 开发者</text>
+    <text x="50" y="545" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">2024-25 爆发式增长 · 主流开发者首选</text>
+    <line x1="50" y1="557" x2="590" y2="557" stroke="#5dade2" stroke-width="0.25" opacity="0.35"/>
+  </g>
+  <g class="feat" data-i="4" opacity="0">
+    <text x="50" y="576" font-family="JetBrains Mono" font-size="8" fill="#5dade2" letter-spacing="2" opacity="0.7">05 · COLLAB</text>
+    <text x="50" y="600" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">单人 IDE</text>
+    <text x="50" y="618" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">单 session · 无 agent 间协作 · live share 同 VSCode</text>
+    <line x1="50" y1="630" x2="590" y2="630" stroke="#5dade2" stroke-width="0.25" opacity="0.35"/>
+  </g>
+  <g class="feat" data-i="5" opacity="0">
+    <text x="50" y="649" font-family="JetBrains Mono" font-size="8" fill="#5dade2" letter-spacing="2" opacity="0.7">06 · PRICING</text>
+    <text x="50" y="673" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">$20 / 月 · Pro 套餐</text>
+    <text x="50" y="691" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">含多 LLM · 500 次 fast request / 月</text>
+  </g>
+</g>
+
+<!-- ============ RIGHT PANEL · CLAUDE CODE (x=790-1370, w=580) · shifted right for wider gap ============ -->
+<g id="rightPanel" opacity="0">
+  <rect x="790" y="100" width="580" height="610" rx="4" fill="#1a1410" fill-opacity="0.7" stroke="#c4a35a" stroke-width="1.4" filter="url(#glow)"/>
+  <rect x="790" y="100" width="4" height="610" fill="#c4a35a"/>
+
+  <!-- Brand header -->
+  <text x="810" y="128" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="3">★ CHAMPION · SIDE B</text>
+  <text x="1350" y="128" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.8">EST. 2025</text>
+  <text x="810" y="172" font-family="Noto Serif SC" font-size="40" font-weight="900" fill="#c4a35a">Claude Code</text>
+  <text x="810" y="198" font-family="Space Grotesk" font-size="13" fill="#e8e4df" letter-spacing="2">OFFICIAL ANTHROPIC CLI AGENT</text>
+  <line x1="810" y1="216" x2="880" y2="216" stroke="#c4a35a" stroke-width="1.4"/>
+  <text x="810" y="236" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">Anthropic · 终端原生 · Plan → Edit → Verify · SDK 驱动</text>
+
+  <!-- 6 feature rows -->
+  <g class="feat-r" data-i="0" opacity="0">
+    <text x="810" y="284" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" letter-spacing="2" opacity="0.85">01 · FORM</text>
+    <text x="810" y="308" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">终端原生 CLI</text>
+    <text x="810" y="326" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">Terminal / IDE 扩展双模 · Mac/Win/Web 全平台</text>
+    <line x1="810" y1="338" x2="1350" y2="338" stroke="#c4a35a" stroke-width="0.25" opacity="0.35"/>
+  </g>
+  <g class="feat-r" data-i="1" opacity="0">
+    <text x="810" y="357" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" letter-spacing="2" opacity="0.85">02 · EDIT</text>
+    <text x="810" y="381" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">Plan → Edit → Verify 工作流</text>
+    <text x="810" y="399" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">TDD · 先计划再执行 · 硬规则 verification-before-completion</text>
+    <line x1="810" y1="411" x2="1350" y2="411" stroke="#c4a35a" stroke-width="0.25" opacity="0.35"/>
+  </g>
+  <g class="feat-r" data-i="2" opacity="0">
+    <text x="810" y="430" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" letter-spacing="2" opacity="0.85">03 · ECOSYSTEM</text>
+    <text x="810" y="454" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">Skills · MCP · Hooks · Subagent ★</text>
+    <text x="810" y="472" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">可编程 agent 平台 · 200+ MCP servers · 生态开放</text>
+    <line x1="810" y1="484" x2="1350" y2="484" stroke="#c4a35a" stroke-width="0.25" opacity="0.35"/>
+  </g>
+  <g class="feat-r" data-i="3" opacity="0">
+    <text x="810" y="503" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" letter-spacing="2" opacity="0.85">04 · SCALE</text>
+    <text x="810" y="527" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">官方 · 快速扩张</text>
+    <text x="810" y="545" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">Anthropic 亲儿子 · SWE-bench 74.2% · 编码 SOTA</text>
+    <line x1="810" y1="557" x2="1350" y2="557" stroke="#c4a35a" stroke-width="0.25" opacity="0.35"/>
+  </g>
+  <g class="feat-r" data-i="4" opacity="0">
+    <text x="810" y="576" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" letter-spacing="2" opacity="0.85">05 · COLLAB</text>
+    <text x="810" y="600" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">Subagent + Agent Mail ★</text>
+    <text x="810" y="618" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">多 agent 并行 · pair coding · 任务移交</text>
+    <line x1="810" y1="630" x2="1350" y2="630" stroke="#c4a35a" stroke-width="0.25" opacity="0.35"/>
+  </g>
+  <g class="feat-r" data-i="5" opacity="0">
+    <text x="810" y="649" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" letter-spacing="2" opacity="0.85">06 · PRICING</text>
+    <text x="810" y="673" font-family="Noto Serif SC" font-size="15" font-weight="700" fill="#e8e4df">Pro 订阅 + API 按量</text>
+    <text x="810" y="691" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">$20-200 / 月分级 · 或直接 API token · 企业可 BYOK</text>
+  </g>
+</g>
+
+<!-- ============ CENTER VS DIVIDER ============ -->
+<!-- Divider line (fades in separately) -->
+<line id="vsDividerLine" x1="700" y1="130" x2="700" y2="680" stroke="#c4a35a" stroke-width="0.3" stroke-dasharray="4,6" opacity="0"/>
+
+<!-- VS badge (falls from top with bounce) -->
+<g id="vsBadge" opacity="0">
+  <circle id="vsRing1" cx="700" cy="405" r="48" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.4"/>
+  <circle cx="700" cy="405" r="40" fill="#0a0a0b" stroke="#c4a35a" stroke-width="1.4" filter="url(#softGlow)"/>
+  <circle cx="700" cy="405" r="32" fill="none" stroke="#c4a35a" stroke-width="0.4" stroke-dasharray="2,3" opacity="0.5"/>
+  <text x="700" y="398" text-anchor="middle" font-family="Noto Serif SC" font-size="22" font-weight="900" fill="#c4a35a">VS</text>
+  <text x="700" y="418" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#c4a35a" opacity="0.7" letter-spacing="3">VERSUS</text>
+</g>
+
+<!-- ============ WINNER INDICATOR (right is winner — Claude Code for Asher) ============ -->
+<g id="verdict" opacity="0">
+  <rect x="30" y="725" width="1340" height="35" rx="2" fill="#1a1410" fill-opacity="0.6" stroke="#c4a35a" stroke-width="0.5" stroke-opacity="0.5" stroke-dasharray="4,4"/>
+  <text x="50" y="747" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="3">VERDICT</text>
+  <text x="700" y="747" text-anchor="middle" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">Cursor 适合<tspan fill="#5dade2"> GUI 习惯 · 视觉流编辑</tspan> · Claude Code 适合<tspan fill="#c4a35a"> Agent 工作流 · 自动化 · 终端党</tspan> · 可并用</text>
+  <text x="1350" y="747" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="2">BOTH WIN · DIFFERENT LANES</text>
+</g>
+
+<text x="30" y="778" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-BINARY-21 / REV.A — IMPECCABLE</text>
+<text x="1370" y="778" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">GUI × IDE vs TERM × AGENT</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  // Left panel slide in from left
+  tl.fromTo('#leftPanel', { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.7 }, 0.8);
+  // Right panel slide in from right
+  tl.fromTo('#rightPanel', { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.7 }, 0.9);
+
+  // Divider line fades in first (quiet context)
+  tl.to('#vsDividerLine', { opacity: 0.35, duration: 0.5 }, 1.2);
+
+  // VS badge drops from above with gravitational bounce
+  // (split from line so badge can dramatize while line stays put — line is neutral reference, badge is the hero)
+  tl.fromTo('#vsBadge', { opacity: 0, y: -500 }, { opacity: 1, y: 0, duration: 1.1, ease: 'bounce.out' }, 1.4);
+
+  // Features stagger (interleave left and right)
+  tl.to('.feat', { opacity: 1, duration: 0.4, stagger: 0.08 }, 1.8);
+  tl.to('.feat-r', { opacity: 1, duration: 0.4, stagger: 0.08 }, 1.85);
+
+  // Verdict
+  tl.to('#verdict', { opacity: 1, duration: 0.6 }, 3.4);
+
+  // ============ PERPETUAL: VS ring pulse ============
+  gsap.to('#vsRing1', { attr: { r: 68 }, opacity: 0, duration: 2.4, repeat: -1, ease: 'power1.out', delay: 3.8 });
+
+  // ============ PERPETUAL: Right panel border breathing (Champion highlight) ============
+  gsap.to('#rightPanel rect:first-child', { strokeWidth: 2, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4 });
+
+  // ============ PERPETUAL: Row cross-hover — cycle row-by-row highlighting on both sides ============
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = document.getElementById('svg');
+  let curRow = 0;
+  function pulseRow() {
+    const yRow = 265 + curRow * 73;
+    const rectL = document.createElementNS(ns, 'rect');
+    rectL.setAttribute('x', 38); rectL.setAttribute('y', yRow);
+    rectL.setAttribute('width', 572); rectL.setAttribute('height', 73);
+    rectL.setAttribute('fill', '#5dade2'); rectL.setAttribute('opacity', 0);
+    svg.appendChild(rectL);
+    const rectR = document.createElementNS(ns, 'rect');
+    rectR.setAttribute('x', 798); rectR.setAttribute('y', yRow);
+    rectR.setAttribute('width', 572); rectR.setAttribute('height', 73);
+    rectR.setAttribute('fill', '#c4a35a'); rectR.setAttribute('opacity', 0);
+    svg.appendChild(rectR);
+
+    gsap.to([rectL, rectR], { opacity: 0.06, duration: 0.4, ease: 'power2.out' });
+    gsap.to([rectL, rectR], {
+      opacity: 0, duration: 1.2, delay: 0.6, ease: 'power2.in',
+      onComplete: () => { rectL.remove(); rectR.remove(); }
+    });
+    curRow = (curRow + 1) % 6;
+  }
+  setInterval(pulseRow, 1400);
+})();
+</script></body></html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>15 · Winding Roadmap — Enterprise AI Journey</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="roadGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#b33a3a"/>
+    <stop offset="20%" stop-color="#f4845f"/>
+    <stop offset="40%" stop-color="#c4a35a"/>
+    <stop offset="60%" stop-color="#5dade2"/>
+    <stop offset="80%" stop-color="#3daa5a"/>
+    <stop offset="100%" stop-color="#bb8fce"/>
+  </linearGradient>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">15</text>
+</g>
+
+<!-- Header -->
+<text x="700" y="50" text-anchor="middle" font-family="Noto Serif SC" font-size="20" font-weight="700" fill="#c4a35a" opacity="0" class="title">企业 AI 转型 18 月路线图 · Winding Journey</text>
+<text x="700" y="72" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">6 MILESTONES · S-CURVE PATH · CURRENTLY AT M3 (MONTH 9)</text>
+
+<!-- ============ S-CURVE ROAD ============ -->
+<!-- Background (wider, faint) -->
+<path id="roadBg" d="M 80,680 C 200,680 300,180 500,180 C 700,180 700,580 900,580 C 1100,580 1100,280 1320,280" fill="none" stroke="#c4a35a" stroke-width="28" stroke-linecap="round" opacity="0.04"/>
+<!-- Main road (colorful, drawn on) -->
+<path id="road" d="M 80,680 C 200,680 300,180 500,180 C 700,180 700,580 900,580 C 1100,580 1100,280 1320,280" fill="none" stroke="url(#roadGrad)" stroke-width="4" stroke-linecap="round" stroke-dasharray="2600" stroke-dashoffset="2600" filter="url(#glow)"/>
+<!-- Dashed edge (guide) -->
+<path id="roadEdge" d="M 80,680 C 200,680 300,180 500,180 C 700,180 700,580 900,580 C 1100,580 1100,280 1320,280" fill="none" stroke="#c4a35a" stroke-width="0.5" stroke-dasharray="3,6" opacity="0"/>
+
+<!-- ============ 6 MILESTONES ============
+     Info boxes placed in empty space around the path, dashed connectors link box to milestone dot on path.
+     Positions engineered to never overlap the S-curve (STRUCTURE_PRESETS #18 rule). -->
+
+<!-- M0 (0月, 80,680) — 现状评估 · compact card (y=700-752) to avoid progress strip at y=728 -->
+<g class="ms" data-i="0" opacity="0">
+  <line x1="80" y1="690" x2="80" y2="700" stroke="#b33a3a" stroke-width="0.6" stroke-dasharray="2,2" opacity="0.6"/>
+  <circle cx="80" cy="680" r="10" fill="#0a0a0b" stroke="#b33a3a" stroke-width="2.4" class="ms-dot"/>
+  <text x="80" y="685" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#b33a3a">0</text>
+  <rect x="20" y="700" width="218" height="52" rx="3" fill="#1a0a0a" fill-opacity="0.7" stroke="#b33a3a" stroke-width="0.8" stroke-opacity="0.6" class="ms-card"/>
+  <text x="32" y="716" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" letter-spacing="2">M0 · MONTH 0</text>
+  <text x="225" y="716" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" opacity="0.8">PAIN 7.8</text>
+  <text x="32" y="734" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">现状评估</text>
+  <text x="32" y="748" font-family="Noto Serif SC" font-size="10" fill="#8a8578">痛点识别 · 数据审计</text>
+</g>
+
+<!-- M1 (3月, 222,504) — 数据整合 · box LEFT (x=30-240) -->
+<g class="ms" data-i="1" opacity="0">
+  <line x1="212" y1="504" x2="230" y2="504" stroke="#f4845f" stroke-width="0.6" stroke-dasharray="2,2" opacity="0.6"/>
+  <circle cx="222" cy="504" r="10" fill="#0a0a0b" stroke="#f4845f" stroke-width="2.4" class="ms-dot"/>
+  <text x="222" y="509" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#f4845f">1</text>
+  <rect x="20" y="430" width="190" height="78" rx="3" fill="#1a1410" fill-opacity="0.7" stroke="#f4845f" stroke-width="0.8" stroke-opacity="0.6" class="ms-card"/>
+  <text x="32" y="450" font-family="JetBrains Mono" font-size="9" fill="#f4845f" letter-spacing="2">M1 · MONTH 3</text>
+  <text x="32" y="470" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">数据整合</text>
+  <text x="32" y="486" font-family="Noto Serif SC" font-size="10" fill="#8a8578">统一数据平台 · 清洗</text>
+  <text x="200" y="502" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#f4845f">23PB 归一化</text>
+</g>
+
+<!-- M2 (6月, 500,180) — PoC 验证 · card pushed down from y=80 to y=96 so doesn't abut subtitle at y=72 (gap now 24px) -->
+<g class="ms" data-i="2" opacity="0">
+  <line x1="500" y1="170" x2="500" y2="158" stroke="#c4a35a" stroke-width="0.6" stroke-dasharray="2,2" opacity="0.6"/>
+  <circle cx="500" cy="180" r="10" fill="#0a0a0b" stroke="#c4a35a" stroke-width="2.4" class="ms-dot"/>
+  <text x="500" y="185" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#c4a35a">2</text>
+  <rect x="400" y="96" width="210" height="62" rx="3" fill="#1a1410" fill-opacity="0.7" stroke="#c4a35a" stroke-width="0.8" stroke-opacity="0.6" class="ms-card"/>
+  <text x="412" y="114" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="2">M2 · MONTH 6</text>
+  <text x="600" y="114" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a">ROI +18%</text>
+  <text x="412" y="132" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">PoC 验证</text>
+  <text x="412" y="150" font-family="Noto Serif SC" font-size="10" fill="#8a8578">3 个场景试跑 · 离线评估</text>
+</g>
+
+<!-- M3 (9月, 700,380) — CURRENT · 灰度上线 · box RIGHT (x=770-980) -->
+<g class="ms ms-current" data-i="3" opacity="0">
+  <line x1="712" y1="380" x2="768" y2="380" stroke="#5dade2" stroke-width="0.6" stroke-dasharray="2,2" opacity="0.7"/>
+  <!-- Outer pulse -->
+  <circle id="currentPulse" cx="700" cy="380" r="14" fill="none" stroke="#5dade2" stroke-width="0.6" opacity="0.5"/>
+  <circle cx="700" cy="380" r="14" fill="#5dade2" stroke="#0a0a0b" stroke-width="2.4" class="ms-dot" filter="url(#softGlow)"/>
+  <text x="700" y="385" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#0a0a0b">3</text>
+  <rect x="770" y="310" width="240" height="100" rx="3" fill="#0a141c" fill-opacity="0.85" stroke="#5dade2" stroke-width="1.2" stroke-opacity="0.85" class="ms-card" filter="url(#glow)"/>
+  <text x="782" y="330" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="2">M3 · MONTH 9 · ● CURRENT</text>
+  <text x="782" y="352" font-family="Noto Serif SC" font-size="14" font-weight="700" fill="#5dade2">灰度上线</text>
+  <text x="782" y="370" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.85">10% 用户 · 自动回滚阈值</text>
+  <text x="782" y="388" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.85">AB 测试 · p99 监控</text>
+  <text x="1000" y="405" text-anchor="end" font-family="Space Grotesk" font-size="18" font-weight="700" fill="#5dade2"><tspan id="prog">0</tspan>%</text>
+</g>
+
+<!-- M4 (12月, 900,580) — 规模化 · card shrunk h=78→58 so ends y=698 (was 718), 27px gap to progress strip at y=725 -->
+<g class="ms" data-i="4" opacity="0">
+  <line x1="900" y1="590" x2="900" y2="638" stroke="#3daa5a" stroke-width="0.6" stroke-dasharray="2,2" opacity="0.6"/>
+  <circle cx="900" cy="580" r="10" fill="#0a0a0b" stroke="#3daa5a" stroke-width="2.4" class="ms-dot" stroke-dasharray="3,3"/>
+  <text x="900" y="585" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#3daa5a">4</text>
+  <rect x="800" y="640" width="210" height="58" rx="3" fill="#0a1a10" fill-opacity="0.6" stroke="#3daa5a" stroke-width="0.6" stroke-opacity="0.55" stroke-dasharray="4,4" class="ms-card"/>
+  <text x="812" y="658" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="2">M4 · MONTH 12 · FUTURE</text>
+  <text x="1000" y="658" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.7">ETA 2026-Q1</text>
+  <text x="812" y="676" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df" opacity="0.85">规模化</text>
+  <text x="812" y="692" font-family="Noto Serif SC" font-size="10" fill="#8a8578">100% 用户 · 全部 workflow</text>
+</g>
+
+<!-- M5 (18月, 1320,280) — 能力沉淀 · box ABOVE (y=80-230) -->
+<g class="ms" data-i="5" opacity="0">
+  <line x1="1320" y1="270" x2="1320" y2="232" stroke="#bb8fce" stroke-width="0.6" stroke-dasharray="2,2" opacity="0.6"/>
+  <circle cx="1320" cy="280" r="10" fill="#0a0a0b" stroke="#bb8fce" stroke-width="2.4" class="ms-dot" stroke-dasharray="3,3"/>
+  <text x="1320" y="285" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#bb8fce">5</text>
+  <rect x="1170" y="110" width="210" height="120" rx="3" fill="#140a1a" fill-opacity="0.6" stroke="#bb8fce" stroke-width="0.6" stroke-opacity="0.55" stroke-dasharray="4,4" class="ms-card"/>
+  <text x="1182" y="130" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" letter-spacing="2">M5 · MONTH 18 · VISION</text>
+  <text x="1182" y="150" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df" opacity="0.85">能力沉淀</text>
+  <text x="1182" y="168" font-family="Noto Serif SC" font-size="10" fill="#8a8578">AI 原生组织 · 模块化复用</text>
+  <text x="1182" y="186" font-family="Noto Serif SC" font-size="10" fill="#8a8578">内部平台 · 知识资产</text>
+  <text x="1182" y="204" font-family="Noto Serif SC" font-size="10" fill="#8a8578">自研模型 · 数据飞轮</text>
+  <text x="1370" y="222" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.7">ETA 2026-Q3</text>
+</g>
+
+<!-- Traveler dot (perpetual, sliding along path from start to end) -->
+<circle id="traveler" r="5" fill="#c4a35a" opacity="0" filter="url(#glow)"/>
+
+<!-- Progress indicator strip (bottom) — moved x=260 so doesn't overlap M0 card (x=20-238) -->
+<g id="progressStrip" opacity="0" transform="translate(260, 728)">
+  <text x="0" y="0" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="3">OVERALL PROGRESS · 已完成 3 / 6 里程碑</text>
+  <line x1="300" y1="-3" x2="940" y2="-3" stroke="#1a1a1a" stroke-width="8"/>
+  <line id="progBar" x1="300" y1="-3" x2="300" y2="-3" stroke="#c4a35a" stroke-width="8" stroke-linecap="round"/>
+  <text x="960" y="0" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#c4a35a"><tspan id="progPct">0</tspan>%</text>
+  <text x="1030" y="0" font-family="JetBrains Mono" font-size="10" fill="#8a8578">ETA 2026-Q3</text>
+</g>
+
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-ROADMAP-15 / REV.B — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">ASYRE JOURNEY</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  const road = document.getElementById('road');
+  const roadLen = road.getTotalLength();
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  // Road edge guide
+  tl.to('#roadEdge', { opacity: 0.3, duration: 0.5 }, 0.6);
+
+  // Road draw on
+  tl.to('#road', { strokeDashoffset: 0, duration: 2.4, ease: 'power1.inOut' }, 0.8);
+
+  // Milestones appear sequentially as road passes them
+  tl.to('.ms', { opacity: 1, duration: 0.5, stagger: 0.35, ease: 'power2.out' }, 1.0);
+
+  // Progress bar (current = 50% = at x = 400 + 350 = 750)
+  tl.to('#progBar', { attr: { x2: 620 }, duration: 1.4, ease: 'power2.out' }, 2.8);  // 50% of 640 bar width = 320 offset from x1=300
+  tl.to('#progressStrip', { opacity: 1, duration: 0.5 }, 2.6);
+
+  // Progress counter M3 phase
+  gsap.to({ v: 0 }, {
+    v: 50, duration: 1.4, delay: 3.0, ease: 'power2.out',
+    onUpdate: function () {
+      document.getElementById('progPct').textContent = Math.round(this.targets()[0].v);
+    }
+  });
+
+  // Current phase detail counter (M3 progress within phase)
+  gsap.to({ v: 0 }, {
+    v: 65, duration: 1.2, delay: 2.4, ease: 'power2.out',
+    onUpdate: function () {
+      document.getElementById('prog').textContent = Math.round(this.targets()[0].v);
+    }
+  });
+
+  // ============ PERPETUAL: Traveler dot sliding along road ============
+  gsap.to('#traveler', { opacity: 1, duration: 0.4, delay: 3.2 });
+  let tphase = 0;
+  function travelerTick() {
+    tphase = (tphase + 0.002) % 1;
+    const pt = road.getPointAtLength(tphase * roadLen);
+    document.getElementById('traveler').setAttribute('cx', pt.x);
+    document.getElementById('traveler').setAttribute('cy', pt.y);
+    requestAnimationFrame(travelerTick);
+  }
+  setTimeout(travelerTick, 3200);
+
+  // ============ PERPETUAL: Current milestone (M3) pulse ============
+  gsap.to('#currentPulse', {
+    attr: { r: 26 }, opacity: 0.05, duration: 1.6, repeat: -1, yoyo: false, ease: 'power1.out',
+    onRepeat: function () {
+      gsap.set('#currentPulse', { attr: { r: 14 }, opacity: 0.5 });
+    }
+  });
+
+  // ============ PERPETUAL: Completed milestone (M0-M2) gentle breath ============
+  gsap.utils.toArray('.ms').forEach((ms, i) => {
+    if (i < 3) {  // M0, M1, M2 completed
+      const dot = ms.querySelector('.ms-dot');
+      gsap.to(dot, { strokeWidth: 3, duration: 2.2, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.8 + i * 0.3 });
+    }
+  });
+
+  // ============ PERPETUAL: Future milestone (M4, M5) dashed border rotate (visually subtle) ============
+  gsap.utils.toArray('.ms').forEach((ms, i) => {
+    if (i >= 4) {
+      const card = ms.querySelector('.ms-card');
+      gsap.to(card, { strokeOpacity: 0.85, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4.2 + (i - 4) * 0.3 });
+    }
+  });
+
+  // ============ PERPETUAL: Current card extra glow ============
+  gsap.to('.ms-current .ms-card', {
+    strokeWidth: 1.6, duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4
+  });
+
+  // ============ PERPETUAL: Road gradient animation (subtle color flow) ============
+  // Non-essential, skip for now
+})();
+</script></body></html>

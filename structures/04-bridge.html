@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>04 · Bridge — Digital Transformation</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.15"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.2"/>
+  </pattern>
+  <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="bridgeGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#b33a3a"/>
+    <stop offset="50%" stop-color="#c4a35a"/>
+    <stop offset="100%" stop-color="#3daa5a"/>
+  </linearGradient>
+  <marker id="arrEnd" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#c4a35a"/>
+  </marker>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">04</text>
+</g>
+
+<!-- ============ HEADER ============ -->
+<text x="700" y="45" text-anchor="middle" font-family="Noto Serif SC" font-size="22" font-weight="700" fill="#c4a35a" opacity="0" class="title">数字化转型蓝图 · Digital Transformation</text>
+<text x="700" y="66" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="8" opacity="0" class="subtitle">CURRENT STATE  ──  BRIDGE  ──  FUTURE STATE</text>
+
+<!-- ============ LEFT TOWER (现状) ============ -->
+<g id="leftTower">
+  <!-- Header -->
+  <g class="left-header" opacity="0">
+    <rect x="30" y="80" width="300" height="36" rx="3" fill="#1a0a0a" stroke="#b33a3a" stroke-width="1.2"/>
+    <text x="180" y="103" text-anchor="middle" font-family="Noto Serif SC" font-size="14" font-weight="900" fill="#b33a3a" letter-spacing="3">现状 · CURRENT STATE</text>
+  </g>
+  <!-- 5 Cards -->
+  <g class="left-card" data-i="0" opacity="0">
+    <rect x="30" y="124" width="300" height="88" rx="3" fill="#0a0a0b" fill-opacity="0.88" stroke="#b33a3a" stroke-width="0.6" stroke-opacity="0.6" class="left-card-rect"/>
+    <rect x="30" y="124" width="4" height="88" fill="#b33a3a" rx="2"/>
+    <text x="46" y="146" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">手动数据处理</text>
+    <text x="46" y="166" font-family="Noto Serif SC" font-size="10" fill="#b33a3a" opacity="0.8">人工录入，效率低下</text>
+    <text x="310" y="188" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#b33a3a"><tspan class="lNum" data-target="80">0</tspan>%</text>
+    <text x="310" y="204" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#b33a3a" opacity="0.5">手动占比</text>
+  </g>
+  <g class="left-card" data-i="1" opacity="0">
+    <rect x="30" y="222" width="300" height="88" rx="3" fill="#0a0a0b" fill-opacity="0.88" stroke="#b33a3a" stroke-width="0.6" stroke-opacity="0.6" class="left-card-rect"/>
+    <rect x="30" y="222" width="4" height="88" fill="#b33a3a" rx="2"/>
+    <text x="46" y="244" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">孤岛系统</text>
+    <text x="46" y="264" font-family="Noto Serif SC" font-size="10" fill="#b33a3a" opacity="0.8">数据不互通 · 重复建设</text>
+    <text x="310" y="286" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#b33a3a"><tspan class="lNum" data-target="12">0</tspan>个</text>
+    <text x="310" y="302" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#b33a3a" opacity="0.5">独立系统</text>
+  </g>
+  <g class="left-card" data-i="2" opacity="0">
+    <rect x="30" y="320" width="300" height="88" rx="3" fill="#0a0a0b" fill-opacity="0.88" stroke="#b33a3a" stroke-width="0.6" stroke-opacity="0.6" class="left-card-rect"/>
+    <rect x="30" y="320" width="4" height="88" fill="#b33a3a" rx="2"/>
+    <text x="46" y="342" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">被动决策</text>
+    <text x="46" y="362" font-family="Noto Serif SC" font-size="10" fill="#b33a3a" opacity="0.8">月度报告 · 滞后分析</text>
+    <text x="310" y="384" text-anchor="end" font-family="JetBrains Mono" font-size="16" font-weight="600" fill="#b33a3a">T+30d</text>
+    <text x="310" y="400" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#b33a3a" opacity="0.5">分析周期</text>
+  </g>
+  <g class="left-card" data-i="3" opacity="0">
+    <rect x="30" y="418" width="300" height="88" rx="3" fill="#0a0a0b" fill-opacity="0.88" stroke="#b33a3a" stroke-width="0.6" stroke-opacity="0.6" class="left-card-rect"/>
+    <rect x="30" y="418" width="4" height="88" fill="#b33a3a" rx="2"/>
+    <text x="46" y="440" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">固定流程</text>
+    <text x="46" y="460" font-family="Noto Serif SC" font-size="10" fill="#b33a3a" opacity="0.8">审批长 · 响应缓慢</text>
+    <text x="310" y="482" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#b33a3a"><tspan class="lNum" data-target="2">0</tspan>周</text>
+    <text x="310" y="498" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#b33a3a" opacity="0.5">变更周期</text>
+  </g>
+  <g class="left-card" data-i="4" opacity="0">
+    <rect x="30" y="516" width="300" height="88" rx="3" fill="#0a0a0b" fill-opacity="0.88" stroke="#b33a3a" stroke-width="0.6" stroke-opacity="0.6" class="left-card-rect"/>
+    <rect x="30" y="516" width="4" height="88" fill="#b33a3a" rx="2"/>
+    <text x="46" y="538" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">人力密集</text>
+    <text x="46" y="558" font-family="Noto Serif SC" font-size="10" fill="#b33a3a" opacity="0.8">重复劳动 · 人才浪费</text>
+    <text x="310" y="580" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#b33a3a"><tspan class="lNum" data-target="65">0</tspan>%</text>
+    <text x="310" y="596" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#b33a3a" opacity="0.5">工时占比</text>
+  </g>
+  <!-- Footer aggregate -->
+  <g class="left-footer" opacity="0">
+    <rect x="30" y="614" width="300" height="44" rx="3" fill="#1a0a0a" fill-opacity="0.7" stroke="#b33a3a" stroke-width="0.5" stroke-opacity="0.4"/>
+    <text x="46" y="634" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" opacity="0.7" letter-spacing="2">PAIN INDEX</text>
+    <text x="310" y="644" text-anchor="end" font-family="Space Grotesk" font-size="20" font-weight="700" fill="#b33a3a"><tspan class="lNum" data-target="7.8">0</tspan><tspan font-size="10" fill="#b33a3a" opacity="0.5"> / 10</tspan></text>
+  </g>
+</g>
+
+<!-- ============ BRIDGE ARC (center) ============ -->
+<!-- Main arc path: P0 (340,380) - P1 (700,220) - P2 (1060,380), Q quadratic -->
+<path id="bridgeArc" d="M 340,380 Q 700,220 1060,380" fill="none" stroke="url(#bridgeGrad)" stroke-width="2.5" opacity="0" stroke-dasharray="1200" stroke-dashoffset="1200" filter="url(#glow)"/>
+<!-- Secondary shadow line below -->
+<path id="bridgeShadow" d="M 340,390 Q 700,234 1060,390" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0" stroke-dasharray="3,5"/>
+
+<!-- Transformation stones (3 on the arc) -->
+<g id="stones">
+  <!-- Stone 1: t=0.25 → (520, 320). Callout ABOVE with 20px connector + label/title stack. -->
+  <g class="stone" data-i="0" opacity="0">
+    <circle cx="520" cy="320" r="18" fill="#0a0a0b" stroke="#c4a35a" stroke-width="2" filter="url(#glow)"/>
+    <text x="520" y="325" text-anchor="middle" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#c4a35a">01</text>
+    <!-- Callout stack: label (top) → title → 20px connector → stone -->
+    <text x="520" y="254" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.75" letter-spacing="2">PHASE 01 · Q1-Q2</text>
+    <text x="520" y="274" text-anchor="middle" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">数据上云</text>
+    <line x1="520" y1="284" x2="520" y2="302" stroke="#c4a35a" stroke-width="0.6" stroke-dasharray="2,2"/>
+  </g>
+  <!-- Stone 2 (peak): t=0.5 → (700, 300) — callout BELOW (两上一下 rule) -->
+  <g class="stone stone-peak" data-i="1" opacity="0">
+    <circle cx="700" cy="300" r="22" fill="#1a1410" stroke="#c4a35a" stroke-width="2.4" filter="url(#softGlow)"/>
+    <text x="700" y="306" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#c4a35a">02</text>
+    <line x1="700" y1="322" x2="700" y2="336" stroke="#c4a35a" stroke-width="0.6" stroke-dasharray="2,2"/>
+    <text x="700" y="352" text-anchor="middle" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#c4a35a">流程重构 · 核心里程碑</text>
+    <text x="700" y="368" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.8">Q3 · 关键节点</text>
+  </g>
+  <!-- Stone 3: t=0.75 → (880, 320). 同 Stone 1 布局。 -->
+  <g class="stone" data-i="2" opacity="0">
+    <circle cx="880" cy="320" r="18" fill="#0a0a0b" stroke="#c4a35a" stroke-width="2" filter="url(#glow)"/>
+    <text x="880" y="325" text-anchor="middle" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#c4a35a">03</text>
+    <text x="880" y="254" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.75" letter-spacing="2">PHASE 03 · Q4</text>
+    <text x="880" y="274" text-anchor="middle" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">能力沉淀</text>
+    <line x1="880" y1="284" x2="880" y2="302" stroke="#c4a35a" stroke-width="0.6" stroke-dasharray="2,2"/>
+  </g>
+</g>
+
+<!-- Bridge data-flow particles (perpetual, along arc) -->
+<g id="arcParticles" style="pointer-events:none"></g>
+
+<!-- Below-arc caption -->
+<g id="arcCaption" opacity="0">
+  <text x="700" y="420" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.6" letter-spacing="3">18-MONTH TRANSFORMATION</text>
+</g>
+
+<!-- ============ RIGHT TOWER (未来) ============ -->
+<g id="rightTower">
+  <g class="right-header" opacity="0">
+    <rect x="1070" y="80" width="300" height="36" rx="3" fill="#0a1a10" stroke="#3daa5a" stroke-width="1.2"/>
+    <text x="1220" y="103" text-anchor="middle" font-family="Noto Serif SC" font-size="14" font-weight="900" fill="#3daa5a" letter-spacing="3">未来 · FUTURE STATE</text>
+  </g>
+  <g class="right-card" data-i="0" opacity="0">
+    <rect x="1070" y="124" width="300" height="88" rx="3" fill="#0a0a0b" fill-opacity="0.88" stroke="#3daa5a" stroke-width="0.6" stroke-opacity="0.6" class="right-card-rect"/>
+    <rect x="1366" y="124" width="4" height="88" fill="#3daa5a" rx="2"/>
+    <text x="1086" y="146" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">自动化数据流</text>
+    <text x="1086" y="166" font-family="Noto Serif SC" font-size="10" fill="#3daa5a" opacity="0.8">实时 ETL · 零手工介入</text>
+    <text x="1350" y="188" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#3daa5a"><tspan class="rNum" data-target="95">0</tspan>%</text>
+    <text x="1350" y="204" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3daa5a" opacity="0.5">自动化率</text>
+  </g>
+  <g class="right-card" data-i="1" opacity="0">
+    <rect x="1070" y="222" width="300" height="88" rx="3" fill="#0a0a0b" fill-opacity="0.88" stroke="#3daa5a" stroke-width="0.6" stroke-opacity="0.6" class="right-card-rect"/>
+    <rect x="1366" y="222" width="4" height="88" fill="#3daa5a" rx="2"/>
+    <text x="1086" y="244" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">一体化平台</text>
+    <text x="1086" y="264" font-family="Noto Serif SC" font-size="10" fill="#3daa5a" opacity="0.8">统一架构 · 数据中台</text>
+    <text x="1350" y="286" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#3daa5a"><tspan class="rNum" data-target="1">0</tspan>个</text>
+    <text x="1350" y="302" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3daa5a" opacity="0.5">统一平台</text>
+  </g>
+  <g class="right-card" data-i="2" opacity="0">
+    <rect x="1070" y="320" width="300" height="88" rx="3" fill="#0a0a0b" fill-opacity="0.88" stroke="#3daa5a" stroke-width="0.6" stroke-opacity="0.6" class="right-card-rect"/>
+    <rect x="1366" y="320" width="4" height="88" fill="#3daa5a" rx="2"/>
+    <text x="1086" y="342" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">实时决策</text>
+    <text x="1086" y="362" font-family="Noto Serif SC" font-size="10" fill="#3daa5a" opacity="0.8">秒级看板 · 预测预警</text>
+    <text x="1350" y="384" text-anchor="end" font-family="JetBrains Mono" font-size="16" font-weight="600" fill="#3daa5a">Real-time</text>
+    <text x="1350" y="400" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3daa5a" opacity="0.5">分析频率</text>
+  </g>
+  <g class="right-card" data-i="3" opacity="0">
+    <rect x="1070" y="418" width="300" height="88" rx="3" fill="#0a0a0b" fill-opacity="0.88" stroke="#3daa5a" stroke-width="0.6" stroke-opacity="0.6" class="right-card-rect"/>
+    <rect x="1366" y="418" width="4" height="88" fill="#3daa5a" rx="2"/>
+    <text x="1086" y="440" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">敏捷响应</text>
+    <text x="1086" y="460" font-family="Noto Serif SC" font-size="10" fill="#3daa5a" opacity="0.8">小步快跑 · 灰度发布</text>
+    <text x="1350" y="482" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#3daa5a"><tspan class="rNum" data-target="2">0</tspan>天</text>
+    <text x="1350" y="498" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3daa5a" opacity="0.5">迭代周期</text>
+  </g>
+  <g class="right-card" data-i="4" opacity="0">
+    <rect x="1070" y="516" width="300" height="88" rx="3" fill="#0a0a0b" fill-opacity="0.88" stroke="#3daa5a" stroke-width="0.6" stroke-opacity="0.6" class="right-card-rect"/>
+    <rect x="1366" y="516" width="4" height="88" fill="#3daa5a" rx="2"/>
+    <text x="1086" y="538" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">AI 增强团队</text>
+    <text x="1086" y="558" font-family="Noto Serif SC" font-size="10" fill="#3daa5a" opacity="0.8">Copilot 工作流 · 创新释放</text>
+    <text x="1350" y="580" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="600" fill="#3daa5a"><tspan class="rNum" data-target="3.2">0</tspan>×</text>
+    <text x="1350" y="596" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3daa5a" opacity="0.5">人效提升</text>
+  </g>
+  <g class="right-footer" opacity="0">
+    <rect x="1070" y="614" width="300" height="44" rx="3" fill="#0a1a10" fill-opacity="0.7" stroke="#3daa5a" stroke-width="0.5" stroke-opacity="0.4"/>
+    <text x="1086" y="634" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.7" letter-spacing="2">GAIN INDEX</text>
+    <text x="1350" y="644" text-anchor="end" font-family="Space Grotesk" font-size="20" font-weight="700" fill="#3daa5a"><tspan class="rNum" data-target="9.2">0</tspan><tspan font-size="10" fill="#3daa5a" opacity="0.5"> / 10</tspan></text>
+  </g>
+</g>
+
+<!-- ============ BOTTOM: Transformation progress bar ============ -->
+<g id="progressBlock" opacity="0" transform="translate(350, 680)">
+  <text x="0" y="0" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="2">TRANSFORMATION PROGRESS</text>
+  <text x="700" y="0" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7">↗ ETA Q4 · 18 months</text>
+  <rect x="0" y="10" width="700" height="10" fill="#1a1a1a" stroke="#c4a35a" stroke-width="0.3" stroke-opacity="0.4"/>
+  <rect id="progressBar" x="0" y="10" width="0" height="10" fill="url(#bridgeGrad)"/>
+  <text x="700" y="42" text-anchor="end" font-family="Space Grotesk" font-size="16" font-weight="700" fill="#c4a35a"><tspan id="progNum">0</tspan>% 完成</text>
+  <text x="0" y="42" font-family="JetBrains Mono" font-size="9" fill="#8a8578">phase 2 · 流程重构中</text>
+</g>
+
+<!-- Corner stamps -->
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-BRIDGE-04 / REV.B — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">ASYRE TRANSFORMATION</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  const ns = 'http://www.w3.org/2000/svg';
+
+  // Corner ring perpetual
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  // ============ ENTRANCE ============
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  // Left tower header + cards cascade
+  tl.to('.left-header', { opacity: 1, x: 0, duration: 0.5 }, 0.8);
+  tl.to('.left-card', { opacity: 1, x: 0, duration: 0.45, stagger: 0.1, ease: 'power2.out' }, 1.0);
+  tl.to('.left-footer', { opacity: 1, duration: 0.4 }, 1.6);
+
+  // Bridge arc draw-on
+  tl.to('#bridgeArc', { opacity: 1, strokeDashoffset: 0, duration: 1.2, ease: 'power2.inOut' }, 1.7);
+  tl.to('#bridgeShadow', { opacity: 0.4, duration: 0.6 }, 2.2);
+
+  tl.to('#arcCaption', { opacity: 1, duration: 0.5 }, 2.6);
+
+  // Stones pop in sequentially with back-ease
+  gsap.utils.toArray('.stone').forEach((s, i) => {
+    const cx = [520, 700, 880][i];
+    const cy = [320, 300, 320][i];
+    tl.fromTo(s, { opacity: 0, scale: 0.3, transformOrigin: `${cx}px ${cy}px` }, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2.2)' }, 2.5 + i * 0.2);
+  });
+
+  // Right tower (after bridge completes)
+  tl.to('.right-header', { opacity: 1, x: 0, duration: 0.5 }, 3.1);
+  tl.to('.right-card', { opacity: 1, x: 0, duration: 0.45, stagger: 0.1, ease: 'power2.out' }, 3.3);
+  tl.to('.right-footer', { opacity: 1, duration: 0.4 }, 3.9);
+
+  // Bottom progress block
+  tl.to('#progressBlock', { opacity: 1, duration: 0.6 }, 4.0);
+  tl.to('#progressBar', { attr: { width: 280 }, duration: 1.2, ease: 'power2.out' }, 4.2);  // 40% of 700
+
+  // Counters
+  document.querySelectorAll('.lNum, .rNum').forEach((el, i) => {
+    const target = parseFloat(el.dataset.target);
+    const isLeft = el.classList.contains('lNum');
+    gsap.to({ v: 0 }, {
+      v: target, duration: 1.0, delay: (isLeft ? 1.3 : 3.5) + i * 0.08, ease: 'power2.out',
+      onUpdate: function () {
+        const v = this.targets()[0].v;
+        el.textContent = Number.isInteger(target) ? Math.round(v) : v.toFixed(1);
+      }
+    });
+  });
+
+  // Progress counter
+  gsap.to({ v: 0 }, {
+    v: 40, duration: 1.2, delay: 4.3, ease: 'power2.out',
+    onUpdate: function () {
+      document.getElementById('progNum').textContent = Math.round(this.targets()[0].v);
+    }
+  });
+
+  // ============ PERPETUAL: Arc particles (flow left → right along bridge) ============
+  const arc = document.getElementById('bridgeArc');
+  const arcLen = arc.getTotalLength();
+  const pg = document.getElementById('arcParticles');
+  const PARTICLES = 6;
+  const parts = [];
+  for (let i = 0; i < PARTICLES; i++) {
+    const c = document.createElementNS(ns, 'circle');
+    c.setAttribute('r', 3);
+    c.setAttribute('fill', '#c4a35a');
+    c.setAttribute('opacity', 0);
+    c.setAttribute('filter', 'url(#glow)');
+    pg.appendChild(c);
+    parts.push({ el: c, phase: i / PARTICLES, speed: 0.0028 });
+  }
+  function arcTick() {
+    parts.forEach(p => {
+      p.phase = (p.phase + p.speed) % 1;
+      const pt = arc.getPointAtLength(p.phase * arcLen);
+      p.el.setAttribute('cx', pt.x);
+      p.el.setAttribute('cy', pt.y);
+      const d = Math.min(p.phase, 1 - p.phase) * 2;
+      p.el.setAttribute('opacity', Math.min(d * 1.3, 0.85));
+    });
+    requestAnimationFrame(arcTick);
+  }
+  setTimeout(arcTick, 2500);
+
+  // ============ PERPETUAL: Left cards red warning breath ============
+  gsap.to('.left-card-rect', {
+    strokeOpacity: 0.95, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: 0.12, delay: 4.5
+  });
+
+  // ============ PERPETUAL: Right cards gold/green positive breath ============
+  gsap.to('.right-card-rect', {
+    strokeOpacity: 0.95, strokeWidth: 1.2, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: 0.12, delay: 4.8
+  });
+
+  // ============ PERPETUAL: Stones pulse sequentially ============
+  gsap.utils.toArray('.stone circle').forEach((c, i) => {
+    gsap.to(c, {
+      attr: { r: i === 1 ? 25 : 21 },
+      duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 5 + i * 0.4
+    });
+  });
+
+  // ============ PERPETUAL: Peak stone extra glow ============
+  gsap.to('.stone-peak circle', {
+    strokeWidth: 3, duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 5.2
+  });
+})();
+</script></body></html>

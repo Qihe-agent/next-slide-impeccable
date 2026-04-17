@@ -1,0 +1,334 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>08 · Comparison Matrix — Coding AI Tools 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">08</text>
+</g>
+
+<!-- Header -->
+<text x="700" y="50" text-anchor="middle" font-family="Noto Serif SC" font-size="20" font-weight="700" fill="#c4a35a" opacity="0" class="title">AI 编程工具对比矩阵 · 2025</text>
+<text x="700" y="72" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">COMPARATIVE ANALYSIS · 10 DIMENSIONS × 5 TOOLS</text>
+
+<!-- ============ TABLE HEADER (tool columns) ============
+     Dim col: x=30 w=200
+     Tool cols: 5 × 228 each, x=240, 472, 704, 936, 1168 -->
+
+<!-- Header row (y=100-160) -->
+<g id="tableHeader" opacity="0">
+  <rect x="30" y="100" width="200" height="60" rx="2" fill="#0a0a0b" fill-opacity="0.5" stroke="#c4a35a" stroke-width="0.5" stroke-opacity="0.5"/>
+  <text x="130" y="134" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" letter-spacing="2">评估维度</text>
+
+  <!-- Tool 1: Cursor -->
+  <g class="col-hdr" data-i="0">
+    <rect x="240" y="100" width="228" height="60" rx="2" fill="#5dade2" fill-opacity="0.05" stroke="#5dade2" stroke-width="0.6" stroke-opacity="0.5" class="col-border"/>
+    <text x="354" y="124" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#5dade2">Cursor</text>
+    <text x="354" y="142" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">IDE Fork · $20/mo</text>
+    <text x="354" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#5dade2" opacity="0.7">v0.45 · Anthropic/OpenAI</text>
+  </g>
+
+  <!-- Tool 2: Claude Code ★ -->
+  <g class="col-hdr col-winner" data-i="1">
+    <rect x="472" y="100" width="228" height="60" rx="2" fill="#c4a35a" fill-opacity="0.08" stroke="#c4a35a" stroke-width="1.2" stroke-opacity="0.9" class="col-border" filter="url(#glow)"/>
+    <text x="586" y="124" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#c4a35a">Claude Code ★</text>
+    <text x="586" y="142" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">CLI · $20/mo · Pro</text>
+    <text x="586" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#c4a35a" opacity="0.8">Sonnet 4.5 · 1M ctx</text>
+  </g>
+
+  <!-- Tool 3: Copilot -->
+  <g class="col-hdr" data-i="2">
+    <rect x="704" y="100" width="228" height="60" rx="2" fill="#3daa5a" fill-opacity="0.05" stroke="#3daa5a" stroke-width="0.6" stroke-opacity="0.5" class="col-border"/>
+    <text x="818" y="124" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#3daa5a">GitHub Copilot</text>
+    <text x="818" y="142" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">IDE Plugin · $19/mo</text>
+    <text x="818" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#3daa5a" opacity="0.7">GPT-4 / Claude</text>
+  </g>
+
+  <!-- Tool 4: Windsurf -->
+  <g class="col-hdr" data-i="3">
+    <rect x="936" y="100" width="228" height="60" rx="2" fill="#bb8fce" fill-opacity="0.05" stroke="#bb8fce" stroke-width="0.6" stroke-opacity="0.5" class="col-border"/>
+    <text x="1050" y="124" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#bb8fce">Windsurf</text>
+    <text x="1050" y="142" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">IDE Fork · $15/mo</text>
+    <text x="1050" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#bb8fce" opacity="0.7">Codeium · agent mode</text>
+  </g>
+
+  <!-- Tool 5: Cline -->
+  <g class="col-hdr" data-i="4">
+    <rect x="1168" y="100" width="202" height="60" rx="2" fill="#f4845f" fill-opacity="0.05" stroke="#f4845f" stroke-width="0.6" stroke-opacity="0.5" class="col-border"/>
+    <text x="1269" y="124" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#f4845f">Cline</text>
+    <text x="1269" y="142" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">VSCode Ext · 开源</text>
+    <text x="1269" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#f4845f" opacity="0.7">Bring-your-own-key</text>
+  </g>
+</g>
+
+<!-- ============ ROWS (10 dimensions, y=168-668, h=50 each) ============ -->
+<g id="tableBody">
+  <!-- Row scan highlight (perpetual) -->
+  <rect id="rowHighlight" x="30" y="168" width="1340" height="50" fill="#c4a35a" fill-opacity="0" opacity="0"/>
+
+  <!-- Row 1: 代码理解深度 (4, 5, 3, 4, 4) -->
+  <g class="trow" data-i="0" opacity="0" transform="translate(0, 168)">
+    <rect x="30" y="0" width="1340" height="50" fill="#c4a35a" fill-opacity="0.02"/>
+    <text x="44" y="30" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">代码理解深度</text>
+    <text x="44" y="44" font-family="JetBrains Mono" font-size="8" fill="#8a8578">深度分析多文件关系</text>
+    <!-- 5 dots per col -->
+    <g transform="translate(354, 25)" class="rating" data-n="4" data-c="#5dade2"></g>
+    <g transform="translate(586, 25)" class="rating win" data-n="5" data-c="#c4a35a"></g>
+    <g transform="translate(818, 25)" class="rating" data-n="3" data-c="#3daa5a"></g>
+    <g transform="translate(1050, 25)" class="rating" data-n="4" data-c="#bb8fce"></g>
+    <g transform="translate(1269, 25)" class="rating" data-n="4" data-c="#f4845f"></g>
+  </g>
+
+  <!-- Row 2: 多文件 refactor (2, 5, 2, 4, 4) -->
+  <g class="trow" data-i="1" opacity="0" transform="translate(0, 218)">
+    <rect x="30" y="0" width="1340" height="50" fill="#c4a35a" fill-opacity="0.005"/>
+    <text x="44" y="30" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">多文件重构</text>
+    <text x="44" y="44" font-family="JetBrains Mono" font-size="8" fill="#8a8578">跨文件修改 + 一致性</text>
+    <g transform="translate(354, 25)" class="rating" data-n="2" data-c="#5dade2"></g>
+    <g transform="translate(586, 25)" class="rating win" data-n="5" data-c="#c4a35a"></g>
+    <g transform="translate(818, 25)" class="rating" data-n="2" data-c="#3daa5a"></g>
+    <g transform="translate(1050, 25)" class="rating" data-n="4" data-c="#bb8fce"></g>
+    <g transform="translate(1269, 25)" class="rating" data-n="4" data-c="#f4845f"></g>
+  </g>
+
+  <!-- Row 3: NL→code (4, 5, 4, 4, 4) -->
+  <g class="trow" data-i="2" opacity="0" transform="translate(0, 268)">
+    <rect x="30" y="0" width="1340" height="50" fill="#c4a35a" fill-opacity="0.02"/>
+    <text x="44" y="30" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">自然语言转代码</text>
+    <text x="44" y="44" font-family="JetBrains Mono" font-size="8" fill="#8a8578">需求描述 → 可运行代码</text>
+    <g transform="translate(354, 25)" class="rating" data-n="4" data-c="#5dade2"></g>
+    <g transform="translate(586, 25)" class="rating win" data-n="5" data-c="#c4a35a"></g>
+    <g transform="translate(818, 25)" class="rating" data-n="4" data-c="#3daa5a"></g>
+    <g transform="translate(1050, 25)" class="rating" data-n="4" data-c="#bb8fce"></g>
+    <g transform="translate(1269, 25)" class="rating" data-n="4" data-c="#f4845f"></g>
+  </g>
+
+  <!-- Row 4: 上下文窗口 (数值而非评分) -->
+  <g class="trow" data-i="3" opacity="0" transform="translate(0, 318)">
+    <rect x="30" y="0" width="1340" height="50" fill="#c4a35a" fill-opacity="0.005"/>
+    <text x="44" y="30" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">上下文窗口</text>
+    <text x="44" y="44" font-family="JetBrains Mono" font-size="8" fill="#8a8578">单次可读 token 上限</text>
+    <text x="354" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#5dade2">200K</text>
+    <text x="586" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="16" font-weight="700" fill="#c4a35a">1M ★</text>
+    <text x="818" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#3daa5a">64K</text>
+    <text x="1050" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#bb8fce">200K</text>
+    <text x="1269" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="14" font-weight="600" fill="#f4845f">200K</text>
+  </g>
+
+  <!-- Row 5: 工具调用 / MCP (3, 5, 2, 4, 5) -->
+  <g class="trow" data-i="4" opacity="0" transform="translate(0, 368)">
+    <rect x="30" y="0" width="1340" height="50" fill="#c4a35a" fill-opacity="0.02"/>
+    <text x="44" y="30" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">工具调用 · MCP</text>
+    <text x="44" y="44" font-family="JetBrains Mono" font-size="8" fill="#8a8578">外部工具 / 数据源集成</text>
+    <g transform="translate(354, 25)" class="rating" data-n="3" data-c="#5dade2"></g>
+    <g transform="translate(586, 25)" class="rating win" data-n="5" data-c="#c4a35a"></g>
+    <g transform="translate(818, 25)" class="rating" data-n="2" data-c="#3daa5a"></g>
+    <g transform="translate(1050, 25)" class="rating" data-n="4" data-c="#bb8fce"></g>
+    <g transform="translate(1269, 25)" class="rating win" data-n="5" data-c="#f4845f"></g>
+  </g>
+
+  <!-- Row 6: 本地/私有模型 (1, 2, 1, 3, 5) -->
+  <g class="trow" data-i="5" opacity="0" transform="translate(0, 418)">
+    <rect x="30" y="0" width="1340" height="50" fill="#c4a35a" fill-opacity="0.005"/>
+    <text x="44" y="30" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">本地 · 私有模型</text>
+    <text x="44" y="44" font-family="JetBrains Mono" font-size="8" fill="#8a8578">Ollama / 自托管 LLM</text>
+    <g transform="translate(354, 25)" class="rating" data-n="1" data-c="#5dade2"></g>
+    <g transform="translate(586, 25)" class="rating" data-n="2" data-c="#c4a35a"></g>
+    <g transform="translate(818, 25)" class="rating" data-n="1" data-c="#3daa5a"></g>
+    <g transform="translate(1050, 25)" class="rating" data-n="3" data-c="#bb8fce"></g>
+    <g transform="translate(1269, 25)" class="rating win" data-n="5" data-c="#f4845f"></g>
+  </g>
+
+  <!-- Row 7: 学习曲线 (文字) -->
+  <g class="trow" data-i="6" opacity="0" transform="translate(0, 468)">
+    <rect x="30" y="0" width="1340" height="50" fill="#c4a35a" fill-opacity="0.02"/>
+    <text x="44" y="30" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">学习曲线</text>
+    <text x="44" y="44" font-family="JetBrains Mono" font-size="8" fill="#8a8578">上手难度 + 心智负担</text>
+    <text x="354" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#3daa5a">Easy</text>
+    <text x="586" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#c4a35a">Medium</text>
+    <text x="818" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#3daa5a">Easy</text>
+    <text x="1050" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#3daa5a">Easy</text>
+    <text x="1269" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#c4a35a">Medium</text>
+  </g>
+
+  <!-- Row 8: 价格 -->
+  <g class="trow" data-i="7" opacity="0" transform="translate(0, 518)">
+    <rect x="30" y="0" width="1340" height="50" fill="#c4a35a" fill-opacity="0.005"/>
+    <text x="44" y="30" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">订阅价格</text>
+    <text x="44" y="44" font-family="JetBrains Mono" font-size="8" fill="#8a8578">月度成本（个人 Pro）</text>
+    <text x="354" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="600" fill="#5dade2">$20/mo</text>
+    <text x="586" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="600" fill="#c4a35a">$20/mo</text>
+    <text x="818" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="600" fill="#3daa5a">$19/mo</text>
+    <text x="1050" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="600" fill="#bb8fce">$15/mo</text>
+    <text x="1269" y="34" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="#f4845f">FREE ★</text>
+  </g>
+
+  <!-- Row 9: 生态 / 社区 (4, 4, 5, 3, 3) -->
+  <g class="trow" data-i="8" opacity="0" transform="translate(0, 568)">
+    <rect x="30" y="0" width="1340" height="50" fill="#c4a35a" fill-opacity="0.02"/>
+    <text x="44" y="30" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#e8e4df">生态 · 社区</text>
+    <text x="44" y="44" font-family="JetBrains Mono" font-size="8" fill="#8a8578">插件 · 教程 · 社区活跃度</text>
+    <g transform="translate(354, 25)" class="rating" data-n="4" data-c="#5dade2"></g>
+    <g transform="translate(586, 25)" class="rating" data-n="4" data-c="#c4a35a"></g>
+    <g transform="translate(818, 25)" class="rating win" data-n="5" data-c="#3daa5a"></g>
+    <g transform="translate(1050, 25)" class="rating" data-n="3" data-c="#bb8fce"></g>
+    <g transform="translate(1269, 25)" class="rating" data-n="3" data-c="#f4845f"></g>
+  </g>
+
+  <!-- Row 10: 综合评分 (bold, special style) -->
+  <g class="trow trow-total" data-i="9" opacity="0" transform="translate(0, 618)">
+    <rect x="30" y="0" width="1340" height="50" fill="#1a1410" fill-opacity="0.6" stroke="#c4a35a" stroke-width="0.5" stroke-opacity="0.5"/>
+    <text x="44" y="28" font-family="Space Grotesk" font-size="12" font-weight="700" fill="#c4a35a" letter-spacing="2">OVERALL</text>
+    <text x="44" y="44" font-family="JetBrains Mono" font-size="9" fill="#8a8578">综合评分 (out of 5.0)</text>
+    <!-- Big scores -->
+    <text x="354" y="34" text-anchor="middle" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#5dade2"><tspan class="totalNum" data-target="3.8">0</tspan></text>
+    <text x="586" y="34" text-anchor="middle" font-family="Space Grotesk" font-size="26" font-weight="700" fill="#c4a35a"><tspan class="totalNum" data-target="4.6">0</tspan>★</text>
+    <text x="818" y="34" text-anchor="middle" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#3daa5a"><tspan class="totalNum" data-target="3.5">0</tspan></text>
+    <text x="1050" y="34" text-anchor="middle" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#bb8fce"><tspan class="totalNum" data-target="3.8">0</tspan></text>
+    <text x="1269" y="34" text-anchor="middle" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#f4845f"><tspan class="totalNum" data-target="3.9">0</tspan></text>
+  </g>
+</g>
+
+<!-- Verdict / recommendation strip -->
+<g id="verdict" opacity="0" transform="translate(30, 686)">
+  <text x="0" y="14" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7" letter-spacing="3">VERDICT · 推荐</text>
+  <text x="0" y="34" font-family="Noto Serif SC" font-size="13" font-weight="700" fill="#e8e4df">Claude Code · 最强综合 · 4/10 维度 WIN · 适合复杂重构 + 大型 codebase</text>
+  <text x="1340" y="34" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#8a8578" letter-spacing="2">Cline · 免费 + 私有模型最佳替代</text>
+</g>
+
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-MATRIX-08 / REV.B — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">ASYRE BENCHMARK</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  const ns = 'http://www.w3.org/2000/svg';
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  // Build 5-dot rating indicators
+  document.querySelectorAll('.rating').forEach(g => {
+    const n = parseInt(g.dataset.n);
+    const c = g.dataset.c;
+    const isWin = g.classList.contains('win');
+    for (let i = 0; i < 5; i++) {
+      const dot = document.createElementNS(ns, 'circle');
+      dot.setAttribute('cx', (i - 2) * 12);
+      dot.setAttribute('cy', 0);
+      dot.setAttribute('r', 3.5);
+      dot.setAttribute('fill', i < n ? c : 'none');
+      dot.setAttribute('stroke', c);
+      dot.setAttribute('stroke-width', 0.8);
+      dot.setAttribute('stroke-opacity', i < n ? 1 : 0.4);
+      dot.setAttribute('opacity', 0);
+      dot.classList.add('rdot');
+      if (isWin && i < n) dot.setAttribute('filter', 'url(#glow)');
+      g.appendChild(dot);
+    }
+    if (isWin) {
+      const star = document.createElementNS(ns, 'text');
+      star.setAttribute('x', 36);
+      star.setAttribute('y', 4);
+      star.setAttribute('font-family', 'JetBrains Mono');
+      star.setAttribute('font-size', 10);
+      star.setAttribute('font-weight', 700);
+      star.setAttribute('fill', c);
+      star.setAttribute('opacity', 0);
+      star.classList.add('rstar');
+      star.textContent = 'WIN';
+      g.appendChild(star);
+    }
+  });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  // Header block
+  tl.to('#tableHeader', { opacity: 1, duration: 0.4 }, 0.8);
+  tl.to('.col-hdr', { scale: 1, opacity: 1, transformOrigin: (i, el) => `${parseFloat(el.firstElementChild.getAttribute('x')) + parseFloat(el.firstElementChild.getAttribute('width')) / 2}px 130px`, duration: 0.5, stagger: 0.08 }, 0.9);
+
+  // Rows cascade top → bottom (each has transform="translate(0, Y)" — only fade in)
+  tl.to('.trow', { opacity: 1, duration: 0.45, stagger: 0.11, ease: 'power2.out' }, 1.4);
+
+  // Rating dots pop after each row appears (row cascade)
+  document.querySelectorAll('.trow').forEach((row, rowIdx) => {
+    const dots = row.querySelectorAll('.rdot');
+    const stars = row.querySelectorAll('.rstar');
+    gsap.to(dots, {
+      opacity: 1, scale: 1, duration: 0.3, stagger: 0.02, ease: 'back.out(2)',
+      delay: 1.55 + rowIdx * 0.11
+    });
+    gsap.to(stars, {
+      opacity: 1, duration: 0.3, ease: 'back.out(2)',
+      delay: 1.9 + rowIdx * 0.11
+    });
+  });
+
+  // Total scores counter
+  document.querySelectorAll('.totalNum').forEach((el, i) => {
+    const target = parseFloat(el.dataset.target);
+    gsap.to({ v: 0 }, {
+      v: target, duration: 1.2, delay: 3.0 + i * 0.1, ease: 'power2.out',
+      onUpdate: function () {
+        el.textContent = this.targets()[0].v.toFixed(1);
+      }
+    });
+  });
+
+  // Verdict
+  tl.to('#verdict', { opacity: 1, duration: 0.5 }, 3.3);
+
+  // ============ PERPETUAL: Winner column border breath ============
+  gsap.to('.col-winner .col-border', {
+    strokeWidth: 2, strokeOpacity: 1, duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4
+  });
+
+  // ============ PERPETUAL: Row highlight sweep ============
+  let hlRow = 0;
+  const rowY = [168, 218, 268, 318, 368, 418, 468, 518, 568, 618];
+  function sweepRow() {
+    const target = document.getElementById('rowHighlight');
+    target.setAttribute('y', rowY[hlRow]);
+    gsap.fromTo(target, { opacity: 0, attr: { 'fill-opacity': 0 } },
+      { opacity: 1, attr: { 'fill-opacity': 0.04 }, duration: 0.6, yoyo: true, repeat: 1, ease: 'sine.inOut' });
+    hlRow = (hlRow + 1) % rowY.length;
+  }
+  setInterval(sweepRow, 1800);
+  setTimeout(sweepRow, 3500);
+
+  // ============ PERPETUAL: Winner star wink ============
+  gsap.to('.col-winner text:first-of-type', {
+    opacity: 0.7, duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4.5
+  });
+
+  // ============ PERPETUAL: Total row emphasis breath ============
+  gsap.to('.trow-total rect', {
+    fillOpacity: 0.8, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 4.5
+  });
+})();
+</script></body></html>

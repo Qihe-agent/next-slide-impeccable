@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>11 · Linear Progression — AI Maturity Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="timeGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#c4a35a" stop-opacity="0.15"/>
+    <stop offset="70%" stop-color="#c4a35a" stop-opacity="0.95"/>
+    <stop offset="85%" stop-color="#c4a35a" stop-opacity="1"/>
+    <stop offset="100%" stop-color="#c4a35a" stop-opacity="0.2"/>
+  </linearGradient>
+  <linearGradient id="scanGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#c4a35a" stop-opacity="0"/>
+    <stop offset="50%" stop-color="#c4a35a" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#c4a35a" stop-opacity="0"/>
+  </linearGradient>
+  <clipPath id="mainClip"><rect x="8" y="8" width="1384" height="772"/></clipPath>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<!-- Scan line -->
+<rect id="scanLine" x="-200" y="8" width="200" height="772" fill="url(#scanGrad)" clip-path="url(#mainClip)" opacity="0.8"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">11</text>
+</g>
+
+<!-- Header -->
+<text x="700" y="50" text-anchor="middle" font-family="Noto Serif SC" font-size="20" font-weight="700" fill="#c4a35a" opacity="0" class="title">AI 成熟度路线图 2020-2026 · Maturity Timeline</text>
+<text x="700" y="72" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">FROM TRANSFORMERS TO AGI · 7-YEAR LINEAR PROGRESSION</text>
+
+<!-- ============ MAIN TIMELINE ============ -->
+<!-- Base line (behind, fades to show past/future) -->
+<line id="timelineBase" x1="80" y1="400" x2="1320" y2="400" stroke="#c4a35a" stroke-width="0.6" stroke-dasharray="3,5" opacity="0.2"/>
+<!-- Progress line (solid, grows from left → current position) -->
+<line id="timelineProgress" x1="80" y1="400" x2="80" y2="400" stroke="url(#timeGrad)" stroke-width="3" filter="url(#glow)" opacity="0"/>
+
+<!-- Axis ticks (vertical marks at each year) -->
+<g id="ticks">
+  <line class="tick" x1="80" y1="390" x2="80" y2="410" stroke="#c4a35a" stroke-width="0.5" opacity="0.4"/>
+  <line class="tick" x1="287" y1="390" x2="287" y2="410" stroke="#c4a35a" stroke-width="0.5" opacity="0.4"/>
+  <line class="tick" x1="494" y1="390" x2="494" y2="410" stroke="#c4a35a" stroke-width="0.5" opacity="0.4"/>
+  <line class="tick" x1="700" y1="390" x2="700" y2="410" stroke="#c4a35a" stroke-width="0.5" opacity="0.4"/>
+  <line class="tick" x1="907" y1="390" x2="907" y2="410" stroke="#c4a35a" stroke-width="0.5" opacity="0.4"/>
+  <line class="tick" x1="1114" y1="390" x2="1114" y2="410" stroke="#c4a35a" stroke-width="0.5" opacity="0.4"/>
+  <line class="tick" x1="1320" y1="390" x2="1320" y2="410" stroke="#c4a35a" stroke-width="0.5" opacity="0.4"/>
+</g>
+
+<!-- Now marker (2025, 6th position, between 2024 and 2026) -->
+<!-- 2025 = 6th node at x=1114 -->
+<g id="nowMarker" opacity="0">
+  <line x1="1114" y1="240" x2="1114" y2="390" stroke="#c4a35a" stroke-width="0.5" stroke-dasharray="2,4" opacity="0.5"/>
+  <rect x="1074" y="220" width="80" height="20" rx="2" fill="#1a1410" stroke="#c4a35a" stroke-width="0.8"/>
+  <text x="1114" y="234" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#c4a35a" letter-spacing="2">● NOW</text>
+</g>
+
+<!-- ============ 7 NODES ============ -->
+<!-- Each node group uses absolute coords (no transform, avoid GSAP x/y trap). -->
+
+<!-- Node 2020 (x=80) -->
+<g class="tnode" data-i="0" opacity="0">
+  <!-- Above: year + title -->
+  <text x="80" y="332" text-anchor="middle" font-family="Space Grotesk" font-size="26" font-weight="700" fill="#c4a35a" opacity="0.85">2020</text>
+  <text x="80" y="354" text-anchor="middle" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df">Transformer 时代</text>
+  <text x="80" y="370" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578" letter-spacing="2">FOUNDATION</text>
+  <!-- Node circle -->
+  <circle cx="80" cy="400" r="10" fill="#c4a35a" stroke="#0a0a0b" stroke-width="2" class="tdot"/>
+  <!-- Below: detail card -->
+  <rect x="-10" y="424" width="180" height="160" rx="3" fill="#0a0a0b" fill-opacity="0.6" stroke="#c4a35a" stroke-width="0.6" stroke-opacity="0.5" class="tcard"/>
+  <text x="80" y="444" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="700" fill="#c4a35a">GPT-3 发布</text>
+  <text x="0" y="464" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· 1750 亿参数</text>
+  <text x="0" y="480" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· few-shot 推理</text>
+  <text x="0" y="496" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· API 公测</text>
+  <text x="80" y="540" text-anchor="middle" font-family="Space Grotesk" font-size="20" font-weight="700" fill="#c4a35a"><tspan class="tnum" data-target="175">0</tspan>B</text>
+  <text x="80" y="558" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">参数规模</text>
+</g>
+
+<!-- Node 2021 (x=287) -->
+<g class="tnode" data-i="1" opacity="0">
+  <text x="287" y="332" text-anchor="middle" font-family="Space Grotesk" font-size="26" font-weight="700" fill="#c4a35a" opacity="0.85">2021</text>
+  <text x="287" y="354" text-anchor="middle" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df">多模态崛起</text>
+  <text x="287" y="370" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578" letter-spacing="2">CROSS-MODAL</text>
+  <circle cx="287" cy="400" r="10" fill="#c4a35a" stroke="#0a0a0b" stroke-width="2" class="tdot"/>
+  <rect x="197" y="424" width="180" height="160" rx="3" fill="#0a0a0b" fill-opacity="0.6" stroke="#c4a35a" stroke-width="0.6" stroke-opacity="0.5" class="tcard"/>
+  <text x="287" y="444" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="700" fill="#c4a35a">CLIP · DALL-E · Copilot</text>
+  <text x="207" y="464" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· 文生图落地</text>
+  <text x="207" y="480" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· 代码辅助</text>
+  <text x="207" y="496" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· 图文对齐</text>
+  <text x="287" y="540" text-anchor="middle" font-family="Space Grotesk" font-size="20" font-weight="700" fill="#c4a35a"><tspan class="tnum" data-target="12">0</tspan>M</text>
+  <text x="287" y="558" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">Copilot 开发者</text>
+</g>
+
+<!-- Node 2022 (x=494) -->
+<g class="tnode" data-i="2" opacity="0">
+  <text x="494" y="332" text-anchor="middle" font-family="Space Grotesk" font-size="26" font-weight="700" fill="#c4a35a" opacity="0.85">2022</text>
+  <text x="494" y="354" text-anchor="middle" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df">ChatGPT 爆发</text>
+  <text x="494" y="370" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578" letter-spacing="2">PUBLIC AWAKENING</text>
+  <circle cx="494" cy="400" r="10" fill="#c4a35a" stroke="#0a0a0b" stroke-width="2" class="tdot"/>
+  <rect x="404" y="424" width="180" height="160" rx="3" fill="#0a0a0b" fill-opacity="0.6" stroke="#c4a35a" stroke-width="0.6" stroke-opacity="0.5" class="tcard"/>
+  <text x="494" y="444" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="700" fill="#c4a35a">ChatGPT 诞生</text>
+  <text x="414" y="464" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· 2 个月破 1 亿 MAU</text>
+  <text x="414" y="480" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· 公众首次感知</text>
+  <text x="414" y="496" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· RLHF 主流化</text>
+  <text x="494" y="540" text-anchor="middle" font-family="Space Grotesk" font-size="20" font-weight="700" fill="#c4a35a"><tspan class="tnum" data-target="100">0</tspan>M</text>
+  <text x="494" y="558" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">2 个月 MAU</text>
+</g>
+
+<!-- Node 2023 (x=700) -->
+<g class="tnode" data-i="3" opacity="0">
+  <text x="700" y="332" text-anchor="middle" font-family="Space Grotesk" font-size="26" font-weight="700" fill="#c4a35a" opacity="0.85">2023</text>
+  <text x="700" y="354" text-anchor="middle" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df">企业落地</text>
+  <text x="700" y="370" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578" letter-spacing="2">ENTERPRISE</text>
+  <circle cx="700" cy="400" r="10" fill="#c4a35a" stroke="#0a0a0b" stroke-width="2" class="tdot"/>
+  <rect x="610" y="424" width="180" height="160" rx="3" fill="#0a0a0b" fill-opacity="0.6" stroke="#c4a35a" stroke-width="0.6" stroke-opacity="0.5" class="tcard"/>
+  <text x="700" y="444" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="700" fill="#c4a35a">GPT-4 · Claude 2</text>
+  <text x="620" y="464" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· 企业 API 标准化</text>
+  <text x="620" y="480" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· 开源 Llama 2</text>
+  <text x="620" y="496" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· RAG 兴起</text>
+  <text x="700" y="540" text-anchor="middle" font-family="Space Grotesk" font-size="20" font-weight="700" fill="#c4a35a">$<tspan class="tnum" data-target="11">0</tspan>B</text>
+  <text x="700" y="558" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">行业投融资</text>
+</g>
+
+<!-- Node 2024 (x=907) -->
+<g class="tnode" data-i="4" opacity="0">
+  <text x="907" y="332" text-anchor="middle" font-family="Space Grotesk" font-size="26" font-weight="700" fill="#c4a35a" opacity="0.85">2024</text>
+  <text x="907" y="354" text-anchor="middle" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df">Agent 元年</text>
+  <text x="907" y="370" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578" letter-spacing="2">AGENTIC</text>
+  <circle cx="907" cy="400" r="10" fill="#c4a35a" stroke="#0a0a0b" stroke-width="2" class="tdot"/>
+  <rect x="817" y="424" width="180" height="160" rx="3" fill="#0a0a0b" fill-opacity="0.6" stroke="#c4a35a" stroke-width="0.6" stroke-opacity="0.5" class="tcard"/>
+  <text x="907" y="444" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="700" fill="#c4a35a">Agent · 多模态</text>
+  <text x="827" y="464" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· Agent 框架涌现</text>
+  <text x="827" y="480" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· Claude 3.5 · o1</text>
+  <text x="827" y="496" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· Sora · Vision Pro</text>
+  <text x="907" y="540" text-anchor="middle" font-family="Space Grotesk" font-size="20" font-weight="700" fill="#c4a35a"><tspan class="tnum" data-target="380">0</tspan>K</text>
+  <text x="907" y="558" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">Agent GitHub ★</text>
+</g>
+
+<!-- Node 2025 (x=1114) — CURRENT (highlighted, larger) -->
+<g class="tnode tnode-current" data-i="5" opacity="0">
+  <text x="1114" y="328" text-anchor="middle" font-family="Space Grotesk" font-size="30" font-weight="700" fill="#c4a35a" filter="url(#glow)">2025</text>
+  <text x="1114" y="352" text-anchor="middle" font-family="Noto Serif SC" font-size="12" font-weight="700" fill="#c4a35a">超长上下文 · MCP</text>
+  <text x="1114" y="368" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" letter-spacing="2">● CURRENT</text>
+  <!-- Larger node circle + outer pulse ring -->
+  <circle id="currentPulse" cx="1114" cy="400" r="14" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.5"/>
+  <circle cx="1114" cy="400" r="14" fill="#c4a35a" stroke="#0a0a0b" stroke-width="2.4" class="tdot" filter="url(#softGlow)"/>
+  <rect x="1024" y="424" width="180" height="160" rx="3" fill="#1a1410" fill-opacity="0.8" stroke="#c4a35a" stroke-width="1" stroke-opacity="0.8" class="tcard" filter="url(#glow)"/>
+  <text x="1114" y="444" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="700" fill="#c4a35a">Sonnet 4.5 · 1M ctx</text>
+  <text x="1034" y="464" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· 1M token 上下文</text>
+  <text x="1034" y="480" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· MCP 标准化</text>
+  <text x="1034" y="496" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">· Agent 协作爆发</text>
+  <text x="1114" y="540" text-anchor="middle" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#c4a35a"><tspan class="tnum" data-target="48">0</tspan>B</text>
+  <text x="1114" y="558" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#c4a35a" opacity="0.8">日均 API 调用</text>
+</g>
+
+<!-- Node 2026 (x=1320) — future (outline, dimmer) -->
+<g class="tnode tnode-future" data-i="6" opacity="0">
+  <text x="1320" y="332" text-anchor="middle" font-family="Space Grotesk" font-size="26" font-weight="700" fill="#c4a35a" opacity="0.5">2026</text>
+  <text x="1320" y="354" text-anchor="middle" font-family="Noto Serif SC" font-size="11" font-weight="700" fill="#e8e4df" opacity="0.7">AGI 预热</text>
+  <text x="1320" y="370" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578" letter-spacing="2">FORECAST</text>
+  <circle cx="1320" cy="400" r="10" fill="none" stroke="#c4a35a" stroke-width="2" stroke-dasharray="3,3" class="tdot" opacity="0.7"/>
+  <rect x="1230" y="424" width="170" height="160" rx="3" fill="#0a0a0b" fill-opacity="0.4" stroke="#c4a35a" stroke-width="0.4" stroke-opacity="0.4" stroke-dasharray="4,4" class="tcard"/>
+  <text x="1315" y="444" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="700" fill="#c4a35a" opacity="0.8">模型整合</text>
+  <text x="1240" y="464" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.6">· 多模型融合</text>
+  <text x="1240" y="480" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.6">· 本地大模型</text>
+  <text x="1240" y="496" font-family="Noto Serif SC" font-size="10" fill="#e8e4df" opacity="0.6">· 专家混合 MoE</text>
+  <text x="1315" y="540" text-anchor="middle" font-family="Space Grotesk" font-size="20" font-weight="700" fill="#c4a35a" opacity="0.5">?</text>
+  <text x="1315" y="558" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a8578">AGI threshold</text>
+</g>
+
+<!-- Traveler particle (perpetual, sliding along timeline) -->
+<circle id="traveler" cx="80" cy="400" r="4" fill="#c4a35a" opacity="0" filter="url(#glow)"/>
+
+<!-- Bottom summary -->
+<g id="footerSum" opacity="0">
+  <line x1="30" y1="680" x2="1370" y2="680" stroke="#c4a35a" stroke-width="0.3" opacity="0.3"/>
+  <text x="30" y="700" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="2">SPEED · 5 年 10¹⁰× 增长（参数量 175M → 1.8T · 用户 1M → 820M · 成本每 token -90%）</text>
+  <text x="1370" y="700" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.8">↗ 斜率陡增</text>
+  <text x="30" y="720" font-family="JetBrains Mono" font-size="9" fill="#8a8578" letter-spacing="2">拐点：2022 Q4（ChatGPT）· 下一拐点预测：2026 Q2（模型整合）</text>
+</g>
+
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-TIMELINE-11 / REV.B — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">ASYRE TIMELINE</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  // Timeline progress line grows from 80 to 1114 (current 2025 position)
+  tl.to('#timelineProgress', { opacity: 1, duration: 0.3 }, 0.8);
+  tl.to('#timelineProgress', { attr: { x2: 1114 }, duration: 1.8, ease: 'power2.inOut' }, 0.9);
+
+  // Ticks fade in
+  tl.to('.tick', { opacity: 0.7, duration: 0.3, stagger: 0.1 }, 1.0);
+
+  // Nodes cascade (each tnode fades in, no transform so just opacity)
+  tl.to('.tnode', { opacity: 1, duration: 0.5, stagger: 0.18, ease: 'power2.out' }, 1.4);
+
+  // Now marker
+  tl.to('#nowMarker', { opacity: 1, duration: 0.5 }, 2.4);
+
+  // Footer
+  tl.to('#footerSum', { opacity: 1, duration: 0.5 }, 3.0);
+
+  // Counters
+  document.querySelectorAll('.tnum').forEach((el, i) => {
+    const target = parseFloat(el.dataset.target);
+    gsap.to({ v: 0 }, {
+      v: target, duration: 1.0, delay: 1.7 + i * 0.15, ease: 'power2.out',
+      onUpdate: function () {
+        el.textContent = Math.round(this.targets()[0].v);
+      }
+    });
+  });
+
+  // ============ PERPETUAL: Traveler particle sliding along timeline ============
+  gsap.to('#traveler', {
+    opacity: 1, duration: 0.4, delay: 2.5
+  });
+  gsap.to('#traveler', {
+    attr: { cx: 1114 }, duration: 4, repeat: -1, yoyo: false, ease: 'power1.inOut', delay: 2.5,
+    onRepeat: function () {
+      gsap.set('#traveler', { attr: { cx: 80 } });
+    }
+  });
+
+  // ============ PERPETUAL: Current node pulse ============
+  gsap.to('#currentPulse', {
+    attr: { r: 24 }, opacity: 0.05, duration: 1.6, repeat: -1, yoyo: false, ease: 'power1.out',
+    onRepeat: function () {
+      gsap.set('#currentPulse', { attr: { r: 14 }, opacity: 0.5 });
+    }
+  });
+
+  // ============ PERPETUAL: Card borders breath ============
+  gsap.to('.tcard', {
+    strokeOpacity: 0.85, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: 0.12, delay: 3.2
+  });
+
+  // ============ PERPETUAL: Current card extra glow ============
+  gsap.to('.tnode-current .tcard', {
+    strokeWidth: 1.4, duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.5
+  });
+
+  // ============ PERPETUAL: Scan line sweep ============
+  gsap.to('#scanLine', { attr: { x: 1400 }, duration: 7, repeat: -1, ease: 'none', delay: 1.2 });
+})();
+</script></body></html>

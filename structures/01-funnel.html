@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>01 · Funnel — AI Customer Acquisition</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="liq" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#c4a35a" stop-opacity="0.28"/>
+    <stop offset="50%" stop-color="#c4a35a" stop-opacity="0.14"/>
+    <stop offset="100%" stop-color="#c4a35a" stop-opacity="0.04"/>
+  </linearGradient>
+  <linearGradient id="lossGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#b33a3a" stop-opacity="0.25"/>
+    <stop offset="100%" stop-color="#b33a3a" stop-opacity="0.03"/>
+  </linearGradient>
+  <clipPath id="clip0"><polygon points="200,130 1200,130 1160,218 240,218"/></clipPath>
+  <clipPath id="clip1"><polygon points="300,230 1100,230 1070,318 330,318"/></clipPath>
+  <clipPath id="clip2"><polygon points="400,330 1000,330 980,418 420,418"/></clipPath>
+  <clipPath id="clip3"><polygon points="500,430 900,430 880,518 520,518"/></clipPath>
+  <clipPath id="clip4"><polygon points="560,530 840,530 830,618 570,618"/></clipPath>
+</defs>
+
+<!-- Background -->
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<!-- Series stamp (top-left) -->
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+
+<!-- Corner ring (top-right, perpetual rotate) -->
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">01</text>
+</g>
+
+<!-- Title -->
+<text id="title" x="700" y="66" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="30" font-weight="700" fill="#c4a35a" opacity="0">AI Customer Acquisition Funnel</text>
+<text id="subtitle" x="700" y="94" text-anchor="middle" font-family="Noto Serif SC,serif" font-size="14" fill="#e8e4df" opacity="0" letter-spacing="4">AI 智能获客漏斗 · 全链路转化分析</text>
+
+<!-- Particle rain container (perpetual) — center column, behind funnel -->
+<g id="particles"></g>
+
+<!-- ============ 5 FUNNEL LAYERS ============ -->
+<!-- Layer 0: Awareness -->
+<g id="layer0">
+  <polygon class="funnel-outline" points="200,130 1200,130 1160,218 240,218" fill="none" stroke="#c4a35a" stroke-width="1.5" opacity="0"/>
+  <g clip-path="url(#clip0)"><rect class="liqFill" data-i="0" x="200" y="130" width="0" height="88" fill="url(#liq)"/></g>
+  <!-- Left: big % + delta -->
+  <text class="lPct" data-i="0" x="170" y="180" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="700" fill="#c4a35a" opacity="0">100<tspan font-size="13">%</tspan></text>
+  <text class="lDelta" data-i="0" x="170" y="200" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#8a8578" opacity="0">ENTRY</text>
+  <!-- Center: title + metric + detail -->
+  <text class="layerTitle" data-i="0" x="700" y="162" text-anchor="middle" font-family="Space Grotesk" font-size="19" font-weight="700" fill="#e8e4df" opacity="0">Awareness · 品牌曝光</text>
+  <text class="metric" data-i="0" x="700" y="184" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#c4a35a" opacity="0"><tspan id="cnt_imp">0</tspan>M impressions · CTR <tspan id="cnt_ctr">0</tspan>%</text>
+  <text class="detail" data-i="0" x="700" y="204" text-anchor="middle" font-family="Noto Serif SC" font-size="11" fill="#8a8578" opacity="0">社媒 + SEO + 品牌广告 + KOL 合作</text>
+  <!-- Right: loss panel -->
+  <g class="lossPanel" data-i="0" opacity="0">
+    <rect x="1220" y="142" width="160" height="62" rx="2" fill="url(#lossGrad)" stroke="#b33a3a" stroke-width="0.5" stroke-opacity="0.5"/>
+    <text x="1230" y="158" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" letter-spacing="1">LEAK ↓</text>
+    <text x="1230" y="176" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">无兴趣流失</text>
+    <text x="1370" y="198" text-anchor="end" font-family="JetBrains Mono" font-size="16" font-weight="600" fill="#b33a3a"><tspan class="lossNum" data-target="88">0</tspan>%</text>
+  </g>
+</g>
+
+<!-- Layer 1: Interest -->
+<g id="layer1">
+  <polygon class="funnel-outline" points="300,230 1100,230 1070,318 330,318" fill="none" stroke="#c4a35a" stroke-width="1.5" opacity="0"/>
+  <g clip-path="url(#clip1)"><rect class="liqFill" data-i="1" x="300" y="230" width="0" height="88" fill="url(#liq)"/></g>
+  <text class="lPct" data-i="1" x="270" y="280" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="700" fill="#c4a35a" opacity="0">12<tspan font-size="13">%</tspan></text>
+  <text class="lDelta" data-i="1" x="270" y="300" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#8a8578" opacity="0">↓ 88%</text>
+  <text class="layerTitle" data-i="1" x="700" y="262" text-anchor="middle" font-family="Space Grotesk" font-size="19" font-weight="700" fill="#e8e4df" opacity="0">Interest · 兴趣激发</text>
+  <text class="metric" data-i="1" x="700" y="284" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#c4a35a" opacity="0"><tspan id="cnt_vis">0</tspan>M visitors · 停留 <tspan id="cnt_dwell">0</tspan>s</text>
+  <text class="detail" data-i="1" x="700" y="304" text-anchor="middle" font-family="Noto Serif SC" font-size="11" fill="#8a8578" opacity="0">内容营销 + Webinar + 白皮书下载 + SEO 着陆页</text>
+  <g class="lossPanel" data-i="1" opacity="0">
+    <rect x="1220" y="242" width="160" height="62" rx="2" fill="url(#lossGrad)" stroke="#b33a3a" stroke-width="0.5" stroke-opacity="0.5"/>
+    <text x="1230" y="258" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" letter-spacing="1">LEAK ↓</text>
+    <text x="1230" y="276" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">注册前放弃</text>
+    <text x="1370" y="298" text-anchor="end" font-family="JetBrains Mono" font-size="16" font-weight="600" fill="#b33a3a"><tspan class="lossNum" data-target="76">0</tspan>%</text>
+  </g>
+</g>
+
+<!-- Layer 2: Evaluation -->
+<g id="layer2">
+  <polygon class="funnel-outline" points="400,330 1000,330 980,418 420,418" fill="none" stroke="#c4a35a" stroke-width="1.5" opacity="0"/>
+  <g clip-path="url(#clip2)"><rect class="liqFill" data-i="2" x="400" y="330" width="0" height="88" fill="url(#liq)"/></g>
+  <text class="lPct" data-i="2" x="370" y="380" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="700" fill="#c4a35a" opacity="0">2.8<tspan font-size="13">%</tspan></text>
+  <text class="lDelta" data-i="2" x="370" y="400" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#8a8578" opacity="0">↓ 77%</text>
+  <text class="layerTitle" data-i="2" x="700" y="362" text-anchor="middle" font-family="Space Grotesk" font-size="19" font-weight="700" fill="#e8e4df" opacity="0">Evaluation · 产品评估</text>
+  <text class="metric" data-i="2" x="700" y="384" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#c4a35a" opacity="0"><tspan id="cnt_sig">0</tspan>K signups · 激活率 <tspan id="cnt_act">0</tspan>%</text>
+  <text class="detail" data-i="2" x="700" y="404" text-anchor="middle" font-family="Noto Serif SC" font-size="11" fill="#8a8578" opacity="0">免费试用 + Demo + 竞品对比 + Sales 跟进</text>
+  <g class="lossPanel" data-i="2" opacity="0">
+    <rect x="1220" y="342" width="160" height="62" rx="2" fill="url(#lossGrad)" stroke="#b33a3a" stroke-width="0.5" stroke-opacity="0.5"/>
+    <text x="1230" y="358" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" letter-spacing="1">LEAK ↓</text>
+    <text x="1230" y="376" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">激活后沉默</text>
+    <text x="1370" y="398" text-anchor="end" font-family="JetBrains Mono" font-size="16" font-weight="600" fill="#b33a3a"><tspan class="lossNum" data-target="84">0</tspan>%</text>
+  </g>
+</g>
+
+<!-- Layer 3: Purchase -->
+<g id="layer3">
+  <polygon class="funnel-outline" points="500,430 900,430 880,518 520,518" fill="none" stroke="#c4a35a" stroke-width="1.5" opacity="0"/>
+  <g clip-path="url(#clip3)"><rect class="liqFill" data-i="3" x="500" y="430" width="0" height="88" fill="url(#liq)"/></g>
+  <text class="lPct" data-i="3" x="470" y="480" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="700" fill="#c4a35a" opacity="0">0.45<tspan font-size="13">%</tspan></text>
+  <text class="lDelta" data-i="3" x="470" y="500" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#8a8578" opacity="0">↓ 84%</text>
+  <text class="layerTitle" data-i="3" x="700" y="462" text-anchor="middle" font-family="Space Grotesk" font-size="19" font-weight="700" fill="#e8e4df" opacity="0">Purchase · 成交转化</text>
+  <text class="metric" data-i="3" x="700" y="484" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#c4a35a" opacity="0"><tspan id="cnt_cust">0</tspan>K customers · ARPU $<tspan id="cnt_arpu">0</tspan></text>
+  <text class="detail" data-i="3" x="700" y="504" text-anchor="middle" font-family="Noto Serif SC" font-size="11" fill="#8a8578" opacity="0">企业销售 + PLG 自助购买 + 年付 incentive</text>
+  <g class="lossPanel" data-i="3" opacity="0">
+    <rect x="1220" y="442" width="160" height="62" rx="2" fill="url(#lossGrad)" stroke="#b33a3a" stroke-width="0.5" stroke-opacity="0.5"/>
+    <text x="1230" y="458" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" letter-spacing="1">LEAK ↓</text>
+    <text x="1230" y="476" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">首月流失</text>
+    <text x="1370" y="498" text-anchor="end" font-family="JetBrains Mono" font-size="16" font-weight="600" fill="#b33a3a"><tspan class="lossNum" data-target="16">0</tspan>%</text>
+  </g>
+</g>
+
+<!-- Layer 4: Retention -->
+<g id="layer4">
+  <polygon class="funnel-outline" points="560,530 840,530 830,618 570,618" fill="none" stroke="#c4a35a" stroke-width="1.5" opacity="0"/>
+  <g clip-path="url(#clip4)"><rect class="liqFill" data-i="4" x="560" y="530" width="0" height="88" fill="url(#liq)"/></g>
+  <text class="lPct" data-i="4" x="540" y="580" text-anchor="end" font-family="JetBrains Mono" font-size="22" font-weight="700" fill="#c4a35a" opacity="0">0.38<tspan font-size="13">%</tspan></text>
+  <text class="lDelta" data-i="4" x="540" y="600" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0">RETAIN 84%</text>
+  <text class="layerTitle" data-i="4" x="700" y="562" text-anchor="middle" font-family="Space Grotesk" font-size="19" font-weight="700" fill="#e8e4df" opacity="0">Retention · 留存续费</text>
+  <text class="metric" data-i="4" x="700" y="584" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#c4a35a" opacity="0"><tspan id="cnt_ren">0</tspan>K renewals · NRR <tspan id="cnt_nrr">0</tspan>%</text>
+  <text class="detail" data-i="4" x="700" y="604" text-anchor="middle" font-family="Noto Serif SC" font-size="11" fill="#8a8578" opacity="0">客户成功 + 续费预警 + upsell + 社区运营</text>
+  <g class="lossPanel" data-i="4" opacity="0">
+    <rect x="860" y="542" width="160" height="62" rx="2" fill="#0a2a14" fill-opacity="0.4" stroke="#3daa5a" stroke-width="0.5" stroke-opacity="0.5"/>
+    <text x="870" y="558" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="1">NRR ↑</text>
+    <text x="870" y="576" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">Upsell 扩张</text>
+    <text x="1010" y="598" text-anchor="end" font-family="JetBrains Mono" font-size="16" font-weight="600" fill="#3daa5a">+<tspan class="lossNum" data-target="18">0</tspan>%</text>
+  </g>
+</g>
+
+<!-- Conversion arrows between layers (vertical flow markers) -->
+<g id="arrows">
+  <g class="convArrow" data-i="0" opacity="0"><line x1="700" y1="220" x2="700" y2="228" stroke="#c4a35a" stroke-width="1.4" stroke-dasharray="3,3"/><polygon points="694,226 700,234 706,226" fill="#c4a35a"/></g>
+  <g class="convArrow" data-i="1" opacity="0"><line x1="700" y1="320" x2="700" y2="328" stroke="#c4a35a" stroke-width="1.4" stroke-dasharray="3,3"/><polygon points="694,326 700,334 706,326" fill="#c4a35a"/></g>
+  <g class="convArrow" data-i="2" opacity="0"><line x1="700" y1="420" x2="700" y2="428" stroke="#c4a35a" stroke-width="1.4" stroke-dasharray="3,3"/><polygon points="694,426 700,434 706,426" fill="#c4a35a"/></g>
+  <g class="convArrow" data-i="3" opacity="0"><line x1="700" y1="520" x2="700" y2="528" stroke="#c4a35a" stroke-width="1.4" stroke-dasharray="3,3"/><polygon points="694,526 700,534 706,526" fill="#c4a35a"/></g>
+</g>
+
+<!-- ============ BOTTOM: Conversion Chain Bar Chart ============ -->
+<g id="chainChart" opacity="0">
+  <line x1="100" y1="655" x2="1300" y2="655" stroke="#c4a35a" stroke-width="0.4" opacity="0.3"/>
+  <text x="100" y="648" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="2">STEP-BY-STEP CONVERSION</text>
+  <text x="1300" y="648" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="2">↘ LEAKAGE PROFILE</text>
+
+  <!-- 4 conversion bars: A→I 12%, I→E 23.3%, E→P 16.1%, P→R 84.4% -->
+  <g transform="translate(120, 670)">
+    <text x="0" y="12" font-family="JetBrains Mono" font-size="10" fill="#e8e4df">A → I</text>
+    <rect x="60" y="3" width="240" height="12" fill="#1a1a1a" stroke="#c4a35a" stroke-width="0.3" stroke-opacity="0.3"/>
+    <rect class="chainBar" data-w="28.8" x="60" y="3" width="0" height="12" fill="#c4a35a" fill-opacity="0.6"/>
+    <text x="310" y="12" font-family="JetBrains Mono" font-size="11" font-weight="600" fill="#c4a35a"><tspan class="chainNum" data-target="12">0</tspan>%</text>
+  </g>
+  <g transform="translate(420, 670)">
+    <text x="0" y="12" font-family="JetBrains Mono" font-size="10" fill="#e8e4df">I → E</text>
+    <rect x="60" y="3" width="240" height="12" fill="#1a1a1a" stroke="#c4a35a" stroke-width="0.3" stroke-opacity="0.3"/>
+    <rect class="chainBar" data-w="55.9" x="60" y="3" width="0" height="12" fill="#c4a35a" fill-opacity="0.6"/>
+    <text x="310" y="12" font-family="JetBrains Mono" font-size="11" font-weight="600" fill="#c4a35a"><tspan class="chainNum" data-target="23.3">0</tspan>%</text>
+  </g>
+  <g transform="translate(720, 670)">
+    <text x="0" y="12" font-family="JetBrains Mono" font-size="10" fill="#e8e4df">E → P</text>
+    <rect x="60" y="3" width="240" height="12" fill="#1a1a1a" stroke="#c4a35a" stroke-width="0.3" stroke-opacity="0.3"/>
+    <rect class="chainBar" data-w="38.6" x="60" y="3" width="0" height="12" fill="#c4a35a" fill-opacity="0.6"/>
+    <text x="310" y="12" font-family="JetBrains Mono" font-size="11" font-weight="600" fill="#c4a35a"><tspan class="chainNum" data-target="16.1">0</tspan>%</text>
+  </g>
+  <g transform="translate(1020, 670)">
+    <text x="0" y="12" font-family="JetBrains Mono" font-size="10" fill="#e8e4df">P → R</text>
+    <rect x="60" y="3" width="240" height="12" fill="#1a1a1a" stroke="#3daa5a" stroke-width="0.3" stroke-opacity="0.5"/>
+    <rect class="chainBar" data-w="202.5" x="60" y="3" width="0" height="12" fill="#3daa5a" fill-opacity="0.6"/>
+    <text x="310" y="12" font-family="JetBrains Mono" font-size="11" font-weight="600" fill="#3daa5a"><tspan class="chainNum" data-target="84.4">0</tspan>%</text>
+  </g>
+</g>
+
+<!-- Summary -->
+<text id="summary" x="700" y="712" text-anchor="middle" font-family="Space Grotesk" font-size="13" fill="#8a8578" opacity="0">
+  Total Pipeline: 10M → 38K · End-to-End Conversion: 0.38% · LTV:CAC = 4.2:1 · Payback 11 months
+</text>
+
+<!-- Corner stamps -->
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-FUNNEL-01 / REV.B — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">ASYRE ANALYTICS</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  const layerWidths = [1000, 800, 600, 400, 280];
+
+  // ============ PERPETUAL LAYER 1: Corner ring rotate ============
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+  gsap.to('#cornerRing circle:first-child', { attr: { r: 24 }, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+  // ============ PERPETUAL LAYER 2: Particle rain (rAF + DOM pool) ============
+  const ns = 'http://www.w3.org/2000/svg';
+  const pg = document.getElementById('particles');
+  const POOL = 14;
+  const particles = [];
+  for (let i = 0; i < POOL; i++) {
+    const c = document.createElementNS(ns, 'circle');
+    c.setAttribute('r', 1.4);
+    c.setAttribute('fill', '#c4a35a');
+    c.setAttribute('opacity', 0);
+    pg.appendChild(c);
+    particles.push({ el: c, busy: false, x: 700, y: 130, vy: 0, life: 0, maxLife: 0 });
+  }
+  function spawn(p) {
+    p.busy = true;
+    p.x = 690 + Math.random() * 20;
+    p.y = 130;
+    p.vy = 0.8 + Math.random() * 0.9;
+    p.life = 0;
+    p.maxLife = 300 + Math.random() * 200;
+    p.el.setAttribute('opacity', 0.3 + Math.random() * 0.4);
+    p.el.setAttribute('r', 0.9 + Math.random() * 1.2);
+  }
+  let spawnAcc = 0;
+  function rain() {
+    spawnAcc++;
+    if (spawnAcc > 8) {
+      spawnAcc = 0;
+      const free = particles.find(p => !p.busy);
+      if (free) spawn(free);
+    }
+    particles.forEach(p => {
+      if (!p.busy) return;
+      p.y += p.vy;
+      p.life++;
+      // Keep particle near vertical center column (slight jitter)
+      const dx = (Math.random() - 0.5) * 0.6;
+      p.x += dx;
+      p.el.setAttribute('cx', p.x);
+      p.el.setAttribute('cy', p.y);
+      const fade = 1 - p.life / p.maxLife;
+      p.el.setAttribute('opacity', fade * 0.7);
+      if (p.y > 620 || p.life > p.maxLife) {
+        p.busy = false;
+        p.el.setAttribute('opacity', 0);
+      }
+    });
+    requestAnimationFrame(rain);
+  }
+  rain();
+
+  // ============ ENTRANCE TIMELINE ============
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+  tl.to('#title', { opacity: 1, y: 0, duration: 0.7 })
+    .to('#subtitle', { opacity: 1, duration: 0.5 }, '-=0.35');
+
+  // Layers stagger top → bottom
+  for (let i = 0; i < 5; i++) {
+    const t = 0.8 + i * 0.28;
+    tl.to(`#layer${i} .funnel-outline`, { opacity: 1, duration: 0.5 }, t);
+    tl.to(`#layer${i} .layerTitle`, { opacity: 1, y: 0, duration: 0.4 }, t + 0.12);
+    tl.to(`#layer${i} .lPct`, { opacity: 1, duration: 0.4 }, t + 0.15);
+    tl.to(`#layer${i} .lDelta`, { opacity: 1, duration: 0.4 }, t + 0.22);
+    tl.to(`#layer${i} .metric`, { opacity: 1, duration: 0.4 }, t + 0.28);
+    tl.to(`#layer${i} .detail`, { opacity: 1, duration: 0.4 }, t + 0.36);
+    tl.to(`#layer${i} .lossPanel`, { opacity: 1, x: 0, duration: 0.5 }, t + 0.32);
+    tl.to(`.liqFill[data-i="${i}"]`, { width: layerWidths[i], duration: 1.1, ease: 'power1.out' }, t + 0.2);
+  }
+
+  // Arrows between layers
+  tl.to('#arrows .convArrow', { opacity: 1, stagger: 0.2, duration: 0.3 }, 1.4);
+
+  // Bottom chain chart
+  tl.to('#chainChart', { opacity: 1, duration: 0.5 }, 2.4);
+  tl.to('.chainBar', {
+    attr: { width: (i, el) => parseFloat(el.dataset.w) },
+    duration: 0.8,
+    stagger: 0.12,
+    ease: 'power2.out'
+  }, 2.5);
+
+  tl.to('#summary', { opacity: 1, duration: 0.6 }, 3.2);
+
+  // Counters
+  const counters = [
+    { sel: '#cnt_imp', target: 10, decimals: 0, delay: 1.2 },
+    { sel: '#cnt_ctr', target: 2.3, decimals: 1, delay: 1.3 },
+    { sel: '#cnt_vis', target: 1.2, decimals: 1, delay: 1.5 },
+    { sel: '#cnt_dwell', target: 42, decimals: 0, delay: 1.6 },
+    { sel: '#cnt_sig', target: 280, decimals: 0, delay: 1.8 },
+    { sel: '#cnt_act', target: 23.3, decimals: 1, delay: 1.9 },
+    { sel: '#cnt_cust', target: 45, decimals: 0, delay: 2.1 },
+    { sel: '#cnt_arpu', target: 2400, decimals: 0, delay: 2.2 },
+    { sel: '#cnt_ren', target: 38, decimals: 0, delay: 2.4 },
+    { sel: '#cnt_nrr', target: 118, decimals: 0, delay: 2.5 }
+  ];
+  counters.forEach(c => {
+    const el = document.querySelector(c.sel);
+    if (!el) return;
+    gsap.to({ v: 0 }, {
+      v: c.target, duration: 1.1, delay: c.delay, ease: 'power2.out',
+      onUpdate: function () {
+        const v = this.targets()[0].v;
+        el.textContent = c.decimals ? v.toFixed(c.decimals) : Math.round(v).toLocaleString();
+      }
+    });
+  });
+
+  // Loss panel counters + chain bar counters
+  document.querySelectorAll('.lossNum, .chainNum').forEach((el, idx) => {
+    const target = parseFloat(el.dataset.target);
+    const isChain = el.classList.contains('chainNum');
+    gsap.to({ v: 0 }, {
+      v: target, duration: 1.0, delay: isChain ? 2.6 + idx * 0.12 : 1.5 + idx * 0.2, ease: 'power2.out',
+      onUpdate: function () {
+        const v = this.targets()[0].v;
+        el.textContent = target < 10 && !Number.isInteger(target) ? v.toFixed(1) : Math.round(v);
+      }
+    });
+  });
+
+  // ============ PERPETUAL LAYER 3: Liquid wave (subtle width breathing per layer) ============
+  for (let i = 0; i < 5; i++) {
+    gsap.to(`.liqFill[data-i="${i}"]`, {
+      opacity: 0.55, duration: 2.2 + i * 0.15, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3 + i * 0.1
+    });
+  }
+
+  // ============ PERPETUAL LAYER 4: Outline pulse (golden glow breath on funnel outlines) ============
+  gsap.to('.funnel-outline', {
+    strokeWidth: 2.2, duration: 2.8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.5
+  });
+
+  // ============ PERPETUAL LAYER 5: Arrow blink ============
+  gsap.to('#arrows .convArrow', {
+    opacity: 0.35, duration: 1.1, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: 0.2, delay: 3.8
+  });
+})();
+</script></body></html>

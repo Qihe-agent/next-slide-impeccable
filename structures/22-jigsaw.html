@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>22 · Jigsaw — AI Product 6 Pieces</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow" x="-75%" y="-75%" width="250%" height="250%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">22</text>
+</g>
+
+<!-- Header -->
+<text x="700" y="50" text-anchor="middle" font-family="Noto Serif SC" font-size="20" font-weight="700" fill="#c4a35a" opacity="0" class="title">AI 产品成功 · 6 块拼图</text>
+<text x="700" y="72" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">PRODUCT · TECH · MARKET · DATA · TEAM · CAPITAL</text>
+
+<!-- ============ 6 JIGSAW PIECES · 3×2 GRID ============
+     Each piece 400×270 base; tabs protrude 30px at midpoint; blanks indent same shape.
+     Pattern: col-ward tabs go RIGHT (col 0→1, 1→2); row-ward tabs go DOWN (row 0→1).
+     External edges slightly wavy ±10px. -->
+
+<!-- Piece (0,0) · 产品 Product · gold -->
+<g class="piece" data-i="0" opacity="0">
+  <path d="M 100 140 Q 200 130 300 140 Q 400 150 500 140 L 500 250 C 530 250 530 300 500 300 L 500 410 L 325 410 C 325 440 275 440 275 410 L 100 410 Q 90 335 100 275 Q 110 215 100 140 Z"
+        fill="#1a1410" fill-opacity="0.82" stroke="#c4a35a" stroke-width="1.6" class="pb" filter="url(#glow)"/>
+  <text x="300" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.8" letter-spacing="3">PIECE · 01</text>
+  <text x="300" y="265" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#c4a35a">产品</text>
+  <text x="300" y="288" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="2" font-weight="500">PRODUCT</text>
+  <line x1="270" y1="302" x2="330" y2="302" stroke="#c4a35a" stroke-width="0.8" opacity="0.6"/>
+  <text x="300" y="325" text-anchor="middle" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">解决真问题 · 形成粘性</text>
+  <text x="300" y="355" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.8">PMF · RETENTION · DAU/MAU</text>
+</g>
+
+<!-- Piece (1,0) · 技术 Technology · blue -->
+<g class="piece" data-i="1" opacity="0">
+  <path d="M 500 140 Q 600 130 700 140 Q 800 150 900 140 L 900 250 C 930 250 930 300 900 300 L 900 410 L 725 410 C 725 440 675 440 675 410 L 500 410 L 500 300 C 530 300 530 250 500 250 L 500 140 Z"
+        fill="#10161e" fill-opacity="0.82" stroke="#5dade2" stroke-width="1.6" class="pb" filter="url(#glow)"/>
+  <text x="700" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5dade2" opacity="0.8" letter-spacing="3">PIECE · 02</text>
+  <text x="700" y="265" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#5dade2">技术</text>
+  <text x="700" y="288" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="2" font-weight="500">TECHNOLOGY</text>
+  <line x1="670" y1="302" x2="730" y2="302" stroke="#5dade2" stroke-width="0.8" opacity="0.6"/>
+  <text x="700" y="325" text-anchor="middle" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">可靠实现 · 体验流畅</text>
+  <text x="700" y="355" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.8">LATENCY · UPTIME · ACCURACY</text>
+</g>
+
+<!-- Piece (2,0) · 市场 Market · green -->
+<g class="piece" data-i="2" opacity="0">
+  <path d="M 900 140 Q 1000 130 1100 140 Q 1200 150 1300 140 Q 1310 215 1300 275 Q 1290 335 1300 410 L 1125 410 C 1125 440 1075 440 1075 410 L 900 410 L 900 300 C 930 300 930 250 900 250 L 900 140 Z"
+        fill="#0f1e12" fill-opacity="0.82" stroke="#3daa5a" stroke-width="1.6" class="pb" filter="url(#glow)"/>
+  <text x="1100" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#3daa5a" opacity="0.8" letter-spacing="3">PIECE · 03</text>
+  <text x="1100" y="265" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#3daa5a">市场</text>
+  <text x="1100" y="288" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="2" font-weight="500">MARKET</text>
+  <line x1="1070" y1="302" x2="1130" y2="302" stroke="#3daa5a" stroke-width="0.8" opacity="0.6"/>
+  <text x="1100" y="325" text-anchor="middle" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">找到买家 · 渠道打通</text>
+  <text x="1100" y="355" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.8">CAC · LTV · CHANNEL MIX</text>
+</g>
+
+<!-- Piece (0,1) · 数据 Data · purple -->
+<g class="piece" data-i="3" opacity="0">
+  <path d="M 100 410 L 275 410 C 275 440 325 440 325 410 L 500 410 L 500 520 C 530 520 530 570 500 570 L 500 680 Q 400 690 300 680 Q 200 670 100 680 Q 90 605 100 545 Q 110 485 100 410 Z"
+        fill="#18121e" fill-opacity="0.82" stroke="#bb8fce" stroke-width="1.6" class="pb" filter="url(#glow)"/>
+  <text x="300" y="495" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#bb8fce" opacity="0.8" letter-spacing="3">PIECE · 04</text>
+  <text x="300" y="535" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#bb8fce">数据</text>
+  <text x="300" y="558" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="2" font-weight="500">DATA</text>
+  <line x1="270" y1="572" x2="330" y2="572" stroke="#bb8fce" stroke-width="0.8" opacity="0.6"/>
+  <text x="300" y="595" text-anchor="middle" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">积累飞轮 · 壁垒越挖越深</text>
+  <text x="300" y="625" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.8">MOAT · FEEDBACK LOOP · RAG</text>
+</g>
+
+<!-- Piece (1,1) · 团队 Team · orange -->
+<g class="piece" data-i="4" opacity="0">
+  <path d="M 500 410 L 675 410 C 675 440 725 440 725 410 L 900 410 L 900 520 C 930 520 930 570 900 570 L 900 680 Q 800 690 700 680 Q 600 670 500 680 L 500 570 C 530 570 530 520 500 520 L 500 410 Z"
+        fill="#1e1410" fill-opacity="0.82" stroke="#f4845f" stroke-width="1.6" class="pb" filter="url(#glow)"/>
+  <text x="700" y="495" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#f4845f" opacity="0.8" letter-spacing="3">PIECE · 05</text>
+  <text x="700" y="535" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#f4845f">团队</text>
+  <text x="700" y="558" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="2" font-weight="500">TEAM</text>
+  <line x1="670" y1="572" x2="730" y2="572" stroke="#f4845f" stroke-width="0.8" opacity="0.6"/>
+  <text x="700" y="595" text-anchor="middle" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">互补配齐 · 执行到位</text>
+  <text x="700" y="625" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.8">COMPLEMENTARY · VELOCITY</text>
+</g>
+
+<!-- Piece (2,1) · 资本 Capital · teal -->
+<g class="piece" data-i="5" opacity="0">
+  <path d="M 900 410 L 1075 410 C 1075 440 1125 440 1125 410 L 1300 410 Q 1310 485 1300 545 Q 1290 605 1300 680 Q 1200 690 1100 680 Q 1000 670 900 680 L 900 570 C 930 570 930 520 900 520 L 900 410 Z"
+        fill="#0f1d1a" fill-opacity="0.82" stroke="#45b7a0" stroke-width="1.6" class="pb" filter="url(#glow)"/>
+  <text x="1100" y="495" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#45b7a0" opacity="0.8" letter-spacing="3">PIECE · 06</text>
+  <text x="1100" y="535" text-anchor="middle" font-family="Noto Serif SC" font-size="28" font-weight="900" fill="#45b7a0">资本</text>
+  <text x="1100" y="558" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="2" font-weight="500">CAPITAL</text>
+  <line x1="1070" y1="572" x2="1130" y2="572" stroke="#45b7a0" stroke-width="0.8" opacity="0.6"/>
+  <text x="1100" y="595" text-anchor="middle" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">够烧够长 · 续命到胜利</text>
+  <text x="1100" y="625" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#45b7a0" opacity="0.8">RUNWAY · BURN · VALUATION</text>
+</g>
+
+<!-- Connector interface dots (at each shared edge midpoint for visual puzzle texture) -->
+<g id="interfaceDots" opacity="0">
+  <!-- vertical shared edges: (500,275) — between (0,0) and (1,0); (900,275) — between (1,0) and (2,0); (500,545); (900,545) -->
+  <circle class="iface-dot" cx="515" cy="275" r="2.4" fill="#c4a35a" opacity="0.6"/>
+  <circle class="iface-dot" cx="915" cy="275" r="2.4" fill="#5dade2" opacity="0.6"/>
+  <circle class="iface-dot" cx="515" cy="545" r="2.4" fill="#bb8fce" opacity="0.6"/>
+  <circle class="iface-dot" cx="915" cy="545" r="2.4" fill="#f4845f" opacity="0.6"/>
+  <!-- horizontal shared edges: (300,410), (700,410), (1100,410) -->
+  <circle class="iface-dot" cx="300" cy="425" r="2.4" fill="#c4a35a" opacity="0.6"/>
+  <circle class="iface-dot" cx="700" cy="425" r="2.4" fill="#5dade2" opacity="0.6"/>
+  <circle class="iface-dot" cx="1100" cy="425" r="2.4" fill="#3daa5a" opacity="0.6"/>
+</g>
+
+<!-- Completion glow / moving highlight -->
+<g id="sweepBand" style="pointer-events:none"></g>
+
+<!-- Footer -->
+<g id="footerSum" opacity="0">
+  <line x1="30" y1="725" x2="1370" y2="725" stroke="#c4a35a" stroke-width="0.3" opacity="0.3"/>
+  <text x="30" y="747" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="2">6 块互锁 · 任何一块缺席都会让整图崩盘（硬规则 #17 jigsaw: tab/blank 严格对称）</text>
+  <text x="1370" y="747" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="2">3×2 GRID · 6 PIECES · 7 INTERFACES</text>
+</g>
+
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-JIGSAW-22 / REV.A — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">6 × SUCCESS FACTORS · 互锁</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  const ns = 'http://www.w3.org/2000/svg';
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  // Pieces slide in from random directions with elastic ease
+  const pieces = document.querySelectorAll('.piece');
+  const dirs = [
+    { x: -40, y: -30 }, { x: 0, y: -50 }, { x: 40, y: -30 },
+    { x: -40, y: 30 }, { x: 0, y: 50 }, { x: 40, y: 30 },
+  ];
+  pieces.forEach((p, i) => {
+    tl.fromTo(p, { opacity: 0, x: dirs[i].x, y: dirs[i].y, scale: 0.88, transformOrigin: 'center' },
+      { opacity: 1, x: 0, y: 0, scale: 1, duration: 0.7, ease: 'elastic.out(1, 0.7)' }, 0.8 + i * 0.1);
+  });
+
+  // Interface dots pulse in after pieces settle
+  tl.to('#interfaceDots', { opacity: 1, duration: 0.5 }, 1.8);
+
+  // Footer
+  tl.to('#footerSum', { opacity: 1, duration: 0.5 }, 2.4);
+
+  // ============ PERPETUAL: Completion flash — when all pieces in, flash a subtle overlay ============
+  function completionFlash() {
+    const flash = document.createElementNS(ns, 'rect');
+    flash.setAttribute('x', 90); flash.setAttribute('y', 130);
+    flash.setAttribute('width', 1220); flash.setAttribute('height', 560);
+    flash.setAttribute('fill', '#c4a35a');
+    flash.setAttribute('opacity', 0);
+    flash.setAttribute('pointer-events', 'none');
+    document.getElementById('svg').appendChild(flash);
+    gsap.to(flash, { opacity: 0.04, duration: 0.3, ease: 'power2.out' });
+    gsap.to(flash, { opacity: 0, duration: 1.2, delay: 0.5, ease: 'power2.in', onComplete: () => flash.remove() });
+  }
+  setTimeout(() => { completionFlash(); setInterval(completionFlash, 5200); }, 3000);
+
+  // ============ PERPETUAL: Piece border subtle breath ============
+  gsap.to('.pb', {
+    strokeWidth: 2,
+    duration: 2.8,
+    repeat: -1,
+    yoyo: true,
+    ease: 'sine.inOut',
+    stagger: { each: 0.18, from: 'random' },
+    delay: 3.2
+  });
+
+  // ============ PERPETUAL: Interface dot pulse ============
+  gsap.to('.iface-dot', {
+    attr: { r: 4.5 }, opacity: 0.95,
+    duration: 1.6,
+    repeat: -1, yoyo: true,
+    ease: 'sine.inOut',
+    stagger: 0.2,
+    delay: 3
+  });
+
+  // ============ PERPETUAL: Horizontal sweep band moving across all pieces ============
+  const sweep = document.createElementNS(ns, 'rect');
+  sweep.setAttribute('y', 140); sweep.setAttribute('width', 12); sweep.setAttribute('height', 540);
+  sweep.setAttribute('fill', 'url(#sweepGrad)');
+  sweep.setAttribute('opacity', 0.12);
+  // Build gradient dynamically
+  const defs = document.querySelector('defs');
+  const sweepGrad = document.createElementNS(ns, 'linearGradient');
+  sweepGrad.setAttribute('id', 'sweepGrad'); sweepGrad.setAttribute('x1', '0'); sweepGrad.setAttribute('x2', '1'); sweepGrad.setAttribute('y1', '0'); sweepGrad.setAttribute('y2', '0');
+  sweepGrad.innerHTML = '<stop offset="0%" stop-color="#c4a35a" stop-opacity="0"/><stop offset="50%" stop-color="#c4a35a" stop-opacity="1"/><stop offset="100%" stop-color="#c4a35a" stop-opacity="0"/>';
+  defs.appendChild(sweepGrad);
+  document.getElementById('sweepBand').appendChild(sweep);
+  let sx = 90;
+  function sweepTick() {
+    sx += 2.8;
+    if (sx > 1320) sx = 80;
+    sweep.setAttribute('x', sx);
+    requestAnimationFrame(sweepTick);
+  }
+  setTimeout(sweepTick, 3600);
+})();
+</script></body></html>

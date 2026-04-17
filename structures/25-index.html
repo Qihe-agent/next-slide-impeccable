@@ -1,0 +1,373 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>v2-impeccable · 24 Structures Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+a { cursor: pointer; }
+a:hover .card-bg { fill-opacity: 0.95 !important; stroke-width: 1.6 !important; stroke-opacity: 1 !important; }
+/* !important needed because GSAP breath tween on .card-num writes inline style="opacity: ..." which beats a plain CSS rule. !important lifts the :hover state above inline. */
+a:hover .card-num { opacity: 1 !important; }
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2 · INDEX</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">25</text>
+</g>
+
+<!-- Header -->
+<text x="700" y="48" text-anchor="middle" font-family="Noto Serif SC" font-size="22" font-weight="700" fill="#c4a35a" opacity="0" class="title">Structure Presets · Gallery</text>
+<text x="700" y="72" text-anchor="middle" font-family="Space Grotesk" font-size="11" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">24 STRUCTURES · ASYRE DARK GOLD · CLICK TO OPEN</text>
+
+<!-- ============ CATEGORY LEGEND ============ -->
+<g id="catLegend" opacity="0">
+  <g transform="translate(140, 94)"><circle r="4" fill="#5dade2"/><text x="12" y="4" font-family="JetBrains Mono" font-size="9" fill="#e8e4df" letter-spacing="1">FLOW</text></g>
+  <g transform="translate(260, 94)"><circle r="4" fill="#3daa5a"/><text x="12" y="4" font-family="JetBrains Mono" font-size="9" fill="#e8e4df" letter-spacing="1">HIERARCHY</text></g>
+  <g transform="translate(420, 94)"><circle r="4" fill="#f4845f"/><text x="12" y="4" font-family="JetBrains Mono" font-size="9" fill="#e8e4df" letter-spacing="1">NARRATIVE</text></g>
+  <g transform="translate(580, 94)"><circle r="4" fill="#bb8fce"/><text x="12" y="4" font-family="JetBrains Mono" font-size="9" fill="#e8e4df" letter-spacing="1">COMPARE</text></g>
+  <g transform="translate(720, 94)"><circle r="4" fill="#c4a35a"/><text x="12" y="4" font-family="JetBrains Mono" font-size="9" fill="#e8e4df" letter-spacing="1">DATA</text></g>
+  <g transform="translate(840, 94)"><circle r="4" fill="#b33a3a"/><text x="12" y="4" font-family="JetBrains Mono" font-size="9" fill="#e8e4df" letter-spacing="1">VISUAL</text></g>
+  <line x1="60" y1="106" x2="1340" y2="106" stroke="#c4a35a" stroke-width="0.3" opacity="0.25"/>
+</g>
+
+<!-- ============ 6×4 GRID OF 24 CARDS ============
+     Cell: 210 × 138, gap 8, margin x=30, y=125 -->
+
+<!-- ROW 0 · y=125-263 -->
+<a href="01-funnel.html"><g class="card" data-i="0">
+  <rect class="card-bg" x="30" y="125" width="210" height="138" rx="3" fill="#10161e" fill-opacity="0.82" stroke="#5dade2" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="30" y="125" width="210" height="3" fill="#5dade2"/>
+  <text x="44" y="145" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="2">01 · PRESET #2</text>
+  <text x="226" y="145" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.7">FLOW</text>
+  <text x="44" y="184" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#5dade2" opacity="0.08" class="card-num">01</text>
+  <text x="44" y="200" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">漏斗</text>
+  <text x="44" y="220" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">funnel</text>
+  <text x="44" y="250" font-family="JetBrains Mono" font-size="8" fill="#8a8578">转化 · 采用路径 · 5 层</text>
+</g></a>
+
+<a href="02-hub-spoke.html"><g class="card" data-i="1">
+  <rect class="card-bg" x="248" y="125" width="210" height="138" rx="3" fill="#0f1e12" fill-opacity="0.82" stroke="#3daa5a" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="248" y="125" width="210" height="3" fill="#3daa5a"/>
+  <text x="262" y="145" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="2">02 · PRESET #3</text>
+  <text x="444" y="145" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.7">HIERARCHY</text>
+  <text x="262" y="184" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#3daa5a" opacity="0.08" class="card-num">02</text>
+  <text x="262" y="200" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">中心辐射</text>
+  <text x="262" y="220" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">hub-spoke</text>
+  <text x="262" y="250" font-family="JetBrains Mono" font-size="8" fill="#8a8578">核心 × 6 节点 · 生态图</text>
+</g></a>
+
+<a href="03-iceberg.html"><g class="card" data-i="2">
+  <rect class="card-bg" x="466" y="125" width="210" height="138" rx="3" fill="#1e1410" fill-opacity="0.82" stroke="#f4845f" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="466" y="125" width="210" height="3" fill="#f4845f"/>
+  <text x="480" y="145" font-family="JetBrains Mono" font-size="9" fill="#f4845f" letter-spacing="2">03 · PRESET #4</text>
+  <text x="662" y="145" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.7">NARRATIVE</text>
+  <text x="480" y="184" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#f4845f" opacity="0.08" class="card-num">03</text>
+  <text x="480" y="200" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">冰山</text>
+  <text x="480" y="220" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">iceberg</text>
+  <text x="480" y="250" font-family="JetBrains Mono" font-size="8" fill="#8a8578">可见 vs 隐藏 · 20/80</text>
+</g></a>
+
+<a href="04-bridge.html"><g class="card" data-i="3">
+  <rect class="card-bg" x="684" y="125" width="210" height="138" rx="3" fill="#1e1410" fill-opacity="0.82" stroke="#f4845f" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="684" y="125" width="210" height="3" fill="#f4845f"/>
+  <text x="698" y="145" font-family="JetBrains Mono" font-size="9" fill="#f4845f" letter-spacing="2">04 · PRESET #5</text>
+  <text x="880" y="145" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.7">NARRATIVE</text>
+  <text x="698" y="184" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#f4845f" opacity="0.08" class="card-num">04</text>
+  <text x="698" y="200" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">转型之桥</text>
+  <text x="698" y="220" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">bridge</text>
+  <text x="698" y="250" font-family="JetBrains Mono" font-size="8" fill="#8a8578">Before/After · 3 石头</text>
+</g></a>
+
+<a href="05-radar-chart.html"><g class="card" data-i="4">
+  <rect class="card-bg" x="902" y="125" width="210" height="138" rx="3" fill="#18121e" fill-opacity="0.82" stroke="#bb8fce" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="902" y="125" width="210" height="3" fill="#bb8fce"/>
+  <text x="916" y="145" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" letter-spacing="2">05 · PRESET #6</text>
+  <text x="1098" y="145" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.7">COMPARE</text>
+  <text x="916" y="184" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#bb8fce" opacity="0.08" class="card-num">05</text>
+  <text x="916" y="200" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">雷达图</text>
+  <text x="916" y="220" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">radar-chart</text>
+  <text x="916" y="250" font-family="JetBrains Mono" font-size="8" fill="#8a8578">多维能力 · 6 轴 · 30° sweep</text>
+</g></a>
+
+<a href="06-dashboard.html"><g class="card" data-i="5">
+  <rect class="card-bg" x="1120" y="125" width="210" height="138" rx="3" fill="#1a1410" fill-opacity="0.82" stroke="#c4a35a" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="1120" y="125" width="210" height="3" fill="#c4a35a"/>
+  <text x="1134" y="145" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="2">06 · PRESET #14</text>
+  <text x="1316" y="145" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7">DATA</text>
+  <text x="1134" y="184" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#c4a35a" opacity="0.08" class="card-num">06</text>
+  <text x="1134" y="200" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">仪表盘</text>
+  <text x="1134" y="220" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">dashboard</text>
+  <text x="1134" y="250" font-family="JetBrains Mono" font-size="8" fill="#8a8578">KPI + 图表 · 实时监控</text>
+</g></a>
+
+<!-- ROW 1 · y=271-409 -->
+<a href="07-bento-grid-dense.html"><g class="card" data-i="6">
+  <rect class="card-bg" x="30" y="271" width="210" height="138" rx="3" fill="#1a1410" fill-opacity="0.82" stroke="#c4a35a" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="30" y="271" width="210" height="3" fill="#c4a35a"/>
+  <text x="44" y="291" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="2">07 · PRESET #1</text>
+  <text x="226" y="291" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7">DATA</text>
+  <text x="44" y="330" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#c4a35a" opacity="0.08" class="card-num">07</text>
+  <text x="44" y="346" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">格子仪表盘</text>
+  <text x="44" y="366" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">bento-grid-dense</text>
+  <text x="44" y="396" font-family="JetBrains Mono" font-size="8" fill="#8a8578">3×3 KPI · 部门对比</text>
+</g></a>
+
+<a href="08-comparison-matrix-dense.html"><g class="card" data-i="7">
+  <rect class="card-bg" x="248" y="271" width="210" height="138" rx="3" fill="#18121e" fill-opacity="0.82" stroke="#bb8fce" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="248" y="271" width="210" height="3" fill="#bb8fce"/>
+  <text x="262" y="291" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" letter-spacing="2">08 · PRESET #9</text>
+  <text x="444" y="291" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.7">COMPARE</text>
+  <text x="262" y="330" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#bb8fce" opacity="0.08" class="card-num">08</text>
+  <text x="262" y="346" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">多维矩阵</text>
+  <text x="262" y="366" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">comparison-matrix</text>
+  <text x="262" y="396" font-family="JetBrains Mono" font-size="8" fill="#8a8578">N 产品 × M 维度</text>
+</g></a>
+
+<a href="09-circular-flow.html"><g class="card" data-i="8">
+  <rect class="card-bg" x="466" y="271" width="210" height="138" rx="3" fill="#10161e" fill-opacity="0.82" stroke="#5dade2" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="466" y="271" width="210" height="3" fill="#5dade2"/>
+  <text x="480" y="291" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="2">09 · PRESET #10</text>
+  <text x="662" y="291" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.7">FLOW</text>
+  <text x="480" y="330" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#5dade2" opacity="0.08" class="card-num">09</text>
+  <text x="480" y="346" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">循环流程</text>
+  <text x="480" y="366" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">circular-flow</text>
+  <text x="480" y="396" font-family="JetBrains Mono" font-size="8" fill="#8a8578">闭环 · 生命周期 · 粒子流</text>
+</g></a>
+
+<a href="10-hierarchical-layers.html"><g class="card" data-i="9">
+  <rect class="card-bg" x="684" y="271" width="210" height="138" rx="3" fill="#0f1e12" fill-opacity="0.82" stroke="#3daa5a" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="684" y="271" width="210" height="3" fill="#3daa5a"/>
+  <text x="698" y="291" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="2">10 · PRESET #11</text>
+  <text x="880" y="291" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.7">HIERARCHY</text>
+  <text x="698" y="330" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#3daa5a" opacity="0.08" class="card-num">10</text>
+  <text x="698" y="346" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">层级堆叠</text>
+  <text x="698" y="366" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">hierarchical-layers</text>
+  <text x="698" y="396" font-family="JetBrains Mono" font-size="8" fill="#8a8578">技术栈 · 协议栈</text>
+</g></a>
+
+<a href="11-linear-progression.html"><g class="card" data-i="10">
+  <rect class="card-bg" x="902" y="271" width="210" height="138" rx="3" fill="#10161e" fill-opacity="0.82" stroke="#5dade2" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="902" y="271" width="210" height="3" fill="#5dade2"/>
+  <text x="916" y="291" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="2">11 · PRESET #13</text>
+  <text x="1098" y="291" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.7">FLOW</text>
+  <text x="916" y="330" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#5dade2" opacity="0.08" class="card-num">11</text>
+  <text x="916" y="346" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">线性进程</text>
+  <text x="916" y="366" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">linear-progression</text>
+  <text x="916" y="396" font-family="JetBrains Mono" font-size="8" fill="#8a8578">时间线 · 里程碑</text>
+</g></a>
+
+<a href="12-swot-analysis.html"><g class="card" data-i="11">
+  <rect class="card-bg" x="1120" y="271" width="210" height="138" rx="3" fill="#18121e" fill-opacity="0.82" stroke="#bb8fce" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="1120" y="271" width="210" height="3" fill="#bb8fce"/>
+  <text x="1134" y="291" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" letter-spacing="2">12 · PRESET #20</text>
+  <text x="1316" y="291" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.7">COMPARE</text>
+  <text x="1134" y="330" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#bb8fce" opacity="0.08" class="card-num">12</text>
+  <text x="1134" y="346" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">SWOT 分析</text>
+  <text x="1134" y="366" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">swot-analysis</text>
+  <text x="1134" y="396" font-family="JetBrains Mono" font-size="8" fill="#8a8578">优/劣/机/威 四象限</text>
+</g></a>
+
+<!-- ROW 2 · y=417-555 -->
+<a href="13-venn-diagram.html"><g class="card" data-i="12">
+  <rect class="card-bg" x="30" y="417" width="210" height="138" rx="3" fill="#18121e" fill-opacity="0.82" stroke="#bb8fce" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="30" y="417" width="210" height="3" fill="#bb8fce"/>
+  <text x="44" y="437" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" letter-spacing="2">13 · PRESET #16</text>
+  <text x="226" y="437" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.7">COMPARE</text>
+  <text x="44" y="476" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#bb8fce" opacity="0.08" class="card-num">13</text>
+  <text x="44" y="492" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">维恩图</text>
+  <text x="44" y="512" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">venn-diagram</text>
+  <text x="44" y="542" font-family="JetBrains Mono" font-size="8" fill="#8a8578">交集 · 共同点</text>
+</g></a>
+
+<a href="14-tree-branching.html"><g class="card" data-i="13">
+  <rect class="card-bg" x="248" y="417" width="210" height="138" rx="3" fill="#0f1e12" fill-opacity="0.82" stroke="#3daa5a" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="248" y="417" width="210" height="3" fill="#3daa5a"/>
+  <text x="262" y="437" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="2">14 · PRESET #12</text>
+  <text x="444" y="437" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.7">HIERARCHY</text>
+  <text x="262" y="476" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#3daa5a" opacity="0.08" class="card-num">14</text>
+  <text x="262" y="492" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">树状分支</text>
+  <text x="262" y="512" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">tree-branching</text>
+  <text x="262" y="542" font-family="JetBrains Mono" font-size="8" fill="#8a8578">组织架构 · 决策树</text>
+</g></a>
+
+<a href="15-winding-roadmap.html"><g class="card" data-i="14">
+  <rect class="card-bg" x="466" y="417" width="210" height="138" rx="3" fill="#10161e" fill-opacity="0.82" stroke="#5dade2" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="466" y="417" width="210" height="3" fill="#5dade2"/>
+  <text x="480" y="437" font-family="JetBrains Mono" font-size="9" fill="#5dade2" letter-spacing="2">15 · PRESET #18</text>
+  <text x="662" y="437" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.7">FLOW</text>
+  <text x="480" y="476" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#5dade2" opacity="0.08" class="card-num">15</text>
+  <text x="480" y="492" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">蜿蜒路线</text>
+  <text x="480" y="512" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">winding-roadmap</text>
+  <text x="480" y="542" font-family="JetBrains Mono" font-size="8" fill="#8a8578">S 曲线 · 6 里程碑</text>
+</g></a>
+
+<a href="16-story-mountain.html"><g class="card" data-i="15">
+  <rect class="card-bg" x="684" y="417" width="210" height="138" rx="3" fill="#1e1410" fill-opacity="0.82" stroke="#f4845f" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="684" y="417" width="210" height="3" fill="#f4845f"/>
+  <text x="698" y="437" font-family="JetBrains Mono" font-size="9" fill="#f4845f" letter-spacing="2">16 · PRESET #19</text>
+  <text x="880" y="437" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.7">NARRATIVE</text>
+  <text x="698" y="476" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#f4845f" opacity="0.08" class="card-num">16</text>
+  <text x="698" y="492" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">故事山</text>
+  <text x="698" y="512" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">story-mountain</text>
+  <text x="698" y="542" font-family="JetBrains Mono" font-size="8" fill="#8a8578">5 幕弧线 · 起承转合</text>
+</g></a>
+
+<a href="17-structural-breakdown.html"><g class="card" data-i="16">
+  <rect class="card-bg" x="902" y="417" width="210" height="138" rx="3" fill="#0f1e12" fill-opacity="0.82" stroke="#3daa5a" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="902" y="417" width="210" height="3" fill="#3daa5a"/>
+  <text x="916" y="437" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" letter-spacing="2">17 · PRESET #22</text>
+  <text x="1098" y="437" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#3daa5a" opacity="0.7">HIERARCHY</text>
+  <text x="916" y="476" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#3daa5a" opacity="0.08" class="card-num">17</text>
+  <text x="916" y="492" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">结构拆解</text>
+  <text x="916" y="512" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">structural-breakdown</text>
+  <text x="916" y="542" font-family="JetBrains Mono" font-size="8" fill="#8a8578">中心 × 8 放射模块</text>
+</g></a>
+
+<a href="18-dense-modules.html"><g class="card" data-i="17">
+  <rect class="card-bg" x="1120" y="417" width="210" height="138" rx="3" fill="#1a1410" fill-opacity="0.82" stroke="#c4a35a" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="1120" y="417" width="210" height="3" fill="#c4a35a"/>
+  <text x="1134" y="437" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="2">18 · PRESET #21</text>
+  <text x="1316" y="437" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7">DATA</text>
+  <text x="1134" y="476" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#c4a35a" opacity="0.08" class="card-num">18</text>
+  <text x="1134" y="492" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">密集模块</text>
+  <text x="1134" y="512" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">dense-modules</text>
+  <text x="1134" y="542" font-family="JetBrains Mono" font-size="8" fill="#8a8578">蓝图 · 16 模块 · 4 层</text>
+</g></a>
+
+<!-- ROW 3 · y=563-701 -->
+<a href="19-periodic-table.html"><g class="card" data-i="18">
+  <rect class="card-bg" x="30" y="563" width="210" height="138" rx="3" fill="#1a1410" fill-opacity="0.82" stroke="#c4a35a" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="30" y="563" width="210" height="3" fill="#c4a35a"/>
+  <text x="44" y="583" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" letter-spacing="2">19 · PRESET #15</text>
+  <text x="226" y="583" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7">DATA</text>
+  <text x="44" y="622" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#c4a35a" opacity="0.08" class="card-num">19</text>
+  <text x="44" y="638" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">周期表</text>
+  <text x="44" y="658" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">periodic-table</text>
+  <text x="44" y="688" font-family="JetBrains Mono" font-size="8" fill="#8a8578">24 元素 · 8 分类</text>
+</g></a>
+
+<a href="20-comparison-table.html"><g class="card" data-i="19">
+  <rect class="card-bg" x="248" y="563" width="210" height="138" rx="3" fill="#18121e" fill-opacity="0.82" stroke="#bb8fce" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="248" y="563" width="210" height="3" fill="#bb8fce"/>
+  <text x="262" y="583" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" letter-spacing="2">20 · PRESET #7</text>
+  <text x="444" y="583" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.7">COMPARE</text>
+  <text x="262" y="622" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#bb8fce" opacity="0.08" class="card-num">20</text>
+  <text x="262" y="638" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">对比表</text>
+  <text x="262" y="658" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">comparison-table</text>
+  <text x="262" y="688" font-family="JetBrains Mono" font-size="8" fill="#8a8578">3 列 × 8 行 · winner ★</text>
+</g></a>
+
+<a href="21-binary-comparison.html"><g class="card" data-i="20">
+  <rect class="card-bg" x="466" y="563" width="210" height="138" rx="3" fill="#18121e" fill-opacity="0.82" stroke="#bb8fce" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="466" y="563" width="210" height="3" fill="#bb8fce"/>
+  <text x="480" y="583" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" letter-spacing="2">21 · PRESET #8</text>
+  <text x="662" y="583" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.7">COMPARE</text>
+  <text x="480" y="622" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#bb8fce" opacity="0.08" class="card-num">21</text>
+  <text x="480" y="638" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">二元对比</text>
+  <text x="480" y="658" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">binary-comparison</text>
+  <text x="480" y="688" font-family="JetBrains Mono" font-size="8" fill="#8a8578">A vs B · 中央 VS</text>
+</g></a>
+
+<a href="22-jigsaw.html"><g class="card" data-i="21">
+  <rect class="card-bg" x="684" y="563" width="210" height="138" rx="3" fill="#1a0a0a" fill-opacity="0.82" stroke="#b33a3a" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="684" y="563" width="210" height="3" fill="#b33a3a"/>
+  <text x="698" y="583" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" letter-spacing="2">22 · PRESET #17</text>
+  <text x="880" y="583" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" opacity="0.7">VISUAL</text>
+  <text x="698" y="622" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#b33a3a" opacity="0.08" class="card-num">22</text>
+  <text x="698" y="638" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">拼图</text>
+  <text x="698" y="658" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">jigsaw</text>
+  <text x="698" y="688" font-family="JetBrains Mono" font-size="8" fill="#8a8578">6 块互锁 · tab/blank</text>
+</g></a>
+
+<a href="23-isometric-map.html"><g class="card" data-i="22">
+  <rect class="card-bg" x="902" y="563" width="210" height="138" rx="3" fill="#1a0a0a" fill-opacity="0.82" stroke="#b33a3a" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="902" y="563" width="210" height="3" fill="#b33a3a"/>
+  <text x="916" y="583" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" letter-spacing="2">23 · PRESET #23</text>
+  <text x="1098" y="583" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" opacity="0.7">VISUAL</text>
+  <text x="916" y="622" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#b33a3a" opacity="0.08" class="card-num">23</text>
+  <text x="916" y="638" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">等距地图</text>
+  <text x="916" y="658" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">isometric-map</text>
+  <text x="916" y="688" font-family="JetBrains Mono" font-size="8" fill="#8a8578">30° 投影 · 5 节点</text>
+</g></a>
+
+<a href="24-comic-strip.html"><g class="card" data-i="23">
+  <rect class="card-bg" x="1120" y="563" width="210" height="138" rx="3" fill="#1a0a0a" fill-opacity="0.82" stroke="#b33a3a" stroke-width="0.8" stroke-opacity="0.7"/>
+  <rect x="1120" y="563" width="210" height="3" fill="#b33a3a"/>
+  <text x="1134" y="583" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" letter-spacing="2">24 · PRESET #24</text>
+  <text x="1316" y="583" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" opacity="0.7">VISUAL</text>
+  <text x="1134" y="622" font-family="Noto Serif SC" font-size="56" font-weight="900" fill="#b33a3a" opacity="0.08" class="card-num">24</text>
+  <text x="1134" y="638" font-family="Noto Serif SC" font-size="16" font-weight="700" fill="#e8e4df">漫画格</text>
+  <text x="1134" y="658" font-family="Space Grotesk" font-size="11" fill="#c4bdb4" letter-spacing="1">comic-strip</text>
+  <text x="1134" y="688" font-family="JetBrains Mono" font-size="8" fill="#8a8578">6 格 · 时间戳 · action</text>
+</g></a>
+
+<!-- Footer strip -->
+<g id="footerSum" opacity="0">
+  <line x1="30" y1="720" x2="1370" y2="720" stroke="#c4a35a" stroke-width="0.3" opacity="0.3"/>
+  <text x="30" y="742" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="2">24 / 24 STRUCTURES · ASYRE DARK GOLD · 硬规则 0-10 · GSAP · ZERO DEPS</text>
+  <text x="1370" y="742" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.7" letter-spacing="2">CLICK ANY TILE · OR open 25-index.html ← this</text>
+</g>
+
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-INDEX-25 / REV.A — IMPECCABLE · GALLERY</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">v2-impeccable · 2026-04</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+  tl.to('#catLegend', { opacity: 1, duration: 0.5 }, 0.8);
+
+  // Cards ripple in from top-left
+  tl.fromTo('.card', { opacity: 0, scale: 0.85, transformOrigin: 'center' }, {
+    opacity: 1, scale: 1,
+    duration: 0.4,
+    stagger: { each: 0.03, from: 'start' },
+    ease: 'back.out(1.6)'
+  }, 1.1);
+
+  // Footer
+  tl.to('#footerSum', { opacity: 1, duration: 0.5 }, 2.2);
+
+  // ============ PERPETUAL: Card border subtle breath, cycling through category groups ============
+  gsap.to('.card rect:first-child', {
+    strokeOpacity: 1,
+    duration: 3.4,
+    repeat: -1, yoyo: true, ease: 'sine.inOut',
+    stagger: { each: 0.06, from: 'random' },
+    delay: 3
+  });
+
+  // ============ PERPETUAL: big ghost number behind card at subtle opacity cycle ============
+  gsap.to('.card-num', {
+    opacity: 0.2,
+    duration: 4,
+    repeat: -1, yoyo: true, ease: 'sine.inOut',
+    stagger: { each: 0.08, from: 'random' },
+    delay: 3.2
+  });
+})();
+</script></body></html>

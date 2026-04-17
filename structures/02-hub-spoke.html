@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>02 · Hub-Spoke — AI Platform Ecosystem</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <radialGradient id="hubGrad"><stop offset="0%" stop-color="#c4a35a" stop-opacity="0.5"/><stop offset="100%" stop-color="#c4a35a" stop-opacity="0"/></radialGradient>
+  <radialGradient id="rippleGrad"><stop offset="0%" stop-color="#c4a35a" stop-opacity="0"/><stop offset="70%" stop-color="#c4a35a" stop-opacity="0.3"/><stop offset="100%" stop-color="#c4a35a" stop-opacity="0"/></radialGradient>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">02</text>
+</g>
+
+<!-- Title -->
+<text id="title" x="700" y="50" text-anchor="middle" font-family="Space Grotesk" font-size="28" font-weight="700" fill="#c4a35a" opacity="0">AI Platform Ecosystem</text>
+<text id="subtitle" x="700" y="76" text-anchor="middle" font-family="Noto Serif SC" font-size="14" fill="#e8e4df" opacity="0" letter-spacing="4">Asyre AI 平台生态 · Hub &amp; Spoke 架构</text>
+
+<!-- ============ HUB RIPPLES (perpetual, behind everything) — r matches hub r=80 ============ -->
+<g id="ripples" style="pointer-events:none">
+  <circle class="ripple" cx="700" cy="400" r="80" fill="none" stroke="#c4a35a" stroke-width="1" opacity="0"/>
+  <circle class="ripple" cx="700" cy="400" r="80" fill="none" stroke="#c4a35a" stroke-width="1" opacity="0"/>
+  <circle class="ripple" cx="700" cy="400" r="80" fill="none" stroke="#c4a35a" stroke-width="1" opacity="0"/>
+</g>
+
+<!-- ============ CONNECTION LINES (hard rule: hub edge → rect edge, never through center) ============
+     Hub center (700,400) r=80. Nodes at radius 230, angles -90, -30, 30, 90, 150, 210.
+     Node rects 180×70 centered on node. Line endpoints computed via trigonometry —
+     stops at nearest rect side where line enters.
+     Hub-side start points: (Cx + R·cos θ, Cy + R·sin θ) with R=80. -->
+<g id="connections" style="pointer-events:none">
+  <line class="connLine" data-i="0" x1="700" y1="320" x2="700" y2="205" stroke="#c4a35a" stroke-width="1.2" opacity="0" stroke-dasharray="200" stroke-dashoffset="200"/>
+  <line class="connLine" data-i="1" x1="769" y1="360" x2="838" y2="320" stroke="#c4a35a" stroke-width="1.2" opacity="0" stroke-dasharray="200" stroke-dashoffset="200"/>
+  <line class="connLine" data-i="2" x1="769" y1="440" x2="838" y2="480" stroke="#c4a35a" stroke-width="1.2" opacity="0" stroke-dasharray="200" stroke-dashoffset="200"/>
+  <line class="connLine" data-i="3" x1="700" y1="480" x2="700" y2="595" stroke="#c4a35a" stroke-width="1.2" opacity="0" stroke-dasharray="200" stroke-dashoffset="200"/>
+  <line class="connLine" data-i="4" x1="631" y1="440" x2="562" y2="480" stroke="#c4a35a" stroke-width="1.2" opacity="0" stroke-dasharray="200" stroke-dashoffset="200"/>
+  <line class="connLine" data-i="5" x1="631" y1="360" x2="562" y2="320" stroke="#c4a35a" stroke-width="1.2" opacity="0" stroke-dasharray="200" stroke-dashoffset="200"/>
+</g>
+
+<!-- Junction dots at connection endpoints (small golden markers) — hub-side 6 + node-side 6 -->
+<g id="junctions">
+  <circle class="jDot" cx="700" cy="320" r="3" fill="#c4a35a" opacity="0"/>
+  <circle class="jDot" cx="769" cy="360" r="3" fill="#c4a35a" opacity="0"/>
+  <circle class="jDot" cx="769" cy="440" r="3" fill="#c4a35a" opacity="0"/>
+  <circle class="jDot" cx="700" cy="480" r="3" fill="#c4a35a" opacity="0"/>
+  <circle class="jDot" cx="631" cy="440" r="3" fill="#c4a35a" opacity="0"/>
+  <circle class="jDot" cx="631" cy="360" r="3" fill="#c4a35a" opacity="0"/>
+  <circle class="jDot" cx="700" cy="205" r="3" fill="#c4a35a" opacity="0"/>
+  <circle class="jDot" cx="838" cy="320" r="3" fill="#c4a35a" opacity="0"/>
+  <circle class="jDot" cx="838" cy="480" r="3" fill="#c4a35a" opacity="0"/>
+  <circle class="jDot" cx="700" cy="595" r="3" fill="#c4a35a" opacity="0"/>
+  <circle class="jDot" cx="562" cy="480" r="3" fill="#c4a35a" opacity="0"/>
+  <circle class="jDot" cx="562" cy="320" r="3" fill="#c4a35a" opacity="0"/>
+</g>
+
+<!-- Data packets (perpetual flow) — populated via JS, one pool per line -->
+<g id="packets" style="pointer-events:none"></g>
+
+<!-- ============ CENTRAL HUB (r=80, scaled for readable 3-line content) ============ -->
+<circle id="hubGlow" cx="700" cy="400" r="100" fill="url(#hubGrad)" opacity="0"/>
+<g id="hub" opacity="0">
+  <circle id="hubRingOuter" cx="700" cy="400" r="94" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.4" stroke-dasharray="2,5"/>
+  <circle cx="700" cy="400" r="80" fill="#0a0a0b" stroke="#c4a35a" stroke-width="2.4" filter="url(#glow)"/>
+  <text x="700" y="386" text-anchor="middle" font-family="Space Grotesk" font-size="17" font-weight="700" fill="#c4a35a">ASYRE AI</text>
+  <text x="700" y="412" text-anchor="middle" font-family="Noto Serif SC" font-size="13" font-weight="600" fill="#e8e4df">平台</text>
+  <text x="700" y="438" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#8a8578">12 APIs · 99.9% SLA</text>
+</g>
+
+<!-- ============ 6 SPOKE NODES ============ -->
+<!-- Node 0: NLP (top, center 700,170) -->
+<g class="spokeNode" data-i="0" opacity="0">
+  <rect x="610" y="135" width="180" height="70" rx="3" fill="#0a0a0b" fill-opacity="0.9" stroke="#c4a35a" stroke-width="1.4" class="nodeBorder"/>
+  <rect x="610" y="135" width="180" height="3" fill="#c4a35a"/>
+  <text x="700" y="158" text-anchor="middle" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#c4a35a">NLP · 自然语言</text>
+  <text x="700" y="176" text-anchor="middle" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">意图识别 · 对话管理</text>
+  <text x="700" y="194" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">accuracy <tspan id="cnt_nlp">0</tspan>%</text>
+</g>
+<!-- Node 1: Vision (NE, center 899,285) -->
+<g class="spokeNode" data-i="1" opacity="0">
+  <rect x="809" y="250" width="180" height="70" rx="3" fill="#0a0a0b" fill-opacity="0.9" stroke="#c4a35a" stroke-width="1.4" class="nodeBorder"/>
+  <rect x="809" y="250" width="180" height="3" fill="#c4a35a"/>
+  <text x="899" y="273" text-anchor="middle" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#c4a35a">Vision · 视觉识别</text>
+  <text x="899" y="291" text-anchor="middle" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">OCR · 物体检测</text>
+  <text x="899" y="309" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">mAP <tspan id="cnt_vis">0</tspan>%</text>
+</g>
+<!-- Node 2: Agent (SE, center 899,515) -->
+<g class="spokeNode" data-i="2" opacity="0">
+  <rect x="809" y="480" width="180" height="70" rx="3" fill="#0a0a0b" fill-opacity="0.9" stroke="#c4a35a" stroke-width="1.4" class="nodeBorder"/>
+  <rect x="809" y="480" width="180" height="3" fill="#c4a35a"/>
+  <text x="899" y="503" text-anchor="middle" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#c4a35a">Agent · 智能体</text>
+  <text x="899" y="521" text-anchor="middle" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">任务编排 · 工具调用</text>
+  <text x="899" y="539" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">tasks/day <tspan id="cnt_agent">0</tspan>K</text>
+</g>
+<!-- Node 3: Deploy (south, center 700,630) -->
+<g class="spokeNode" data-i="3" opacity="0">
+  <rect x="610" y="595" width="180" height="70" rx="3" fill="#0a0a0b" fill-opacity="0.9" stroke="#c4a35a" stroke-width="1.4" class="nodeBorder"/>
+  <rect x="610" y="595" width="180" height="3" fill="#c4a35a"/>
+  <text x="700" y="618" text-anchor="middle" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#c4a35a">Deploy · 部署引擎</text>
+  <text x="700" y="636" text-anchor="middle" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">GPU 编排 · 自动扩缩</text>
+  <text x="700" y="654" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">latency <tspan id="cnt_dep">0</tspan>ms</text>
+</g>
+<!-- Node 4: Data (SW, center 501,515) -->
+<g class="spokeNode" data-i="4" opacity="0">
+  <rect x="411" y="480" width="180" height="70" rx="3" fill="#0a0a0b" fill-opacity="0.9" stroke="#c4a35a" stroke-width="1.4" class="nodeBorder"/>
+  <rect x="411" y="480" width="180" height="3" fill="#c4a35a"/>
+  <text x="501" y="503" text-anchor="middle" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#c4a35a">Data · 数据管道</text>
+  <text x="501" y="521" text-anchor="middle" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">ETL · 向量化 · 索引</text>
+  <text x="501" y="539" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">docs <tspan id="cnt_data">0</tspan>M</text>
+</g>
+<!-- Node 5: Speech (NW, center 501,285) -->
+<g class="spokeNode" data-i="5" opacity="0">
+  <rect x="411" y="250" width="180" height="70" rx="3" fill="#0a0a0b" fill-opacity="0.9" stroke="#c4a35a" stroke-width="1.4" class="nodeBorder"/>
+  <rect x="411" y="250" width="180" height="3" fill="#c4a35a"/>
+  <text x="501" y="273" text-anchor="middle" font-family="Space Grotesk" font-size="13" font-weight="700" fill="#c4a35a">Speech · 语音</text>
+  <text x="501" y="291" text-anchor="middle" font-family="Noto Serif SC" font-size="10" fill="#e8e4df">ASR · TTS · 声纹</text>
+  <text x="501" y="309" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4a35a">WER <tspan id="cnt_sp">0</tspan>%</text>
+</g>
+
+<!-- ============ KPI STRIP (bottom) ============ -->
+<g id="kpiStrip" opacity="0" transform="translate(120, 700)">
+  <line x1="0" y1="-10" x2="1160" y2="-10" stroke="#c4a35a" stroke-width="0.4" opacity="0.3"/>
+  <text x="0" y="-16" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7" letter-spacing="2">ECOSYSTEM KPI</text>
+  <text x="1160" y="-16" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.7" letter-spacing="2">↗ LIVE</text>
+
+  <g transform="translate(0, 10)">
+    <text x="0" y="12" font-family="JetBrains Mono" font-size="10" fill="#8a8578">MAU</text>
+    <text x="0" y="32" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#c4a35a"><tspan id="kpi_mau">0</tspan>M</text>
+  </g>
+  <g transform="translate(230, 10)">
+    <text x="0" y="12" font-family="JetBrains Mono" font-size="10" fill="#8a8578">Requests/s</text>
+    <text x="0" y="32" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#c4a35a"><tspan id="kpi_req">0</tspan>K</text>
+  </g>
+  <g transform="translate(460, 10)">
+    <text x="0" y="12" font-family="JetBrains Mono" font-size="10" fill="#8a8578">Models</text>
+    <text x="0" y="32" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#c4a35a"><tspan id="kpi_mod">0</tspan></text>
+  </g>
+  <g transform="translate(690, 10)">
+    <text x="0" y="12" font-family="JetBrains Mono" font-size="10" fill="#8a8578">Developers</text>
+    <text x="0" y="32" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#c4a35a"><tspan id="kpi_dev">0</tspan>K</text>
+  </g>
+  <g transform="translate(920, 10)">
+    <text x="0" y="12" font-family="JetBrains Mono" font-size="10" fill="#8a8578">Uptime</text>
+    <text x="0" y="32" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#3daa5a"><tspan id="kpi_up">0</tspan>%</text>
+  </g>
+</g>
+
+<!-- Corner stamps -->
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-HUBSP-02 / REV.B — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">ASYRE PLATFORM</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  const ns = 'http://www.w3.org/2000/svg';
+
+  // ============ PERPETUAL: Corner ring ============
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  // ============ PERPETUAL: Hub outer dashed ring rotate ============
+  // svgOrigin (SVG user-space) not transformOrigin — see STRUCTURE_PRESETS §硬规则 5
+  gsap.to('#hubRingOuter', { rotation: 360, duration: 40, repeat: -1, ease: 'none', svgOrigin: '700 400' });
+
+  // ============ PERPETUAL: Hub glow breath ============
+  gsap.to('#hubGlow', { opacity: 0.6, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.8 });
+
+  // ============ PERPETUAL: Ripples emanating from hub (r: 80 → 280) ============
+  gsap.utils.toArray('.ripple').forEach((r, i) => {
+    gsap.fromTo(r,
+      { attr: { r: 80 }, opacity: 0 },
+      {
+        attr: { r: 280 }, opacity: 0,
+        keyframes: { opacity: [0, 0.4, 0] },
+        duration: 3.6, repeat: -1, ease: 'power1.out',
+        delay: 2.4 + i * 1.2
+      });
+  });
+
+  // ============ ENTRANCE TIMELINE ============
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+  tl.to('#title', { opacity: 1, duration: 0.7 })
+    .to('#subtitle', { opacity: 1, duration: 0.5 }, '-=0.35');
+
+  // Hub appears first (scale in)
+  tl.fromTo('#hub', { opacity: 0, scale: 0.4, transformOrigin: '700px 400px' }, { opacity: 1, scale: 1, duration: 0.7, ease: 'back.out(2)' }, 0.9);
+
+  // Connection lines draw from hub → node (stroke-dashoffset)
+  tl.to('.connLine', { opacity: 1, strokeDashoffset: 0, duration: 0.6, stagger: 0.08, ease: 'power2.out' }, 1.3);
+
+  // Junction dots pop in
+  tl.to('.jDot', { opacity: 0.9, duration: 0.3, stagger: 0.04 }, 1.6);
+
+  // Spoke nodes scale-in from hub
+  const nodeCenters = [[700,170],[899,285],[899,515],[700,630],[501,515],[501,285]];
+  gsap.utils.toArray('.spokeNode').forEach((node, i) => {
+    const [cx, cy] = nodeCenters[i];
+    tl.fromTo(node,
+      { opacity: 0, scale: 0.5, transformOrigin: `${cx}px ${cy}px` },
+      { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' },
+      1.8 + i * 0.08);
+  });
+
+  // Counters
+  const counters = [
+    { sel: '#cnt_nlp', target: 96, decimals: 0, delay: 2.2 },
+    { sel: '#cnt_vis', target: 92, decimals: 0, delay: 2.3 },
+    { sel: '#cnt_agent', target: 840, decimals: 0, delay: 2.4 },
+    { sel: '#cnt_dep', target: 38, decimals: 0, delay: 2.5 },
+    { sel: '#cnt_data', target: 12.6, decimals: 1, delay: 2.6 },
+    { sel: '#cnt_sp', target: 3.2, decimals: 1, delay: 2.7 },
+    { sel: '#kpi_mau', target: 2.8, decimals: 1, delay: 2.8 },
+    { sel: '#kpi_req', target: 18.4, decimals: 1, delay: 2.9 },
+    { sel: '#kpi_mod', target: 42, decimals: 0, delay: 3.0 },
+    { sel: '#kpi_dev', target: 120, decimals: 0, delay: 3.1 },
+    { sel: '#kpi_up', target: 99.97, decimals: 2, delay: 3.2 }
+  ];
+  counters.forEach(c => {
+    const el = document.querySelector(c.sel);
+    if (!el) return;
+    gsap.to({ v: 0 }, {
+      v: c.target, duration: 1.1, delay: c.delay, ease: 'power2.out',
+      onUpdate: function () {
+        const v = this.targets()[0].v;
+        el.textContent = c.decimals ? v.toFixed(c.decimals) : Math.round(v).toLocaleString();
+      }
+    });
+  });
+
+  // KPI strip
+  tl.to('#kpiStrip', { opacity: 1, duration: 0.6 }, 2.6);
+
+  // ============ PERPETUAL: Node border breathing ============
+  gsap.to('.nodeBorder', {
+    strokeOpacity: 0.55, strokeWidth: 2, duration: 2.2, repeat: -1, yoyo: true,
+    ease: 'sine.inOut', stagger: 0.15, delay: 3.2
+  });
+
+  // ============ PERPETUAL: Data packets flowing along connection lines ============
+  // 6 lines defined as [startX, startY, endX, endY]
+  const lines = [
+    [700,320, 700,205],
+    [769,360, 838,320],
+    [769,440, 838,480],
+    [700,480, 700,595],
+    [631,440, 562,480],
+    [631,360, 562,320]
+  ];
+  const pg = document.getElementById('packets');
+  const packets = [];
+  // 2 packets per line, offset in phase. Each alternates hub→node / node→hub.
+  lines.forEach((ln, idx) => {
+    for (let j = 0; j < 2; j++) {
+      const c = document.createElementNS(ns, 'circle');
+      c.setAttribute('r', 2.2);
+      c.setAttribute('fill', '#c4a35a');
+      c.setAttribute('opacity', 0);
+      c.setAttribute('filter', 'url(#glow)');
+      pg.appendChild(c);
+      packets.push({ el: c, line: ln, phase: (idx * 0.18 + j * 0.5) % 1, speed: 0.0035 + Math.random() * 0.002, dir: j === 0 ? 1 : -1 });
+    }
+  });
+  function packetTick() {
+    packets.forEach(p => {
+      p.phase = (p.phase + p.speed) % 1;
+      const t = p.dir > 0 ? p.phase : 1 - p.phase;
+      const x = p.line[0] + (p.line[2] - p.line[0]) * t;
+      const y = p.line[1] + (p.line[3] - p.line[1]) * t;
+      p.el.setAttribute('cx', x);
+      p.el.setAttribute('cy', y);
+      // Fade in-out near ends
+      const d = Math.min(p.phase, 1 - p.phase) * 2;
+      p.el.setAttribute('opacity', Math.min(d * 1.4, 0.9));
+    });
+    requestAnimationFrame(packetTick);
+  }
+  // Start after entrance completes
+  setTimeout(packetTick, 2500);
+
+  // ============ PERPETUAL: Junction dot blink ============
+  gsap.to('.jDot', {
+    opacity: 0.4, duration: 1.3, repeat: -1, yoyo: true, ease: 'sine.inOut',
+    stagger: 0.07, delay: 3.5
+  });
+
+  // ============ PERPETUAL: Connection line subtle pulse ============
+  gsap.to('.connLine', {
+    strokeOpacity: 0.5, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut',
+    stagger: 0.1, delay: 3.8
+  });
+})();
+</script></body></html>

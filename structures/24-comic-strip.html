@@ -1,0 +1,272 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>24 · Comic Strip — Agent 一天</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wrap{width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap svg{width:100%;height:100%;max-width:100vw;max-height:100vh;object-fit:contain}
+</style></head><body><div class="wrap"><svg id="svg" viewBox="0 0 1400 788" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="gridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c4a35a" stroke-width="0.15" opacity="0.2"/>
+  </pattern>
+  <pattern id="gridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+    <rect width="100" height="100" fill="url(#gridSmall)"/>
+    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.25"/>
+  </pattern>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<rect width="1400" height="788" fill="#0a0a0b"/>
+<rect width="1400" height="788" fill="url(#gridLarge)"/>
+
+<text x="30" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="#c4a35a" opacity="0.35" letter-spacing="2">IMPECCABLE · v2</text>
+<g id="cornerRing" transform="translate(1340, 40)">
+  <circle r="22" fill="none" stroke="#c4a35a" stroke-width="0.6" opacity="0.3"/>
+  <circle id="ringInner" r="16" fill="none" stroke="#c4a35a" stroke-width="0.4" opacity="0.35" stroke-dasharray="3,4"/>
+  <circle r="9" fill="#c4a35a" opacity="0.08"/>
+  <text y="4" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.6">24</text>
+</g>
+
+<!-- Header -->
+<text x="700" y="50" text-anchor="middle" font-family="Noto Serif SC" font-size="20" font-weight="700" fill="#c4a35a" opacity="0" class="title">Agent 的一天 · 6 格漫画</text>
+<text x="700" y="72" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#e8e4df" letter-spacing="4" opacity="0" class="subtitle">09:00 WAKE · 11:00 RUN · 13:00 PANIC · 15:00 FIX · 17:00 SHIP · 21:00 WATCH</text>
+
+<!-- ============ 6 PANELS · 3×2 · each 420×300 + micro-rotation ============
+     Row 0 y=90-390, Row 1 y=410-710; Cols: 30/470/910 -->
+
+<!-- Panel 01 · 09:00 · 启动 WAKE UP · rot -0.6° -->
+<g class="panel" data-i="0" transform="translate(240, 240) rotate(-0.6) translate(-240, -240)" opacity="0">
+  <rect x="30" y="90" width="420" height="300" rx="2" fill="#0f1218" fill-opacity="0.85" stroke="#5dade2" stroke-width="1.4" stroke-dasharray="0" class="pb"/>
+  <rect x="30" y="90" width="420" height="4" fill="#5dade2"/>
+  <text x="44" y="112" font-family="JetBrains Mono" font-size="10" fill="#5dade2" letter-spacing="2">FRAME 01 · 09:00</text>
+  <text x="436" y="112" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#5dade2" opacity="0.7">MON · Q2</text>
+  <text x="44" y="142" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#e8e4df">启动 · 加载 Skills</text>
+
+  <!-- Icon: power button + pulsing ring -->
+  <g transform="translate(240, 240)">
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#5dade2" stroke-width="1.4" opacity="0.45"/>
+    <circle cx="0" cy="0" r="38" fill="none" stroke="#5dade2" stroke-width="1.6"/>
+    <path d="M 0 -22 L 0 2" stroke="#5dade2" stroke-width="3" stroke-linecap="round"/>
+    <path d="M -14 -12 A 22 22 0 1 0 14 -12" fill="none" stroke="#5dade2" stroke-width="2.6" stroke-linecap="round"/>
+    <text x="0" y="70" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#5dade2" opacity="0.7" letter-spacing="2">BOOT</text>
+  </g>
+
+  <!-- Data lines bottom -->
+  <text x="44" y="342" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· CLAUDE.md 加载 · memory 同步</text>
+  <text x="44" y="362" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 17 skills · 6 hooks · 2 MCP</text>
+
+  <!-- Action word -->
+  <text x="436" y="376" text-anchor="end" font-family="Space Grotesk" font-size="20" font-weight="800" fill="#5dade2" letter-spacing="1">READY!</text>
+</g>
+
+<!-- Panel 02 · 11:00 · 执行 RUN · rot +0.4° -->
+<g class="panel" data-i="1" transform="translate(680, 240) rotate(0.4) translate(-680, -240)" opacity="0">
+  <rect x="470" y="90" width="420" height="300" rx="2" fill="#12180e" fill-opacity="0.85" stroke="#3daa5a" stroke-width="1.4" class="pb"/>
+  <rect x="470" y="90" width="420" height="4" fill="#3daa5a"/>
+  <text x="484" y="112" font-family="JetBrains Mono" font-size="10" fill="#3daa5a" letter-spacing="2">FRAME 02 · 11:00</text>
+  <text x="876" y="112" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#3daa5a" opacity="0.7">TASK #42</text>
+  <text x="484" y="142" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#e8e4df">执行 · 流水线跑起</text>
+
+  <!-- Icon: progress bars -->
+  <g transform="translate(484, 180)">
+    <rect x="0" y="0" width="392" height="14" rx="2" fill="#0a0a0b" stroke="#3daa5a" stroke-width="0.6" stroke-opacity="0.5"/>
+    <rect x="2" y="2" width="312" height="10" rx="1" fill="#3daa5a" fill-opacity="0.85" class="pb-prog1"/>
+    <text x="320" y="10" font-family="JetBrains Mono" font-size="8" fill="#3daa5a">80%</text>
+
+    <rect x="0" y="22" width="392" height="14" rx="2" fill="#0a0a0b" stroke="#3daa5a" stroke-width="0.6" stroke-opacity="0.5"/>
+    <rect x="2" y="24" width="196" height="10" rx="1" fill="#3daa5a" fill-opacity="0.85" class="pb-prog2"/>
+    <text x="204" y="32" font-family="JetBrains Mono" font-size="8" fill="#3daa5a">50%</text>
+
+    <rect x="0" y="44" width="392" height="14" rx="2" fill="#0a0a0b" stroke="#3daa5a" stroke-width="0.6" stroke-opacity="0.5"/>
+    <rect x="2" y="46" width="94" height="10" rx="1" fill="#3daa5a" fill-opacity="0.85" class="pb-prog3"/>
+    <text x="102" y="54" font-family="JetBrains Mono" font-size="8" fill="#3daa5a">24%</text>
+  </g>
+
+  <text x="484" y="280" font-family="JetBrains Mono" font-size="9" fill="#8a8578">STEP 1 · FETCH  80%</text>
+  <text x="484" y="296" font-family="JetBrains Mono" font-size="9" fill="#8a8578">STEP 2 · PARSE  50%</text>
+  <text x="484" y="312" font-family="JetBrains Mono" font-size="9" fill="#8a8578">STEP 3 · WRITE  24%</text>
+  <text x="484" y="342" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 3 个任务并行</text>
+  <text x="484" y="362" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 1.2M tok cache hit 96%</text>
+
+  <text x="876" y="376" text-anchor="end" font-family="Space Grotesk" font-size="20" font-weight="800" fill="#3daa5a" letter-spacing="1">RUNNING!</text>
+</g>
+
+<!-- Panel 03 · 13:00 · bug! PANIC · rot -0.8° -->
+<g class="panel" data-i="2" transform="translate(1120, 240) rotate(-0.8) translate(-1120, -240)" opacity="0">
+  <rect x="910" y="90" width="420" height="300" rx="2" fill="#1a0a0a" fill-opacity="0.85" stroke="#b33a3a" stroke-width="1.4" class="pb"/>
+  <rect x="910" y="90" width="420" height="4" fill="#b33a3a"/>
+  <text x="924" y="112" font-family="JetBrains Mono" font-size="10" fill="#b33a3a" letter-spacing="2">FRAME 03 · 13:00</text>
+  <text x="1316" y="112" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#b33a3a" font-weight="700">⚠ ALERT</text>
+  <text x="924" y="142" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#e8e4df">bug! · 测试红了</text>
+
+  <!-- Icon: exclamation triangle -->
+  <g transform="translate(1120, 230)">
+    <path d="M 0,-55 L 55,40 L -55,40 Z" fill="none" stroke="#b33a3a" stroke-width="2.4"/>
+    <line x1="0" y1="-25" x2="0" y2="15" stroke="#b33a3a" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="0" cy="30" r="3" fill="#b33a3a"/>
+    <!-- Lightning bolts around -->
+    <path d="M -85 -30 L -70 -10 L -78 -10 L -68 15" stroke="#b33a3a" stroke-width="1.4" fill="none" opacity="0.6"/>
+    <path d="M 85 -30 L 70 -10 L 78 -10 L 68 15" stroke="#b33a3a" stroke-width="1.4" fill="none" opacity="0.6"/>
+  </g>
+
+  <text x="924" y="312" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" opacity="0.8">test_auth.py::test_login FAIL</text>
+  <text x="924" y="328" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" opacity="0.8">AssertionError: expected 200</text>
+  <text x="924" y="344" font-family="JetBrains Mono" font-size="9" fill="#b33a3a" opacity="0.8">  got 401 at line 42</text>
+  <text x="924" y="362" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 1 test failed / 34</text>
+
+  <text x="1316" y="376" text-anchor="end" font-family="Space Grotesk" font-size="22" font-weight="800" fill="#b33a3a" letter-spacing="1" class="panic">PANIC!</text>
+</g>
+
+<!-- Panel 04 · 15:00 · 诊断 FIX IT · rot +0.6° -->
+<g class="panel" data-i="3" transform="translate(240, 560) rotate(0.6) translate(-240, -560)" opacity="0">
+  <rect x="30" y="410" width="420" height="300" rx="2" fill="#1e1410" fill-opacity="0.85" stroke="#f4845f" stroke-width="1.4" class="pb"/>
+  <rect x="30" y="410" width="420" height="4" fill="#f4845f"/>
+  <text x="44" y="432" font-family="JetBrains Mono" font-size="10" fill="#f4845f" letter-spacing="2">FRAME 04 · 15:00</text>
+  <text x="436" y="432" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#f4845f" opacity="0.7">SYSTEMATIC</text>
+  <text x="44" y="462" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#e8e4df">诊断 · 根因定位</text>
+
+  <!-- Icon: magnifier + bug code -->
+  <g transform="translate(240, 555)">
+    <circle cx="-12" cy="-12" r="32" fill="none" stroke="#f4845f" stroke-width="2.4"/>
+    <line x1="11" y1="11" x2="32" y2="32" stroke="#f4845f" stroke-width="3.4" stroke-linecap="round"/>
+    <!-- Bug inside magnifier -->
+    <text x="-18" y="-7" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#f4845f">{ }</text>
+    <!-- Diagnostic dots orbit -->
+    <circle cx="40" cy="-40" r="3" fill="#f4845f" opacity="0.7"/>
+    <circle cx="-45" cy="-40" r="3" fill="#f4845f" opacity="0.5"/>
+    <circle cx="45" cy="40" r="3" fill="#f4845f" opacity="0.9"/>
+  </g>
+
+  <text x="44" y="632" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.8">→ 复现 · Read auth.py:42</text>
+  <text x="44" y="648" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.8">→ 假设: token 未刷新</text>
+  <text x="44" y="664" font-family="JetBrains Mono" font-size="9" fill="#f4845f" opacity="0.8">→ 验证 · 打断点 · TRUE</text>
+  <text x="44" y="682" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· systematic-debugging 技能</text>
+
+  <text x="436" y="696" text-anchor="end" font-family="Space Grotesk" font-size="22" font-weight="800" fill="#f4845f" letter-spacing="1">FIX IT!</text>
+</g>
+
+<!-- Panel 05 · 17:00 · SHIP IT · rot -0.4° -->
+<g class="panel" data-i="4" transform="translate(680, 560) rotate(-0.4) translate(-680, -560)" opacity="0">
+  <rect x="470" y="410" width="420" height="300" rx="2" fill="#1a1410" fill-opacity="0.85" stroke="#c4a35a" stroke-width="1.8" class="pb" filter="url(#glow)"/>
+  <rect x="470" y="410" width="420" height="4" fill="#c4a35a"/>
+  <text x="484" y="432" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" letter-spacing="2">FRAME 05 · 17:00 · ★</text>
+  <text x="876" y="432" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" font-weight="700">PROD</text>
+  <text x="484" y="462" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#c4a35a">SHIP IT · 合并部署</text>
+
+  <!-- Icon: rocket/upload arrow -->
+  <g transform="translate(680, 555)">
+    <!-- upward arrow -->
+    <path d="M 0,-50 L 28,0 L 12,0 L 12,40 L -12,40 L -12,0 L -28,0 Z" fill="none" stroke="#c4a35a" stroke-width="2.2"/>
+    <!-- ground/launch pad -->
+    <line x1="-45" y1="52" x2="45" y2="52" stroke="#c4a35a" stroke-width="1.4"/>
+    <line x1="-50" y1="56" x2="-38" y2="56" stroke="#c4a35a" stroke-width="1" opacity="0.6"/>
+    <line x1="38" y1="56" x2="50" y2="56" stroke="#c4a35a" stroke-width="1" opacity="0.6"/>
+    <!-- Boost trails -->
+    <path d="M -4 40 L -8 55 L -6 55 Z" fill="#c4a35a" opacity="0.7"/>
+    <path d="M 4 40 L 8 55 L 6 55 Z" fill="#c4a35a" opacity="0.7"/>
+  </g>
+
+  <text x="484" y="634" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.85">→ git push · CI 绿 · 34/34 tests</text>
+  <text x="484" y="650" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.85">→ deploy #2341 · 22 秒</text>
+  <text x="484" y="666" font-family="JetBrains Mono" font-size="9" fill="#c4a35a" opacity="0.85">→ rollout 100% · 无回退</text>
+  <text x="484" y="684" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 本月第 17 次稳定部署</text>
+
+  <text x="876" y="698" text-anchor="end" font-family="Space Grotesk" font-size="24" font-weight="800" fill="#c4a35a" letter-spacing="1" class="shipit">SHIP IT!</text>
+</g>
+
+<!-- Panel 06 · 21:00 · 监控 WATCH · rot +0.5° -->
+<g class="panel" data-i="5" transform="translate(1120, 560) rotate(0.5) translate(-1120, -560)" opacity="0">
+  <rect x="910" y="410" width="420" height="300" rx="2" fill="#0f1a0f" fill-opacity="0.85" stroke="#bb8fce" stroke-width="1.4" class="pb"/>
+  <rect x="910" y="410" width="420" height="4" fill="#bb8fce"/>
+  <text x="924" y="432" font-family="JetBrains Mono" font-size="10" fill="#bb8fce" letter-spacing="2">FRAME 06 · 21:00</text>
+  <text x="1316" y="432" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#bb8fce" opacity="0.7">NIGHT</text>
+  <text x="924" y="462" font-family="Noto Serif SC" font-size="18" font-weight="700" fill="#e8e4df">监控 · 守夜</text>
+
+  <!-- Icon: line chart + heartbeat -->
+  <g transform="translate(924, 500)">
+    <rect x="0" y="0" width="392" height="110" rx="2" fill="#0a0a0b" stroke="#bb8fce" stroke-width="0.6" stroke-opacity="0.5"/>
+    <!-- grid lines -->
+    <line x1="0" y1="27" x2="392" y2="27" stroke="#bb8fce" stroke-width="0.2" opacity="0.3"/>
+    <line x1="0" y1="55" x2="392" y2="55" stroke="#bb8fce" stroke-width="0.2" opacity="0.3"/>
+    <line x1="0" y1="83" x2="392" y2="83" stroke="#bb8fce" stroke-width="0.2" opacity="0.3"/>
+    <!-- Line chart: smooth stable -->
+    <polyline points="8,70 40,60 80,64 120,52 160,58 200,48 240,54 280,46 320,50 360,44 388,48"
+              fill="none" stroke="#bb8fce" stroke-width="1.8" stroke-linejoin="round" filter="url(#glow)"/>
+    <!-- Heartbeat pulse icon at right -->
+    <circle cx="376" cy="48" r="4" fill="#bb8fce" class="heartDot"/>
+    <!-- Y-axis label -->
+    <text x="6" y="14" font-family="JetBrains Mono" font-size="7" fill="#bb8fce" opacity="0.6">latency p99 (ms)</text>
+    <text x="386" y="105" text-anchor="end" font-family="JetBrains Mono" font-size="7" fill="#bb8fce" opacity="0.6">24h window</text>
+  </g>
+
+  <text x="924" y="632" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.85">· uptime 99.98%</text>
+  <text x="924" y="648" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.85">· p99 latency 186ms · 平稳</text>
+  <text x="924" y="664" font-family="JetBrains Mono" font-size="9" fill="#bb8fce" opacity="0.85">· 0 alerts · 0 errors</text>
+  <text x="924" y="684" font-family="Noto Sans SC" font-size="11" fill="#c4bdb4">· 系统稳 · 明天继续</text>
+
+  <text x="1316" y="698" text-anchor="end" font-family="Space Grotesk" font-size="20" font-weight="800" fill="#bb8fce" letter-spacing="1">ALL GOOD</text>
+</g>
+
+<!-- Footer -->
+<text x="30" y="768" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">STR-COMIC-24 / REV.A — IMPECCABLE</text>
+<text x="1370" y="768" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#c4a35a" opacity="0.3" letter-spacing="2">AGENT DAY · 6 PANELS · NO SPEECH BUBBLES</text>
+
+</svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  const ns = 'http://www.w3.org/2000/svg';
+  gsap.to('#ringInner', { rotation: 360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.title', { opacity: 1, duration: 0.6 })
+    .to('.subtitle', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+  // Panels appear in reading order with slight stagger
+  tl.to('.panel', { opacity: 1, duration: 0.5, stagger: 0.18, ease: 'power2.out' }, 0.8);
+
+  // ============ PERPETUAL: Progress bar movement in panel 02 ============
+  const prog1 = document.querySelector('.pb-prog1');
+  const prog2 = document.querySelector('.pb-prog2');
+  const prog3 = document.querySelector('.pb-prog3');
+  if (prog1 && prog2 && prog3) {
+    gsap.to(prog1, { attr: { width: 350 }, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2.5 });
+    gsap.to(prog2, { attr: { width: 260 }, duration: 2.2, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2.7 });
+    gsap.to(prog3, { attr: { width: 180 }, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2.9 });
+  }
+
+  // ============ PERPETUAL: PANIC flash in panel 03 ============
+  const panic = document.querySelector('.panic');
+  if (panic) gsap.to(panic, { opacity: 0.4, duration: 0.5, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3 });
+
+  // ============ PERPETUAL: SHIP IT pulse in panel 05 ============
+  const shipit = document.querySelector('.shipit');
+  if (shipit) gsap.to(shipit, { scale: 1.06, transformOrigin: 'center', duration: 0.8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3.2 });
+
+  // ============ PERPETUAL: Heartbeat dot in panel 06 ============
+  const heart = document.querySelector('.heartDot');
+  if (heart) gsap.to(heart, { attr: { r: 7 }, opacity: 0.4, duration: 0.9, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2.8 });
+
+  // ============ PERPETUAL: Panel border subtle breath ============
+  gsap.to('.pb', { strokeWidth: (i, el) => el.classList.contains('pb') && el.parentElement?.getAttribute('data-i') === '4' ? 2.4 : 1.7, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: 0.2, delay: 3.6 });
+
+  // ============ PERPETUAL: Diagnostic dots orbit in panel 04 ============
+  const panel4 = document.querySelectorAll('.panel')[3];
+  if (panel4) {
+    const dots = panel4.querySelectorAll('circle[r="3"]');
+    dots.forEach((d, i) => {
+      gsap.to(d, { opacity: 0.2, duration: 1.4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 3 + i * 0.3 });
+    });
+  }
+
+  // ============ PERPETUAL: Boot ring pulse in panel 01 ============
+  const panel1 = document.querySelectorAll('.panel')[0];
+  if (panel1) {
+    const ring = panel1.querySelector('circle[r="48"]');
+    if (ring) gsap.to(ring, { attr: { r: 66 }, opacity: 0.05, duration: 2.6, repeat: -1, ease: 'power1.out', delay: 2.8, onStart: () => gsap.set(ring, { opacity: 0.5 }) });
+  }
+})();
+</script></body></html>
