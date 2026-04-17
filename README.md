@@ -33,18 +33,50 @@ Agent 查 combo 拿 timeline → 没匹配就查 index 按字段筛 → 拿到 I
 
 ## 文件速查
 
+### Skill 入口
+
 | 文件 | 角色 |
 |------|------|
 | [SKILL.md](SKILL.md) | 主技能定义，Agent 的入口 |
-| [animation-combos.md](animation-combos.md) | 10 个 combo timeline 模板 + v2 swap 菜单 |
-| [animation-index.json](animation-index.json) | 140 效果 metadata（mood/purpose/applicable_to/pattern_family） |
-| [animation-snippets.js](animation-snippets.js) | 140 ID 索引的 GSAP 函数（带 teardown） |
-| [animation-showcase.html](animation-showcase.html) | 140 效果实时预览（直接浏览器打开） |
-| [ANIMATION_PATTERNS.md](ANIMATION_PATTERNS.md) | 15 核心 pattern 方法论 |
-| [STRUCTURE_PRESETS.md](STRUCTURE_PRESETS.md) | 24 个结构模板 |
-| [STYLE_PRESETS.md 不在仓库] | 50+ 视觉风格（在 next-slide 仓库） |
-| [ASYRE_BRAND_PRESET.md](ASYRE_BRAND_PRESET.md) | Asyre Dark Gold 品牌风格 |
-| [DESIGN_ELEVATION.md](DESIGN_ELEVATION.md) | Impeccable 设计原则 |
+
+### 动画子系统（三层架构）
+
+| 文件 | 角色 |
+|------|------|
+| [animation-combos.md](animation-combos.md) | Choreography · 10 个 combo timeline 模板 + v2 swap 菜单 |
+| [animation-index.json](animation-index.json) | Discovery · 140 效果 metadata（mood/purpose/applicable_to/pattern_family） |
+| [animation-snippets.js](animation-snippets.js) | Code · 140 ID 索引的 GSAP 函数（带 teardown） |
+| [animation-showcase.html](animation-showcase.html) | 视觉预览 · 140 效果实时跑 |
+| [ANIMATION_PATTERNS.md](ANIMATION_PATTERNS.md) | 方法论 · 15 核心 pattern + 编排原则 |
+
+### 视觉风格 & 结构
+
+| 文件 | 角色 |
+|------|------|
+| [STYLE_PRESETS.md](STYLE_PRESETS.md) | 50+ 精选视觉风格规格 |
+| [styles/](styles/) | 43 个风格的 live HTML 实例 |
+| [style-gallery.html](style-gallery.html) | 风格索引浏览器 |
+| [gallery.html](gallery.html) | 总 gallery（风格 + 场景） |
+| [STRUCTURE_PRESETS.md](STRUCTURE_PRESETS.md) | 24 个结构模板（bento-grid、funnel、hub-spoke 等） |
+| [SCENARIO_TEMPLATES.md](SCENARIO_TEMPLATES.md) | 场景结构、叙事弧、额外 slide 类型 |
+| [scenarios/](scenarios/) | 116 个场景的 live 实例（pitch-deck、ecommerce、thesis、tech-talk 等） |
+
+### HTML 生成 & 工具
+
+| 文件 | 角色 |
+|------|------|
+| [html-template.md](html-template.md) | HTML 架构 + JS 特性规范 |
+| [viewport-base.css](viewport-base.css) | 强制 responsive CSS（所有 slide 共享） |
+| [scripts/](scripts/) | PPT 内容抽取工具 |
+| [landing/](landing/) | Landing 页模板 |
+
+### 品牌 & 设计哲学
+
+| 文件 | 角色 |
+|------|------|
+| [ASYRE_BRAND_PRESET.md](ASYRE_BRAND_PRESET.md) | Asyre Dark Gold 品牌风格 + AI 图像 prompt 系统 |
+| [DESIGN_ELEVATION.md](DESIGN_ELEVATION.md) | Impeccable 设计原则：提升预设到艺术品级 |
+| [ASHER_PREFERENCES.md](ASHER_PREFERENCES.md) | Asher 使用偏好（字号、颜色、SVG 图表规则） |
 
 ## 快速使用
 
