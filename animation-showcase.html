@@ -1,0 +1,3398 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Animation Showcase — 140 Effects</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;color:#e8e4df;font-family:'Space Grotesk',sans-serif;padding:20px}
+h1{color:#c4a35a;font-family:'Noto Serif SC',serif;font-size:20px;margin-bottom:6px;letter-spacing:0.08em}
+.sub{color:#6b6560;font-family:'JetBrains Mono',monospace;font-size:11px;margin-bottom:20px}
+.section{margin-bottom:24px}
+.section-title{color:#c4a35a;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(196,163,90,0.1)}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.cell{background:rgba(255,255,255,0.015);border:1px solid rgba(196,163,90,0.06);border-radius:6px;padding:12px;height:160px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.cell-name{font-family:'JetBrains Mono',monospace;font-size:9px;color:#c4a35a;letter-spacing:0.08em;margin-bottom:4px}
+.cell-desc{font-family:'Noto Sans SC',sans-serif;font-size:10px;color:#6b6560;margin-bottom:8px}
+.demo{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.demo svg{width:100%;height:100%;filter:brightness(1.6)}
+/* Replay button */
+.cell:hover{border-color:rgba(196,163,90,0.15)}
+</style>
+</head>
+<body>
+<h1>Animation Showcase — 动画效果总览</h1>
+<p class="sub">140 GSAP EFFECTS · ALL RUNNING LIVE · ASYRE DARK GOLD · CLICK CELL TO REPLAY</p>
+
+<!-- ========== SECTION 1: ENTRANCE ========== -->
+<div class="section">
+<div class="section-title">ENTRANCE ANIMATIONS · 入场动画 (10)</div>
+<div class="grid">
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">01 · FADE UP</div>
+<div class="cell-desc">层叠淡入上升</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- Title bar -->
+<rect x="15" y="8" width="150" height="20" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.12)" stroke-width="1" class="e01a"/>
+<line x1="15" y1="28" x2="60" y2="28" stroke="rgba(196,163,90,0.1)" stroke-width="1.5" class="e01a"/>
+<!-- Body lines -->
+<rect x="15" y="36" width="130" height="8" rx="2" fill="rgba(196,163,90,0.04)" class="e01b"/>
+<rect x="15" y="48" width="110" height="8" rx="2" fill="rgba(196,163,90,0.03)" class="e01b"/>
+<rect x="15" y="60" width="90" height="8" rx="2" fill="rgba(196,163,90,0.03)" class="e01b"/>
+<!-- Accent card -->
+<rect x="120" y="38" width="50" height="36" rx="4" fill="rgba(74,143,212,0.04)" stroke="rgba(74,143,212,0.08)" stroke-width="1" class="e01c"/>
+<text x="145" y="56" fill="rgba(74,143,212,0.12)" font-family="Space Grotesk" font-size="14" text-anchor="middle" font-weight="700" class="e01c">+42%</text>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">02 · VEIL DOWN</div>
+<div class="cell-desc">垂直揭幕</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="15" y="15" width="150" height="50" rx="4" fill="rgba(196,163,90,0.08)" stroke="rgba(196,163,90,0.22)" stroke-width="1" class="vl02"/>
+<text x="90" y="45" text-anchor="middle" font-size="12" fill="rgba(196,163,90,0.9)" font-family="Noto Serif SC" font-weight="700" class="vl02t">揭幕</text>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">03 · SCALE POP</div>
+<div class="cell-desc">从 0 缩放弹出</div>
+<div class="demo"><svg viewBox="0 0 180 80"><circle cx="90" cy="40" r="28" fill="rgba(61,170,90,0.06)" stroke="rgba(61,170,90,0.15)" stroke-width="1.5" class="e03"/><text x="90" y="44" fill="#3daa5a" font-family="Space Grotesk" font-size="10" text-anchor="middle" font-weight="600">POP</text></svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">04 · CLIP REVEAL</div>
+<div class="cell-desc">裁剪遮罩展开</div>
+<div class="demo"><svg viewBox="0 0 180 80"><rect x="10" y="10" width="160" height="60" rx="4" fill="rgba(196,163,90,0.06)" class="e04bg"/><text x="90" y="45" fill="#c4a35a" font-family="Noto Serif SC" font-size="14" text-anchor="middle" font-weight="700" class="e04">裁剪展开效果</text></svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">05 · FLIP X</div>
+<div class="cell-desc">水平翻转入场</div>
+<div class="demo"><svg viewBox="0 0 180 80"><rect x="30" y="10" width="120" height="60" rx="5" fill="rgba(179,58,58,0.06)" stroke="rgba(179,58,58,0.12)" stroke-width="1" class="e05"/><text x="90" y="44" fill="#b33a3a" font-family="Space Grotesk" font-size="11" text-anchor="middle" font-weight="600">FLIP</text></svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">06 · BLUR IN</div>
+<div class="cell-desc">从模糊到清晰</div>
+<div class="demo"><svg viewBox="0 0 180 80"><defs><filter id="blurF"><feGaussianBlur stdDeviation="0" class="e06blur"/></filter></defs><text x="90" y="48" fill="#d4b96a" font-family="Noto Serif SC" font-size="18" text-anchor="middle" font-weight="700" filter="url(#blurF)" class="e06">模糊入场</text></svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">07 · STAGGER GRID</div>
+<div class="cell-desc">网格涟漪式展开</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="10" y="5" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+<rect x="50" y="5" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+<rect x="90" y="5" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+<rect x="130" y="5" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+<rect x="10" y="31" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+<rect x="50" y="31" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+<rect x="90" y="31" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+<rect x="130" y="31" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+<rect x="10" y="57" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+<rect x="50" y="57" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+<rect x="90" y="57" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+<rect x="130" y="57" width="35" height="22" rx="3" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sg"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">08 · STAGGER FROM CENTER</div>
+<div class="cell-desc">从中间向两端展开</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="10" y="30" width="20" height="20" rx="3" fill="rgba(74,143,212,0.08)" stroke="rgba(74,143,212,0.1)" stroke-width="1" class="sc"/>
+<rect x="35" y="30" width="20" height="20" rx="3" fill="rgba(74,143,212,0.08)" stroke="rgba(74,143,212,0.1)" stroke-width="1" class="sc"/>
+<rect x="60" y="30" width="20" height="20" rx="3" fill="rgba(74,143,212,0.08)" stroke="rgba(74,143,212,0.1)" stroke-width="1" class="sc"/>
+<rect x="85" y="30" width="20" height="20" rx="3" fill="rgba(74,143,212,0.12)" stroke="rgba(74,143,212,0.15)" stroke-width="1" class="sc"/>
+<rect x="110" y="30" width="20" height="20" rx="3" fill="rgba(74,143,212,0.08)" stroke="rgba(74,143,212,0.1)" stroke-width="1" class="sc"/>
+<rect x="135" y="30" width="20" height="20" rx="3" fill="rgba(74,143,212,0.08)" stroke="rgba(74,143,212,0.1)" stroke-width="1" class="sc"/>
+<rect x="160" y="30" width="20" height="20" rx="3" fill="rgba(74,143,212,0.08)" stroke="rgba(74,143,212,0.1)" stroke-width="1" class="sc"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">09 · ELASTIC BOUNCE</div>
+<div class="cell-desc">弹性弹跳入场</div>
+<div class="demo"><svg viewBox="0 0 180 80"><circle cx="60" cy="40" r="16" fill="rgba(61,170,90,0.08)" stroke="rgba(61,170,90,0.2)" stroke-width="1" class="eb"/><circle cx="110" cy="40" r="16" fill="rgba(196,163,90,0.08)" stroke="rgba(196,163,90,0.2)" stroke-width="1" class="eb"/><circle cx="160" cy="40" r="16" fill="rgba(179,58,58,0.08)" stroke="rgba(179,58,58,0.2)" stroke-width="1" class="eb"/></svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">10 · IRIS OPEN</div>
+<div class="cell-desc">圆形光圈展开</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><clipPath id="iris10"><circle cx="90" cy="40" r="0" class="ir10c"/></clipPath></defs>
+<rect x="15" y="15" width="150" height="50" rx="4" fill="rgba(74,143,212,0.1)" stroke="rgba(74,143,212,0.25)" stroke-width="1" clip-path="url(#iris10)"/>
+<text x="90" y="44" text-anchor="middle" font-size="11" fill="rgba(74,143,212,0.95)" font-family="JetBrains Mono" letter-spacing="2" font-weight="700" clip-path="url(#iris10)">IRIS</text>
+</svg></div>
+</div>
+
+</div></div>
+
+<!-- ========== SECTION 2: LINE/PATH ========== -->
+<div class="section">
+<div class="section-title">LINE & PATH ANIMATIONS · 线条路径 (10)</div>
+<div class="grid">
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">11 · DRAW ON</div>
+<div class="cell-desc">描边从起点画出</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="15" y="15" width="150" height="50" rx="5" fill="none" stroke="rgba(196,163,90,0.7)" stroke-width="2" class="d11"/>
+<circle r="3.5" fill="rgba(196,163,90,1)" class="d11dot" cx="90" cy="15"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">12 · DRAW FROM CENTER</div>
+<div class="cell-desc">从中间向两端画</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="90" y1="40" x2="90" y2="40" stroke="rgba(74,143,212,0.3)" stroke-width="2" stroke-linecap="round" class="d12L"/>
+<line x1="90" y1="40" x2="90" y2="40" stroke="rgba(74,143,212,0.3)" stroke-width="2" stroke-linecap="round" class="d12R"/>
+<circle cx="90" cy="40" r="3" fill="rgba(74,143,212,0.1)" stroke="rgba(74,143,212,0.2)" stroke-width="1" class="d12c"/>
+<!-- End caps -->
+<circle cx="10" cy="40" r="2" fill="rgba(74,143,212,0.15)" class="d12e" opacity="0"/>
+<circle cx="170" cy="40" r="2" fill="rgba(74,143,212,0.15)" class="d12e" opacity="0"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">13 · POLYGON EXPAND</div>
+<div class="cell-desc">顶点逐个展开</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- Edges: 逐条画出 -->
+<line x1="90" y1="5" x2="170" y2="30" stroke="rgba(61,170,90,0.55)" stroke-width="1.4" pathLength="1" class="d13e"/>
+<line x1="170" y1="30" x2="150" y2="75" stroke="rgba(61,170,90,0.55)" stroke-width="1.4" pathLength="1" class="d13e"/>
+<line x1="150" y1="75" x2="30" y2="75" stroke="rgba(61,170,90,0.55)" stroke-width="1.4" pathLength="1" class="d13e"/>
+<line x1="30" y1="75" x2="10" y2="30" stroke="rgba(61,170,90,0.55)" stroke-width="1.4" pathLength="1" class="d13e"/>
+<line x1="10" y1="30" x2="90" y2="5" stroke="rgba(61,170,90,0.55)" stroke-width="1.4" pathLength="1" class="d13e"/>
+<!-- Fill appears last -->
+<polygon points="90,5 170,30 150,75 30,75 10,30" fill="rgba(61,170,90,0.12)" stroke="none" class="d13fill" opacity="0"/>
+<!-- Vertex dots: pop in sequentially -->
+<circle cx="90" cy="5" r="3.2" fill="rgba(61,170,90,0.95)" class="d13v"/>
+<circle cx="170" cy="30" r="3.2" fill="rgba(61,170,90,0.95)" class="d13v"/>
+<circle cx="150" cy="75" r="3.2" fill="rgba(61,170,90,0.95)" class="d13v"/>
+<circle cx="30" cy="75" r="3.2" fill="rgba(61,170,90,0.95)" class="d13v"/>
+<circle cx="10" cy="30" r="3.2" fill="rgba(61,170,90,0.95)" class="d13v"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">14 · CURVE TRACE</div>
+<div class="cell-desc">曲线路径描绘</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="10" y1="70" x2="170" y2="70" stroke="rgba(196,163,90,0.1)" stroke-width="0.5" stroke-dasharray="2,2"/>
+<path d="M10,65 C40,65 55,25 90,40 C125,55 145,15 170,15" fill="none" stroke="rgba(196,163,90,0.7)" stroke-width="2" stroke-linecap="round" class="d14"/>
+<circle r="3" fill="rgba(196,163,90,1)" class="d14dot" cx="10" cy="65"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">15 · DASHED FLOW</div>
+<div class="cell-desc">虚线流动效果</div>
+<div class="demo"><svg viewBox="0 0 180 80"><line x1="10" y1="40" x2="170" y2="40" stroke="rgba(179,58,58,0.25)" stroke-width="2" stroke-dasharray="8 6" class="d15"/></svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">16 · CIRCLE DRAW</div>
+<div class="cell-desc">多层环形依次画出</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="90" cy="40" r="32" fill="none" stroke="rgba(150,120,200,0.5)" stroke-width="1.8" stroke-linecap="round" pathLength="1" class="d16a"/>
+<circle cx="90" cy="40" r="22" fill="none" stroke="rgba(196,163,90,0.55)" stroke-width="1.6" stroke-linecap="round" pathLength="1" class="d16b"/>
+<circle cx="90" cy="40" r="12" fill="none" stroke="rgba(74,143,212,0.6)" stroke-width="1.4" stroke-linecap="round" pathLength="1" class="d16c"/>
+<circle cx="90" cy="40" r="3.5" fill="rgba(196,163,90,0.95)" class="d16dot"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">17 · ARROW CHAIN</div>
+<div class="cell-desc">多段箭头依次连接</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="10" y1="40" x2="50" y2="40" stroke="rgba(196,163,90,0.2)" stroke-width="1.5" pathLength="1" class="ac"/>
+<line x1="55" y1="40" x2="85" y2="20" stroke="rgba(196,163,90,0.2)" stroke-width="1.5" pathLength="1" class="ac"/>
+<line x1="90" y1="20" x2="120" y2="40" stroke="rgba(196,163,90,0.2)" stroke-width="1.5" pathLength="1" class="ac"/>
+<line x1="125" y1="40" x2="170" y2="40" stroke="rgba(196,163,90,0.2)" stroke-width="1.5" pathLength="1" class="ac"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">18 · GRID DRAW</div>
+<div class="cell-desc">网格线逐一画出</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="10" y1="20" x2="170" y2="20" stroke="rgba(74,143,212,0.12)" stroke-width="1" pathLength="1" class="gd"/>
+<line x1="10" y1="40" x2="170" y2="40" stroke="rgba(74,143,212,0.12)" stroke-width="1" pathLength="1" class="gd"/>
+<line x1="10" y1="60" x2="170" y2="60" stroke="rgba(74,143,212,0.12)" stroke-width="1" pathLength="1" class="gd"/>
+<line x1="45" y1="5" x2="45" y2="75" stroke="rgba(74,143,212,0.12)" stroke-width="1" pathLength="1" class="gd"/>
+<line x1="90" y1="5" x2="90" y2="75" stroke="rgba(74,143,212,0.12)" stroke-width="1" pathLength="1" class="gd"/>
+<line x1="135" y1="5" x2="135" y2="75" stroke="rgba(74,143,212,0.12)" stroke-width="1" pathLength="1" class="gd"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">19 · SPARKLINE</div>
+<div class="cell-desc">折线图从左到右画出</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- Y axis ticks -->
+<line x1="10" y1="72" x2="170" y2="72" stroke="rgba(196,163,90,0.06)" stroke-width="1"/>
+<line x1="10" y1="10" x2="10" y2="72" stroke="rgba(196,163,90,0.04)" stroke-width="1"/>
+<line x1="10" y1="52" x2="170" y2="52" stroke="rgba(196,163,90,0.02)" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="10" y1="32" x2="170" y2="32" stroke="rgba(196,163,90,0.02)" stroke-width="1" stroke-dasharray="2 4"/>
+<!-- Fill area under line -->
+<polygon points="10,65 30,55 50,60 70,35 90,40 110,20 130,25 150,15 170,10 170,72 10,72" fill="rgba(196,163,90,0.04)" class="d19fill"/>
+<!-- Main line -->
+<polyline points="10,65 30,55 50,60 70,35 90,40 110,20 130,25 150,15 170,10" fill="none" stroke="#c4a35a" stroke-width="1.5" stroke-linejoin="round" pathLength="1" class="d19"/>
+<!-- Data dots -->
+<circle cx="10" cy="65" r="2" fill="#c4a35a" opacity="0" class="d19dot"/>
+<circle cx="30" cy="55" r="2" fill="#c4a35a" opacity="0" class="d19dot"/>
+<circle cx="50" cy="60" r="2" fill="#c4a35a" opacity="0" class="d19dot"/>
+<circle cx="70" cy="35" r="2" fill="#c4a35a" opacity="0" class="d19dot"/>
+<circle cx="90" cy="40" r="2" fill="#c4a35a" opacity="0" class="d19dot"/>
+<circle cx="110" cy="20" r="2" fill="#c4a35a" opacity="0" class="d19dot"/>
+<circle cx="130" cy="25" r="2" fill="#c4a35a" opacity="0" class="d19dot"/>
+<circle cx="150" cy="15" r="2" fill="#c4a35a" opacity="0" class="d19dot"/>
+<circle cx="170" cy="10" r="2" fill="#c4a35a" opacity="0" class="d19dot"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">20 · TREE DRAW</div>
+<div class="cell-desc">树形分支依次画出</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- Lines (端点贴节点圆边缘，不穿心) -->
+<line x1="24.5" y1="40" x2="56" y2="40" stroke="rgba(61,170,90,0.6)" stroke-width="1.5" pathLength="1" class="td"/>
+<line x1="63.4" y1="37.9" x2="97" y2="16.9" stroke="rgba(61,170,90,0.5)" stroke-width="1.4" pathLength="1" class="td"/>
+<line x1="63.4" y1="42.1" x2="97" y2="63.1" stroke="rgba(61,170,90,0.5)" stroke-width="1.4" pathLength="1" class="td"/>
+<line x1="103.5" y1="14.5" x2="142" y2="8.5" stroke="rgba(61,170,90,0.4)" stroke-width="1.2" pathLength="1" class="td"/>
+<line x1="103.4" y1="15.8" x2="142" y2="24.3" stroke="rgba(61,170,90,0.4)" stroke-width="1.2" pathLength="1" class="td"/>
+<line x1="103.4" y1="64.2" x2="142" y2="55.7" stroke="rgba(61,170,90,0.4)" stroke-width="1.2" pathLength="1" class="td"/>
+<line x1="103.5" y1="65.5" x2="142" y2="71.5" stroke="rgba(61,170,90,0.4)" stroke-width="1.2" pathLength="1" class="td"/>
+<!-- Nodes -->
+<circle cx="20" cy="40" r="4.5" fill="rgba(61,170,90,0.3)" stroke="rgba(61,170,90,0.8)" stroke-width="1.2" class="tn" opacity="0"/>
+<circle cx="60" cy="40" r="4" fill="rgba(61,170,90,0.25)" stroke="rgba(61,170,90,0.7)" stroke-width="1.1" class="tn" opacity="0"/>
+<circle cx="100" cy="15" r="3.5" fill="rgba(61,170,90,0.22)" stroke="rgba(61,170,90,0.65)" stroke-width="1" class="tn" opacity="0"/>
+<circle cx="100" cy="65" r="3.5" fill="rgba(61,170,90,0.22)" stroke="rgba(61,170,90,0.65)" stroke-width="1" class="tn" opacity="0"/>
+<circle cx="145" cy="8" r="3" fill="rgba(61,170,90,0.2)" stroke="rgba(61,170,90,0.6)" stroke-width="1" class="tn" opacity="0"/>
+<circle cx="145" cy="25" r="3" fill="rgba(61,170,90,0.2)" stroke="rgba(61,170,90,0.6)" stroke-width="1" class="tn" opacity="0"/>
+<circle cx="145" cy="55" r="3" fill="rgba(61,170,90,0.2)" stroke="rgba(61,170,90,0.6)" stroke-width="1" class="tn" opacity="0"/>
+<circle cx="145" cy="72" r="3" fill="rgba(61,170,90,0.2)" stroke="rgba(61,170,90,0.6)" stroke-width="1" class="tn" opacity="0"/>
+<!-- Leaf labels -->
+<text x="153" y="11" fill="rgba(61,170,90,0.85)" font-family="JetBrains Mono" font-size="6" font-weight="600" class="tn" opacity="0">A1</text>
+<text x="153" y="28" fill="rgba(61,170,90,0.85)" font-family="JetBrains Mono" font-size="6" font-weight="600" class="tn" opacity="0">A2</text>
+<text x="153" y="58" fill="rgba(61,170,90,0.85)" font-family="JetBrains Mono" font-size="6" font-weight="600" class="tn" opacity="0">B1</text>
+<text x="153" y="75" fill="rgba(61,170,90,0.85)" font-family="JetBrains Mono" font-size="6" font-weight="600" class="tn" opacity="0">B2</text>
+</svg></div>
+</div>
+
+</div></div>
+
+<!-- ========== SECTION 3: DATA ========== -->
+<div class="section">
+<div class="section-title">DATA ANIMATIONS · 数据动画 (10)</div>
+<div class="grid">
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">21 · COUNTER</div>
+<div class="cell-desc">数字从 0 滚动到目标值</div>
+<div class="demo"><svg viewBox="0 0 180 80"><text x="90" y="50" fill="#c4a35a" font-family="Space Grotesk" font-size="32" text-anchor="middle" font-weight="700" class="ctr">0</text></svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">22 · BAR GROWTH</div>
+<div class="cell-desc">条形图从 0 生长</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="10" y="10" width="160" height="5" rx="2.5" fill="rgba(196,163,90,0.06)"/><rect x="10" y="10" width="0" height="5" rx="2.5" fill="rgba(196,163,90,0.3)" class="bg22" data-w="140"/>
+<rect x="10" y="22" width="160" height="5" rx="2.5" fill="rgba(74,143,212,0.06)"/><rect x="10" y="22" width="0" height="5" rx="2.5" fill="rgba(74,143,212,0.3)" class="bg22" data-w="110"/>
+<rect x="10" y="34" width="160" height="5" rx="2.5" fill="rgba(61,170,90,0.06)"/><rect x="10" y="34" width="0" height="5" rx="2.5" fill="rgba(61,170,90,0.3)" class="bg22" data-w="90"/>
+<rect x="10" y="46" width="160" height="5" rx="2.5" fill="rgba(179,58,58,0.06)"/><rect x="10" y="46" width="0" height="5" rx="2.5" fill="rgba(179,58,58,0.3)" class="bg22" data-w="60"/>
+<rect x="10" y="58" width="160" height="5" rx="2.5" fill="rgba(150,120,200,0.06)"/><rect x="10" y="58" width="0" height="5" rx="2.5" fill="rgba(150,120,200,0.3)" class="bg22" data-w="130"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">23 · COLUMN RISE</div>
+<div class="cell-desc">柱状图从底部升起</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="15" y="70" width="20" height="0" fill="rgba(196,163,90,0.15)" class="col23" data-h="50"/>
+<rect x="42" y="70" width="20" height="0" fill="rgba(74,143,212,0.15)" class="col23" data-h="35"/>
+<rect x="69" y="70" width="20" height="0" fill="rgba(61,170,90,0.15)" class="col23" data-h="60"/>
+<rect x="96" y="70" width="20" height="0" fill="rgba(179,58,58,0.15)" class="col23" data-h="25"/>
+<rect x="123" y="70" width="20" height="0" fill="rgba(150,120,200,0.15)" class="col23" data-h="45"/>
+<rect x="150" y="70" width="20" height="0" fill="rgba(212,185,106,0.15)" class="col23" data-h="55"/>
+<line x1="10" y1="72" x2="175" y2="72" stroke="rgba(196,163,90,0.06)" stroke-width="1"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">24 · PROGRESS RING</div>
+<div class="cell-desc">环形进度从 0% 到 73%</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="90" cy="40" r="28" fill="none" stroke="rgba(196,163,90,0.06)" stroke-width="4"/>
+<circle cx="90" cy="40" r="28" fill="none" stroke="#c4a35a" stroke-width="4" stroke-linecap="round" class="pr24" transform="rotate(-90,90,40)"/>
+<text x="90" y="44" fill="#c4a35a" font-family="Space Grotesk" font-size="14" text-anchor="middle" font-weight="700" class="pr24t">0%</text>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">25 · PIE SEGMENTS</div>
+<div class="cell-desc">饼图扇形展开</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="90" cy="40" r="30" fill="none" stroke="rgba(196,163,90,0.2)" stroke-width="28" stroke-dasharray="0 188.5" class="pie" data-d="75.4"/>
+<circle cx="90" cy="40" r="30" fill="none" stroke="rgba(74,143,212,0.2)" stroke-width="28" stroke-dasharray="0 188.5" stroke-dashoffset="-75.4" class="pie" data-d="56.5"/>
+<circle cx="90" cy="40" r="30" fill="none" stroke="rgba(61,170,90,0.2)" stroke-width="28" stroke-dasharray="0 188.5" stroke-dashoffset="-131.9" class="pie" data-d="37.7"/>
+<circle cx="90" cy="40" r="30" fill="none" stroke="rgba(179,58,58,0.2)" stroke-width="28" stroke-dasharray="0 188.5" stroke-dashoffset="-169.6" class="pie" data-d="18.85"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">26 · SCATTER POP</div>
+<div class="cell-desc">散点图逐个弹出</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="25" cy="55" r="0" fill="rgba(196,163,90,0.2)" class="scp" data-r="5"/><circle cx="45" cy="30" r="0" fill="rgba(74,143,212,0.2)" class="scp" data-r="7"/>
+<circle cx="70" cy="45" r="0" fill="rgba(61,170,90,0.2)" class="scp" data-r="4"/><circle cx="90" cy="20" r="0" fill="rgba(179,58,58,0.2)" class="scp" data-r="6"/>
+<circle cx="110" cy="50" r="0" fill="rgba(150,120,200,0.2)" class="scp" data-r="5"/><circle cx="130" cy="25" r="0" fill="rgba(196,163,90,0.2)" class="scp" data-r="8"/>
+<circle cx="155" cy="35" r="0" fill="rgba(74,143,212,0.2)" class="scp" data-r="4"/><circle cx="170" cy="60" r="0" fill="rgba(61,170,90,0.2)" class="scp" data-r="6"/>
+<line x1="10" y1="72" x2="175" y2="72" stroke="rgba(196,163,90,0.06)" stroke-width="1"/><line x1="10" y1="5" x2="10" y2="72" stroke="rgba(196,163,90,0.06)" stroke-width="1"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">27 · STACKED BAR</div>
+<div class="cell-desc">堆叠条形逐段生长</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="10" y="30" width="0" height="20" rx="0" fill="rgba(196,163,90,0.15)" class="sb27" data-w="60"/>
+<rect x="70" y="30" width="0" height="20" rx="0" fill="rgba(74,143,212,0.15)" class="sb27" data-w="40"/>
+<rect x="110" y="30" width="0" height="20" rx="0" fill="rgba(61,170,90,0.15)" class="sb27" data-w="35"/>
+<rect x="145" y="30" width="0" height="20" rx="0" fill="rgba(179,58,58,0.15)" class="sb27" data-w="20"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">28 · AREA FILL</div>
+<div class="cell-desc">面积图从基线涌起</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="10" y1="72" x2="170" y2="72" stroke="rgba(196,163,90,0.06)" stroke-width="1"/>
+<line x1="10" y1="52" x2="170" y2="52" stroke="rgba(196,163,90,0.02)" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="10" y1="32" x2="170" y2="32" stroke="rgba(196,163,90,0.02)" stroke-width="1" stroke-dasharray="2 4"/>
+<!-- Fill area -->
+<polygon points="10,72 30,72 50,72 70,72 90,72 110,72 130,72 150,72 170,72 170,72 10,72" fill="rgba(196,163,90,0.06)" class="af28fill"/>
+<!-- Top line -->
+<polyline points="10,72 30,72 50,72 70,72 90,72 110,72 130,72 150,72 170,72" fill="none" stroke="rgba(196,163,90,0.25)" stroke-width="1.5" stroke-linejoin="round" class="af28line"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">29 · GAUGE NEEDLE</div>
+<div class="cell-desc">仪表盘指针转动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<path d="M30,70 A60,60 0 0,1 150,70" fill="none" stroke="rgba(196,163,90,0.06)" stroke-width="6" stroke-linecap="round"/>
+<path d="M30,70 A60,60 0 0,1 150,70" fill="none" stroke="rgba(196,163,90,0.2)" stroke-width="6" stroke-linecap="round" pathLength="100" class="gn29"/>
+<line x1="90" y1="70" x2="55" y2="25" stroke="#c4a35a" stroke-width="2" stroke-linecap="round" class="needle29"/>
+<circle cx="90" cy="70" r="4" fill="rgba(196,163,90,0.1)" stroke="rgba(196,163,90,0.2)" stroke-width="1"/>
+<text x="30" y="78" fill="#6b6560" font-family="JetBrains Mono" font-size="7">0</text>
+<text x="148" y="78" fill="#6b6560" font-family="JetBrains Mono" font-size="7">100</text>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">30 · WAFFLE FILL</div>
+<div class="cell-desc">方格逐个点亮</div>
+<div class="demo"><svg viewBox="0 0 180 80" id="waffle30"></svg></div>
+</div>
+
+</div></div>
+
+<!-- ========== SECTION 4: PERPETUAL ========== -->
+<div class="section">
+<div class="section-title">PERPETUAL ANIMATIONS · 持续动画 (15)</div>
+<div class="grid">
+
+<div class="cell">
+<div class="cell-name">31 · PULSE RIPPLE</div>
+<div class="cell-desc">中心脉冲涟漪</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><filter id="pgl"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<circle cx="90" cy="40" r="4" fill="none" stroke="rgba(196,163,90,0.18)" stroke-width="2" class="pp31r1"/>
+<circle cx="90" cy="40" r="4" fill="none" stroke="rgba(196,163,90,0.14)" stroke-width="1.8" class="pp31r2"/>
+<circle cx="90" cy="40" r="4" fill="none" stroke="rgba(196,163,90,0.1)" stroke-width="1.5" class="pp31r3"/>
+<circle cx="90" cy="40" r="4" fill="none" stroke="rgba(196,163,90,0.08)" stroke-width="1.2" class="pp31r4"/>
+<circle cx="90" cy="40" r="4" fill="none" stroke="rgba(196,163,90,0.06)" stroke-width="1" class="pp31r5"/>
+<circle cx="90" cy="40" r="7" fill="rgba(196,163,90,0.15)" filter="url(#pgl)" class="pp31c"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">32 · ORBIT</div>
+<div class="cell-desc">轨道旋转</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="90" cy="40" r="28" fill="none" stroke="rgba(196,163,90,0.08)" stroke-width="1" stroke-dasharray="3 5" class="orb32"/>
+<circle cx="90" cy="40" r="5" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.15)" stroke-width="1"/>
+<circle cx="118" cy="40" r="5" fill="#c4a35a" opacity="0.5" class="orb32d"/>
+<circle cx="118" cy="40" r="3" fill="#c4a35a" opacity="0.3" class="orb32d2"/>
+<circle cx="118" cy="40" r="2" fill="#c4a35a" opacity="0.15" class="orb32d3"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">33 · SCAN LINE H</div>
+<div class="cell-desc">水平扫描线</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><linearGradient id="slg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="50%" stop-color="rgba(196,163,90,0.1)"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs>
+<rect x="0" y="0" width="180" height="2" fill="url(#slg)" class="sl33"/>
+<rect x="10" y="15" width="160" height="50" rx="4" fill="rgba(196,163,90,0.02)" stroke="rgba(196,163,90,0.06)" stroke-width="1"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">34 · SCAN LINE V</div>
+<div class="cell-desc">垂直扫描线</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><linearGradient id="slgv" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="transparent"/><stop offset="50%" stop-color="rgba(74,143,212,0.1)"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs>
+<rect x="0" y="0" width="2" height="80" fill="url(#slgv)" class="sl34"/>
+<rect x="10" y="15" width="160" height="50" rx="4" fill="rgba(74,143,212,0.02)" stroke="rgba(74,143,212,0.06)" stroke-width="1"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">35 · BREATHING GLOW</div>
+<div class="cell-desc">呼吸发光</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><filter id="bg35"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<circle cx="90" cy="40" r="20" fill="rgba(196,163,90,0.05)" stroke="rgba(196,163,90,0.15)" stroke-width="1" filter="url(#bg35)" class="br35"/>
+<text x="90" y="44" fill="#c4a35a" font-family="Space Grotesk" font-size="10" text-anchor="middle" font-weight="600">GLOW</text>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">36 · PARTICLE FLOW</div>
+<div class="cell-desc">粒子沿线流动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="10" y1="40" x2="170" y2="40" stroke="rgba(196,163,90,0.06)" stroke-width="1.5" stroke-dasharray="6 4"/>
+<circle r="3" fill="#c4a35a" class="pf36a"/><circle r="2.5" fill="#c4a35a" opacity="0.5" class="pf36b"/><circle r="2" fill="#c4a35a" opacity="0.3" class="pf36c"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">37 · WAVE</div>
+<div class="cell-desc">波浪来回摆动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<path d="M0,40 Q22,30 45,40 Q67,50 90,40 Q112,30 135,40 Q157,50 180,40" fill="none" stroke="rgba(74,143,212,0.2)" stroke-width="1.5" class="wv37a"/>
+<path d="M0,42 Q22,34 45,42 Q67,50 90,42 Q112,34 135,42 Q157,50 180,42" fill="none" stroke="rgba(74,143,212,0.12)" stroke-width="1" class="wv37b"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">38 · BUBBLE RISE</div>
+<div class="cell-desc">气泡从底部上浮</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="10" y="45" width="160" height="35" fill="rgba(74,143,212,0.03)"/>
+<line x1="10" y1="45" x2="170" y2="45" stroke="rgba(74,143,212,0.15)" stroke-width="1"/>
+<circle r="2" fill="rgba(74,143,212,0.15)" class="bub" data-x="40" data-sy="75"/><circle r="3" fill="rgba(74,143,212,0.1)" class="bub" data-x="80" data-sy="78"/>
+<circle r="1.5" fill="rgba(74,143,212,0.12)" class="bub" data-x="120" data-sy="72"/><circle r="2.5" fill="rgba(74,143,212,0.08)" class="bub" data-x="150" data-sy="76"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">39 · GRADIENT SHIFT</div>
+<div class="cell-desc">渐变色缓慢流动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><linearGradient id="gs39" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="rgba(196,163,90,0.1)" class="gs39a"/><stop offset="50%" stop-color="rgba(74,143,212,0.1)" class="gs39b"/><stop offset="100%" stop-color="rgba(61,170,90,0.1)" class="gs39c"/></linearGradient></defs>
+<rect x="10" y="15" width="160" height="50" rx="5" fill="url(#gs39)" stroke="rgba(196,163,90,0.06)" stroke-width="1"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">40 · RADAR SWEEP</div>
+<div class="cell-desc">雷达扫描旋转</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="rs40svg">
+<!-- Grid rings -->
+<circle cx="90" cy="40" r="32" fill="none" stroke="rgba(61,170,90,0.06)" stroke-width="0.8"/>
+<circle cx="90" cy="40" r="22" fill="none" stroke="rgba(61,170,90,0.04)" stroke-width="0.8"/>
+<circle cx="90" cy="40" r="12" fill="none" stroke="rgba(61,170,90,0.03)" stroke-width="0.8"/>
+<line x1="58" y1="40" x2="122" y2="40" stroke="rgba(61,170,90,0.03)" stroke-width="0.5"/>
+<line x1="90" y1="8" x2="90" y2="72" stroke="rgba(61,170,90,0.03)" stroke-width="0.5"/>
+<!-- Sweep trail (fading wedge, drawn by JS) -->
+<path d="" fill="rgba(61,170,90,0.04)" class="rs40trail"/>
+<!-- Sweep arm (drawn by JS) -->
+<line x1="90" y1="40" x2="90" y2="8" stroke="rgba(61,170,90,0.35)" stroke-width="1.5" class="rs40arm"/>
+<!-- Center -->
+<circle cx="90" cy="40" r="2.5" fill="rgba(61,170,90,0.15)" stroke="rgba(61,170,90,0.25)" stroke-width="1"/>
+<!-- Blips -->
+<circle cx="105" cy="28" r="2.5" fill="rgba(61,170,90,0.2)" class="rs40blip"/>
+<circle cx="76" cy="50" r="2" fill="rgba(61,170,90,0.15)" class="rs40blip"/>
+<circle cx="100" cy="52" r="1.5" fill="rgba(61,170,90,0.12)" class="rs40blip"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">41 · NODE PULSE</div>
+<div class="cell-desc">节点间隔脉冲</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="30" cy="40" r="8" fill="rgba(196,163,90,0.05)" stroke="rgba(196,163,90,0.1)" stroke-width="1" class="np"/><circle cx="70" cy="40" r="8" fill="rgba(196,163,90,0.05)" stroke="rgba(196,163,90,0.1)" stroke-width="1" class="np"/><circle cx="110" cy="40" r="8" fill="rgba(196,163,90,0.05)" stroke="rgba(196,163,90,0.1)" stroke-width="1" class="np"/><circle cx="150" cy="40" r="8" fill="rgba(196,163,90,0.05)" stroke="rgba(196,163,90,0.1)" stroke-width="1" class="np"/>
+<line x1="38" y1="40" x2="62" y2="40" stroke="rgba(196,163,90,0.06)" stroke-width="1"/><line x1="78" y1="40" x2="102" y2="40" stroke="rgba(196,163,90,0.06)" stroke-width="1"/><line x1="118" y1="40" x2="142" y2="40" stroke="rgba(196,163,90,0.06)" stroke-width="1"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">42 · SHIMMER</div>
+<div class="cell-desc">光泽扫过表面</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><linearGradient id="shm42" x1="0" y1="0" x2="0.3" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="50%" stop-color="rgba(196,163,90,0.08)"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs>
+<rect x="10" y="20" width="160" height="40" rx="5" fill="rgba(196,163,90,0.03)" stroke="rgba(196,163,90,0.08)" stroke-width="1"/>
+<rect x="-60" y="20" width="60" height="40" fill="url(#shm42)" class="shm42"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">43 · TYPING CURSOR</div>
+<div class="cell-desc">打字光标闪烁</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<text x="20" y="45" fill="#c4a35a" font-family="JetBrains Mono" font-size="12" class="tc43t">AI is the future_</text>
+<rect x="136" y="33" width="2" height="16" fill="#c4a35a" class="tc43c"/>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">44 · COUNTER FLICKER</div>
+<div class="cell-desc">数字持续微跳动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<text x="90" y="50" fill="#4a8fd4" font-family="JetBrains Mono" font-size="24" text-anchor="middle" font-weight="600" class="cf44">128,457</text>
+</svg></div>
+</div>
+
+<div class="cell">
+<div class="cell-name">45 · ORBIT MULTI</div>
+<div class="cell-desc">多轨道反向旋转</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- 轨道 stroke 提亮到 0.25-0.32，让轨道看得见但不抢戏 -->
+<circle cx="90" cy="40" r="32" fill="none" stroke="rgba(196,163,90,0.25)" stroke-width="0.8" stroke-dasharray="2 4" class="om45c"/>
+<circle cx="90" cy="40" r="25" fill="none" stroke="rgba(196,163,90,0.3)" stroke-width="1" stroke-dasharray="3 5" class="om45a"/>
+<circle cx="90" cy="40" r="18" fill="none" stroke="rgba(74,143,212,0.32)" stroke-width="1" stroke-dasharray="2 4" class="om45b"/>
+<circle cx="90" cy="40" r="11" fill="none" stroke="rgba(61,170,90,0.28)" stroke-width="0.8" stroke-dasharray="2 3" class="om45d"/>
+<circle cx="90" cy="40" r="4" fill="rgba(196,163,90,0.08)" stroke="rgba(196,163,90,0.2)" stroke-width="1"/>
+<!-- Orbiting dots — multiple per ring -->
+<circle r="3.5" fill="#c4a35a" opacity="0.5" class="om45p"/>
+<circle r="2.5" fill="#c4a35a" opacity="0.3" class="om45p"/>
+<circle r="3" fill="#4a8fd4" opacity="0.5" class="om45p"/>
+<circle r="2" fill="#4a8fd4" opacity="0.3" class="om45p"/>
+<circle r="2.5" fill="#3daa5a" opacity="0.4" class="om45p"/>
+<circle r="2" fill="#3daa5a" opacity="0.25" class="om45p"/>
+</svg></div>
+</div>
+
+</div></div>
+
+<!-- ========== SECTION 5: TEXT ========== -->
+<div class="section">
+<div class="section-title">TEXT ANIMATIONS · 文字动画 (5)</div>
+<div class="grid">
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">46 · TYPEWRITER</div>
+<div class="cell-desc">逐字打出</div>
+<div class="demo"><svg viewBox="0 0 180 80"><text x="10" y="45" fill="#c4a35a" font-family="Noto Serif SC" font-size="14" font-weight="700" class="tw46">AI 改变一切</text></svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">47 · HIGHLIGHT SWEEP</div>
+<div class="cell-desc">高亮色块从左扫过文字</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<text x="90" y="45" fill="#e8e4df" font-family="Space Grotesk" font-size="14" text-anchor="middle" font-weight="600">HIGHLIGHT SWEEP</text>
+<rect x="20" y="32" width="0" height="18" fill="rgba(196,163,90,0.12)" class="hs47"/>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">48 · SCRAMBLE</div>
+<div class="cell-desc">乱码到正确文字</div>
+<div class="demo"><svg viewBox="0 0 180 80"><text x="90" y="45" fill="#3daa5a" font-family="JetBrains Mono" font-size="12" text-anchor="middle" font-weight="600" class="scr48">██████████</text></svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">49 · SPLIT CHARS</div>
+<div class="cell-desc">每个字符单独入场</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<text x="18" y="45" fill="#9678c8" font-family="Space Grotesk" font-size="16" font-weight="700" class="spc">S</text>
+<text x="32" y="45" fill="#9678c8" font-family="Space Grotesk" font-size="16" font-weight="700" class="spc">P</text>
+<text x="46" y="45" fill="#9678c8" font-family="Space Grotesk" font-size="16" font-weight="700" class="spc">L</text>
+<text x="60" y="45" fill="#9678c8" font-family="Space Grotesk" font-size="16" font-weight="700" class="spc">I</text>
+<text x="72" y="45" fill="#9678c8" font-family="Space Grotesk" font-size="16" font-weight="700" class="spc">T</text>
+<text x="92" y="45" fill="#9678c8" font-family="Space Grotesk" font-size="16" font-weight="700" class="spc">C</text>
+<text x="106" y="45" fill="#9678c8" font-family="Space Grotesk" font-size="16" font-weight="700" class="spc">H</text>
+<text x="122" y="45" fill="#9678c8" font-family="Space Grotesk" font-size="16" font-weight="700" class="spc">A</text>
+<text x="138" y="45" fill="#9678c8" font-family="Space Grotesk" font-size="16" font-weight="700" class="spc">R</text>
+<text x="154" y="45" fill="#9678c8" font-family="Space Grotesk" font-size="16" font-weight="700" class="spc">S</text>
+</svg></div>
+</div>
+
+<div class="cell" onclick="replay(this)">
+<div class="cell-name">50 · CLIP TITLE</div>
+<div class="cell-desc">标题从左裁剪展开</div>
+<div class="demo"><svg viewBox="0 0 180 80"><defs><clipPath id="ct50"><rect x="0" y="0" width="0" height="80" class="ct50r"/></clipPath></defs>
+<text x="90" y="50" fill="#c4a35a" font-family="Noto Serif SC" font-size="18" text-anchor="middle" font-weight="700" clip-path="url(#ct50)">未来已来</text>
+</svg></div>
+</div>
+
+</div></div>
+
+<!-- ========== SECTION 6: MORPHING & TRANSFORM ========== -->
+<div class="section">
+<div class="section-title">MORPHING & TRANSFORM · 变形动画 (10)</div>
+<div class="grid">
+
+<div class="cell"><div class="cell-name">51 · POLYGON MORPH</div><div class="cell-desc">多边形顶点变形</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<polygon points="90,8 160,30 135,65 45,65 20,30" fill="rgba(196,163,90,0.2)" stroke="rgba(196,163,90,0.7)" stroke-width="1.5" class="sb51"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">52 · LIQUID BLOB</div><div class="cell-desc">液态变形</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<path d="M90,15 C120,15 145,25 145,45 C145,65 120,70 90,70 C60,70 35,65 35,45 C35,25 60,15 90,15Z" fill="rgba(74,143,212,0.06)" stroke="rgba(74,143,212,0.15)" stroke-width="1" class="lb52"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">53 · ROTATE 3D X</div><div class="cell-desc">绕 X 轴持续翻转</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="45" y="15" width="90" height="50" rx="5" fill="rgba(61,170,90,0.06)" stroke="rgba(61,170,90,0.15)" stroke-width="1" class="r3x53"/>
+<text x="90" y="45" fill="#3daa5a" font-family="Space Grotesk" font-size="10" text-anchor="middle" font-weight="600" class="r3x53">3D FLIP</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">54 · PENDULUM</div><div class="cell-desc">钟摆来回摆动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="90" cy="5" r="3" fill="rgba(196,163,90,0.1)"/>
+<g class="pend54g">
+  <!-- 线到圆边缘停住 (cy=63, r=8, 所以线到 63-8=55) -->
+  <line x1="90" y1="5" x2="90" y2="55" stroke="rgba(196,163,90,0.15)" stroke-width="1.5"/>
+  <circle cx="90" cy="63" r="8" fill="rgba(196,163,90,0.08)" stroke="rgba(196,163,90,0.2)" stroke-width="1"/>
+</g>
+<ellipse cx="90" cy="75" rx="12" ry="2" fill="rgba(196,163,90,0.03)" class="pend54sh"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">55 · SPRING BOUNCE</div><div class="cell-desc">弹跳+压缩阴影</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="20" y1="70" x2="160" y2="70" stroke="rgba(196,163,90,0.25)" stroke-width="0.6"/>
+<ellipse cx="90" cy="70" rx="10" ry="2" fill="rgba(0,0,0,0.35)" class="spb55sh"/>
+<circle cx="90" cy="25" r="10" fill="rgba(179,58,58,0.85)" stroke="rgba(179,58,58,1)" stroke-width="1" class="spb55"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">56 · SCALE PULSE</div><div class="cell-desc">交替缩放脉冲</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="50" cy="40" r="15" fill="rgba(196,163,90,0.05)" stroke="rgba(196,163,90,0.12)" stroke-width="1" class="sp56a"/>
+<circle cx="90" cy="40" r="15" fill="rgba(74,143,212,0.05)" stroke="rgba(74,143,212,0.12)" stroke-width="1" class="sp56b"/>
+<circle cx="130" cy="40" r="15" fill="rgba(61,170,90,0.05)" stroke="rgba(61,170,90,0.12)" stroke-width="1" class="sp56c"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">57 · MORPH ICON</div><div class="cell-desc">图标形态切换</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="65" y="15" width="50" height="50" rx="25" fill="rgba(150,120,200,0.06)" stroke="rgba(150,120,200,0.15)" stroke-width="1.5" class="mi57"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">58 · SPRING COIL</div><div class="cell-desc">弹簧压缩展开</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<path d="M15,40 Q25,25 35,40 T55,40 T75,40 T95,40 T115,40 T135,40 T155,40 T175,40" fill="none" stroke="rgba(196,163,90,0.6)" stroke-width="2" stroke-linecap="round" class="sc58"/>
+<circle cx="15" cy="40" r="4" fill="rgba(196,163,90,0.9)" class="sc58a"/>
+<circle cx="175" cy="40" r="4" fill="rgba(196,163,90,0.9)" class="sc58b"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">59A · RUBBER STRETCH</div><div class="cell-desc">橡皮拉伸回弹</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<ellipse cx="90" cy="40" rx="25" ry="25" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.15)" stroke-width="1" class="rub59"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">59B · ACCORDION</div><div class="cell-desc">手风琴折叠展开</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="10" y="15" width="25" height="50" rx="3" fill="rgba(74,143,212,0.06)" stroke="rgba(74,143,212,0.08)" stroke-width="1" class="acc59"/>
+<rect x="38" y="15" width="25" height="50" rx="3" fill="rgba(74,143,212,0.05)" stroke="rgba(74,143,212,0.08)" stroke-width="1" class="acc59"/>
+<rect x="66" y="15" width="25" height="50" rx="3" fill="rgba(74,143,212,0.06)" stroke="rgba(74,143,212,0.08)" stroke-width="1" class="acc59"/>
+<rect x="94" y="15" width="25" height="50" rx="3" fill="rgba(74,143,212,0.05)" stroke="rgba(74,143,212,0.08)" stroke-width="1" class="acc59"/>
+<rect x="122" y="15" width="25" height="50" rx="3" fill="rgba(74,143,212,0.06)" stroke="rgba(74,143,212,0.08)" stroke-width="1" class="acc59"/>
+<rect x="150" y="15" width="25" height="50" rx="3" fill="rgba(74,143,212,0.05)" stroke="rgba(74,143,212,0.08)" stroke-width="1" class="acc59"/>
+</svg></div></div>
+
+</div></div>
+
+<!-- ========== SECTION 7: PHYSICS & ORGANIC ========== -->
+<div class="section">
+<div class="section-title">PHYSICS & ORGANIC · 物理有机 (10)</div>
+<div class="grid">
+
+<div class="cell"><div class="cell-name">59C · GRAVITY DROP</div><div class="cell-desc">重力下落反弹</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="50" cy="10" r="6" fill="rgba(196,163,90,0.15)" class="gd59a"/>
+<circle cx="90" cy="10" r="6" fill="rgba(74,143,212,0.15)" class="gd59b"/>
+<circle cx="130" cy="10" r="6" fill="rgba(61,170,90,0.15)" class="gd59c"/>
+<line x1="10" y1="72" x2="170" y2="72" stroke="rgba(196,163,90,0.06)" stroke-width="1"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">60 · ELASTIC STRING</div><div class="cell-desc">弹性弦振动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<path d="M10,40 Q90,40 170,40" fill="none" stroke="rgba(196,163,90,0.2)" stroke-width="2" class="es60"/>
+<circle cx="10" cy="40" r="3" fill="rgba(196,163,90,0.15)"/>
+<circle cx="170" cy="40" r="3" fill="rgba(196,163,90,0.15)"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">61 · FLOAT DRIFT</div><div class="cell-desc">漂浮微漂移</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="25" y="20" width="40" height="40" rx="5" fill="rgba(196,163,90,0.04)" stroke="rgba(196,163,90,0.1)" stroke-width="1" class="fd61a"/>
+<rect x="75" y="25" width="35" height="35" rx="5" fill="rgba(74,143,212,0.04)" stroke="rgba(74,143,212,0.1)" stroke-width="1" class="fd61b"/>
+<rect x="120" y="18" width="45" height="45" rx="5" fill="rgba(61,170,90,0.04)" stroke="rgba(61,170,90,0.1)" stroke-width="1" class="fd61c"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">62 · BROWNIAN MOTION</div><div class="cell-desc">布朗运动粒子</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="bm62sv">
+<circle cx="45" cy="30" r="3.5" fill="rgba(196,163,90,0.85)" class="bm62" data-hx="45" data-hy="30"/>
+<circle cx="90" cy="48" r="3.5" fill="rgba(74,143,212,0.85)" class="bm62" data-hx="90" data-hy="48"/>
+<circle cx="135" cy="34" r="3.5" fill="rgba(61,170,90,0.85)" class="bm62" data-hx="135" data-hy="34"/>
+<circle cx="65" cy="58" r="3.5" fill="rgba(179,58,58,0.85)" class="bm62" data-hx="65" data-hy="58"/>
+<circle cx="115" cy="22" r="3.5" fill="rgba(150,120,200,0.85)" class="bm62" data-hx="115" data-hy="22"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">63 · HEARTBEAT</div><div class="cell-desc">EKG 心电波形</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- Heart icon (left) -->
+<path d="M30,36 C30,27 43,25 46,34 C49,25 62,27 62,36 C62,46 46,56 46,56 C46,56 30,46 30,36 Z" fill="rgba(179,58,58,0.2)" stroke="rgba(179,58,58,0.55)" stroke-width="1.2" class="hb63h"/>
+<!-- EKG baseline -->
+<line x1="72" y1="42" x2="172" y2="42" stroke="rgba(179,58,58,0.08)" stroke-width="0.6"/>
+<!-- EKG waveform with QRS spike -->
+<path d="M72,42 L92,42 L96,42 L100,42 L104,24 L108,60 L112,38 L116,44 L120,42 L140,42 L172,42" fill="none" stroke="rgba(179,58,58,0.6)" stroke-width="1.6" stroke-linejoin="round" class="hb63wave"/>
+<!-- Traveling scanner dot -->
+<circle r="2.5" fill="rgba(179,58,58,1)" class="hb63dot" cx="72" cy="42"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">64 · SPIRAL IN</div><div class="cell-desc">螺旋向内收拢</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="90" cy="40" r="2" fill="rgba(196,163,90,0.95)" class="sp64core"/>
+<circle cx="90" cy="40" r="1.6" fill="rgba(196,163,90,0.85)" class="sp64p" data-ph="0"/>
+<circle cx="90" cy="40" r="1.6" fill="rgba(74,143,212,0.85)" class="sp64p" data-ph="1.2566"/>
+<circle cx="90" cy="40" r="1.6" fill="rgba(61,170,90,0.85)" class="sp64p" data-ph="2.5133"/>
+<circle cx="90" cy="40" r="1.6" fill="rgba(179,58,58,0.85)" class="sp64p" data-ph="3.7699"/>
+<circle cx="90" cy="40" r="1.6" fill="rgba(150,120,200,0.85)" class="sp64p" data-ph="5.0265"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">65 · SMOKE RISE</div><div class="cell-desc">烟雾上升消散</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- Source flame -->
+<ellipse cx="90" cy="72" rx="8" ry="3" fill="rgba(196,163,90,0.1)"/>
+<circle cx="90" cy="68" r="3" fill="rgba(196,163,90,0.08)"/>
+<!-- Smoke particles — fill 提亮（配合 JS 起始 opacity 让上升过程可见） -->
+<circle cx="90" cy="65" r="8" fill="rgba(196,163,90,0.35)" class="smk65a"/>
+<circle cx="88" cy="65" r="12" fill="rgba(196,163,90,0.25)" class="smk65b"/>
+<circle cx="92" cy="65" r="6" fill="rgba(196,163,90,0.32)" class="smk65c"/>
+<circle cx="86" cy="65" r="14" fill="rgba(196,163,90,0.18)" class="smk65d"/>
+<circle cx="94" cy="65" r="10" fill="rgba(196,163,90,0.22)" class="smk65e"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">66 · LAVA LAMP</div><div class="cell-desc">熔岩灯浮沉</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="60" y="5" width="60" height="70" rx="30" fill="rgba(179,58,58,0.05)" stroke="rgba(179,58,58,0.38)" stroke-width="1"/>
+<ellipse cx="90" cy="71" rx="26" ry="4" fill="rgba(196,163,90,0.22)"/>
+<ellipse cx="90" cy="68" rx="18" ry="2.5" fill="rgba(196,163,90,0.3)"/>
+<ellipse cx="90" cy="58" rx="13" ry="11" fill="rgba(179,58,58,0.55)" class="ll66a"/>
+<ellipse cx="85" cy="28" rx="9" ry="10" fill="rgba(196,163,90,0.52)" class="ll66b"/>
+<ellipse cx="98" cy="45" rx="6" ry="7" fill="rgba(179,58,58,0.48)" class="ll66c"/>
+<ellipse cx="80" cy="62" rx="4.5" ry="5" fill="rgba(196,163,90,0.45)" class="ll66d"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">67A · MAGNETIC PULL</div><div class="cell-desc">磁性吸引聚散</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="90" cy="40" r="5" fill="rgba(196,163,90,0.1)" stroke="rgba(196,163,90,0.15)" stroke-width="1"/>
+<circle cx="30" cy="20" r="3" fill="rgba(196,163,90,0.12)" class="mag67"/>
+<circle cx="150" cy="60" r="3" fill="rgba(74,143,212,0.12)" class="mag67"/>
+<circle cx="40" cy="65" r="2.5" fill="rgba(61,170,90,0.12)" class="mag67"/>
+<circle cx="145" cy="18" r="2.5" fill="rgba(179,58,58,0.12)" class="mag67"/>
+<circle cx="25" cy="45" r="2" fill="rgba(150,120,200,0.12)" class="mag67"/>
+<circle cx="160" cy="35" r="2" fill="rgba(212,185,106,0.12)" class="mag67"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">67B · RIPPLE POOL</div><div class="cell-desc">水池涟漪扩散</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<ellipse cx="90" cy="45" rx="70" ry="20" fill="none" stroke="rgba(74,143,212,0.04)" stroke-width="1"/>
+<ellipse cx="90" cy="45" rx="50" ry="14" fill="none" stroke="rgba(74,143,212,0.03)" stroke-width="1"/>
+<circle cx="90" cy="40" r="3" fill="rgba(74,143,212,0.25)" class="rpl67c"/>
+<ellipse cx="90" cy="45" rx="5" ry="2" fill="none" stroke="rgba(74,143,212,0.3)" stroke-width="2" class="rpl67a"/>
+<ellipse cx="90" cy="45" rx="5" ry="2" fill="none" stroke="rgba(74,143,212,0.25)" stroke-width="1.8" class="rpl67b"/>
+<ellipse cx="90" cy="45" rx="5" ry="2" fill="none" stroke="rgba(74,143,212,0.2)" stroke-width="1.5" class="rpl67d"/>
+<ellipse cx="90" cy="45" rx="5" ry="2" fill="none" stroke="rgba(74,143,212,0.15)" stroke-width="1.2" class="rpl67e"/>
+</svg></div></div>
+
+</div></div>
+
+<!-- ========== SECTION 8: GLITCH & DIGITAL ========== -->
+<div class="section">
+<div class="section-title">GLITCH & DIGITAL · 故障数字 (10)</div>
+<div class="grid">
+
+<div class="cell"><div class="cell-name">67C · GLITCH TEXT</div><div class="cell-desc">文字故障抖动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<text x="90" y="42" fill="#c4a35a" font-family="JetBrains Mono" font-size="16" text-anchor="middle" font-weight="700" class="gl67">GLITCH</text>
+<text x="90" y="42" fill="rgba(74,143,212,0.3)" font-family="JetBrains Mono" font-size="16" text-anchor="middle" font-weight="700" class="gl67r">GLITCH</text>
+<text x="90" y="42" fill="rgba(179,58,58,0.3)" font-family="JetBrains Mono" font-size="16" text-anchor="middle" font-weight="700" class="gl67b">GLITCH</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">68 · MATRIX RAIN</div><div class="cell-desc">矩阵数字雨</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="mx68sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">69 · SCAN GRID</div><div class="cell-desc">网格扫描高亮</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="sgr69sv">
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">70 · NOISE STATIC</div><div class="cell-desc">静电噪点闪烁</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="ns70sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">71 · BINARY STREAM</div><div class="cell-desc">二进制流滚动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<text x="10" y="20" fill="rgba(61,170,90,0.15)" font-family="JetBrains Mono" font-size="9" class="bs71a">01001110 10110010</text>
+<text x="10" y="35" fill="rgba(61,170,90,0.1)" font-family="JetBrains Mono" font-size="9" class="bs71b">11010011 00101101</text>
+<text x="10" y="50" fill="rgba(61,170,90,0.08)" font-family="JetBrains Mono" font-size="9" class="bs71c">10011100 11100101</text>
+<text x="10" y="65" fill="rgba(61,170,90,0.06)" font-family="JetBrains Mono" font-size="9" class="bs71d">01110010 10001011</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">72 · PIXEL DISSOLVE</div><div class="cell-desc">像素溶解重组</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="pd72sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">73 · HEX PULSE</div><div class="cell-desc">蜂窝六边形脉冲</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="hp73sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">74 · CIRCUIT TRACE</div><div class="cell-desc">电路板信号追踪</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<path d="M10,40 L40,40 L50,20 L80,20 L90,40 L120,40 L130,60 L160,60 L170,40" fill="none" stroke="rgba(196,163,90,0.1)" stroke-width="1.5" class="ct74path"/>
+<circle r="3" fill="#c4a35a" class="ct74dot" opacity="0"/>
+<circle cx="40" cy="40" r="2" fill="rgba(196,163,90,0.1)"/><circle cx="80" cy="20" r="2" fill="rgba(196,163,90,0.1)"/>
+<circle cx="120" cy="40" r="2" fill="rgba(196,163,90,0.1)"/><circle cx="160" cy="60" r="2" fill="rgba(196,163,90,0.1)"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">75A · HOLOGRAM</div><div class="cell-desc">全息投影闪烁</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="50" y="10" width="80" height="55" rx="3" fill="rgba(74,143,212,0.05)" stroke="rgba(74,143,212,0.15)" stroke-width="1" class="holo75"/>
+<text x="90" y="35" fill="rgba(74,143,212,0.35)" font-family="Space Grotesk" font-size="12" text-anchor="middle" font-weight="600" class="holo75t">HOLOGRAM</text>
+<text x="90" y="50" fill="rgba(74,143,212,0.25)" font-family="JetBrains Mono" font-size="8" text-anchor="middle" class="holo75t">SYS.ONLINE</text>
+<line x1="50" y1="68" x2="130" y2="68" stroke="rgba(74,143,212,0.08)" stroke-width="1"/>
+<line x1="55" y1="72" x2="125" y2="72" stroke="rgba(74,143,212,0.05)" stroke-width="1"/>
+<!-- Horizontal scan lines inside -->
+<line x1="52" y1="22" x2="128" y2="22" stroke="rgba(74,143,212,0.04)" stroke-width="0.5"/>
+<line x1="52" y1="42" x2="128" y2="42" stroke="rgba(74,143,212,0.03)" stroke-width="0.5"/>
+<!-- Moving scan -->
+<line x1="50" y1="20" x2="130" y2="20" stroke="rgba(74,143,212,0.1)" stroke-width="0.8" class="holo75s"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">75B · SIGNAL LOSS</div><div class="cell-desc">信号丢失恢复</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<text x="90" y="45" fill="#c4a35a" font-family="JetBrains Mono" font-size="12" text-anchor="middle" font-weight="600" class="sigl75">CONNECTED</text>
+<rect x="25" y="55" width="130" height="3" rx="1.5" fill="rgba(61,170,90,0.15)" class="sigl75bar"/>
+</svg></div></div>
+
+</div></div>
+
+<!-- ========== SECTION 9: COMPOSITE & CINEMATIC ========== -->
+<div class="section">
+<div class="section-title">COMPOSITE & CINEMATIC · 复合电影 (10)</div>
+<div class="grid">
+
+<div class="cell"><div class="cell-name">75C · REVEAL MASK</div><div class="cell-desc">圆形遮罩展开</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><clipPath id="rm75"><circle cx="90" cy="40" r="0" class="rm75c"/></clipPath></defs>
+<rect x="10" y="10" width="160" height="60" rx="4" fill="rgba(196,163,90,0.08)" clip-path="url(#rm75)"/>
+<text x="90" y="45" fill="#c4a35a" font-family="Space Grotesk" font-size="12" text-anchor="middle" font-weight="600" clip-path="url(#rm75)">REVEAL</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">76 · SPOTLIGHT</div><div class="cell-desc">聚光灯移动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><radialGradient id="spt76" cx="0.2" cy="0.5" r="0.3"><stop offset="0%" stop-color="rgba(196,163,90,0.12)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs>
+<rect x="10" y="10" width="160" height="60" rx="4" fill="rgba(196,163,90,0.02)" stroke="rgba(196,163,90,0.06)" stroke-width="1"/>
+<rect x="10" y="10" width="160" height="60" rx="4" fill="url(#spt76)" class="spt76"/>
+<text x="90" y="45" fill="#6b6560" font-family="Space Grotesk" font-size="10" text-anchor="middle">SPOTLIGHT</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">77 · ZOOM BLUR</div><div class="cell-desc">变焦模糊冲击</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><filter id="zb77"><feGaussianBlur stdDeviation="0" class="zb77f"/></filter></defs>
+<text x="90" y="48" fill="#c4a35a" font-family="Noto Serif SC" font-size="20" text-anchor="middle" font-weight="700" filter="url(#zb77)" class="zb77t">ZOOM</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">78 · PARALLAX LAYERS</div><div class="cell-desc">多层视差移动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="5" y="50" width="170" height="25" rx="3" fill="rgba(196,163,90,0.02)" stroke="rgba(196,163,90,0.04)" stroke-width="1" class="pl78a"/>
+<rect x="15" y="35" width="150" height="25" rx="3" fill="rgba(196,163,90,0.03)" stroke="rgba(196,163,90,0.06)" stroke-width="1" class="pl78b"/>
+<rect x="30" y="18" width="120" height="25" rx="3" fill="rgba(196,163,90,0.04)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="pl78c"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">79 · LETTERBOX</div><div class="cell-desc">黑边电影压缩</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="0" y="0" width="180" height="80" fill="rgba(196,163,90,0.04)"/>
+<text x="90" y="46" text-anchor="middle" font-size="13" fill="rgba(196,163,90,0.9)" font-family="Noto Serif SC" font-weight="700">场景</text>
+<rect x="0" y="0" width="180" height="0" fill="rgba(10,10,11,0.9)" class="lb79t"/>
+<rect x="0" y="80" width="180" height="0" fill="rgba(10,10,11,0.9)" class="lb79b"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">80 · FOCUS PULL</div><div class="cell-desc">变焦聚焦入场</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><filter id="fp80f"><feGaussianBlur stdDeviation="0" class="fp80fb"/></filter></defs>
+<g filter="url(#fp80f)" class="fp80c">
+<rect x="30" y="15" width="120" height="50" rx="6" fill="rgba(74,143,212,0.12)" stroke="rgba(74,143,212,0.35)" stroke-width="1"/>
+<text x="90" y="45" text-anchor="middle" font-size="12" fill="rgba(74,143,212,0.95)" font-family="JetBrains Mono" font-weight="700" letter-spacing="2">FOCUS</text>
+</g>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">81 · SHUTTER</div><div class="cell-desc">百叶窗切换</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="10" y="10" width="22" height="60" fill="rgba(196,163,90,0.08)" class="sh81"/><rect x="34" y="10" width="22" height="60" fill="rgba(196,163,90,0.08)" class="sh81"/>
+<rect x="58" y="10" width="22" height="60" fill="rgba(196,163,90,0.08)" class="sh81"/><rect x="82" y="10" width="22" height="60" fill="rgba(196,163,90,0.08)" class="sh81"/>
+<rect x="106" y="10" width="22" height="60" fill="rgba(196,163,90,0.08)" class="sh81"/><rect x="130" y="10" width="22" height="60" fill="rgba(196,163,90,0.08)" class="sh81"/>
+<rect x="154" y="10" width="22" height="60" fill="rgba(196,163,90,0.08)" class="sh81"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">82 · WIPE DIAGONAL</div><div class="cell-desc">对角线擦除</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><clipPath id="wd82"><polygon points="0,0 0,0 0,80 0,80" class="wd82p"/></clipPath></defs>
+<rect x="5" y="5" width="170" height="70" rx="4" fill="rgba(196,163,90,0.08)" clip-path="url(#wd82)"/>
+<text x="90" y="45" fill="#c4a35a" font-family="Space Grotesk" font-size="11" text-anchor="middle" font-weight="600" clip-path="url(#wd82)">DIAGONAL WIPE</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">83A · SPLIT SCREEN</div><div class="cell-desc">画面对半分裂</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="5" y="10" width="82" height="60" rx="3" fill="rgba(196,163,90,0.05)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="sps83L"/>
+<rect x="93" y="10" width="82" height="60" rx="3" fill="rgba(74,143,212,0.05)" stroke="rgba(74,143,212,0.08)" stroke-width="1" class="sps83R"/>
+<line x1="90" y1="5" x2="90" y2="75" stroke="rgba(196,163,90,0.1)" stroke-width="1" class="sps83d"/>
+<text x="46" y="44" fill="rgba(196,163,90,0.15)" font-family="JetBrains Mono" font-size="8" text-anchor="middle">BEFORE</text>
+<text x="134" y="44" fill="rgba(74,143,212,0.15)" font-family="JetBrains Mono" font-size="8" text-anchor="middle">AFTER</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">83B · CURTAIN OPEN</div><div class="cell-desc">幕布左右拉开</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="10" y="10" width="160" height="60" rx="3" fill="rgba(61,170,90,0.05)" stroke="rgba(61,170,90,0.06)" stroke-width="1"/>
+<text x="90" y="44" fill="rgba(61,170,90,0.15)" font-family="Space Grotesk" font-size="11" text-anchor="middle" font-weight="600">REVEAL</text>
+<rect x="10" y="10" width="80" height="60" rx="3" fill="rgba(10,10,11,0.95)" class="curt83L"/>
+<rect x="90" y="10" width="80" height="60" rx="3" fill="rgba(10,10,11,0.95)" class="curt83R"/>
+</svg></div></div>
+
+</div></div>
+
+<!-- ========== SECTION 10: ADVANCED DATA ========== -->
+<div class="section">
+<div class="section-title">ADVANCED DATA · 高级数据 (10)</div>
+<div class="grid">
+
+<div class="cell"><div class="cell-name">83C · TREEMAP GROW</div><div class="cell-desc">树图区块生长</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="10" y="10" width="0" height="35" fill="rgba(196,163,90,0.1)" class="tm83" data-w="80"/>
+<rect x="92" y="10" width="0" height="35" fill="rgba(74,143,212,0.1)" class="tm83" data-w="50"/>
+<rect x="144" y="10" width="0" height="35" fill="rgba(61,170,90,0.1)" class="tm83" data-w="26"/>
+<rect x="10" y="47" width="0" height="28" fill="rgba(179,58,58,0.1)" class="tm83" data-w="45"/>
+<rect x="57" y="47" width="0" height="28" fill="rgba(150,120,200,0.1)" class="tm83" data-w="55"/>
+<rect x="114" y="47" width="0" height="28" fill="rgba(212,185,106,0.1)" class="tm83" data-w="56"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">84 · SANKEY FLOW</div><div class="cell-desc">桑基图流量动画</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- Left node -->
+<rect x="5" y="8" width="8" height="64" rx="3" fill="rgba(196,163,90,0.08)" stroke="rgba(196,163,90,0.1)" stroke-width="1"/>
+<!-- Right nodes -->
+<rect x="155" y="5" width="8" height="22" rx="3" fill="rgba(196,163,90,0.08)" stroke="rgba(196,163,90,0.1)" stroke-width="1"/>
+<rect x="155" y="32" width="8" height="18" rx="3" fill="rgba(74,143,212,0.08)" stroke="rgba(74,143,212,0.1)" stroke-width="1"/>
+<rect x="155" y="55" width="8" height="20" rx="3" fill="rgba(61,170,90,0.08)" stroke="rgba(61,170,90,0.1)" stroke-width="1"/>
+<!-- Flow bands -->
+<path d="M13,12 C70,12 90,8 155,8 L155,24 C90,24 70,28 13,28 Z" fill="rgba(196,163,90,0.05)" stroke="rgba(196,163,90,0.04)" stroke-width="0.5" class="sk84b"/>
+<path d="M13,30 C70,30 90,34 155,34 L155,48 C90,48 70,44 13,44 Z" fill="rgba(74,143,212,0.05)" stroke="rgba(74,143,212,0.04)" stroke-width="0.5" class="sk84b"/>
+<path d="M13,46 C70,46 90,57 155,57 L155,73 C90,73 70,66 13,66 Z" fill="rgba(61,170,90,0.05)" stroke="rgba(61,170,90,0.04)" stroke-width="0.5" class="sk84b"/>
+<!-- Flow particles -->
+<circle r="2" fill="rgba(196,163,90,0.3)" class="sk84p1"/><circle r="2" fill="rgba(196,163,90,0.2)" class="sk84p2"/>
+<circle r="1.5" fill="rgba(74,143,212,0.3)" class="sk84p3"/><circle r="1.5" fill="rgba(74,143,212,0.2)" class="sk84p4"/>
+<circle r="1.5" fill="rgba(61,170,90,0.3)" class="sk84p5"/><circle r="1.5" fill="rgba(61,170,90,0.2)" class="sk84p6"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">85 · HEATMAP PULSE</div><div class="cell-desc">热力图色块闪烁</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="hm85sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">86 · DONUT SPIN</div><div class="cell-desc">环形图段旋转入场</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- Background ring -->
+<circle cx="90" cy="40" r="25" fill="none" stroke="rgba(196,163,90,0.04)" stroke-width="10"/>
+<!-- Segments drawn via JS using stroke-dashoffset from 0 -->
+<circle cx="90" cy="40" r="25" fill="none" stroke="rgba(196,163,90,0.25)" stroke-width="10" stroke-linecap="butt" pathLength="100" class="dn86" data-len="30" transform="rotate(-90,90,40)"/>
+<circle cx="90" cy="40" r="25" fill="none" stroke="rgba(74,143,212,0.25)" stroke-width="10" stroke-linecap="butt" pathLength="100" class="dn86" data-len="20" data-offset="30" transform="rotate(-90,90,40)"/>
+<circle cx="90" cy="40" r="25" fill="none" stroke="rgba(61,170,90,0.25)" stroke-width="10" stroke-linecap="butt" pathLength="100" class="dn86" data-len="15" data-offset="50" transform="rotate(-90,90,40)"/>
+<circle cx="90" cy="40" r="25" fill="none" stroke="rgba(179,58,58,0.25)" stroke-width="10" stroke-linecap="butt" pathLength="100" class="dn86" data-len="12" data-offset="65" transform="rotate(-90,90,40)"/>
+<circle cx="90" cy="40" r="25" fill="none" stroke="rgba(150,120,200,0.2)" stroke-width="10" stroke-linecap="butt" pathLength="100" class="dn86" data-len="23" data-offset="77" transform="rotate(-90,90,40)"/>
+<!-- Center label -->
+<text x="90" y="38" fill="rgba(196,163,90,0.2)" font-family="Space Grotesk" font-size="11" text-anchor="middle" font-weight="700" class="dn86t">100%</text>
+<text x="90" y="50" fill="rgba(196,163,90,0.1)" font-family="JetBrains Mono" font-size="7" text-anchor="middle">TOTAL</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">87 · NETWORK GRAPH</div><div class="cell-desc">网络图节点连线</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- 连接线止于节点边缘，不穿心 -->
+<line x1="34.6" y1="26.9" x2="83.5" y2="47.3" stroke="rgba(196,163,90,0.18)" stroke-width="1" class="ng87l"/>
+<line x1="96.3" y1="46.9" x2="145.5" y2="22.2" stroke="rgba(196,163,90,0.18)" stroke-width="1" class="ng87l"/>
+<line x1="84.2" y1="53.9" x2="63.3" y2="67.8" stroke="rgba(196,163,90,0.15)" stroke-width="1" class="ng87l"/>
+<line x1="96.7" y1="52" x2="136.2" y2="63.9" stroke="rgba(196,163,90,0.15)" stroke-width="1" class="ng87l"/>
+<line x1="32.8" y1="29.2" x2="57.8" y2="66.7" stroke="rgba(196,163,90,0.1)" stroke-width="1" class="ng87l"/>
+<circle cx="30" cy="25" r="5" fill="rgba(196,163,90,0.08)" stroke="rgba(196,163,90,0.15)" stroke-width="1" class="ng87n"/>
+<circle cx="90" cy="50" r="7" fill="rgba(74,143,212,0.08)" stroke="rgba(74,143,212,0.15)" stroke-width="1" class="ng87n"/>
+<circle cx="150" cy="20" r="5" fill="rgba(61,170,90,0.08)" stroke="rgba(61,170,90,0.15)" stroke-width="1" class="ng87n"/>
+<circle cx="60" cy="70" r="4" fill="rgba(179,58,58,0.08)" stroke="rgba(179,58,58,0.15)" stroke-width="1" class="ng87n"/>
+<circle cx="140" cy="65" r="4" fill="rgba(150,120,200,0.08)" stroke="rgba(150,120,200,0.15)" stroke-width="1" class="ng87n"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">88 · WATERFALL</div><div class="cell-desc">瀑布图增减变化</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="10" y1="72" x2="170" y2="72" stroke="rgba(196,163,90,0.06)" stroke-width="1"/>
+<rect x="15" y="72" width="18" height="0" fill="rgba(61,170,90,0.15)" class="wf88" data-h="45" data-dir="up"/>
+<rect x="38" y="72" width="18" height="0" fill="rgba(61,170,90,0.15)" class="wf88" data-h="30" data-dir="up"/>
+<rect x="61" y="72" width="18" height="0" fill="rgba(179,58,58,0.15)" class="wf88" data-h="15" data-dir="up"/>
+<rect x="84" y="72" width="18" height="0" fill="rgba(61,170,90,0.15)" class="wf88" data-h="50" data-dir="up"/>
+<rect x="107" y="72" width="18" height="0" fill="rgba(179,58,58,0.15)" class="wf88" data-h="20" data-dir="up"/>
+<rect x="130" y="72" width="18" height="0" fill="rgba(61,170,90,0.15)" class="wf88" data-h="35" data-dir="up"/>
+<rect x="153" y="72" width="18" height="0" fill="rgba(196,163,90,0.15)" class="wf88" data-h="55" data-dir="up"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">89 · CANDLESTICK</div><div class="cell-desc">K线逐根生长</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- 横轴基线 -->
+<line x1="8" y1="72" x2="172" y2="72" stroke="rgba(196,163,90,0.18)" stroke-width="0.6"/>
+<g class="ck89">
+<!-- Day 1: 红 (down) open 42 → close 52 → 画成 body 42-52，wick 36-62 -->
+<line x1="22" y1="36" x2="22" y2="62" stroke="rgba(232,228,223,0.45)" stroke-width="0.8" class="ckw"/>
+<rect x="17" y="42" width="10" height="10" fill="rgba(179,58,58,0.9)" class="ckb"/>
+<!-- Day 2: 绿 (up) open 50 → close 38 → body 38-50，wick 30-54 -->
+<line x1="48" y1="30" x2="48" y2="54" stroke="rgba(232,228,223,0.45)" stroke-width="0.8" class="ckw"/>
+<rect x="43" y="38" width="10" height="12" fill="rgba(61,170,90,0.9)" class="ckb"/>
+<!-- Day 3: 绿 (up big) open 40 → close 22 → body 22-40，wick 18-44 -->
+<line x1="74" y1="18" x2="74" y2="44" stroke="rgba(232,228,223,0.45)" stroke-width="0.8" class="ckw"/>
+<rect x="69" y="22" width="10" height="18" fill="rgba(61,170,90,0.9)" class="ckb"/>
+<!-- Day 4: 红 (down) open 24 → close 34 → body 24-34，wick 20-40 -->
+<line x1="100" y1="20" x2="100" y2="40" stroke="rgba(232,228,223,0.45)" stroke-width="0.8" class="ckw"/>
+<rect x="95" y="24" width="10" height="10" fill="rgba(179,58,58,0.9)" class="ckb"/>
+<!-- Day 5: 绿 (up big) open 34 → close 16 → body 16-34，wick 10-38 -->
+<line x1="126" y1="10" x2="126" y2="38" stroke="rgba(232,228,223,0.45)" stroke-width="0.8" class="ckw"/>
+<rect x="121" y="16" width="10" height="18" fill="rgba(61,170,90,0.9)" class="ckb"/>
+<!-- Day 6: 绿 (up) open 18 → close 10 → body 10-18，wick 6-22 -->
+<line x1="152" y1="6" x2="152" y2="22" stroke="rgba(232,228,223,0.45)" stroke-width="0.8" class="ckw"/>
+<rect x="147" y="10" width="10" height="8" fill="rgba(61,170,90,0.9)" class="ckb"/>
+</g>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">90 · FLOW DIAGRAM</div><div class="cell-desc">流程图能量传递</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs><filter id="fl90glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<!-- Nodes -->
+<rect x="5" y="22" width="42" height="36" rx="5" fill="rgba(196,163,90,0.03)" stroke="rgba(196,163,90,0.08)" stroke-width="1" class="fl90n0"/>
+<text x="26" y="44" fill="rgba(196,163,90,0.15)" font-family="JetBrains Mono" font-size="8" text-anchor="middle">INPUT</text>
+<rect x="69" y="22" width="42" height="36" rx="5" fill="rgba(74,143,212,0.03)" stroke="rgba(74,143,212,0.08)" stroke-width="1" class="fl90n1"/>
+<text x="90" y="44" fill="rgba(74,143,212,0.15)" font-family="JetBrains Mono" font-size="8" text-anchor="middle">PROC</text>
+<rect x="133" y="22" width="42" height="36" rx="5" fill="rgba(61,170,90,0.03)" stroke="rgba(61,170,90,0.08)" stroke-width="1" class="fl90n2"/>
+<text x="154" y="44" fill="rgba(61,170,90,0.15)" font-family="JetBrains Mono" font-size="8" text-anchor="middle">OUT</text>
+<!-- Connection lines -->
+<line x1="47" y1="40" x2="69" y2="40" stroke="rgba(196,163,90,0.06)" stroke-width="1.5" class="fl90line"/>
+<line x1="111" y1="40" x2="133" y2="40" stroke="rgba(196,163,90,0.06)" stroke-width="1.5" class="fl90line"/>
+<!-- Energy pulse (a short bright line segment that travels) -->
+<line x1="47" y1="40" x2="52" y2="40" stroke="#c4a35a" stroke-width="2.5" stroke-linecap="round" filter="url(#fl90glow)" class="fl90pulse1" opacity="0"/>
+<line x1="111" y1="40" x2="116" y2="40" stroke="#c4a35a" stroke-width="2.5" stroke-linecap="round" filter="url(#fl90glow)" class="fl90pulse2" opacity="0"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">91A · FUNNEL POUR</div><div class="cell-desc">漏斗蓄液注入</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs>
+  <linearGradient id="fnlG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(196,163,90,0.02)"/><stop offset="100%" stop-color="rgba(196,163,90,0.12)"/></linearGradient>
+  <clipPath id="fnlClip"><polygon points="45,6 135,6 108,38 72,38"/></clipPath>
+  <clipPath id="fnlNeckClip"><rect x="76" y="38" width="28" height="32"/></clipPath>
+</defs>
+<!-- Funnel outline -->
+<polygon points="45,6 135,6 108,38 72,38" fill="rgba(196,163,90,0.02)" stroke="rgba(196,163,90,0.08)" stroke-width="1"/>
+<!-- Liquid rising INSIDE funnel (clipped) -->
+<rect x="44" y="38" width="92" height="0" fill="rgba(196,163,90,0.06)" clip-path="url(#fnlClip)" class="fnl91top"/>
+<!-- Neck -->
+<rect x="76" y="38" width="28" height="32" rx="2" fill="rgba(196,163,90,0.02)" stroke="rgba(196,163,90,0.06)" stroke-width="1"/>
+<!-- Liquid in neck (clipped) -->
+<rect x="76" y="70" width="28" height="0" fill="rgba(196,163,90,0.08)" clip-path="url(#fnlNeckClip)" class="fnl91neck"/>
+<!-- Pool at bottom -->
+<rect x="60" y="72" width="60" height="0" rx="3" fill="url(#fnlG)" class="fnl91pool"/>
+<!-- Drip dots -->
+<circle r="1.5" fill="rgba(196,163,90,0.25)" class="fnl91drip" opacity="0"/>
+<circle r="1.5" fill="rgba(196,163,90,0.2)" class="fnl91drip" opacity="0"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">91B · RADAR FILL</div><div class="cell-desc">雷达逐段填充</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- Grid -->
+<polygon points="90,15 130,30 130,55 90,70 50,55 50,30" fill="none" stroke="rgba(196,163,90,0.06)" stroke-width="0.8"/>
+<polygon points="90,22 118,33 118,52 90,63 62,52 62,33" fill="none" stroke="rgba(196,163,90,0.04)" stroke-width="0.8"/>
+<!-- 6 triangle segments (center to each edge) -->
+<polygon points="90,42 90,18 128,32" fill="rgba(196,163,90,0.08)" class="rdf91s" opacity="0"/>
+<polygon points="90,42 128,32 125,53" fill="rgba(74,143,212,0.08)" class="rdf91s" opacity="0"/>
+<polygon points="90,42 125,53 90,66" fill="rgba(61,170,90,0.08)" class="rdf91s" opacity="0"/>
+<polygon points="90,42 90,66 55,53" fill="rgba(179,58,58,0.08)" class="rdf91s" opacity="0"/>
+<polygon points="90,42 55,53 52,32" fill="rgba(150,120,200,0.08)" class="rdf91s" opacity="0"/>
+<polygon points="90,42 52,32 90,18" fill="rgba(212,185,106,0.08)" class="rdf91s" opacity="0"/>
+<!-- Vertex dots -->
+<circle cx="90" cy="18" r="2.5" fill="rgba(196,163,90,0.2)" class="rdf91d" opacity="0"/>
+<circle cx="128" cy="32" r="2.5" fill="rgba(74,143,212,0.2)" class="rdf91d" opacity="0"/>
+<circle cx="125" cy="53" r="2.5" fill="rgba(61,170,90,0.2)" class="rdf91d" opacity="0"/>
+<circle cx="90" cy="66" r="2.5" fill="rgba(179,58,58,0.2)" class="rdf91d" opacity="0"/>
+<circle cx="55" cy="53" r="2.5" fill="rgba(150,120,200,0.2)" class="rdf91d" opacity="0"/>
+<circle cx="52" cy="32" r="2.5" fill="rgba(212,185,106,0.2)" class="rdf91d" opacity="0"/>
+<!-- Outline -->
+<polygon points="90,18 128,32 125,53 90,66 55,53 52,32" fill="none" stroke="rgba(196,163,90,0.12)" stroke-width="1" class="rdf91outline" opacity="0"/>
+</svg></div></div>
+
+</div></div>
+
+<!-- ========== SECTION 11: PARTICLE SYSTEMS ========== -->
+<div class="section">
+<div class="section-title">PARTICLE SYSTEMS · 粒子系统 (10)</div>
+<div class="grid">
+
+<div class="cell"><div class="cell-name">91C · STARFIELD</div><div class="cell-desc">星空飞行</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="sf91sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">92 · FIREFLY</div><div class="cell-desc">萤火虫漂浮</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="ff92sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">93 · SNOW FALL</div><div class="cell-desc">雪花飘落</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="sn93sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">94 · CONFETTI</div><div class="cell-desc">彩纸飘落</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="cf94sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">95 · CONSTELLATION</div><div class="cell-desc">星座连线图</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="cs95sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">96 · ENERGY FIELD</div><div class="cell-desc">能量场粒子聚散</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="ef96sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">97 · METEOR SHOWER</div><div class="cell-desc">流星划过</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="ms97sv"></svg></div></div>
+
+<div class="cell"><div class="cell-name">98 · DNA HELIX</div><div class="cell-desc">DNA 双螺旋旋转</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="dna98sv">
+<!-- Generated by JS: two sine curves + connecting rungs -->
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">99 · WAVE INTERFERENCE</div><div class="cell-desc">双源波干涉</div>
+<div class="demo"><svg viewBox="0 0 180 80" class="wi99sv">
+<!-- Source points (rendered last = on top) -->
+<circle cx="50" cy="40" r="3.5" fill="rgba(196,163,90,0.2)" stroke="rgba(196,163,90,0.3)" stroke-width="1.5" class="wi99src"/>
+<circle cx="130" cy="40" r="3.5" fill="rgba(74,143,212,0.2)" stroke="rgba(74,143,212,0.3)" stroke-width="1.5" class="wi99src"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">100 · AURORA</div><div class="cell-desc">极光垂帘</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs>
+  <linearGradient id="aur1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(61,170,90,0.12)"/><stop offset="60%" stop-color="rgba(61,170,90,0.04)"/><stop offset="100%" stop-color="rgba(61,170,90,0)"/></linearGradient>
+  <linearGradient id="aur2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(74,143,212,0.1)"/><stop offset="60%" stop-color="rgba(74,143,212,0.03)"/><stop offset="100%" stop-color="rgba(74,143,212,0)"/></linearGradient>
+  <linearGradient id="aur3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(150,120,200,0.08)"/><stop offset="60%" stop-color="rgba(150,120,200,0.02)"/><stop offset="100%" stop-color="rgba(150,120,200,0)"/></linearGradient>
+  <filter id="aurBlur"><feGaussianBlur stdDeviation="3"/></filter>
+</defs>
+<!-- Aurora curtains — hanging from top, fading downward -->
+<path d="M-10,0 L-10,0 Q20,50 50,35 Q80,20 110,45 Q140,55 170,30 Q185,20 190,0 L190,0 Z" fill="url(#aur1)" filter="url(#aurBlur)" class="au100a"/>
+<path d="M-10,0 L-10,0 Q30,45 60,30 Q90,15 120,40 Q150,50 180,25 Q190,15 190,0 Z" fill="url(#aur2)" filter="url(#aurBlur)" class="au100b"/>
+<path d="M-10,0 L-10,0 Q25,40 55,28 Q85,18 115,35 Q145,42 175,22 Q190,12 190,0 Z" fill="url(#aur3)" filter="url(#aurBlur)" class="au100c"/>
+<!-- Bright top edge lines -->
+<path d="M0,3 Q45,2 90,4 Q135,2 180,3" fill="none" stroke="rgba(61,170,90,0.2)" stroke-width="1.5" class="au100la"/>
+<path d="M0,5 Q45,4 90,6 Q135,4 180,5" fill="none" stroke="rgba(74,143,212,0.12)" stroke-width="1" class="au100lb"/>
+</svg></div></div>
+
+</div></div>
+
+<!-- ========== SECTION 12: STORYTELLING ========== -->
+<div class="section">
+<div class="section-title">STORYTELLING ANIMATIONS · 叙事场景 (10)</div>
+<div class="grid">
+
+<div class="cell"><div class="cell-name">101 · MILESTONE TIMELINE</div><div class="cell-desc">里程碑时间线</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="10" y1="45" x2="170" y2="45" stroke="rgba(196,163,90,0.18)" stroke-width="1" class="mt101line"/>
+<g class="mt101g"><circle cx="30" cy="45" r="4" fill="rgba(196,163,90,0.25)" stroke="rgba(196,163,90,0.6)" stroke-width="1" class="mt101m"/><text x="30" y="30" text-anchor="middle" font-size="8" fill="rgba(196,163,90,0.7)" font-family="JetBrains Mono" class="mt101t">Q1</text><text x="30" y="62" text-anchor="middle" font-size="7" fill="rgba(232,228,223,0.5)" font-family="Noto Sans SC" class="mt101d">启动</text></g>
+<g class="mt101g"><circle cx="75" cy="45" r="4" fill="rgba(74,143,212,0.25)" stroke="rgba(74,143,212,0.6)" stroke-width="1" class="mt101m"/><text x="75" y="30" text-anchor="middle" font-size="8" fill="rgba(74,143,212,0.7)" font-family="JetBrains Mono" class="mt101t">Q2</text><text x="75" y="62" text-anchor="middle" font-size="7" fill="rgba(232,228,223,0.5)" font-family="Noto Sans SC" class="mt101d">测试</text></g>
+<g class="mt101g"><circle cx="120" cy="45" r="4" fill="rgba(61,170,90,0.25)" stroke="rgba(61,170,90,0.6)" stroke-width="1" class="mt101m"/><text x="120" y="30" text-anchor="middle" font-size="8" fill="rgba(61,170,90,0.7)" font-family="JetBrains Mono" class="mt101t">Q3</text><text x="120" y="62" text-anchor="middle" font-size="7" fill="rgba(232,228,223,0.5)" font-family="Noto Sans SC" class="mt101d">上线</text></g>
+<g class="mt101g"><circle cx="165" cy="45" r="4" fill="rgba(179,58,58,0.25)" stroke="rgba(179,58,58,0.6)" stroke-width="1" class="mt101m"/><text x="165" y="30" text-anchor="middle" font-size="8" fill="rgba(179,58,58,0.7)" font-family="JetBrains Mono" class="mt101t">Q4</text><text x="165" y="62" text-anchor="middle" font-size="7" fill="rgba(232,228,223,0.5)" font-family="Noto Sans SC" class="mt101d">扩张</text></g>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">102 · QUOTE REVEAL</div><div class="cell-desc">引语展开</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<text x="10" y="32" font-size="34" fill="rgba(196,163,90,0.28)" font-family="Noto Serif SC" font-weight="700" class="qr102lq">"</text>
+<text x="170" y="62" font-size="34" fill="rgba(196,163,90,0.28)" font-family="Noto Serif SC" font-weight="700" text-anchor="end" class="qr102rq">"</text>
+<text x="90" y="40" text-anchor="middle" font-size="10" fill="rgba(232,228,223,0.8)" font-family="Noto Serif SC" class="qr102t">这是我用过最好的工具</text>
+<text x="90" y="58" text-anchor="middle" font-size="7" fill="rgba(196,163,90,0.55)" font-family="JetBrains Mono" letter-spacing="2" class="qr102a">— CTO, ACME CO</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">103 · DELTA NUMBER</div><div class="cell-desc">对比数字变化</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<text x="35" y="48" text-anchor="middle" font-size="18" fill="rgba(232,228,223,0.5)" font-family="JetBrains Mono" font-weight="600" class="dn103a">23%</text>
+<g class="dn103arrow"><line x1="60" y1="40" x2="110" y2="40" stroke="rgba(61,170,90,0.6)" stroke-width="1.5" class="dn103l"/><polygon points="110,36 116,40 110,44" fill="rgba(61,170,90,0.7)" class="dn103h"/></g>
+<text x="145" y="48" text-anchor="middle" font-size="22" fill="rgba(61,170,90,0.95)" font-family="JetBrains Mono" font-weight="700" class="dn103b">42%</text>
+<text x="90" y="68" text-anchor="middle" font-size="7" fill="rgba(196,163,90,0.55)" font-family="JetBrains Mono" letter-spacing="2" class="dn103label">YoY GROWTH</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">104 · TAG BURST</div><div class="cell-desc">标签爆发</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<g class="tb104g" data-tx="-35" data-ty="-15"><rect x="10" y="8" width="28" height="13" rx="6.5" fill="rgba(196,163,90,0.12)" stroke="rgba(196,163,90,0.25)" stroke-width="0.8"/><text x="24" y="17" text-anchor="middle" font-size="7" fill="rgba(196,163,90,0.85)" font-family="JetBrains Mono">AI</text></g>
+<g class="tb104g" data-tx="30" data-ty="-8"><rect x="55" y="30" width="36" height="13" rx="6.5" fill="rgba(74,143,212,0.12)" stroke="rgba(74,143,212,0.25)" stroke-width="0.8"/><text x="73" y="39" text-anchor="middle" font-size="7" fill="rgba(74,143,212,0.85)" font-family="JetBrains Mono">Design</text></g>
+<g class="tb104g" data-tx="35" data-ty="12"><rect x="105" y="12" width="40" height="13" rx="6.5" fill="rgba(61,170,90,0.12)" stroke="rgba(61,170,90,0.25)" stroke-width="0.8"/><text x="125" y="21" text-anchor="middle" font-size="7" fill="rgba(61,170,90,0.85)" font-family="JetBrains Mono">Growth</text></g>
+<g class="tb104g" data-tx="5" data-ty="25"><rect x="130" y="55" width="36" height="13" rx="6.5" fill="rgba(179,58,58,0.12)" stroke="rgba(179,58,58,0.25)" stroke-width="0.8"/><text x="148" y="64" text-anchor="middle" font-size="7" fill="rgba(179,58,58,0.85)" font-family="JetBrains Mono">Speed</text></g>
+<g class="tb104g" data-tx="-40" data-ty="22"><rect x="15" y="55" width="28" height="13" rx="6.5" fill="rgba(150,120,200,0.12)" stroke="rgba(150,120,200,0.25)" stroke-width="0.8"/><text x="29" y="64" text-anchor="middle" font-size="7" fill="rgba(150,120,200,0.85)" font-family="JetBrains Mono">UX</text></g>
+<g class="tb104g" data-tx="15" data-ty="-18"><rect x="58" y="55" width="36" height="13" rx="6.5" fill="rgba(196,163,90,0.12)" stroke="rgba(196,163,90,0.25)" stroke-width="0.8"/><text x="76" y="64" text-anchor="middle" font-size="7" fill="rgba(196,163,90,0.85)" font-family="JetBrains Mono">Scale</text></g>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">105 · MAP PIN DROP</div><div class="cell-desc">地图落针</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<ellipse cx="90" cy="65" rx="14" ry="3" fill="rgba(0,0,0,0.2)" class="mp105sh"/>
+<circle cx="90" cy="62" r="4" fill="none" stroke="rgba(196,163,90,0.5)" stroke-width="1.5" class="mp105r1"/>
+<circle cx="90" cy="62" r="4" fill="none" stroke="rgba(196,163,90,0.35)" stroke-width="1" class="mp105r2"/>
+<g class="mp105pin"><path d="M90,30 C97,30 100,37 100,43 C100,51 90,62 90,62 C90,62 80,51 80,43 C80,37 83,30 90,30 Z" fill="rgba(196,163,90,0.9)"/><circle cx="90" cy="42" r="3" fill="rgba(10,10,11,0.5)"/></g>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">106 · CHAT BUBBLE</div><div class="cell-desc">对话泡泡序列</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<g class="cb106b1"><rect x="10" y="8" width="58" height="14" rx="7" fill="rgba(74,143,212,0.15)" stroke="rgba(74,143,212,0.3)" stroke-width="0.6"/><text x="39" y="17" text-anchor="middle" font-size="7" fill="rgba(74,143,212,0.9)" font-family="Noto Sans SC">你好？</text></g>
+<g class="cb106b2"><rect x="112" y="28" width="58" height="14" rx="7" fill="rgba(196,163,90,0.15)" stroke="rgba(196,163,90,0.3)" stroke-width="0.6"/><text x="141" y="37" text-anchor="middle" font-size="7" fill="rgba(196,163,90,0.9)" font-family="Noto Sans SC">在！请讲</text></g>
+<g class="cb106b3"><rect x="10" y="50" width="40" height="14" rx="7" fill="rgba(74,143,212,0.15)" stroke="rgba(74,143,212,0.3)" stroke-width="0.6"/><circle cx="20" cy="57" r="1.5" fill="rgba(74,143,212,0.75)" class="cb106d cb106d1"/><circle cx="30" cy="57" r="1.5" fill="rgba(74,143,212,0.75)" class="cb106d cb106d2"/><circle cx="40" cy="57" r="1.5" fill="rgba(74,143,212,0.75)" class="cb106d cb106d3"/></g>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">107 · TERMINAL TYPE</div><div class="cell-desc">终端命令输入</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="5" y="5" width="170" height="70" rx="4" fill="rgba(0,0,0,0.35)" stroke="rgba(61,170,90,0.2)" stroke-width="0.8"/>
+<text x="10" y="20" font-size="8" fill="rgba(61,170,90,0.85)" font-family="JetBrains Mono">$</text>
+<text x="18" y="20" font-size="8" fill="rgba(232,228,223,0.9)" font-family="JetBrains Mono" class="tt107cmd"></text>
+<rect x="18" y="14" width="1.5" height="8" fill="rgba(61,170,90,0.7)" class="tt107cur"/>
+<text x="10" y="36" font-size="7" fill="rgba(232,228,223,0.55)" font-family="JetBrains Mono" class="tt107out1"></text>
+<text x="10" y="48" font-size="7" fill="rgba(61,170,90,0.8)" font-family="JetBrains Mono" class="tt107out2"></text>
+<text x="10" y="64" font-size="8" fill="rgba(61,170,90,0.85)" font-family="JetBrains Mono" class="tt107p2"></text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">108 · BADGE RIBBON</div><div class="cell-desc">角标飘带</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="30" y="15" width="120" height="50" rx="6" fill="rgba(196,163,90,0.08)" stroke="rgba(196,163,90,0.2)" stroke-width="1"/>
+<text x="90" y="47" text-anchor="middle" font-size="12" fill="rgba(196,163,90,0.55)" font-family="Noto Serif SC" font-weight="700">产品</text>
+<g class="br108" transform="rotate(12,150,22)"><rect x="125" y="10" width="50" height="20" fill="rgba(179,58,58,0.9)"/><text x="150" y="24" text-anchor="middle" font-size="9" fill="#fff" font-family="JetBrains Mono" font-weight="700" letter-spacing="1">NEW</text></g>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">109 · COUNTDOWN DIGITS</div><div class="cell-desc">倒计时数字序列</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<text x="90" y="55" text-anchor="middle" font-size="36" font-family="JetBrains Mono" font-weight="700" fill="rgba(196,163,90,0.9)" class="cd109">3</text>
+<text x="90" y="72" text-anchor="middle" font-size="7" font-family="JetBrains Mono" fill="rgba(196,163,90,0.45)" letter-spacing="2" class="cd109l">COUNTDOWN</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">110 · FLASH REVEAL</div><div class="cell-desc">瞬间闪光揭示</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="5" y="5" width="170" height="70" rx="4" fill="rgba(196,163,90,0.06)" stroke="rgba(196,163,90,0.18)" stroke-width="0.8"/>
+<text x="90" y="37" text-anchor="middle" font-size="16" font-family="Noto Serif SC" font-weight="700" fill="rgba(232,228,223,0.92)" class="fr110t">发布！</text>
+<text x="90" y="54" text-anchor="middle" font-size="9" font-family="JetBrains Mono" fill="rgba(196,163,90,0.65)" letter-spacing="2" class="fr110s">LAUNCH</text>
+<rect x="0" y="0" width="180" height="80" fill="rgba(255,255,255,0.95)" class="fr110f"/>
+</svg></div></div>
+
+</div></div>
+
+<!-- ========== SECTION 13: PERPETUAL II ========== -->
+<div class="section">
+<div class="section-title">PERPETUAL II · 持续动画 II (20)</div>
+<div class="grid">
+
+<div class="cell"><div class="cell-name">121 · WAVE TRAVEL</div><div class="cell-desc">水平波动流</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<polyline points="" fill="none" stroke="rgba(74,143,212,0.55)" stroke-width="2" stroke-linejoin="round" class="wt121"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">122 · TIDE ROLL</div><div class="cell-desc">潮水涌动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<polygon points="" fill="rgba(74,143,212,0.22)" class="tr122f"/>
+<polyline points="" fill="none" stroke="rgba(74,143,212,0.7)" stroke-width="1.5" class="tr122l"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">123 · FLOW LINES</div><div class="cell-desc">平行流线</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="0" y1="18" x2="34" y2="18" stroke="rgba(196,163,90,0.45)" stroke-width="1.5" class="fl123a"/>
+<line x1="0" y1="34" x2="28" y2="34" stroke="rgba(74,143,212,0.4)" stroke-width="1.5" class="fl123b"/>
+<line x1="0" y1="50" x2="40" y2="50" stroke="rgba(61,170,90,0.45)" stroke-width="1.5" class="fl123c"/>
+<line x1="0" y1="66" x2="30" y2="66" stroke="rgba(196,163,90,0.35)" stroke-width="1.5" class="fl123d"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">124 · RIPPLE GRID</div><div class="cell-desc">列波传播</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<g class="rg124sv"></g>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">125 · COLOR CYCLE</div><div class="cell-desc">色相循环</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<rect x="40" y="20" width="100" height="40" rx="8" fill="hsl(40,60%,55%)" class="cc125"/>
+<text x="90" y="46" text-anchor="middle" font-size="12" fill="rgba(0,0,0,0.55)" font-family="JetBrains Mono" font-weight="700" letter-spacing="2">HUE</text>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">126 · STARBURST RAYS</div><div class="cell-desc">星芒旋转</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs>
+<filter id="sb126glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.5"/></filter>
+<radialGradient id="sb126core"><stop offset="0%" stop-color="rgba(255,245,210,1)"/><stop offset="100%" stop-color="rgba(196,163,90,0.3)"/></radialGradient>
+</defs>
+<g class="sb126">
+<polygon points="90,10 92.5,34 114.5,32 96,42 116,56 91,38 82,66 86,40 62,50 80,37 65,21 85,35" fill="rgba(196,163,90,0.55)" stroke="rgba(255,230,170,0.75)" stroke-width="0.4" stroke-linejoin="round" class="sb126star" filter="url(#sb126glow)"/>
+</g>
+<circle cx="90" cy="40" r="5" fill="url(#sb126core)"/>
+<circle cx="90" cy="40" r="2" fill="rgba(255,255,255,1)"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">127 · SONAR PING</div><div class="cell-desc">声纳脉冲</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="90" cy="40" r="4" fill="rgba(61,170,90,0.95)"/>
+<circle cx="90" cy="40" r="4" fill="none" stroke="rgba(61,170,90,0.55)" stroke-width="1.5" class="sp127p1"/>
+<circle cx="90" cy="40" r="4" fill="none" stroke="rgba(61,170,90,0.55)" stroke-width="1.5" class="sp127p2"/>
+<circle cx="90" cy="40" r="4" fill="none" stroke="rgba(61,170,90,0.55)" stroke-width="1.5" class="sp127p3"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">128 · BROADCAST</div><div class="cell-desc">基站信号</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="90" y1="70" x2="90" y2="32" stroke="rgba(196,163,90,0.55)" stroke-width="2"/>
+<line x1="83" y1="70" x2="97" y2="70" stroke="rgba(196,163,90,0.5)" stroke-width="1.5"/>
+<circle cx="90" cy="30" r="3" fill="rgba(196,163,90,0.95)"/>
+<path d="M65,30 A25,25 0 0,1 115,30" fill="none" stroke="rgba(74,143,212,0.55)" stroke-width="1.5" class="bc128w1"/>
+<path d="M50,30 A40,40 0 0,1 130,30" fill="none" stroke="rgba(74,143,212,0.45)" stroke-width="1.3" class="bc128w2"/>
+<path d="M35,30 A55,55 0 0,1 145,30" fill="none" stroke="rgba(74,143,212,0.35)" stroke-width="1.1" class="bc128w3"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">129 · ENERGY CORE</div><div class="cell-desc">能量核心</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs>
+<filter id="ec129glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
+<radialGradient id="ec129coreG"><stop offset="0%" stop-color="rgba(180,220,255,1)"/><stop offset="60%" stop-color="rgba(74,143,212,0.8)"/><stop offset="100%" stop-color="rgba(74,143,212,0.2)"/></radialGradient>
+</defs>
+<circle cx="90" cy="40" r="26" fill="none" stroke="rgba(74,143,212,0.22)" stroke-width="1" stroke-dasharray="3,4" class="ec129ring1"/>
+<circle cx="90" cy="40" r="18" fill="none" stroke="rgba(74,143,212,0.35)" stroke-width="1" stroke-dasharray="2,3" class="ec129ring2"/>
+<circle cx="90" cy="40" r="10" fill="none" stroke="rgba(120,180,240,0.6)" stroke-width="1" class="ec129emit"/>
+<circle cx="90" cy="40" r="13" fill="rgba(74,143,212,0.35)" filter="url(#ec129glow)" class="ec129aura"/>
+<circle cx="90" cy="40" r="9" fill="url(#ec129coreG)" class="ec129core"/>
+<circle cx="90" cy="40" r="4" fill="rgba(255,255,255,0.95)" class="ec129inner"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">130 · MAGNETIC LINES</div><div class="cell-desc">磁力线脉动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<path d="M20,40 Q55,10 90,40 Q125,70 160,40" fill="none" stroke="rgba(74,143,212,0.55)" stroke-width="1.5" class="ml130a"/>
+<path d="M20,40 Q55,20 90,40 Q125,60 160,40" fill="none" stroke="rgba(74,143,212,0.42)" stroke-width="1.2" class="ml130b"/>
+<path d="M20,40 Q55,30 90,40 Q125,50 160,40" fill="none" stroke="rgba(74,143,212,0.32)" stroke-width="1" class="ml130c"/>
+<path d="M20,40 Q55,50 90,40 Q125,30 160,40" fill="none" stroke="rgba(74,143,212,0.32)" stroke-width="1" class="ml130d"/>
+<path d="M20,40 Q55,60 90,40 Q125,20 160,40" fill="none" stroke="rgba(74,143,212,0.42)" stroke-width="1.2" class="ml130e"/>
+<path d="M20,40 Q55,70 90,40 Q125,10 160,40" fill="none" stroke="rgba(74,143,212,0.55)" stroke-width="1.5" class="ml130f"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">131 · CLOCK TICK</div><div class="cell-desc">时钟指针</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="90" cy="40" r="26" fill="rgba(196,163,90,0.04)" stroke="rgba(196,163,90,0.35)" stroke-width="1"/>
+<g stroke="rgba(196,163,90,0.5)" stroke-width="1">
+<line x1="90" y1="16" x2="90" y2="20"/>
+<line x1="90" y1="60" x2="90" y2="64"/>
+<line x1="114" y1="40" x2="110" y2="40"/>
+<line x1="66" y1="40" x2="70" y2="40"/>
+</g>
+<line x1="90" y1="40" x2="90" y2="22" stroke="rgba(232,228,223,0.95)" stroke-width="1.5" stroke-linecap="round" class="ct131m"/>
+<line x1="90" y1="40" x2="104" y2="40" stroke="rgba(196,163,90,1)" stroke-width="2.5" stroke-linecap="round" class="ct131h"/>
+<circle cx="90" cy="40" r="2.5" fill="rgba(196,163,90,1)"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">132 · GEAR MESH</div><div class="cell-desc">齿轮啮合</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<g class="gm132a">
+<polygon points="" fill="rgba(196,163,90,0.18)" stroke="rgba(196,163,90,0.65)" stroke-width="0.8" stroke-linejoin="round" class="gm132ap"/>
+<circle cx="55" cy="40" r="4" fill="none" stroke="rgba(196,163,90,0.4)" stroke-width="0.6"/>
+<circle cx="55" cy="40" r="1.5" fill="rgba(196,163,90,0.9)"/>
+</g>
+<g class="gm132b">
+<polygon points="" fill="rgba(74,143,212,0.18)" stroke="rgba(74,143,212,0.65)" stroke-width="0.8" stroke-linejoin="round" class="gm132bp"/>
+<circle cx="85" cy="40" r="3" fill="none" stroke="rgba(74,143,212,0.4)" stroke-width="0.6"/>
+<circle cx="85" cy="40" r="1.5" fill="rgba(74,143,212,0.9)"/>
+</g>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">133 · ATOMIC ORBIT</div><div class="cell-desc">原子轨道</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<ellipse cx="90" cy="40" rx="42" ry="12" fill="none" stroke="rgba(74,143,212,0.25)" stroke-width="1"/>
+<ellipse cx="90" cy="40" rx="42" ry="12" fill="none" stroke="rgba(61,170,90,0.25)" stroke-width="1" transform="rotate(60 90 40)"/>
+<ellipse cx="90" cy="40" rx="42" ry="12" fill="none" stroke="rgba(179,58,58,0.25)" stroke-width="1" transform="rotate(-60 90 40)"/>
+<circle cx="90" cy="40" r="6" fill="rgba(196,163,90,0.95)"/>
+<circle r="2.5" fill="rgba(74,143,212,1)" class="ao133e1"/>
+<circle r="2.5" fill="rgba(61,170,90,1)" class="ao133e2"/>
+<circle r="2.5" fill="rgba(179,58,58,1)" class="ao133e3"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">134 · HOURGLASS SAND</div><div class="cell-desc">沙漏流沙</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<path d="M60,10 L120,10 L94,40 L120,70 L60,70 L86,40 Z" fill="none" stroke="rgba(196,163,90,0.5)" stroke-width="1.2"/>
+<!-- 上堆：贴顶、凹面（funnel）；JS 驱动消减 -->
+<polygon points="60,10 90,10 120,10 94,40 86,40" fill="rgba(196,163,90,0.5)" class="hg134top"/>
+<!-- 下堆：凸面（cone）；JS 驱动堆积 -->
+<polygon points="60,70 90,70 120,70 120,70 60,70" fill="rgba(196,163,90,0.55)" class="hg134bot"/>
+<g class="hg134sand"></g>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">135 · VORTEX SWIRL</div><div class="cell-desc">旋涡收敛</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<polyline points="" fill="none" stroke="rgba(150,120,200,0.55)" stroke-width="1.5" stroke-linecap="round" class="vs135"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">136 · GLOW COMET</div><div class="cell-desc">彗星光尾</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<circle cx="90" cy="40" r="22" fill="none" stroke="rgba(196,163,90,0.1)" stroke-width="1" stroke-dasharray="2,3"/>
+<circle r="1" fill="rgba(196,163,90,0.15)" class="gc136t4"/>
+<circle r="1.5" fill="rgba(196,163,90,0.3)" class="gc136t3"/>
+<circle r="2" fill="rgba(196,163,90,0.55)" class="gc136t2"/>
+<circle r="2.5" fill="rgba(196,163,90,0.8)" class="gc136t1"/>
+<circle r="3" fill="rgba(255,240,200,1)" class="gc136head"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">137 · ELECTRIC ARC</div><div class="cell-desc">闪电弧光</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<defs>
+<filter id="ea137glow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="2"/></filter>
+</defs>
+<circle cx="25" cy="40" r="7" fill="rgba(180,200,255,0.2)" stroke="rgba(220,230,255,0.7)" stroke-width="1.2" class="ea137node"/>
+<circle cx="155" cy="40" r="7" fill="rgba(180,200,255,0.2)" stroke="rgba(220,230,255,0.7)" stroke-width="1.2" class="ea137node"/>
+<!-- 弧光端点止于节点边缘（cx±r=32 / 148），不穿心 -->
+<path d="M32,40 L148,40" fill="none" stroke="rgba(120,180,255,0.85)" stroke-width="5" stroke-linejoin="round" filter="url(#ea137glow)" class="ea137halo" opacity="0"/>
+<path d="M32,40 L148,40" fill="none" stroke="rgba(255,255,255,1)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" class="ea137" opacity="0"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">138 · DOT MATRIX</div><div class="cell-desc">LED 点阵闪烁</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<g class="dm138sv"></g>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">139 · NETWORK PULSE</div><div class="cell-desc">节点脉冲传递</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<!-- 连线止于节点边缘（cx±r），不穿心 -->
+<line x1="37" y1="40" x2="83" y2="40" stroke="rgba(196,163,90,0.28)" stroke-width="1"/>
+<line x1="97" y1="40" x2="143" y2="40" stroke="rgba(196,163,90,0.28)" stroke-width="1"/>
+<circle cx="30" cy="40" r="7" fill="rgba(196,163,90,0.2)" stroke="rgba(196,163,90,0.55)" stroke-width="1" class="np139n1"/>
+<circle cx="90" cy="40" r="7" fill="rgba(196,163,90,0.2)" stroke="rgba(196,163,90,0.55)" stroke-width="1" class="np139n2"/>
+<circle cx="150" cy="40" r="7" fill="rgba(196,163,90,0.2)" stroke="rgba(196,163,90,0.55)" stroke-width="1" class="np139n3"/>
+<circle cx="30" cy="40" r="3" fill="rgba(255,240,200,0.95)" class="np139pulse" opacity="0"/>
+</svg></div></div>
+
+<div class="cell"><div class="cell-name">140 · WIND STREAKS</div><div class="cell-desc">风纹飘动</div>
+<div class="demo"><svg viewBox="0 0 180 80">
+<line x1="0" y1="12" x2="22" y2="12" stroke="rgba(232,228,223,0.3)" stroke-width="0.8" stroke-linecap="round" class="ws140a"/>
+<line x1="0" y1="22" x2="28" y2="22" stroke="rgba(232,228,223,0.22)" stroke-width="0.8" stroke-linecap="round" class="ws140b"/>
+<line x1="0" y1="32" x2="18" y2="32" stroke="rgba(232,228,223,0.18)" stroke-width="0.8" stroke-linecap="round" class="ws140c"/>
+<line x1="0" y1="42" x2="30" y2="42" stroke="rgba(232,228,223,0.25)" stroke-width="0.8" stroke-linecap="round" class="ws140d"/>
+<line x1="0" y1="52" x2="20" y2="52" stroke="rgba(232,228,223,0.2)" stroke-width="0.8" stroke-linecap="round" class="ws140e"/>
+<line x1="0" y1="62" x2="25" y2="62" stroke="rgba(232,228,223,0.22)" stroke-width="0.8" stroke-linecap="round" class="ws140f"/>
+<line x1="0" y1="72" x2="22" y2="72" stroke="rgba(232,228,223,0.18)" stroke-width="0.8" stroke-linecap="round" class="ws140g"/>
+</svg></div></div>
+
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+// Helper: looping timeline with pause between cycles
+function loop(fn, pause){
+  const tl = gsap.timeline({repeat:-1, repeatDelay:pause||1.5});
+  fn(tl);
+  return tl;
+}
+
+// ===== ENTRANCE (all looping) =====
+loop(tl=>{
+  tl.fromTo('.e01a',{opacity:0,y:12},{opacity:1,y:0,duration:0.7,ease:'power3.out'})
+    .fromTo('.e01b',{opacity:0,y:15},{opacity:1,y:0,duration:0.6,stagger:0.1,ease:'power3.out'},0.2)
+    .fromTo('.e01c',{opacity:0,y:18,scale:0.95},{opacity:1,y:0,scale:1,duration:0.7,ease:'power3.out'},0.35)
+    .to('.e01a,.e01b,.e01c',{opacity:0,y:-6,duration:0.5,ease:'power2.in'},'+=1.5');
+},1);
+
+// 02 Veil down — 垂直揭幕
+loop(tl=>{
+  tl.fromTo('.vl02',{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)',duration:0.8,ease:'power3.out'})
+    .fromTo('.vl02t',{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)',duration:0.8,ease:'power3.out'},0)
+    .to('.vl02,.vl02t',{clipPath:'inset(0% 0 100% 0)',duration:0.5,ease:'power2.in'},'+=1');
+},1);
+
+loop(tl=>{
+  tl.fromTo('.e03',{scale:0,transformOrigin:'center'},{scale:1,duration:0.6,ease:'back.out(1.5)'})
+    .to('.e03',{scale:0,duration:0.4,ease:'power2.in'},'+=1');
+},1);
+
+loop(tl=>{
+  tl.fromTo('.e04',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:1,ease:'power3.out'})
+    .to('.e04',{clipPath:'inset(0 0% 0 100%)',duration:0.6,ease:'power2.in'},'+=0.8');
+},1);
+
+loop(tl=>{
+  tl.fromTo('.e05',{rotationY:90,transformOrigin:'center',opacity:0},{rotationY:0,opacity:1,duration:0.8,ease:'power3.out'})
+    .to('.e05',{rotationY:-90,opacity:0,duration:0.6},'+=1');
+},1);
+
+loop(tl=>{
+  tl.fromTo('.e06blur',{attr:{stdDeviation:8}},{attr:{stdDeviation:0},duration:1,ease:'power2.out'})
+    .fromTo('.e06',{opacity:0},{opacity:1,duration:0.8},0)
+    .to('.e06',{opacity:0,duration:0.3},'+=1')
+    .to('.e06blur',{attr:{stdDeviation:8},duration:0.5},'<');
+},1);
+
+loop(tl=>{
+  tl.fromTo('.sg',{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.3,stagger:{grid:[3,4],from:'start',amount:0.8},ease:'back.out(1.2)'})
+    .to('.sg',{opacity:0,scale:0.8,duration:0.2,stagger:{grid:[3,4],from:'end',amount:0.5}},'+=0.8');
+},1);
+
+loop(tl=>{
+  tl.fromTo('.sc',{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.3,stagger:{from:'center',amount:0.6},ease:'back.out(1.5)'})
+    .to('.sc',{opacity:0,scale:0.5,duration:0.2,stagger:{from:'edges',amount:0.4}},'+=0.8');
+},1);
+
+loop(tl=>{
+  tl.fromTo('.eb',{scale:0,transformOrigin:'center'},{scale:1,duration:0.6,stagger:0.12,ease:'back.out(1.6)'})
+    .to('.eb',{scale:0,duration:0.3,stagger:0.1,ease:'power2.in'},'+=0.8');
+},1);
+
+// 10 Iris open — 圆形光圈展开
+loop(tl=>{
+  gsap.set('.ir10c',{attr:{r:0}});
+  tl.to('.ir10c',{attr:{r:100},duration:0.8,ease:'power3.out'})
+    .to('.ir10c',{attr:{r:0},duration:0.5,ease:'power2.in'},'+=1');
+},1);
+
+// ===== LINE/PATH (all looping) =====
+function drawLoop(sel, dur, pause){
+  loop(tl=>{
+    gsap.set(sel,{strokeDasharray:1,strokeDashoffset:1});
+    tl.to(sel,{strokeDashoffset:0,duration:dur,ease:'power2.inOut'})
+      .to(sel,{strokeDashoffset:-1,duration:dur*0.6,ease:'power2.in'},'+='+pause);
+  },1);
+}
+// 11 Draw on — 描边带引领光点
+(function(){
+  const rect=document.querySelector('.d11');
+  const dot=document.querySelector('.d11dot');
+  if(!rect)return;
+  const len=rect.getTotalLength();
+  loop(tl=>{
+    gsap.set(rect,{strokeDasharray:len,strokeDashoffset:len});
+    gsap.set(dot,{opacity:1});
+    const o={p:0};
+    tl.to(o,{p:1,duration:1.3,ease:'power2.inOut',onUpdate:()=>{
+      const pt=rect.getPointAtLength(o.p*len);
+      dot.setAttribute('cx',pt.x);
+      dot.setAttribute('cy',pt.y);
+      rect.style.strokeDashoffset=len*(1-o.p);
+    }});
+    tl.to(dot,{opacity:0,duration:0.3},'+=0.5');
+    tl.to(rect,{strokeDashoffset:-len,duration:0.7,ease:'power2.in'},'<');
+  },1);
+})();
+// 13 Polygon expand — 顶点一个一个弹出，边依次连上
+(function(){
+  const dots=document.querySelectorAll('.d13v');
+  const edges=document.querySelectorAll('.d13e');
+  const fill=document.querySelector('.d13fill');
+  if(!dots.length)return;
+  loop(tl=>{
+    gsap.set(dots,{scale:0,transformOrigin:'center'});
+    gsap.set(edges,{strokeDasharray:1,strokeDashoffset:1,opacity:1});
+    gsap.set(fill,{opacity:0});
+    tl.to(dots[0],{scale:1,duration:0.3,ease:'back.out(2)'});
+    for(let i=1;i<5;i++){
+      tl.to(edges[i-1],{strokeDashoffset:0,duration:0.35,ease:'power2.out'},'+=0.1');
+      tl.to(dots[i],{scale:1,duration:0.25,ease:'back.out(2)'},'-=0.1');
+    }
+    tl.to(edges[4],{strokeDashoffset:0,duration:0.4,ease:'power2.out'},'+=0.1');
+    tl.to(fill,{opacity:1,duration:0.4,ease:'power2.out'},'-=0.1');
+    tl.addLabel('hold','+=1.5');
+    tl.to([...edges,...dots,fill],{opacity:0,duration:0.4,stagger:0.03},'hold');
+  },1);
+})();
+// 14 Curve trace — path draws while bright head leads
+(function(){
+  const path=document.querySelector('.d14');
+  const dot=document.querySelector('.d14dot');
+  if(!path)return;
+  const len=path.getTotalLength();
+  loop(tl=>{
+    gsap.set(path,{strokeDasharray:len,strokeDashoffset:len});
+    gsap.set(dot,{opacity:1});
+    const o={p:0};
+    tl.to(o,{p:1,duration:1.5,ease:'power2.inOut',onUpdate:()=>{
+      const pt=path.getPointAtLength(o.p*len);
+      dot.setAttribute('cx',pt.x);
+      dot.setAttribute('cy',pt.y);
+      path.style.strokeDashoffset=len*(1-o.p);
+    }});
+    tl.to(dot,{opacity:0,duration:0.3},'+=0.5');
+    tl.to(path,{strokeDashoffset:-len,duration:0.8,ease:'power2.in'},'<');
+  },1);
+})();
+// 16 Circle draw: three concentric rings staggered
+loop(tl=>{
+  gsap.set('.d16a,.d16b,.d16c',{strokeDasharray:1,strokeDashoffset:1});
+  tl.to('.d16a',{strokeDashoffset:0,duration:1,ease:'power2.inOut'})
+    .to('.d16b',{strokeDashoffset:0,duration:0.8,ease:'power2.inOut'},0.3)
+    .to('.d16c',{strokeDashoffset:0,duration:0.6,ease:'power2.inOut'},0.6)
+    .fromTo('.d16dot',{scale:0,transformOrigin:'center'},{scale:1,duration:0.3,ease:'back.out(2)'},0.9)
+    .to('.d16a,.d16b,.d16c',{strokeDashoffset:-1,duration:0.6,stagger:0.1},'+=0.8')
+    .to('.d16dot',{scale:0,duration:0.2},'<');
+},1);
+// 19 Sparkline — points rise from baseline, line/fill form naturally
+(function(){
+  const pts = [{x:10,y:65},{x:30,y:55},{x:50,y:60},{x:70,y:35},{x:90,y:40},{x:110,y:20},{x:130,y:25},{x:150,y:15},{x:170,y:10}];
+  const baseline = 72;
+  const line = document.querySelector('.d19');
+  const fill = document.querySelector('.d19fill');
+  const dots = document.querySelectorAll('.d19dot');
+  if(!line) return;
+
+  function buildPaths(positions){
+    const lp = positions.map((p,i)=>`${p.x},${p.y}`).join(' ');
+    const fp = lp + ` ${positions[positions.length-1].x},${baseline} ${positions[0].x},${baseline}`;
+    line.setAttribute('points', lp);
+    fill.setAttribute('points', fp);
+    dots.forEach((d,i)=>{ d.setAttribute('cy', positions[i].y); });
+  }
+
+  // Animate: all points start at baseline, rise to target
+  const state = pts.map(p=>({x:p.x, y:baseline}));
+  const target = pts.map(p=>({x:p.x, y:p.y}));
+
+  loop(tl=>{
+    // Reset to baseline
+    state.forEach((s,i)=>{ s.y = baseline; });
+    buildPaths(state);
+    gsap.set('.d19dot',{opacity:0});
+
+    // All points rise simultaneously with slight stagger
+    pts.forEach((p,i)=>{
+      tl.to(state[i], {y:p.y, duration:1, ease:'power3.out',
+        onUpdate:()=>buildPaths(state)
+      }, i*0.04);
+    });
+    tl.to('.d19dot',{opacity:0.5,duration:0.3,stagger:0.03},'<0.5');
+
+    // Hold, then sink back
+    tl.addLabel('hold','+=1.5');
+    pts.forEach((p,i)=>{
+      tl.to(state[i], {y:baseline, duration:0.6, ease:'power2.in',
+        onUpdate:()=>buildPaths(state)
+      }, 'hold+=' + (i*0.03));
+    });
+    tl.to('.d19dot',{opacity:0,duration:0.3},'hold');
+  },1);
+})();
+
+// 12 Draw from center — two lines grow outward from center dot
+loop(tl=>{
+  gsap.set('.d12L',{attr:{x1:90,y1:40,x2:90,y2:40}});
+  gsap.set('.d12R',{attr:{x1:90,y1:40,x2:90,y2:40}});
+  gsap.set('.d12e',{opacity:0});
+  tl.fromTo('.d12c',{scale:0,transformOrigin:'center'},{scale:1,duration:0.3,ease:'power2.out'})
+    .to('.d12L',{attr:{x2:10},duration:0.8,ease:'power3.out'},0.2)
+    .to('.d12R',{attr:{x2:170},duration:0.8,ease:'power3.out'},0.2)
+    .to('.d12e',{opacity:1,duration:0.2},'<0.6')
+    // Reverse
+    .to('.d12L',{attr:{x2:90},duration:0.5,ease:'power2.in'},'+=1.2')
+    .to('.d12R',{attr:{x2:90},duration:0.5,ease:'power2.in'},'<')
+    .to('.d12c',{scale:0,duration:0.2},'<0.3')
+    .to('.d12e',{opacity:0,duration:0.2},'<');
+},1);
+
+// Dashed flow — already perpetual
+gsap.to('.d15',{strokeDashoffset:-28,duration:2,repeat:-1,ease:'none'});
+
+// Arrow chain
+loop(tl=>{
+  gsap.set('.ac',{strokeDasharray:1,strokeDashoffset:1});
+  tl.to('.ac',{strokeDashoffset:0,duration:0.4,stagger:0.2,ease:'power2.inOut'})
+    .to('.ac',{strokeDashoffset:-1,duration:0.3,stagger:0.15},'+=0.8');
+},1);
+
+// Grid draw
+loop(tl=>{
+  gsap.set('.gd',{strokeDasharray:1,strokeDashoffset:1});
+  tl.to('.gd',{strokeDashoffset:0,duration:0.3,stagger:0.08,ease:'power2.inOut'})
+    .to('.gd',{opacity:0,duration:0.3,stagger:0.05},'+=0.8')
+    .set('.gd',{opacity:1});
+},1);
+
+// 20 Tree — grows outward from root, all branches simultaneously
+(function(){
+  const lines=document.querySelectorAll('.td');
+  const nodes=document.querySelectorAll('.tn');
+  if(!lines.length) return;
+
+  // Each line: store original endpoints, will animate from start-point
+  const origLines=[];
+  lines.forEach(l=>{
+    origLines.push({
+      x1:+l.getAttribute('x1'),y1:+l.getAttribute('y1'),
+      x2:+l.getAttribute('x2'),y2:+l.getAttribute('y2')
+    });
+  });
+
+  loop(tl=>{
+    // Reset: all lines collapsed to their start point, nodes invisible
+    lines.forEach((l,i)=>{
+      l.setAttribute('x2',origLines[i].x1);
+      l.setAttribute('y2',origLines[i].y1);
+      gsap.set(l,{opacity:1,strokeDasharray:'none',strokeDashoffset:0});
+    });
+    gsap.set(nodes,{opacity:0,scale:0,transformOrigin:'center'});
+
+    // Root node appears first
+    tl.to(nodes[0],{opacity:1,scale:1,duration:0.3,ease:'power2.out'});
+
+    // All lines grow to endpoints simultaneously (grouped by depth)
+    // Depth 0: line 0 (root→mid)
+    tl.to(lines[0],{attr:{x2:origLines[0].x2,y2:origLines[0].y2},duration:0.5,ease:'power2.out'},0.2);
+    tl.to(nodes[1],{opacity:1,scale:1,duration:0.2},0.5);
+
+    // Depth 1: lines 1,2 (mid→branches) — simultaneous
+    tl.to(lines[1],{attr:{x2:origLines[1].x2,y2:origLines[1].y2},duration:0.5,ease:'power2.out'},0.5);
+    tl.to(lines[2],{attr:{x2:origLines[2].x2,y2:origLines[2].y2},duration:0.5,ease:'power2.out'},0.5);
+    tl.to([nodes[2],nodes[3]],{opacity:1,scale:1,duration:0.2,stagger:0.05},0.8);
+
+    // Depth 2: lines 3,4,5,6 (branches→leaves) — all at once
+    for(let i=3;i<7;i++){
+      tl.to(lines[i],{attr:{x2:origLines[i].x2,y2:origLines[i].y2},duration:0.4,ease:'power2.out'},0.8);
+    }
+    tl.to([nodes[4],nodes[5],nodes[6],nodes[7],nodes[8],nodes[9],nodes[10],nodes[11]],{opacity:1,scale:1,duration:0.2,stagger:0.03},1.0);
+
+    // Hold, then shrink back
+    tl.addLabel('hold','+=1.8');
+    for(let i=6;i>=0;i--){
+      tl.to(lines[i],{attr:{x2:origLines[i].x1,y2:origLines[i].y1},duration:0.3,ease:'power2.in'},'hold+='+((6-i)*0.03));
+    }
+    tl.to(nodes,{opacity:0,scale:0,duration:0.2},'hold');
+  },1);
+})();
+
+// ===== DATA (all looping) =====
+// Counter
+loop(tl=>{
+  const o={v:0};
+  tl.to(o,{v:94.3,duration:1.5,ease:'power3.out',onUpdate:()=>{
+    document.querySelectorAll('.ctr').forEach(e=>e.textContent=o.v.toFixed(1)+'%');
+  }}).to(o,{v:0,duration:0.5,ease:'power2.in',onUpdate:()=>{
+    document.querySelectorAll('.ctr').forEach(e=>e.textContent=o.v.toFixed(1)+'%');
+  }},'+=1');
+},1);
+
+// Bars
+loop(tl=>{
+  document.querySelectorAll('.bg22').forEach((b,i)=>{
+    tl.to(b,{attr:{width:b.dataset.w},duration:0.8,ease:'power3.out'},i*0.1);
+  });
+  tl.to('.bg22',{attr:{width:0},duration:0.4,stagger:0.05},'+=1');
+},1);
+
+// Columns
+loop(tl=>{
+  document.querySelectorAll('.col23').forEach((c,i)=>{
+    const h=+c.dataset.h;
+    tl.to(c,{attr:{height:h,y:70-h},duration:0.6,ease:'back.out(1.5)'},i*0.08);
+  });
+  tl.to('.col23',{attr:{height:0,y:70},duration:0.3,stagger:0.05},'+=1');
+},1);
+
+// Progress ring
+const pr=document.querySelector('.pr24');
+if(pr){
+  const circ=2*Math.PI*28;
+  pr.style.strokeDasharray=circ;
+  pr.style.strokeDashoffset=circ;
+  loop(tl=>{
+    const o={v:0};
+    tl.to(o,{v:73,duration:1.5,ease:'power3.out',onUpdate:()=>{
+      pr.style.strokeDashoffset=circ*(1-o.v/100);
+      document.querySelectorAll('.pr24t').forEach(e=>e.textContent=Math.round(o.v)+'%');
+    }}).to(o,{v:0,duration:0.6,ease:'power2.in',onUpdate:()=>{
+      pr.style.strokeDashoffset=circ*(1-o.v/100);
+      document.querySelectorAll('.pr24t').forEach(e=>e.textContent=Math.round(o.v)+'%');
+    }},'+=1');
+  },1);
+}
+
+// Pie
+loop(tl=>{
+  document.querySelectorAll('.pie').forEach((p,i)=>{
+    const d=+p.dataset.d;
+    tl.to(p,{strokeDasharray:d+' '+(188.5-d),duration:0.8,ease:'power3.out'},i*0.15);
+  });
+  tl.to('.pie',{strokeDasharray:'0 188.5',duration:0.4,stagger:0.1},'+=1');
+},1);
+
+// Scatter
+loop(tl=>{
+  document.querySelectorAll('.scp').forEach((s,i)=>{
+    tl.to(s,{attr:{r:s.dataset.r},duration:0.4,ease:'back.out(2)'},i*0.08);
+  });
+  tl.to('.scp',{attr:{r:0},duration:0.2,stagger:0.05},'+=1');
+},1);
+
+// Stacked bar — 顺序生长：上一条长完再出下一条（不是 stagger 并行）
+loop(tl=>{
+  document.querySelectorAll('.sb27').forEach((s,i)=>{
+    tl.to(s,{attr:{width:s.dataset.w},duration:0.5,ease:'power3.out'},i*0.55);
+  });
+  tl.to('.sb27',{attr:{width:0},duration:0.3,stagger:0.08},'+=1');
+},1);
+
+// Area fill
+// 28 Area fill — points rise from baseline, area forms naturally
+(function(){
+  const targets=[{x:10,y:70},{x:30,y:50},{x:50,y:55},{x:70,y:30},{x:90,y:35},{x:110,y:20},{x:130,y:25},{x:150,y:15},{x:170,y:10}];
+  const baseline=72;
+  const fill=document.querySelector('.af28fill');
+  const line=document.querySelector('.af28line');
+  if(!fill||!line)return;
+  const state=targets.map(p=>({x:p.x,y:baseline}));
+
+  function build(){
+    const lp=state.map(p=>`${p.x},${p.y}`).join(' ');
+    const fp=lp+` ${state[state.length-1].x},${baseline} ${state[0].x},${baseline}`;
+    fill.setAttribute('points',fp);
+    line.setAttribute('points',lp);
+  }
+
+  loop(tl=>{
+    state.forEach((s,i)=>{s.y=baseline;});
+    build();
+    targets.forEach((p,i)=>{
+      tl.to(state[i],{y:p.y,duration:1.2,ease:'power3.out',onUpdate:build},i*0.04);
+    });
+    tl.addLabel('hold','+=2');
+    targets.forEach((p,i)=>{
+      tl.to(state[i],{y:baseline,duration:0.6,ease:'power2.in',onUpdate:build},'hold+='+i*0.03);
+    });
+  },1);
+})();
+
+// 29 Gauge — needle sweeps by animating x2,y2 endpoint
+(function(){
+  const nd=document.querySelector('.needle29');
+  const gn=document.querySelector('.gn29');
+  if(!nd||!gn)return;
+  // Arc path length
+  gsap.set(gn,{strokeDasharray:100,strokeDashoffset:100});
+  const cx=90,cy=70,len=45;
+  loop(tl=>{
+    const o={angle:Math.PI}; // start at left (180°)
+    tl.to(o,{angle:0.15,duration:2.5,ease:'power2.inOut',onUpdate:()=>{
+      const x2=cx+len*Math.cos(o.angle), y2=cy-len*Math.sin(o.angle);
+      nd.setAttribute('x2',x2); nd.setAttribute('y2',y2);
+      const pct=((Math.PI-o.angle)/Math.PI)*100;
+      gn.style.strokeDashoffset=100-pct;
+    }});
+    tl.to(o,{angle:Math.PI,duration:1.2,ease:'power2.inOut',onUpdate:()=>{
+      const x2=cx+len*Math.cos(o.angle), y2=cy-len*Math.sin(o.angle);
+      nd.setAttribute('x2',x2); nd.setAttribute('y2',y2);
+      const pct=((Math.PI-o.angle)/Math.PI)*100;
+      gn.style.strokeDashoffset=100-pct;
+    }},'+=1');
+  },1);
+})();
+
+// Waffle
+const wf=document.getElementById('waffle30');
+if(wf && !wf.childElementCount){
+  for(let r=0;r<5;r++) for(let c=0;c<10;c++){
+    const rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x',10+c*17);rect.setAttribute('y',5+r*15);
+    rect.setAttribute('width',14);rect.setAttribute('height',12);rect.setAttribute('rx','2');
+    rect.setAttribute('fill', (r*10+c)<73 ? 'rgba(196,163,90,0.12)' : 'rgba(196,163,90,0.03)');
+    rect.setAttribute('class','wf30');rect.style.opacity=0;
+    wf.appendChild(rect);
+  }
+}
+loop(tl=>{
+  tl.to('.wf30',{opacity:1,duration:0.1,stagger:0.02})
+    .to('.wf30',{opacity:0,duration:0.08,stagger:{each:0.015,from:'end'}},'+=0.8');
+},1);
+
+// ===== PERPETUAL (already looping) =====
+// 31 Pulse ripple — 5 rings expanding, center glows
+gsap.timeline({repeat:-1,repeatDelay:0.2}).fromTo('.pp31r1',{attr:{r:4},opacity:0.25,strokeWidth:2.5},{attr:{r:36},opacity:0,strokeWidth:0.3,duration:2,ease:'power1.out'});
+gsap.timeline({repeat:-1,delay:0.4,repeatDelay:0.2}).fromTo('.pp31r2',{attr:{r:4},opacity:0.2,strokeWidth:2},{attr:{r:36},opacity:0,strokeWidth:0.3,duration:2,ease:'power1.out'});
+gsap.timeline({repeat:-1,delay:0.8,repeatDelay:0.2}).fromTo('.pp31r3',{attr:{r:4},opacity:0.15,strokeWidth:1.5},{attr:{r:36},opacity:0,strokeWidth:0.3,duration:2,ease:'power1.out'});
+gsap.timeline({repeat:-1,delay:1.2,repeatDelay:0.2}).fromTo('.pp31r4',{attr:{r:4},opacity:0.1,strokeWidth:1.2},{attr:{r:36},opacity:0,strokeWidth:0.2,duration:2,ease:'power1.out'});
+gsap.timeline({repeat:-1,delay:1.6,repeatDelay:0.2}).fromTo('.pp31r5',{attr:{r:4},opacity:0.08,strokeWidth:1},{attr:{r:36},opacity:0,strokeWidth:0.2,duration:2,ease:'power1.out'});
+gsap.to('.pp31c',{attr:{r:9},opacity:0.25,duration:0.25,repeat:-1,yoyo:true,ease:'power2.out',repeatDelay:0.2});
+
+// 32 Orbit — dot moves via cx/cy for reliable SVG animation
+gsap.to('.orb32',{rotation:360,svgOrigin:'90 40',duration:30,repeat:-1,ease:'none'});
+(function(){
+  const cx=90,cy=40,r=28;
+  let a=0;
+  function tick(){
+    a=(a+1.5)%360;
+    const rad=a*Math.PI/180;
+    const x=cx+r*Math.cos(rad), y=cy+r*Math.sin(rad);
+    // Lead dot
+    gsap.set('.orb32d',{attr:{cx:x,cy:y}});
+    // Trail dots (slightly behind)
+    const rad2=(a-15)*Math.PI/180, rad3=(a-30)*Math.PI/180;
+    gsap.set('.orb32d2',{attr:{cx:cx+r*Math.cos(rad2),cy:cy+r*Math.sin(rad2)}});
+    gsap.set('.orb32d3',{attr:{cx:cx+r*Math.cos(rad3),cy:cy+r*Math.sin(rad3)}});
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+gsap.timeline({repeat:-1,repeatDelay:2}).set('.sl33',{y:0}).to('.sl33',{y:80,duration:2,ease:'power1.inOut'});
+gsap.timeline({repeat:-1,repeatDelay:2}).set('.sl34',{x:0}).to('.sl34',{x:180,duration:2,ease:'power1.inOut'});
+
+gsap.to('.br35',{strokeOpacity:0.3,scale:1.08,transformOrigin:'center',duration:2,repeat:-1,yoyo:true,ease:'sine.inOut'});
+
+function flowP(sel,d){gsap.timeline({repeat:-1,delay:d}).set(sel,{attr:{cx:10,cy:40},opacity:0}).to(sel,{opacity:0.7,duration:0.2}).to(sel,{attr:{cx:170},duration:2,ease:'power1.inOut'},'<').to(sel,{opacity:0,duration:0.3},'-=0.3');}
+flowP('.pf36a',0);flowP('.pf36b',0.7);flowP('.pf36c',1.4);
+
+gsap.to('.wv37a',{x:20,duration:3,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.wv37b',{x:-15,duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+
+document.querySelectorAll('.bub').forEach((b,i)=>{
+  const x=+b.dataset.x, sy=+b.dataset.sy;
+  gsap.timeline({repeat:-1,delay:i*1.5}).set(b,{attr:{cx:x,cy:sy},opacity:0}).to(b,{opacity:0.15,duration:0.3}).to(b,{attr:{cy:45,cx:x+(Math.random()*10-5)},duration:3+Math.random()*2,ease:'power1.out'},'<').to(b,{opacity:0,duration:0.4},'-=0.4');
+});
+
+gsap.to('.gs39a',{attr:{'stop-color':'rgba(61,170,90,0.1)'},duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.gs39b',{attr:{'stop-color':'rgba(196,163,90,0.1)'},duration:5,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.gs39c',{attr:{'stop-color':'rgba(74,143,212,0.1)'},duration:6,repeat:-1,yoyo:true,ease:'sine.inOut'});
+
+// 40 Radar sweep — manual rAF rotation, reliable in all environments
+(function(){
+  const arm=document.querySelector('.rs40arm');
+  const trail=document.querySelector('.rs40trail');
+  if(!arm||!trail)return;
+  const cx=90,cy=40,r=32;
+  let angle=270; // start pointing up (270° = 12 o'clock)
+
+  function tick(){
+    angle=(angle+1.2)%360;
+    const rad=angle*Math.PI/180;
+    // Arm endpoint
+    const ax=cx+r*Math.cos(rad), ay=cy+r*Math.sin(rad);
+    arm.setAttribute('x2',ax.toFixed(1));
+    arm.setAttribute('y2',ay.toFixed(1));
+
+    // Trail wedge: a 30° arc behind the arm
+    const trailAngle=30;
+    const r1=rad, r2=(angle-trailAngle)*Math.PI/180;
+    const x1=cx+r*Math.cos(r1), y1=cy+r*Math.sin(r1);
+    const x2=cx+r*Math.cos(r2), y2=cy+r*Math.sin(r2);
+    // Large arc flag=0 for small angle
+    trail.setAttribute('d',
+      `M${cx},${cy} L${x1.toFixed(1)},${y1.toFixed(1)} A${r},${r} 0 0,0 ${x2.toFixed(1)},${y2.toFixed(1)} Z`);
+
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  // Blips pulse
+  gsap.to('.rs40blip',{opacity:0.05,duration:2,repeat:-1,yoyo:true,ease:'sine.inOut',stagger:0.6});
+})();
+
+gsap.to('.np',{scale:1.2,transformOrigin:'center',duration:0.8,repeat:-1,yoyo:true,ease:'sine.inOut',stagger:{each:0.4,repeat:-1,yoyo:true}});
+
+gsap.timeline({repeat:-1,repeatDelay:1}).set('.shm42',{x:-60}).to('.shm42',{x:230,duration:1.5,ease:'power2.inOut'});
+
+gsap.to('.tc43c',{opacity:0,duration:0.5,repeat:-1,yoyo:true,ease:'steps(1)'});
+
+// 44 Counter flicker — GSAP 驱动的平滑值过渡（告别 setInterval 卡顿）
+(function(){
+  const base=128457;
+  const o={v:base};
+  function hop(){
+    const target=base+Math.floor(Math.random()*20-10);
+    gsap.to(o,{v:target,duration:0.4+Math.random()*0.3,ease:'power1.inOut',
+      onUpdate:()=>document.querySelectorAll('.cf44').forEach(e=>e.textContent=Math.round(o.v).toLocaleString()),
+      onComplete:()=>setTimeout(hop,400+Math.random()*400)});
+  }
+  hop();
+})();
+
+// 45 Orbit multi — 4 rings, 6 particles, all via rAF
+(function(){
+  const cx=90,cy=40;
+  const rings=[
+    {r:32,speed:0.4,dir:1,cls:'.om45c'},
+    {r:25,speed:0.6,dir:-1,cls:'.om45a'},
+    {r:18,speed:0.9,dir:1,cls:'.om45b'},
+    {r:11,speed:1.3,dir:-1,cls:'.om45d'}
+  ];
+  // Rotate ring dashes via CSS
+  rings.forEach(rn=>{
+    gsap.to(rn.cls,{rotation:rn.dir*360,transformOrigin:`${cx}px ${cy}px`,duration:40/rn.speed,repeat:-1,ease:'none'});
+  });
+  // Particles: assign to rings
+  const particles=document.querySelectorAll('.om45p');
+  const pConfig=[
+    {ring:0,angle:0,speed:1.5},{ring:0,angle:180,speed:1.5},
+    {ring:1,angle:90,speed:2.2},{ring:1,angle:270,speed:2.2},
+    {ring:2,angle:45,speed:3},{ring:2,angle:225,speed:3}
+  ];
+  let t=0;
+  function tick(){
+    t++;
+    pConfig.forEach((pc,i)=>{
+      if(!particles[i])return;
+      const rn=rings[pc.ring];
+      const a=(pc.angle + t*pc.speed*rn.dir)%360;
+      const rad=a*Math.PI/180;
+      particles[i].setAttribute('cx',(cx+rn.r*Math.cos(rad)).toFixed(1));
+      particles[i].setAttribute('cy',(cy+rn.r*Math.sin(rad)).toFixed(1));
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+// ===== TEXT (all looping) =====
+loop(tl=>{
+  tl.fromTo('.tw46',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:1.5,ease:'steps(6)'})
+    .to('.tw46',{clipPath:'inset(0 0% 0 100%)',duration:0.5,ease:'steps(4)'},'+=0.8');
+},1);
+
+loop(tl=>{
+  tl.fromTo('.hs47',{attr:{width:0}},{attr:{width:145},duration:0.8,ease:'power3.out'})
+    .to('.hs47',{attr:{width:0},duration:0.4},'+=0.8');
+},1);
+
+// Scramble loop
+function scrambleLoop(){
+  const target='DECRYPTED!';
+  const chars='█▓▒░╬╫╪┼';
+  let scrEl=document.querySelector('.scr48');
+  if(!scrEl) return;
+  let step=0, phase='decode';
+  setInterval(()=>{
+    let s='';
+    if(phase==='decode'){
+      for(let i=0;i<target.length;i++){
+        s+= i<=step ? target[i] : chars[Math.floor(Math.random()*chars.length)];
+      }
+      step++;
+      if(step>target.length){phase='hold';step=0;}
+    } else if(phase==='hold'){
+      s=target; step++;
+      if(step>15){phase='encode';step=0;}
+    } else {
+      for(let i=0;i<target.length;i++){
+        s+= i<step ? chars[Math.floor(Math.random()*chars.length)] : target[i];
+      }
+      step++;
+      if(step>target.length){phase='scramble';step=0;}
+    }
+    if(phase==='scramble'){
+      s='';for(let i=0;i<target.length;i++) s+=chars[Math.floor(Math.random()*chars.length)];
+      step++;if(step>10){phase='decode';step=0;}
+    }
+    scrEl.textContent=s;
+  },80);
+}
+scrambleLoop();
+
+loop(tl=>{
+  tl.fromTo('.spc',{opacity:0,y:15},{opacity:1,y:0,duration:0.3,stagger:0.06,ease:'back.out(1.5)'})
+    .to('.spc',{opacity:0,y:-10,duration:0.2,stagger:0.04},'+=0.8');
+},1);
+
+loop(tl=>{
+  tl.fromTo('.ct50r',{attr:{width:0}},{attr:{width:180},duration:1,ease:'power3.out'})
+    .to('.ct50r',{attr:{width:0},duration:0.5},'+=0.8');
+},1);
+
+// ===== 51-58: MORPHING =====
+// 51 Polygon morph — 五角 → 梯形 → 小五边形 循环
+gsap.timeline({repeat:-1})
+  .to('.sb51',{attr:{points:'30,15 150,15 150,55 90,65 30,55'},duration:1.4,ease:'power2.inOut'})
+  .to('.sb51',{attr:{points:'90,12 130,35 115,58 65,58 50,35'},duration:1.4,ease:'power2.inOut'},'+=0.3')
+  .to('.sb51',{attr:{points:'90,8 160,30 135,65 45,65 20,30'},duration:1.4,ease:'power2.inOut'},'+=0.3')
+  .to({},{duration:0.3});
+
+// 52 Liquid blob
+gsap.to('.lb52',{attr:{d:'M90,12 C130,8 150,30 148,48 C146,68 115,75 90,72 C65,69 32,60 32,42 C32,22 55,16 90,12Z'},duration:3,repeat:-1,yoyo:true,ease:'sine.inOut'});
+
+// 53 Card flip — 真正看得到的 scaleX 翻转（SVG 不支持 3D rotationX）
+gsap.timeline({repeat:-1,repeatDelay:1.2})
+  .to('.r3x53',{scaleX:0,duration:0.4,ease:'power2.in',transformOrigin:'center'})
+  .to('.r3x53',{scaleX:1,duration:0.4,ease:'back.out(1.4)'});
+
+// 54 Pendulum — use svgOrigin for reliable SVG pivot
+gsap.to('.pend54g',{rotation:25,svgOrigin:'90 5',duration:1.8,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.pend54sh',{attr:{cx:110},duration:1.8,repeat:-1,yoyo:true,ease:'sine.inOut'});
+
+// 55 Spring bounce — 经典 squash+stretch + 地面阴影
+gsap.timeline({repeat:-1,repeatDelay:0.4})
+  .to('.spb55',{attr:{cy:58},duration:0.45,ease:'power2.in'})
+  .to('.spb55',{scaleY:0.6,scaleX:1.35,transformOrigin:'center bottom',duration:0.1,ease:'power2.out'})
+  .to('.spb55sh',{attr:{rx:15,ry:2.8},fill:'rgba(0,0,0,0.45)',duration:0.1,ease:'power2.out'},'<')
+  .to('.spb55',{scaleY:1,scaleX:1,duration:0.12,ease:'power2.out'})
+  .to('.spb55',{attr:{cy:25},duration:0.5,ease:'power2.out'})
+  .to('.spb55sh',{attr:{rx:8,ry:1.8},fill:'rgba(0,0,0,0.2)',duration:0.5,ease:'power2.out'},'<');
+
+// 56 Scale pulse alternating
+// 56 Scale pulse — 呼吸感，不是抽搐
+gsap.to('.sp56a',{scale:1.12,transformOrigin:'center',duration:1.1,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.sp56b',{scale:1.12,transformOrigin:'center',duration:1.1,repeat:-1,yoyo:true,ease:'sine.inOut',delay:0.35});
+gsap.to('.sp56c',{scale:1.12,transformOrigin:'center',duration:1.1,repeat:-1,yoyo:true,ease:'sine.inOut',delay:0.7});
+
+// 57 Morph icon (circle ↔ square)
+gsap.timeline({repeat:-1,yoyo:true}).to('.mi57',{attr:{rx:5},duration:1.5,ease:'power2.inOut'}).to('.mi57',{attr:{rx:25},duration:1.5,ease:'power2.inOut'});
+
+// 58 Spring coil — 压缩态点数对齐到 10 个，morph 平滑
+gsap.to('.sc58',{attr:{d:'M50,40 Q55,30 60,40 T70,40 T80,40 T90,40 T100,40 T110,40 T120,40 T130,40'},duration:1.4,repeat:-1,yoyo:true,ease:'power2.inOut'});
+gsap.to('.sc58a',{attr:{cx:50},duration:1.4,repeat:-1,yoyo:true,ease:'power2.inOut'});
+gsap.to('.sc58b',{attr:{cx:130},duration:1.4,repeat:-1,yoyo:true,ease:'power2.inOut'});
+
+// ===== 59-66: PHYSICS =====
+// 59C Gravity drop
+gsap.timeline({repeat:-1,repeatDelay:1}).to('.gd59a',{attr:{cy:66},duration:0.6,ease:'bounce.out'}).to('.gd59a',{attr:{cy:10},duration:0.3,ease:'power2.in'},'+=0.5');
+gsap.timeline({repeat:-1,repeatDelay:1,delay:0.2}).to('.gd59b',{attr:{cy:66},duration:0.6,ease:'bounce.out'}).to('.gd59b',{attr:{cy:10},duration:0.3,ease:'power2.in'},'+=0.5');
+gsap.timeline({repeat:-1,repeatDelay:1,delay:0.4}).to('.gd59c',{attr:{cy:66},duration:0.6,ease:'bounce.out'}).to('.gd59c',{attr:{cy:10},duration:0.3,ease:'power2.in'},'+=0.5');
+
+// 60 Elastic string
+gsap.timeline({repeat:-1}).to('.es60',{attr:{d:'M10,40 Q90,10 170,40'},duration:0.8,ease:'elastic.out(1,0.3)'}).to('.es60',{attr:{d:'M10,40 Q90,70 170,40'},duration:0.8,ease:'elastic.out(1,0.3)'}).to('.es60',{attr:{d:'M10,40 Q90,40 170,40'},duration:1,ease:'elastic.out(1,0.2)'});
+
+// 61 Float drift
+gsap.to('.fd61a',{x:3,y:-5,rotation:2,duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.fd61b',{x:-4,y:3,rotation:-3,duration:5,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.fd61c',{x:2,y:-4,rotation:1.5,duration:3.5,repeat:-1,yoyo:true,ease:'sine.inOut'});
+
+// 62 Brownian motion — 围绕原点 bounded 随机游走 + 轻微呼吸
+document.querySelectorAll('.bm62').forEach(p=>{
+  const hx=parseFloat(p.dataset.hx||p.getAttribute('cx'));
+  const hy=parseFloat(p.dataset.hy||p.getAttribute('cy'));
+  function jitter(){
+    gsap.to(p,{
+      attr:{cx:hx+(Math.random()-0.5)*26,cy:hy+(Math.random()-0.5)*18,r:3+Math.random()*1.2},
+      duration:0.35+Math.random()*0.5,
+      ease:'sine.inOut',
+      onComplete:jitter
+    });
+  }
+  jitter();
+});
+
+// 63 Heartbeat — 真实 EKG 波形 + 心脏与 QRS 同步
+(function(){
+  const wave=document.querySelector('.hb63wave');
+  const dot=document.querySelector('.hb63dot');
+  const heart=document.querySelector('.hb63h');
+  if(!wave) return;
+  const len=wave.getTotalLength();
+  gsap.set(wave,{strokeDasharray:len,strokeDashoffset:len});
+  // Heart pulse synced to QRS spike (timed to ~0.7s into wave)
+  gsap.timeline({repeat:-1,repeatDelay:0.4})
+    .to({},{duration:0.65}) // wait until scanner approaches QRS
+    .to(heart,{scale:1.18,transformOrigin:'46px 40px',duration:0.08,ease:'power2.out'})
+    .to(heart,{scale:1,duration:0.1})
+    .to(heart,{scale:1.08,duration:0.07},'+=0.03')
+    .to(heart,{scale:1,duration:0.25})
+    .to({},{duration:0.4});
+  // Scanner dot traces the wave while line draws behind it
+  gsap.to({p:0},{p:1,duration:1.8,repeat:-1,repeatDelay:0.1,ease:'none',
+    onUpdate:function(){
+      const progress=this.targets()[0].p;
+      const pt=wave.getPointAtLength(progress*len);
+      dot.setAttribute('cx',pt.x);
+      dot.setAttribute('cy',pt.y);
+      wave.style.strokeDashoffset=len*(1-progress);
+    },
+    onRepeat:()=>{wave.style.strokeDashoffset=len;}
+  });
+})();
+
+// 64 Spiral in — 5 颗粒子螺旋塌缩到核心再迸发出去
+(function(){
+  const core=document.querySelector('.sp64core');
+  document.querySelectorAll('.sp64p').forEach(el=>{
+    const phase=parseFloat(el.dataset.ph);
+    gsap.to({t:0},{
+      t:1,duration:3.2,repeat:-1,ease:'none',
+      onUpdate:function(){
+        const t=this.targets()[0].t;
+        // 0→0.45 塌缩, 0.45→0.55 核心保持, 0.55→1 迸发
+        let r;
+        if(t<0.45){r=32*(1-t/0.45)+1;}
+        else if(t<0.55){r=1;}
+        else{r=1+32*((t-0.55)/0.45);}
+        const angle=phase+t*Math.PI*5;
+        const cx=90+Math.cos(angle)*r;
+        const cy=40+Math.sin(angle)*r*0.5;
+        el.setAttribute('cx',cx);
+        el.setAttribute('cy',cy);
+      }
+    });
+  });
+  // 核心随塌缩瞬间高亮
+  gsap.to(core,{attr:{r:5},opacity:1,duration:0.3,repeat:-1,repeatDelay:2.9,yoyo:true,ease:'power2.out'});
+})();
+
+// 65 Smoke rise — bigger particles, more visible. repeatRefresh re-rolls the
+// horizontal drift every cycle so the plume keeps feeling organic.
+function smoke(sel,dx,dur,startR,endR,startOp){
+  gsap.timeline({repeat:-1,delay:Math.random()*2,repeatDelay:Math.random()*0.8,repeatRefresh:true})
+    .set(sel,{attr:{cy:65,cx:90+dx,r:startR},opacity:startOp})
+    .to(sel,{attr:{cy:5,cx:()=>90+dx+(Math.random()*30-15),r:endR},opacity:0,duration:dur,ease:'power1.out'});
+}
+smoke('.smk65a',0,2.5,6,18,0.7);
+smoke('.smk65b',-4,3,8,22,0.55);
+smoke('.smk65c',3,2.2,5,15,0.75);
+smoke('.smk65d',-6,3.5,10,28,0.4);
+smoke('.smk65e',5,2.8,7,20,0.5);
+
+// 66 Lava lamp — cy 浮沉 + rx/ry squish 变形，每颗 blob 独立节奏
+gsap.to('.ll66a',{attr:{cy:22},duration:4.2,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.ll66a',{attr:{rx:11,ry:13},duration:2.1,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.ll66b',{attr:{cy:60},duration:5.2,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.ll66b',{attr:{rx:11,ry:8},duration:2.5,repeat:-1,yoyo:true,ease:'sine.inOut',delay:0.4});
+gsap.to('.ll66c',{attr:{cy:24},duration:3.6,repeat:-1,yoyo:true,ease:'sine.inOut',delay:0.5});
+gsap.to('.ll66c',{attr:{rx:8,ry:5.5},duration:1.8,repeat:-1,yoyo:true,ease:'sine.inOut',delay:0.7});
+gsap.to('.ll66d',{attr:{cy:20},duration:4.6,repeat:-1,yoyo:true,ease:'sine.inOut',delay:1.3});
+gsap.to('.ll66d',{attr:{rx:5.5,ry:3.8},duration:2.2,repeat:-1,yoyo:true,ease:'sine.inOut',delay:0.3});
+
+// ===== 67-74: GLITCH =====
+// 67C Glitch text
+function glitchLoop(){
+  gsap.timeline({repeat:-1,repeatDelay:2+Math.random()*3})
+    .to('.gl67r',{x:2,y:-1,opacity:0.4,duration:0.05}).to('.gl67r',{x:-1,y:1,duration:0.05}).to('.gl67r',{x:0,y:0,opacity:0,duration:0.05})
+    .to('.gl67b',{x:-2,y:1,opacity:0.4,duration:0.05},'<').to('.gl67b',{x:1,y:-1,duration:0.05}).to('.gl67b',{x:0,y:0,opacity:0,duration:0.05});
+}
+glitchLoop();
+gsap.timeline({repeat:-1,repeatDelay:3}).to('.gl67',{x:3,duration:0.03}).to('.gl67',{x:-2,duration:0.03}).to('.gl67',{x:0,duration:0.03});
+
+// 68 Matrix rain
+(function(){
+  const sv=document.querySelector('.mx68sv');if(!sv)return;
+  const cols=12,chars='01アイウエオカキクケコ';
+  for(let c=0;c<cols;c++){
+    const x=8+c*15;
+    for(let r=0;r<6;r++){
+      const t=document.createElementNS('http://www.w3.org/2000/svg','text');
+      t.setAttribute('x',x);t.setAttribute('y',-10);
+      t.setAttribute('fill','rgba(61,170,90,'+(0.05+Math.random()*0.15)+')');
+      t.setAttribute('font-family','JetBrains Mono');t.setAttribute('font-size','9');
+      t.textContent=chars[Math.floor(Math.random()*chars.length)];
+      t.classList.add('mx68t');sv.appendChild(t);
+      gsap.to(t,{attr:{y:85},duration:1.5+Math.random()*2,repeat:-1,delay:r*0.3+c*0.1+Math.random(),ease:'none',
+        onRepeat:()=>{t.textContent=chars[Math.floor(Math.random()*chars.length)];}});
+    }
+  }
+})();
+
+// 69 Scan grid
+(function(){
+  const sv=document.querySelector('.sgr69sv');if(!sv)return;
+  for(let r=0;r<4;r++)for(let c=0;c<9;c++){
+    const rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x',5+c*19);rect.setAttribute('y',5+r*19);
+    rect.setAttribute('width',17);rect.setAttribute('height',17);rect.setAttribute('rx','2');
+    rect.setAttribute('fill','rgba(196,163,90,0.03)');rect.classList.add('sgr69');
+    sv.appendChild(rect);
+  }
+  // Scan highlight
+  function scanRow(){
+    const cells=sv.querySelectorAll('.sgr69');
+    const row=Math.floor(Math.random()*4);
+    for(let c=0;c<9;c++){
+      const idx=row*9+c;
+      gsap.to(cells[idx],{fill:'rgba(196,163,90,0.12)',duration:0.1,delay:c*0.04}).then(()=>{
+        gsap.to(cells[idx],{fill:'rgba(196,163,90,0.03)',duration:0.5,delay:0.2});
+      });
+    }
+    setTimeout(scanRow,1500+Math.random()*2000);
+  }
+  setTimeout(scanRow,500);
+})();
+
+// 70 Noise static
+(function(){
+  const sv=document.querySelector('.ns70sv');if(!sv)return;
+  const rects=[];
+  for(let r=0;r<8;r++)for(let c=0;c<18;c++){
+    const rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x',c*10);rect.setAttribute('y',r*10);
+    rect.setAttribute('width',10);rect.setAttribute('height',10);
+    rect.setAttribute('fill','rgba(196,163,90,0.02)');
+    sv.appendChild(rect);rects.push(rect);
+  }
+  setInterval(()=>{
+    rects.forEach(r=>{r.setAttribute('fill','rgba(196,163,90,'+(Math.random()*0.08).toFixed(3)+')');});
+  },100);
+})();
+
+// 71 Binary stream
+function binScroll(sel,spd){
+  const chars='01';
+  setInterval(()=>{
+    const el=document.querySelector(sel);if(!el)return;
+    let s='';for(let i=0;i<18;i++)s+=chars[Math.floor(Math.random()*2)];
+    el.textContent=s;
+  },spd);
+}
+binScroll('.bs71a',150);binScroll('.bs71b',180);binScroll('.bs71c',200);binScroll('.bs71d',250);
+
+// 72 Pixel dissolve
+(function(){
+  const sv=document.querySelector('.pd72sv');if(!sv)return;
+  const cells=[];
+  for(let r=0;r<8;r++)for(let c=0;c<18;c++){
+    const rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x',c*10);rect.setAttribute('y',r*10);
+    rect.setAttribute('width',10);rect.setAttribute('height',10);
+    const inShape=(c>4&&c<14&&r>1&&r<6);
+    rect.setAttribute('fill',inShape?'rgba(196,163,90,0.1)':'rgba(196,163,90,0.02)');
+    rect.classList.add('pd72c');sv.appendChild(rect);cells.push({el:rect,orig:inShape});
+  }
+  function dissolve(){
+    const order=[...Array(cells.length).keys()].sort(()=>Math.random()-0.5);
+    order.forEach((idx,i)=>{
+      gsap.to(cells[idx].el,{opacity:0,duration:0.1,delay:i*0.008});
+    });
+    setTimeout(()=>{
+      order.reverse().forEach((idx,i)=>{
+        gsap.to(cells[idx].el,{opacity:1,duration:0.1,delay:i*0.008});
+      });
+    },order.length*8+500);
+    setTimeout(dissolve,order.length*16+2000);
+  }
+  setTimeout(dissolve,1000);
+})();
+
+// 73 Hex pulse
+(function(){
+  const sv=document.querySelector('.hp73sv');if(!sv)return;
+  const hexes=[];
+  for(let r=0;r<3;r++)for(let c=0;c<6;c++){
+    const cx=20+c*28+(r%2)*14,cy=15+r*24;
+    const hex=document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    const pts=[];for(let a=0;a<6;a++){const ang=Math.PI/3*a-Math.PI/6;pts.push((cx+11*Math.cos(ang)).toFixed(1)+','+(cy+11*Math.sin(ang)).toFixed(1));}
+    hex.setAttribute('points',pts.join(' '));
+    hex.setAttribute('fill','rgba(196,163,90,0.03)');hex.setAttribute('stroke','rgba(196,163,90,0.06)');hex.setAttribute('stroke-width','0.5');
+    sv.appendChild(hex);hexes.push(hex);
+  }
+  function pulseHex(){
+    const idx=Math.floor(Math.random()*hexes.length);
+    gsap.to(hexes[idx],{fill:'rgba(196,163,90,0.12)',stroke:'rgba(196,163,90,0.2)',duration:0.3}).then(()=>{
+      gsap.to(hexes[idx],{fill:'rgba(196,163,90,0.03)',stroke:'rgba(196,163,90,0.06)',duration:1});
+    });
+    setTimeout(pulseHex,400+Math.random()*800);
+  }
+  pulseHex();
+})();
+
+// 74 Circuit trace
+(function(){
+  const path=document.querySelector('.ct74path');
+  const dot=document.querySelector('.ct74dot');
+  if(!path||!dot)return;
+  const len=path.getTotalLength();
+  gsap.to(dot,{opacity:0.8,duration:0.3,delay:0.5});
+  gsap.to({p:0},{p:1,duration:3,repeat:-1,ease:'none',onUpdate:function(){
+    const pt=path.getPointAtLength(this.targets()[0].p*len);
+    gsap.set(dot,{attr:{cx:pt.x,cy:pt.y}});
+  }});
+})();
+
+// ===== 75-82: COMPOSITE =====
+// 75C Reveal mask
+loop(tl=>{
+  tl.to('.rm75c',{attr:{r:100},duration:1,ease:'power3.out'}).to('.rm75c',{attr:{r:0},duration:0.5,ease:'power2.in'},'+=1');
+},1);
+
+// 76 Spotlight
+gsap.to('#spt76',{attr:{cx:0.8},duration:3,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('#spt76',{attr:{cy:0.3},duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+
+// 77 Zoom blur
+loop(tl=>{
+  tl.fromTo('.zb77t',{scale:0.3,transformOrigin:'center',opacity:0},{scale:1,opacity:1,duration:0.5,ease:'power3.out'})
+    .fromTo('.zb77f',{attr:{stdDeviation:6}},{attr:{stdDeviation:0},duration:0.5,ease:'power2.out'},0)
+    .to('.zb77t',{scale:2,opacity:0,duration:0.4,ease:'power2.in'},'+=1')
+    .to('.zb77f',{attr:{stdDeviation:4},duration:0.3},'<');
+},1);
+
+// 78 Parallax layers
+gsap.to('.pl78a',{x:10,duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.pl78b',{x:-8,duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.pl78c',{x:15,duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+
+// 79 Letterbox — 上下黑边压缩
+loop(tl=>{
+  gsap.set('.lb79t',{attr:{height:0,y:0}});
+  gsap.set('.lb79b',{attr:{height:0,y:80}});
+  tl.to('.lb79t',{attr:{height:12,y:0},duration:0.55,ease:'power3.inOut'})
+    .to('.lb79b',{attr:{height:12,y:68},duration:0.55,ease:'power3.inOut'},'<')
+    .to('.lb79t',{attr:{height:0,y:0},duration:0.55,ease:'power3.inOut'},'+=1.4')
+    .to('.lb79b',{attr:{height:0,y:80},duration:0.55,ease:'power3.inOut'},'<');
+},1);
+
+// 80 Focus pull — 变焦聚焦
+loop(tl=>{
+  gsap.set('.fp80c',{scale:1.3,opacity:0,transformOrigin:'center'});
+  gsap.set('.fp80fb',{attr:{stdDeviation:8}});
+  tl.to('.fp80c',{scale:1,opacity:1,duration:0.8,ease:'power3.out'})
+    .to('.fp80fb',{attr:{stdDeviation:0},duration:0.8,ease:'power2.out'},0)
+    .to('.fp80c',{scale:0.88,opacity:0,duration:0.5,ease:'power2.in'},'+=1.2')
+    .to('.fp80fb',{attr:{stdDeviation:6},duration:0.5},'<');
+},1);
+
+// 81 Shutter
+loop(tl=>{
+  tl.fromTo('.sh81',{scaleY:0,transformOrigin:'top'},{scaleY:1,duration:0.3,stagger:0.06,ease:'power2.out'})
+    .to('.sh81',{scaleY:0,transformOrigin:'bottom',duration:0.3,stagger:0.06,ease:'power2.in'},'+=1');
+},1);
+
+// 82 Wipe diagonal
+loop(tl=>{
+  tl.to('.wd82p',{attr:{points:'0,0 220,0 220,80 0,80'},duration:1,ease:'power2.inOut'})
+    .to('.wd82p',{attr:{points:'220,0 220,0 220,80 220,80'},duration:0.6},'+=0.8')
+    .set('.wd82p',{attr:{points:'0,0 0,0 0,80 0,80'}});
+},1);
+
+// ===== 83-90: ADVANCED DATA =====
+// 83C Treemap
+loop(tl=>{
+  document.querySelectorAll('.tm83').forEach((r,i)=>{
+    tl.to(r,{attr:{width:r.dataset.w},duration:0.5,ease:'power3.out'},i*0.08);
+  });
+  tl.to('.tm83',{attr:{width:0},duration:0.3,stagger:0.05},'+=1');
+},1);
+
+// 84 Sankey — continuous particle streams flowing through bands
+(function(){
+  function sankeyFlow(sel, x1,y1, x2,y2, dur, delay){
+    gsap.timeline({repeat:-1, delay, repeatDelay:0.5+Math.random()})
+      .set(sel,{attr:{cx:x1,cy:y1},opacity:0})
+      .to(sel,{opacity:0.5,duration:0.15})
+      .to(sel,{attr:{cx:x2,cy:y2},duration:dur,ease:'power1.inOut'},'<')
+      .to(sel,{opacity:0,duration:0.2},'-=0.2');
+  }
+  // Band 1 (gold): y≈20 → y≈16
+  sankeyFlow('.sk84p1', 13,20, 155,16, 2, 0);
+  sankeyFlow('.sk84p2', 13,22, 155,18, 2.3, 0.8);
+  // Band 2 (blue): y≈37 → y≈41
+  sankeyFlow('.sk84p3', 13,37, 155,41, 2.2, 0.3);
+  sankeyFlow('.sk84p4', 13,40, 155,43, 2.5, 1.2);
+  // Band 3 (green): y≈56 → y≈65
+  sankeyFlow('.sk84p5', 13,56, 155,65, 2.4, 0.6);
+  sankeyFlow('.sk84p6', 13,60, 155,68, 2.1, 1.5);
+})();
+
+// 85 Heatmap
+(function(){
+  const sv=document.querySelector('.hm85sv');if(!sv)return;
+  const cells=[];
+  for(let r=0;r<4;r++)for(let c=0;c<9;c++){
+    const rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x',5+c*19);rect.setAttribute('y',5+r*19);
+    rect.setAttribute('width',17);rect.setAttribute('height',17);rect.setAttribute('rx','2');
+    rect.setAttribute('fill','rgba(196,163,90,0.03)');
+    sv.appendChild(rect);cells.push(rect);
+  }
+  function heatPulse(){
+    cells.forEach(c=>{
+      const v=Math.random();
+      const color=v>0.7?'rgba(179,58,58,'+(v*0.2).toFixed(2)+')':v>0.4?'rgba(196,163,90,'+(v*0.15).toFixed(2)+')':'rgba(74,143,212,'+(v*0.08).toFixed(2)+')';
+      gsap.to(c,{fill:color,duration:0.5+Math.random()});
+    });
+    setTimeout(heatPulse,2000+Math.random()*1000);
+  }
+  heatPulse();
+})();
+
+// 86 Donut spin
+// 86 Donut — segments grow from 0 to full, cycle
+(function(){
+  const segs=document.querySelectorAll('.dn86');
+  segs.forEach(s=>{
+    const len=+s.dataset.len;
+    const off=+(s.dataset.offset||0);
+    s.style.strokeDasharray=`0 100`;
+    s.style.strokeDashoffset=-off;
+  });
+  loop(tl=>{
+    segs.forEach((s,i)=>{
+      const len=+s.dataset.len;
+      const off=+(s.dataset.offset||0);
+      tl.to(s,{strokeDasharray:`${len} ${100-len}`,duration:0.6,ease:'power3.out'},i*0.1);
+    });
+    // Counter
+    const o={v:0};
+    tl.to(o,{v:100,duration:0.6+segs.length*0.1,ease:'power3.out',onUpdate:()=>{
+      const t=document.querySelector('.dn86t');
+      if(t) t.textContent=Math.round(o.v)+'%';
+    }},0);
+    // Reset
+    tl.addLabel('hold','+=2');
+    segs.forEach((s,i)=>{
+      tl.to(s,{strokeDasharray:'0 100',duration:0.4},'hold+='+i*0.05);
+    });
+    const o2={v:100};
+    tl.to(o2,{v:0,duration:0.4,onUpdate:()=>{
+      const t=document.querySelector('.dn86t');
+      if(t) t.textContent=Math.round(o2.v)+'%';
+    }},'hold');
+  },1);
+})();
+
+// 87 Network graph
+// 87 Network graph — 有机呼吸节奏，每节点独立幅度和相位
+(function(){
+  document.querySelectorAll('.ng87n').forEach((n,i)=>{
+    const amp=1.08+Math.random()*0.14, dur=1.3+Math.random()*1.2, dly=Math.random()*1.5;
+    gsap.to(n,{scale:amp,transformOrigin:'center',duration:dur,repeat:-1,yoyo:true,ease:'sine.inOut',delay:dly});
+  });
+  document.querySelectorAll('.ng87l').forEach((l,i)=>{
+    const dur=1.5+Math.random()*1.8, dly=Math.random()*1.2;
+    gsap.to(l,{strokeOpacity:0.08+Math.random()*0.1,duration:dur,repeat:-1,yoyo:true,ease:'sine.inOut',delay:dly});
+  });
+})();
+
+// 88 Waterfall
+loop(tl=>{
+  document.querySelectorAll('.wf88').forEach((r,i)=>{
+    const h=+r.dataset.h;
+    tl.to(r,{attr:{height:h,y:72-h},duration:0.5,ease:'power3.out'},i*0.1);
+  });
+  tl.to('.wf88',{attr:{height:0,y:72},duration:0.3,stagger:0.06},'+=1');
+},1);
+
+// 89 Candlestick — 先画影线 high-low，再 open→close 长出实体（真实 K 线节奏）
+loop(tl=>{
+  gsap.set('.ckw',{scaleY:0,transformOrigin:'center'});
+  gsap.set('.ckb',{scaleY:0,transformOrigin:'center'});
+  tl.to('.ckw',{scaleY:1,duration:0.25,stagger:0.12,ease:'power2.out'})
+    .to('.ckb',{scaleY:1,duration:0.3,stagger:0.12,ease:'back.out(1.3)'},'<0.08')
+    .to('.ckw,.ckb',{opacity:0,duration:0.3,stagger:0.03,ease:'power2.in'},'+=1.8')
+    .set('.ckw,.ckb',{opacity:1,scaleY:0});
+},1);
+
+// 90 Flow diagram
+// 90 Flow diagram — energy pulse line travels between nodes, nodes light up
+(function(){
+  const p1=document.querySelector('.fl90pulse1');
+  const p2=document.querySelector('.fl90pulse2');
+  const n0=document.querySelector('.fl90n0');
+  const n1=document.querySelector('.fl90n1');
+  const n2=document.querySelector('.fl90n2');
+  if(!p1)return;
+
+  gsap.timeline({repeat:-1,repeatDelay:1.5})
+    // Node 0 activates
+    .to(n0,{strokeOpacity:0.25,duration:0.2}).to(n0,{strokeOpacity:0.08,duration:0.5})
+    // Pulse 1 travels first gap
+    .to(p1,{opacity:0.8,duration:0.1},'-=0.3')
+    .to(p1,{attr:{x1:64,x2:69},duration:0.4,ease:'power2.inOut'},'<')
+    .to(p1,{opacity:0,duration:0.1})
+    .set(p1,{attr:{x1:47,x2:52}})
+    // Node 1 activates
+    .to(n1,{strokeOpacity:0.25,duration:0.2}).to(n1,{strokeOpacity:0.08,duration:0.5})
+    // Pulse 2 travels second gap
+    .to(p2,{opacity:0.8,duration:0.1},'-=0.3')
+    .to(p2,{attr:{x1:128,x2:133},duration:0.4,ease:'power2.inOut'},'<')
+    .to(p2,{opacity:0,duration:0.1})
+    .set(p2,{attr:{x1:111,x2:116}})
+    // Node 2 activates
+    .to(n2,{strokeOpacity:0.25,duration:0.2}).to(n2,{strokeOpacity:0.08,duration:0.5});
+})();
+
+// ===== 91-100: PARTICLE SYSTEMS =====
+// 91C Starfield
+(function(){
+  const sv=document.querySelector('.sf91sv');if(!sv)return;
+  for(let i=0;i<30;i++){
+    const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    const cx=90,cy=40;c.setAttribute('r',0.5+Math.random()*1.5);
+    c.setAttribute('fill','rgba(196,163,90,'+(0.05+Math.random()*0.15)+')');
+    sv.appendChild(c);
+    const angle=Math.random()*Math.PI*2;
+    gsap.fromTo(c,{attr:{cx:cx+Math.cos(angle)*5,cy:cy+Math.sin(angle)*5}},
+      {attr:{cx:cx+Math.cos(angle)*100,cy:cy+Math.sin(angle)*50},duration:1+Math.random()*2,repeat:-1,delay:Math.random()*2,ease:'power2.in',
+       onRepeat:function(){gsap.set(c,{attr:{cx:cx+Math.cos(angle)*5,cy:cy+Math.sin(angle)*5}});}});
+  }
+})();
+
+// 92 Firefly
+(function(){
+  const sv=document.querySelector('.ff92sv');if(!sv)return;
+  for(let i=0;i<10;i++){
+    const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx',Math.random()*180);c.setAttribute('cy',Math.random()*80);
+    c.setAttribute('r',1.5);c.setAttribute('fill','rgba(196,163,90,0.15)');
+    sv.appendChild(c);
+    gsap.to(c,{attr:{cx:'+='+((Math.random()-0.5)*40),cy:'+='+((Math.random()-0.5)*20)},duration:3+Math.random()*3,repeat:-1,yoyo:true,ease:'sine.inOut',delay:Math.random()*2});
+    gsap.to(c,{opacity:0,duration:1+Math.random()*2,repeat:-1,yoyo:true,ease:'sine.inOut',delay:Math.random()});
+  }
+})();
+
+// 93 Snow fall
+(function(){
+  const sv=document.querySelector('.sn93sv');if(!sv)return;
+  for(let i=0;i<20;i++){
+    const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    const x=Math.random()*180;
+    c.setAttribute('r',0.8+Math.random()*1.5);c.setAttribute('fill','rgba(200,200,210,'+(0.05+Math.random()*0.1)+')');
+    sv.appendChild(c);
+    gsap.fromTo(c,{attr:{cx:x,cy:-5}},{attr:{cy:85,cx:x+(Math.random()-0.5)*30},duration:3+Math.random()*3,repeat:-1,delay:Math.random()*3,ease:'none'});
+  }
+})();
+
+// 94 Confetti
+(function(){
+  const sv=document.querySelector('.cf94sv');if(!sv)return;
+  const colors=['rgba(196,163,90,0.2)','rgba(74,143,212,0.2)','rgba(61,170,90,0.2)','rgba(179,58,58,0.2)','rgba(150,120,200,0.2)'];
+  for(let i=0;i<15;i++){
+    const r=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    const x=Math.random()*180;
+    r.setAttribute('width',3+Math.random()*4);r.setAttribute('height',2+Math.random()*3);r.setAttribute('rx','1');
+    r.setAttribute('fill',colors[Math.floor(Math.random()*colors.length)]);
+    sv.appendChild(r);
+    gsap.fromTo(r,{attr:{x,y:-5},rotation:0},{attr:{y:85,x:x+(Math.random()-0.5)*40},rotation:360*Math.random(),duration:2+Math.random()*3,repeat:-1,delay:Math.random()*3,ease:'none'});
+  }
+})();
+
+// 95 Constellation — brighter stars, more visible lines
+(function(){
+  const sv=document.querySelector('.cs95sv');if(!sv)return;
+  const pts=[];
+  for(let i=0;i<10;i++){
+    const cx=12+Math.random()*156,cy=8+Math.random()*64;
+    const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx',cx);c.setAttribute('cy',cy);c.setAttribute('r',2);
+    c.setAttribute('fill','rgba(196,163,90,0.3)');sv.appendChild(c);pts.push({x:cx,y:cy,el:c});
+    gsap.to(c,{attr:{cx:'+='+((Math.random()-0.5)*10),cy:'+='+((Math.random()-0.5)*6)},duration:4+Math.random()*3,repeat:-1,yoyo:true,ease:'sine.inOut'});
+    gsap.to(c,{opacity:0.08,duration:2+Math.random()*2,repeat:-1,yoyo:true,ease:'sine.inOut',delay:Math.random()});
+  }
+  // Connect nearby pairs
+  for(let i=0;i<pts.length;i++){
+    for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+      if(Math.sqrt(dx*dx+dy*dy)<65){
+        const l=document.createElementNS('http://www.w3.org/2000/svg','line');
+        l.setAttribute('x1',pts[i].x);l.setAttribute('y1',pts[i].y);l.setAttribute('x2',pts[j].x);l.setAttribute('y2',pts[j].y);
+        l.setAttribute('stroke','rgba(196,163,90,0.1)');l.setAttribute('stroke-width','0.8');
+        sv.insertBefore(l,sv.firstChild);
+        gsap.to(l,{strokeOpacity:0.18,duration:2+Math.random()*2,repeat:-1,yoyo:true,ease:'sine.inOut',delay:Math.random()*2});
+      }
+    }
+  }
+})();
+
+// 96 Energy field — brighter particles, visible glow
+(function(){
+  const sv=document.querySelector('.ef96sv');if(!sv)return;
+  const cx=90,cy=40;
+  // Center glow (drawn first, behind)
+  const gc=document.createElementNS('http://www.w3.org/2000/svg','circle');
+  gc.setAttribute('cx',cx);gc.setAttribute('cy',cy);gc.setAttribute('r',10);gc.setAttribute('fill','rgba(196,163,90,0.08)');
+  gc.setAttribute('stroke','rgba(196,163,90,0.1)');gc.setAttribute('stroke-width','1');
+  sv.appendChild(gc);
+  gsap.to(gc,{attr:{r:14},opacity:0.15,duration:1.5,repeat:-1,yoyo:true,ease:'sine.inOut'});
+  // Particles
+  for(let i=0;i<20;i++){
+    const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('r',1.5+Math.random()*2);
+    c.setAttribute('fill','rgba(196,163,90,'+(0.1+Math.random()*0.2).toFixed(2)+')');
+    sv.appendChild(c);
+    const angle=Math.random()*Math.PI*2,dist=12+Math.random()*22;
+    gsap.fromTo(c,{attr:{cx:cx+Math.cos(angle)*dist,cy:cy+Math.sin(angle)*dist}},
+      {attr:{cx:cx+Math.cos(angle)*(dist+8+Math.random()*10),cy:cy+Math.sin(angle)*(dist+4+Math.random()*8)},
+       duration:1.5+Math.random()*2,repeat:-1,yoyo:true,ease:'sine.inOut',delay:Math.random()*2});
+    gsap.to(c,{opacity:0.03,duration:1+Math.random()*1.5,repeat:-1,yoyo:true,ease:'sine.inOut',delay:Math.random()});
+  }
+})();
+
+// 97 Meteor shower — pre-allocated pool of 6 line elements, recycled instead of
+// creating new DOM nodes forever (would slowly leak on long-running pages).
+(function(){
+  const sv=document.querySelector('.ms97sv');if(!sv)return;
+  const POOL_SIZE=6,pool=[];
+  for(let i=0;i<POOL_SIZE;i++){
+    const l=document.createElementNS('http://www.w3.org/2000/svg','line');
+    l.setAttribute('stroke','rgba(196,163,90,0.5)');
+    l.setAttribute('stroke-width','2');
+    l.setAttribute('stroke-linecap','round');
+    l.setAttribute('opacity','0');
+    sv.appendChild(l);
+    pool.push({el:l,busy:false});
+  }
+  function meteor(){
+    const slot=pool.find(s=>!s.busy);
+    if(slot){
+      slot.busy=true;
+      const l=slot.el;
+      const sx=20+Math.random()*140,sy=-5;
+      l.setAttribute('x1',sx);l.setAttribute('y1',sy);
+      l.setAttribute('x2',sx);l.setAttribute('y2',sy);
+      l.setAttribute('opacity','1');
+      gsap.to(l,{attr:{x1:sx-55,y1:sy+95,x2:sx-35,y2:sy+60},duration:0.55+Math.random()*0.3,ease:'power2.in',
+        onComplete:()=>{gsap.to(l,{opacity:0,duration:0.25,onComplete:()=>{slot.busy=false;}});}});
+    }
+    setTimeout(meteor,400+Math.random()*1200);
+  }
+  meteor();setTimeout(meteor,200);setTimeout(meteor,500);
+})();
+
+// 98 DNA helix — proper double helix with two sine curves + rungs
+(function(){
+  const sv=document.querySelector('.dna98sv');if(!sv)return;
+  const N=14, amp=22, cx=90, cy=40;
+  const strand1=[],strand2=[],rungs=[];
+  // Create path elements for the two strands
+  const path1=document.createElementNS('http://www.w3.org/2000/svg','path');
+  path1.setAttribute('fill','none');path1.setAttribute('stroke','rgba(196,163,90,0.2)');path1.setAttribute('stroke-width','2');path1.setAttribute('stroke-linecap','round');
+  const path2=document.createElementNS('http://www.w3.org/2000/svg','path');
+  path2.setAttribute('fill','none');path2.setAttribute('stroke','rgba(74,143,212,0.2)');path2.setAttribute('stroke-width','2');path2.setAttribute('stroke-linecap','round');
+  sv.appendChild(path1);sv.appendChild(path2);
+  // Create rungs
+  for(let i=0;i<N;i++){
+    const l=document.createElementNS('http://www.w3.org/2000/svg','line');
+    l.setAttribute('stroke','rgba(196,163,90,0.06)');l.setAttribute('stroke-width','1');
+    sv.insertBefore(l,path1);
+    rungs.push(l);
+    // Dots at endpoints
+    const d1=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    d1.setAttribute('r','2');d1.setAttribute('fill','rgba(196,163,90,0.15)');
+    const d2=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    d2.setAttribute('r','2');d2.setAttribute('fill','rgba(74,143,212,0.15)');
+    sv.appendChild(d1);sv.appendChild(d2);
+    strand1.push(d1);strand2.push(d2);
+  }
+  let t=0;
+  function update(){
+    t+=0.03;
+    let d1='M',d2='M';
+    for(let i=0;i<N;i++){
+      const x=10+i*(160/(N-1));
+      const phase=i*0.55+t;
+      const y1=cy+Math.sin(phase)*amp;
+      const y2=cy-Math.sin(phase)*amp;
+      const z1=Math.cos(phase); // depth: -1 to 1
+      const z2=-z1;
+      // Strand paths
+      d1+=(i===0?'':' L')+x.toFixed(1)+','+y1.toFixed(1);
+      d2+=(i===0?'':' L')+x.toFixed(1)+','+y2.toFixed(1);
+      // Dots
+      strand1[i].setAttribute('cx',x);strand1[i].setAttribute('cy',y1);
+      strand1[i].setAttribute('opacity',(0.1+0.15*(z1+1)/2).toFixed(2));
+      strand2[i].setAttribute('cx',x);strand2[i].setAttribute('cy',y2);
+      strand2[i].setAttribute('opacity',(0.1+0.15*(z2+1)/2).toFixed(2));
+      // Rungs (only draw when both strands roughly same depth = rung visible)
+      rungs[i].setAttribute('x1',x);rungs[i].setAttribute('y1',y1);
+      rungs[i].setAttribute('x2',x);rungs[i].setAttribute('y2',y2);
+      const rungOp=Math.max(0,0.08-Math.abs(z1)*0.06);
+      rungs[i].setAttribute('stroke-opacity',rungOp.toFixed(3));
+    }
+    path1.setAttribute('d',d1);path2.setAttribute('d',d2);
+    requestAnimationFrame(update);
+  }
+  update();
+})();
+
+// 99 Wave interference — 8 rings per source, brighter strokes
+(function(){
+  const sv=document.querySelector('.wi99sv');
+  if(!sv)return;
+  const sources=[{cx:50,cy:40,color:'196,163,90'},{cx:130,cy:40,color:'74,143,212'}];
+  sources.forEach(src=>{
+    for(let i=0;i<8;i++){
+      const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('cx',src.cx);c.setAttribute('cy',src.cy);c.setAttribute('r',3);
+      c.setAttribute('fill','none');
+      c.setAttribute('stroke','rgba('+src.color+',0.2)');
+      c.setAttribute('stroke-width','1.5');
+      sv.insertBefore(c,sv.firstChild);
+      gsap.timeline({repeat:-1,delay:i*0.35})
+        .fromTo(c,
+          {attr:{r:3},strokeOpacity:0.25,strokeWidth:2},
+          {attr:{r:70},strokeOpacity:0,strokeWidth:0.3,duration:2.8,ease:'none'});
+    }
+  });
+  gsap.to('.wi99src',{attr:{r:4.5},duration:0.3,repeat:-1,yoyo:true,ease:'sine.inOut',stagger:0.15});
+})();
+
+// ===== NEW: 10 added effects =====
+// 59A Rubber stretch
+gsap.timeline({repeat:-1,yoyo:true}).to('.rub59',{attr:{rx:45,ry:15},duration:1.5,ease:'elastic.out(1,0.4)'}).to('.rub59',{attr:{rx:15,ry:40},duration:1.5,ease:'elastic.out(1,0.4)'});
+
+// 59B Accordion
+gsap.to('.acc59',{scaleX:0.3,transformOrigin:'center',duration:1,repeat:-1,yoyo:true,ease:'sine.inOut',stagger:{each:0.12,yoyo:true,repeat:-1}});
+
+// 67A Magnetic pull — particles drift toward center then scatter
+(function(){
+  const mags=document.querySelectorAll('.mag67');
+  mags.forEach(m=>{
+    const ox=+m.getAttribute('cx'),oy=+m.getAttribute('cy');
+    gsap.timeline({repeat:-1})
+      .to(m,{attr:{cx:85+Math.random()*10,cy:35+Math.random()*10},duration:2,ease:'power2.in'})
+      .to(m,{attr:{cx:ox+Math.random()*20-10,cy:oy+Math.random()*20-10},duration:1,ease:'power3.out'})
+      .to(m,{},{duration:0.5});
+  });
+})();
+
+// 67B Ripple pool
+gsap.timeline({repeat:-1,repeatDelay:0.2}).fromTo('.rpl67a',{attr:{rx:5,ry:2},strokeOpacity:0.35,strokeWidth:2.5},{attr:{rx:70,ry:20},strokeOpacity:0,strokeWidth:0.3,duration:2,ease:'power1.out'});
+gsap.timeline({repeat:-1,delay:0.4,repeatDelay:0.2}).fromTo('.rpl67b',{attr:{rx:5,ry:2},strokeOpacity:0.28,strokeWidth:2},{attr:{rx:70,ry:20},strokeOpacity:0,strokeWidth:0.3,duration:2,ease:'power1.out'});
+gsap.timeline({repeat:-1,delay:0.8,repeatDelay:0.2}).fromTo('.rpl67d',{attr:{rx:5,ry:2},strokeOpacity:0.2,strokeWidth:1.8},{attr:{rx:70,ry:20},strokeOpacity:0,strokeWidth:0.2,duration:2,ease:'power1.out'});
+gsap.timeline({repeat:-1,delay:1.2,repeatDelay:0.2}).fromTo('.rpl67e',{attr:{rx:5,ry:2},strokeOpacity:0.15,strokeWidth:1.5},{attr:{rx:70,ry:20},strokeOpacity:0,strokeWidth:0.2,duration:2,ease:'power1.out'});
+gsap.to('.rpl67c',{attr:{r:4},duration:0.2,repeat:-1,yoyo:true,ease:'power2.out',repeatDelay:0.2});
+
+// 75A Hologram flicker
+// Hologram steady glow + periodic glitch
+gsap.to('.holo75t',{opacity:0.15,duration:1.5,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.timeline({repeat:-1,repeatDelay:1.5}).set('.holo75s',{y:12}).to('.holo75s',{y:62,duration:2,ease:'none'});
+// Glitch flicker every few seconds
+setInterval(()=>{
+  gsap.timeline()
+    .to('.holo75',{opacity:0.15,x:2,duration:0.04})
+    .to('.holo75',{opacity:1,x:-1,duration:0.04})
+    .to('.holo75',{opacity:0.3,x:0,duration:0.03})
+    .to('.holo75',{opacity:1,x:0,duration:0.05});
+  gsap.timeline()
+    .to('.holo75t',{x:3,duration:0.03})
+    .to('.holo75t',{x:-2,duration:0.03})
+    .to('.holo75t',{x:0,duration:0.04});
+},2500+Math.random()*2000);
+
+// 75B Signal loss
+(function(){
+  const chars='CONNECTED|SIGNAL LOST|RECONNECT..|CONNECTED';
+  const el=document.querySelector('.sigl75');
+  const bar=document.querySelector('.sigl75bar');
+  if(!el)return;
+  let phase=0;
+  gsap.timeline({repeat:-1})
+    .to(bar,{attr:{width:130},fill:'rgba(61,170,90,0.15)',duration:0.5})
+    .call(()=>{el.textContent='CONNECTED';el.setAttribute('fill','#3daa5a');})
+    .to({},{duration:3})
+    // Signal drops
+    .to(bar,{attr:{width:30},fill:'rgba(179,58,58,0.15)',duration:0.3})
+    .call(()=>{el.textContent='SIGNAL LOST';el.setAttribute('fill','#b33a3a');})
+    .to({},{duration:1.5})
+    // Reconnecting
+    .to(bar,{attr:{width:70},fill:'rgba(196,163,90,0.15)',duration:0.5})
+    .call(()=>{el.textContent='RECONNECT..';el.setAttribute('fill','#c4a35a');})
+    .to({},{duration:1})
+    // Back
+    .to(bar,{attr:{width:130},fill:'rgba(61,170,90,0.15)',duration:0.5})
+    .call(()=>{el.textContent='CONNECTED';el.setAttribute('fill','#3daa5a');});
+})();
+
+// 83A Split screen
+loop(tl=>{
+  tl.fromTo('.sps83L',{attr:{x:5,width:82}},{attr:{x:-40,width:82},duration:0.8,ease:'power2.inOut'})
+    .fromTo('.sps83R',{attr:{x:93,width:82}},{attr:{x:138,width:82},duration:0.8,ease:'power2.inOut'},'<')
+    .to('.sps83d',{opacity:0,duration:0.3},'<0.3')
+    // Rejoin
+    .to('.sps83L',{attr:{x:5},duration:0.6,ease:'power2.out'},'+=1.2')
+    .to('.sps83R',{attr:{x:93},duration:0.6,ease:'power2.out'},'<')
+    .to('.sps83d',{opacity:1,duration:0.3},'<0.2');
+},1);
+
+// 83B Curtain open
+loop(tl=>{
+  tl.to('.curt83L',{attr:{x:-75,width:80},duration:1,ease:'power3.inOut'})
+    .to('.curt83R',{attr:{x:175,width:80},duration:1,ease:'power3.inOut'},'<')
+    // Close
+    .to('.curt83L',{attr:{x:10,width:80},duration:0.8,ease:'power2.inOut'},'+=1.5')
+    .to('.curt83R',{attr:{x:90,width:80},duration:0.8,ease:'power2.inOut'},'<');
+},1);
+
+// 91A Funnel pour
+// 窄管快、宽口慢（符合物理：同流量下截面小→液面升快，截面大→液面升慢）
+(function(){
+  gsap.timeline({repeat:-1,repeatDelay:2})
+    // Phase 1: 颈部充满——窄管，升得快
+    .fromTo('.fnl91neck',{attr:{y:70,height:0}},{attr:{y:38,height:32},duration:1,ease:'power2.out'})
+    // Phase 2: 溢到漏斗顶——宽口，升得慢（越往上越宽越慢）
+    .fromTo('.fnl91top',{attr:{y:38,height:0}},{attr:{y:8,height:30},duration:3.5,ease:'power1.in'})
+    // Phase 3: 都满了停一下
+    .to({},{duration:1})
+    // Phase 4: 上面下降——慢（宽口，液面降得慢，越往下越快）
+    .to('.fnl91top',{attr:{y:38,height:0},duration:3,ease:'power2.in'})
+    // Phase 5: 下面下降——匀速
+    .to('.fnl91neck',{attr:{y:70,height:0},duration:1.8,ease:'none'},'-=0.5')
+    .fromTo('.fnl91pool',{attr:{y:78,height:0}},{attr:{y:72,height:6},duration:1.5,ease:'power1.out'},'<0.3')
+    .to('.fnl91drip:first-of-type',{attr:{cx:90,cy:72},opacity:0.3,duration:0.15},'<0.2')
+    .to('.fnl91drip:first-of-type',{opacity:0,duration:0.3})
+    .to('.fnl91pool',{attr:{height:0,y:78},duration:0.6},'+=1');
+})();
+
+// 91B Radar fill — polygon area fades in with vertex dots
+// 91B Radar fill — segments appear one by one clockwise, with dots
+loop(tl=>{
+  const segs=document.querySelectorAll('.rdf91s');
+  const dots=document.querySelectorAll('.rdf91d');
+  gsap.set(segs,{opacity:0});
+  gsap.set(dots,{opacity:0});
+  gsap.set('.rdf91outline',{opacity:0});
+  // Each segment + its vertex dot appears sequentially
+  segs.forEach((s,i)=>{
+    tl.to(s,{opacity:1,duration:0.3,ease:'power2.out'},i*0.25);
+    tl.to(dots[i],{opacity:1,duration:0.15},i*0.25+0.15);
+  });
+  // Outline appears after all segments
+  tl.to('.rdf91outline',{opacity:1,duration:0.4},'<0.2');
+  // Hold then fade
+  tl.to([...segs,...dots,document.querySelector('.rdf91outline')],{opacity:0,duration:0.5,stagger:0.03},'+=2');
+},1);
+
+// 100 Aurora — curtains hanging from top, swaying downward
+gsap.to('.au100a',{attr:{d:'M-10,0 L-10,0 Q20,60 50,42 Q80,25 110,52 Q140,62 170,35 Q185,25 190,0 L190,0 Z'},duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.au100b',{attr:{d:'M-10,0 L-10,0 Q30,55 60,38 Q90,20 120,48 Q150,58 180,30 Q190,18 190,0 Z'},duration:5,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.au100c',{attr:{d:'M-10,0 L-10,0 Q25,48 55,32 Q85,22 115,42 Q145,48 175,28 Q190,15 190,0 Z'},duration:6,repeat:-1,yoyo:true,ease:'sine.inOut'});
+// Top edge shimmer
+gsap.to('.au100la',{attr:{d:'M0,4 Q45,1 90,5 Q135,1 180,4'},duration:3,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.au100lb',{attr:{d:'M0,6 Q45,3 90,7 Q135,3 180,6'},duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.au100a',{opacity:0.8,duration:3,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.au100b',{opacity:0.7,duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.au100la',{strokeOpacity:0.3,duration:2,repeat:-1,yoyo:true,ease:'sine.inOut'});
+
+// ===== 101-110: STORYTELLING =====
+// 101 Milestone timeline
+loop(tl=>{
+  gsap.set('.mt101line',{strokeDasharray:1,strokeDashoffset:1});
+  gsap.set('.mt101m',{scale:0,transformOrigin:'center'});
+  gsap.set('.mt101t,.mt101d',{opacity:0,y:5});
+  tl.to('.mt101line',{strokeDashoffset:0,duration:1,ease:'power2.inOut'})
+    .to('.mt101m',{scale:1,duration:0.3,stagger:0.22,ease:'back.out(2)'},0.3)
+    .to('.mt101t',{opacity:1,y:0,duration:0.25,stagger:0.22},0.4)
+    .to('.mt101d',{opacity:1,y:0,duration:0.25,stagger:0.22},0.55)
+    .to('.mt101line',{strokeDashoffset:-1,duration:0.6,ease:'power2.in'},'+=1.5')
+    .to('.mt101m,.mt101t,.mt101d',{opacity:0,duration:0.3},'<');
+},1);
+
+// 102 Quote reveal
+loop(tl=>{
+  gsap.set('.qr102lq',{opacity:0,scale:0.3,transformOrigin:'10px 32px'});
+  gsap.set('.qr102rq',{opacity:0,scale:0.3,transformOrigin:'170px 62px'});
+  gsap.set('.qr102t',{opacity:0,y:6});
+  gsap.set('.qr102a',{opacity:0,x:10});
+  tl.to('.qr102lq',{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'})
+    .to('.qr102rq',{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.15)
+    .to('.qr102t',{opacity:1,y:0,duration:0.6,ease:'power2.out'},0.3)
+    .to('.qr102a',{opacity:1,x:0,duration:0.4,ease:'power2.out'},0.7)
+    .to('.qr102lq,.qr102rq,.qr102t,.qr102a',{opacity:0,duration:0.3},'+=1.5');
+},1);
+
+// 103 Delta number
+loop(tl=>{
+  const a={v:0},b={v:0};
+  gsap.set('.dn103arrow',{scaleX:0,transformOrigin:'60px 40px'});
+  gsap.set('.dn103b,.dn103label',{opacity:0});
+  gsap.set('.dn103a',{opacity:0});
+  tl.to('.dn103a',{opacity:1,duration:0.3})
+    .to(a,{v:23,duration:0.8,ease:'power3.out',onUpdate:()=>{
+      document.querySelectorAll('.dn103a').forEach(e=>e.textContent=Math.round(a.v)+'%');
+    }},'<')
+    .to('.dn103arrow',{scaleX:1,duration:0.5,ease:'power2.out'},'+=0.3')
+    .to('.dn103b',{opacity:1,duration:0.3},'+=0.1')
+    .to(b,{v:42,duration:1,ease:'power3.out',onUpdate:()=>{
+      document.querySelectorAll('.dn103b').forEach(e=>e.textContent=Math.round(b.v)+'%');
+    }},'<')
+    .to('.dn103label',{opacity:1,duration:0.4},'-=0.3')
+    .to('.dn103a,.dn103arrow,.dn103b,.dn103label',{opacity:0,duration:0.3},'+=1.5');
+},1);
+
+// 104 Tag burst
+loop(tl=>{
+  document.querySelectorAll('.tb104g').forEach((g,i)=>{
+    const tx=+g.dataset.tx,ty=+g.dataset.ty;
+    gsap.set(g,{opacity:0,x:-tx,y:-ty,scale:0.3,transformOrigin:'center'});
+    tl.to(g,{opacity:1,x:0,y:0,scale:1,duration:0.5,ease:'back.out(1.4)'},i*0.08);
+  });
+  tl.to('.tb104g',{opacity:0,scale:0.8,duration:0.3,stagger:0.04},'+=1.5');
+},1);
+
+// 105 Map pin drop
+loop(tl=>{
+  gsap.set('.mp105pin',{y:-45,opacity:0});
+  gsap.set('.mp105sh',{scale:0.3,opacity:0,transformOrigin:'center'});
+  gsap.set('.mp105r1,.mp105r2',{attr:{r:4},opacity:0});
+  tl.to('.mp105pin',{opacity:1,duration:0.15},0)
+    .to('.mp105pin',{y:0,duration:0.45,ease:'power2.in'},0)
+    .to('.mp105sh',{scale:1,opacity:1,duration:0.2,ease:'power2.out'},0.4)
+    .fromTo('.mp105r1',{attr:{r:4},opacity:0.6,strokeWidth:2},{attr:{r:28},opacity:0,strokeWidth:0.3,duration:1,ease:'power1.out'},0.45)
+    .fromTo('.mp105r2',{attr:{r:4},opacity:0.4,strokeWidth:1.5},{attr:{r:22},opacity:0,strokeWidth:0.3,duration:1,ease:'power1.out'},0.55)
+    .to('.mp105pin',{y:-4,duration:0.15,ease:'power2.out',yoyo:true,repeat:1},0.45)
+    .to('.mp105pin,.mp105sh',{opacity:0,duration:0.3},'+=1.5');
+},1);
+
+// 106 Chat bubble
+loop(tl=>{
+  gsap.set('.cb106b1,.cb106b3',{opacity:0,scale:0.85,transformOrigin:'left center'});
+  gsap.set('.cb106b2',{opacity:0,scale:0.85,transformOrigin:'right center'});
+  tl.to('.cb106b1',{opacity:1,scale:1,duration:0.4,ease:'back.out(1.8)'})
+    .to('.cb106b2',{opacity:1,scale:1,duration:0.4,ease:'back.out(1.8)'},'+=0.6')
+    .to('.cb106b3',{opacity:1,scale:1,duration:0.4,ease:'back.out(1.8)'},'+=0.5')
+    .to('.cb106d1',{opacity:0.3,duration:0.3,repeat:4,yoyo:true},'<')
+    .to('.cb106d2',{opacity:0.3,duration:0.3,repeat:4,yoyo:true,delay:0.1},'<')
+    .to('.cb106d3',{opacity:0.3,duration:0.3,repeat:4,yoyo:true,delay:0.2},'<')
+    .to('.cb106b1,.cb106b2,.cb106b3',{opacity:0,duration:0.3,stagger:0.08},'+=0.8');
+},1);
+
+// 107 Terminal type
+(function(){
+  const cmd=document.querySelector('.tt107cmd'),cur=document.querySelector('.tt107cur');
+  const o1=document.querySelector('.tt107out1'),o2=document.querySelector('.tt107out2'),p2=document.querySelector('.tt107p2');
+  if(!cmd)return;
+  const command='asyre build --prod';
+  gsap.to(cur,{opacity:0,duration:0.4,repeat:-1,yoyo:true,ease:'steps(1)'});
+  function runLoop(){
+    cmd.textContent='';o1.textContent='';o2.textContent='';p2.textContent='';
+    cur.setAttribute('x',18);
+    let i=0;
+    const typeInt=setInterval(()=>{
+      if(i<command.length){
+        cmd.textContent=command.slice(0,++i);
+        cur.setAttribute('x',18+i*4.2);
+      }else{
+        clearInterval(typeInt);
+        setTimeout(()=>{
+          o1.textContent='✓ Compiled successfully';
+          setTimeout(()=>{
+            o2.textContent='  Built 8 files · 42.3 KB gzipped';
+            setTimeout(()=>{p2.textContent='$ _';},400);
+          },400);
+        },400);
+      }
+    },60);
+    setTimeout(runLoop,6500);
+  }
+  runLoop();
+})();
+
+// 108 Badge ribbon
+loop(tl=>{
+  gsap.set('.br108',{x:80,y:-30,rotation:45,opacity:0,transformOrigin:'150px 22px'});
+  tl.to('.br108',{x:0,y:0,rotation:12,opacity:1,duration:0.6,ease:'back.out(2)'})
+    .to('.br108',{rotation:14,duration:0.15,yoyo:true,repeat:1,ease:'sine.inOut'},'+=0.1')
+    .to('.br108',{x:80,y:-30,rotation:45,opacity:0,duration:0.4,ease:'power2.in'},'+=1.8');
+},1);
+
+// 109 Countdown digits
+(function(){
+  const el=document.querySelector('.cd109');if(!el)return;
+  const seq=['3','2','1','GO!'];
+  const colors=['rgba(196,163,90,0.95)','rgba(74,143,212,0.95)','rgba(179,58,58,0.95)','rgba(61,170,90,1)'];
+  let i=0;
+  function next(){
+    el.textContent=seq[i];el.setAttribute('fill',colors[i]);
+    gsap.fromTo(el,{scale:2.2,opacity:0,transformOrigin:'center'},{scale:1,opacity:1,duration:0.3,ease:'back.out(2)'});
+    gsap.to(el,{scale:1.4,opacity:0,duration:0.35,delay:0.7,ease:'power2.in',onComplete:()=>{
+      i=(i+1)%seq.length;
+      setTimeout(next,150);
+    }});
+  }
+  next();
+})();
+
+// 110 Flash reveal
+loop(tl=>{
+  gsap.set('.fr110f',{opacity:0});
+  gsap.set('.fr110t,.fr110s',{opacity:0,scale:0.88,transformOrigin:'center'});
+  tl.to('.fr110f',{opacity:1,duration:0.08,ease:'power2.out'})
+    .to('.fr110f',{opacity:0,duration:0.5,ease:'power2.in'})
+    .to('.fr110t',{opacity:1,scale:1,duration:0.4,ease:'back.out(1.8)'},'-=0.35')
+    .to('.fr110s',{opacity:1,scale:1,duration:0.3,ease:'power2.out'},'-=0.2')
+    .to('.fr110t,.fr110s',{opacity:0,duration:0.4},'+=1.5');
+},1);
+
+// ===== 121-140: PERPETUAL II =====
+// 121 Wave travel — 水平正弦滚动
+(function(){
+  let phase=0; const el=document.querySelector('.wt121');
+  if(!el)return;
+  gsap.ticker.add(()=>{
+    phase+=0.05;
+    const pts=[];
+    for(let x=0;x<=180;x+=4) pts.push(x+','+(40+Math.sin(x/18+phase)*12).toFixed(1));
+    el.setAttribute('points',pts.join(' '));
+  });
+})();
+
+// 122 Tide roll — 潮水翻卷
+(function(){
+  let phase=0;
+  const f=document.querySelector('.tr122f'), l=document.querySelector('.tr122l');
+  if(!f)return;
+  gsap.ticker.add(()=>{
+    phase+=0.04;
+    const top=[];
+    for(let x=0;x<=180;x+=4){
+      const y=48+Math.sin(x/20+phase)*9+Math.sin(x/10+phase*1.3)*3;
+      top.push(x+','+y.toFixed(1));
+    }
+    l.setAttribute('points',top.join(' '));
+    f.setAttribute('points',top.join(' ')+' 180,80 0,80');
+  });
+})();
+
+// 123 Flow lines — 头尾淡入淡出，边缘不再 pop
+[['a',3],['b',4.5],['c',2.8],['d',5]].forEach(([s,dur])=>{
+  gsap.timeline({repeat:-1})
+    .set('.fl123'+s,{x:-40,opacity:0})
+    .to('.fl123'+s,{opacity:1,duration:dur*0.15,ease:'power1.out'})
+    .to('.fl123'+s,{x:140,duration:dur*0.7,ease:'none'},'<')
+    .to('.fl123'+s,{x:210,opacity:0,duration:dur*0.15,ease:'power1.in'});
+});
+
+// 124 Ripple grid — 列波传播
+(function(){
+  const g=document.querySelector('.rg124sv');
+  if(!g)return;
+  const cells=[];
+  for(let r=0;r<4;r++)for(let c=0;c<9;c++){
+    const rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x',10+c*19);rect.setAttribute('y',10+r*16);
+    rect.setAttribute('width',15);rect.setAttribute('height',12);rect.setAttribute('rx','2');
+    rect.setAttribute('fill','rgba(196,163,90,0.06)');
+    g.appendChild(rect);cells.push({el:rect,col:c});
+  }
+  let phase=0;
+  gsap.ticker.add(()=>{
+    phase+=0.08;
+    cells.forEach(({el,col})=>{
+      const intensity=Math.max(0,Math.sin(phase-col*0.5));
+      el.setAttribute('fill','rgba(196,163,90,'+(0.05+intensity*0.2).toFixed(3)+')');
+    });
+  });
+})();
+
+// 125 Color cycle — 暖冷色呼吸（不全色谱，限制在 40°→200°）
+(function(){
+  const el=document.querySelector('.cc125');
+  if(!el)return;
+  gsap.to({h:40},{h:200,duration:4.5,repeat:-1,yoyo:true,ease:'sine.inOut',onUpdate:function(){
+    el.setAttribute('fill','hsl('+this.targets()[0].h+',55%,55%)');
+  }});
+  gsap.to(el,{scale:1.06,transformOrigin:'center',duration:2.5,repeat:-1,yoyo:true,ease:'sine.inOut'});
+})();
+
+// 126 Starburst rays — 8 角星 polygon（按三角函数精确计算）+ 慢转 + 呼吸缩放
+(function(){
+  const star=document.querySelector('.sb126star');
+  if(!star)return;
+  const pts=[], n=8, step=Math.PI/n, cx=90, cy=40, rO=27, rI=9;
+  for(let i=0;i<n*2;i++){
+    const r=i%2===0?rO:rI;
+    const a=i*step-Math.PI/2;
+    pts.push((cx+r*Math.cos(a)).toFixed(1)+','+(cy+r*Math.sin(a)).toFixed(1));
+  }
+  star.setAttribute('points',pts.join(' '));
+})();
+gsap.to('.sb126',{rotation:360,svgOrigin:'90 40',duration:15,repeat:-1,ease:'none'});
+gsap.to('.sb126star',{scale:1.12,svgOrigin:'90 40',opacity:0.8,duration:1.8,repeat:-1,yoyo:true,ease:'sine.inOut'});
+
+// 127 Sonar ping
+gsap.timeline({repeat:-1,repeatDelay:0.3}).fromTo('.sp127p1',{attr:{r:4},strokeOpacity:0.55},{attr:{r:36},strokeOpacity:0,duration:1.8,ease:'power1.out'});
+gsap.timeline({repeat:-1,delay:0.6,repeatDelay:0.3}).fromTo('.sp127p2',{attr:{r:4},strokeOpacity:0.55},{attr:{r:36},strokeOpacity:0,duration:1.8,ease:'power1.out'});
+gsap.timeline({repeat:-1,delay:1.2,repeatDelay:0.3}).fromTo('.sp127p3',{attr:{r:4},strokeOpacity:0.55},{attr:{r:36},strokeOpacity:0,duration:1.8,ease:'power1.out'});
+
+// 128 Broadcast
+gsap.timeline({repeat:-1,repeatDelay:0.3}).fromTo('.bc128w1',{strokeOpacity:0.6,scale:0.5,svgOrigin:'90 30'},{strokeOpacity:0,scale:1,duration:1.5,ease:'power1.out'});
+gsap.timeline({repeat:-1,delay:0.5,repeatDelay:0.3}).fromTo('.bc128w2',{strokeOpacity:0.5,scale:0.4,svgOrigin:'90 30'},{strokeOpacity:0,scale:1,duration:1.5,ease:'power1.out'});
+gsap.timeline({repeat:-1,delay:1,repeatDelay:0.3}).fromTo('.bc128w3',{strokeOpacity:0.4,scale:0.3,svgOrigin:'90 30'},{strokeOpacity:0,scale:1,duration:1.5,ease:'power1.out'});
+
+// 129 Energy core — 软光晕呼吸 + 周期脉冲波外扩 + 不对称节奏（有机感）
+gsap.to('.ec129core',{scale:1.12,svgOrigin:'90 40',duration:1.6,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.ec129inner',{opacity:0.4,scale:1.15,svgOrigin:'90 40',duration:0.85,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.ec129aura',{scale:1.18,opacity:0.2,svgOrigin:'90 40',duration:2.4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.ec129ring1',{rotation:360,svgOrigin:'90 40',duration:22,repeat:-1,ease:'none'});
+gsap.to('.ec129ring2',{rotation:-360,svgOrigin:'90 40',duration:15,repeat:-1,ease:'none'});
+gsap.timeline({repeat:-1,repeatDelay:0.6}).fromTo('.ec129emit',{attr:{r:10},strokeOpacity:0.6},{attr:{r:30},strokeOpacity:0,duration:2,ease:'power1.out'});
+
+// 130 Magnetic lines — 6 条线级联波浪式亮灭（像能量沿磁场跑）
+['ml130a','ml130b','ml130c','ml130d','ml130e','ml130f'].forEach((cls,i)=>{
+  gsap.timeline({repeat:-1,delay:i*0.28})
+    .to('.'+cls,{strokeOpacity:0.6,duration:1.1,ease:'sine.inOut'})
+    .to('.'+cls,{strokeOpacity:0.08,duration:1.1,ease:'sine.inOut'});
+});
+
+// 131 Clock tick
+gsap.to('.ct131m',{rotation:360,svgOrigin:'90 40',duration:6,repeat:-1,ease:'none'});
+gsap.to('.ct131h',{rotation:360,svgOrigin:'90 40',duration:72,repeat:-1,ease:'none'});
+
+// 132 Gear mesh — 真正的多边形齿轮，齿比 12:8=1.5，接触点齿相互嵌入
+(function(){
+  function gearPts(cx,cy,teeth,rO,rI,phase){
+    const pts=[], step=Math.PI/teeth;
+    for(let i=0;i<teeth*2;i++){
+      const r=i%2===0?rO:rI;
+      const a=i*step+(phase||0)-Math.PI/2;
+      pts.push((cx+r*Math.cos(a)).toFixed(2)+','+(cy+r*Math.sin(a)).toFixed(2));
+    }
+    return pts.join(' ');
+  }
+  const gA=document.querySelector('.gm132ap');
+  const gB=document.querySelector('.gm132bp');
+  if(gA)gA.setAttribute('points',gearPts(55,40,12,18,14));
+  if(gB)gB.setAttribute('points',gearPts(85,40,8,12,9,Math.PI/8)); // half-tooth offset for mesh
+})();
+gsap.to('.gm132a',{rotation:360,svgOrigin:'55 40',duration:9,repeat:-1,ease:'none'});
+gsap.to('.gm132b',{rotation:-360,svgOrigin:'85 40',duration:6,repeat:-1,ease:'none'});
+
+// 133 Atomic orbit — 3 个电子沿倾斜椭圆轨道
+(function(){
+  const e1=document.querySelector('.ao133e1');
+  const e2=document.querySelector('.ao133e2');
+  const e3=document.querySelector('.ao133e3');
+  if(!e1)return;
+  let t=0;
+  gsap.ticker.add(()=>{
+    t+=0.025;
+    // Horizontal orbit
+    e1.setAttribute('cx',90+42*Math.cos(t));
+    e1.setAttribute('cy',40+12*Math.sin(t));
+    // 60° tilt
+    const a2=t*1.3, ax=42*Math.cos(a2), ay=12*Math.sin(a2), r2=Math.PI/3;
+    e2.setAttribute('cx',90+ax*Math.cos(r2)-ay*Math.sin(r2));
+    e2.setAttribute('cy',40+ax*Math.sin(r2)+ay*Math.cos(r2));
+    // -60° tilt
+    const a3=t*1.6, bx=42*Math.cos(a3), by=12*Math.sin(a3), r3=-Math.PI/3;
+    e3.setAttribute('cx',90+bx*Math.cos(r3)-by*Math.sin(r3));
+    e3.setAttribute('cy',40+bx*Math.sin(r3)+by*Math.cos(r3));
+  });
+})();
+
+// 134 Hourglass sand — 上堆贴顶消减（凹面）+ 下堆逐渐堆积（凸面）+ 粒子跟随当前表面
+(function(){
+  const top=document.querySelector('.hg134top');
+  const bot=document.querySelector('.hg134bot');
+  const g=document.querySelector('.hg134sand');
+  if(!top||!bot||!g)return;
+  const state={p:0};
+  function render(){
+    const p=state.p;
+    // 上堆：顶面从 y=10 下降到 y=40，左右边沿沿内侧斜壁收窄，中间凹陷
+    const ty=10+30*p;
+    const tx1=60+26*p, tx2=120-26*p;
+    const tSag=2*(1-p);
+    top.setAttribute('points',`${tx1.toFixed(1)},${ty.toFixed(1)} 90,${(ty+tSag).toFixed(1)} ${tx2.toFixed(1)},${ty.toFixed(1)} 94,40 86,40`);
+    // 下堆：表面从 y=70 上升到 y=40，外扩到底边宽度，中间凸起
+    const by=70-30*p;
+    const bx1=60+26*p, bx2=120-26*p;
+    const bPeak=3*p;
+    bot.setAttribute('points',`${bx1.toFixed(1)},${by.toFixed(1)} 90,${(by-bPeak).toFixed(1)} ${bx2.toFixed(1)},${by.toFixed(1)} 120,70 60,70`);
+  }
+  render();
+  function spawn(){
+    if(state.p<0.97){
+      const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      const startX=90+(Math.random()-0.5)*1.6;
+      c.setAttribute('cx',startX);
+      c.setAttribute('cy',40);
+      c.setAttribute('r',0.55+Math.random()*0.65);
+      c.setAttribute('fill','rgba(196,163,90,'+(0.7+Math.random()*0.25)+')');
+      g.appendChild(c);
+      const surfY=70-30*state.p-3*state.p;
+      const targetY=Math.max(42,surfY-1);
+      gsap.to(c,{attr:{cy:targetY,cx:startX+(Math.random()-0.5)*3.5},duration:0.35+Math.random()*0.15,ease:'power2.in',
+        onComplete:()=>{if(c.parentNode)g.removeChild(c);}});
+    }
+    setTimeout(spawn,50+Math.random()*35);
+  }
+  spawn();
+  gsap.to(state,{p:1,duration:4.5,ease:'none',repeat:-1,repeatDelay:0.7,
+    onUpdate:render,onRepeat:()=>{state.p=0;render();}});
+})();
+
+// 135 Vortex swirl — 反方向旋转（像被吸进中心）
+(function(){
+  const el=document.querySelector('.vs135');
+  if(!el)return;
+  const pts=[];
+  for(let a=0;a<Math.PI*4.5;a+=0.1){
+    const r=2+a*3;
+    pts.push((90+r*Math.cos(a)).toFixed(1)+','+(40+r*Math.sin(a)).toFixed(1));
+  }
+  el.setAttribute('points',pts.join(' '));
+  gsap.to(el,{rotation:-360,svgOrigin:'90 40',duration:6,repeat:-1,ease:'none'});
+})();
+
+// 136 Glow comet — 彗星头+渐隐尾
+(function(){
+  const h=document.querySelector('.gc136head');
+  const t1=document.querySelector('.gc136t1');
+  const t2=document.querySelector('.gc136t2');
+  const t3=document.querySelector('.gc136t3');
+  const t4=document.querySelector('.gc136t4');
+  if(!h)return;
+  let a=0;
+  gsap.ticker.add(()=>{
+    a+=0.025;
+    [[h,0],[t1,0.09],[t2,0.18],[t3,0.27],[t4,0.36]].forEach(([el,off])=>{
+      const ang=a-off;
+      el.setAttribute('cx',90+22*Math.cos(ang));
+      el.setAttribute('cy',40+22*Math.sin(ang));
+    });
+  });
+})();
+
+// 137 Electric arc — 双闪锯齿 + 外层 glow halo + 端点同步闪白
+(function(){
+  const el=document.querySelector('.ea137');
+  const halo=document.querySelector('.ea137halo');
+  const nodes=document.querySelectorAll('.ea137node');
+  if(!el)return;
+  function zap(){
+    const pts=['M32,40']; // 起点止于左节点边缘
+    for(let x=42;x<148;x+=10){
+      pts.push('L'+x+','+(40+(Math.random()-0.5)*26).toFixed(1));
+    }
+    pts.push('L148,40'); // 终点止于右节点边缘
+    el.setAttribute('d',pts.join(' '));
+    halo.setAttribute('d',pts.join(' '));
+    gsap.timeline({onComplete:()=>setTimeout(zap,600+Math.random()*900)})
+      .set([el,halo],{opacity:1})
+      .to(nodes,{attr:{stroke:'rgba(255,255,255,1)'},duration:0.04},0)
+      .to([el,halo],{opacity:0.4,duration:0.05})
+      .to([el,halo],{opacity:1,duration:0.04})
+      .to([el,halo],{opacity:0.6,duration:0.05})
+      .to([el,halo],{opacity:1,duration:0.04})
+      .to([el,halo],{opacity:0,duration:0.3,ease:'power2.in'},'+=0.1')
+      .to(nodes,{attr:{stroke:'rgba(220,230,255,0.7)'},duration:0.3},'<');
+  }
+  setTimeout(zap,500);
+})();
+
+// 138 Dot matrix — 横向正弦波 + 少量随机闪烁（有叙事感，不再纯噪点）
+(function(){
+  const g=document.querySelector('.dm138sv');
+  if(!g)return;
+  const dots=[];
+  for(let r=0;r<5;r++)for(let c=0;c<15;c++){
+    const d=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    d.setAttribute('cx',15+c*11);d.setAttribute('cy',15+r*12);
+    d.setAttribute('r',1.8);d.setAttribute('fill','rgba(196,163,90,0.15)');
+    g.appendChild(d);dots.push({el:d,col:c,row:r});
+  }
+  let phase=0;
+  setInterval(()=>{
+    phase+=0.25;
+    dots.forEach(({el,col,row})=>{
+      const wave=Math.sin(phase-col*0.4-row*0.15);
+      const flicker=Math.random()>0.88;
+      const bright=Math.max(0,wave)*0.6+(flicker?0.3:0)+0.12;
+      el.setAttribute('fill','rgba(196,163,90,'+Math.min(bright,0.88).toFixed(2)+')');
+    });
+  },120);
+})();
+
+// 139 Network pulse
+gsap.timeline({repeat:-1,repeatDelay:0.4})
+  .set('.np139pulse',{attr:{cx:30,cy:40},opacity:0})
+  .to('.np139n1',{attr:{fill:'rgba(255,240,200,0.6)'},duration:0.12})
+  .to('.np139pulse',{opacity:1,duration:0.1},'<')
+  .to('.np139n1',{attr:{fill:'rgba(196,163,90,0.2)'},duration:0.3},'+=0.05')
+  .to('.np139pulse',{attr:{cx:90},duration:0.55,ease:'power1.inOut'},'-=0.45')
+  .to('.np139n2',{attr:{fill:'rgba(255,240,200,0.6)'},duration:0.12},'-=0.05')
+  .to('.np139pulse',{opacity:0,duration:0.08})
+  .to('.np139n2',{attr:{fill:'rgba(196,163,90,0.2)'},duration:0.3})
+  .set('.np139pulse',{attr:{cx:90},opacity:1})
+  .to('.np139pulse',{attr:{cx:150},duration:0.55,ease:'power1.inOut'},'-=0.1')
+  .to('.np139n3',{attr:{fill:'rgba(255,240,200,0.6)'},duration:0.12},'-=0.05')
+  .to('.np139pulse',{opacity:0,duration:0.08})
+  .to('.np139n3',{attr:{fill:'rgba(196,163,90,0.2)'},duration:0.3});
+
+// 140 Wind streaks — 每条路径带微弱 y 偏移，不再纯水平
+['a','b','c','d','e','f','g'].forEach((s,i)=>{
+  const yDrift=(Math.random()-0.5)*3;
+  gsap.timeline({repeat:-1,delay:i*0.25})
+    .fromTo('.ws140'+s,{x:-30,y:0},{x:210,y:yDrift,duration:2.5+Math.random()*1.5,ease:'none'});
+});
+</script>
+</body>
+</html>

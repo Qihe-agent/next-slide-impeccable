@@ -1,0 +1,99 @@
+<div align="center">
+
+# Asyre Presentation
+
+**你的下个 ppt，何必是 PPT**
+
+Zero-dependency, animation-rich HTML 演示系统 — 50+ 精选视觉风格 · 140 个 live GSAP 效果 · AI 背景图生成 · 双语原生支持
+
+</div>
+
+---
+
+## 这是什么
+
+Next Slide Impeccable 是一个 Claude 技能（Skill），让 Agent 能根据你的内容直接生成浏览器里跑的、零依赖的高质量 HTML 演示文稿。
+
+**和普通 PPT 的区别：**
+- 纯 HTML + CSS + GSAP，浏览器打开就能看，无需任何软件
+- 动画是叙事工具，不是装饰 — 内置 10 个 combo 模板（hero / dashboard / pitch / testimonial / tech-demo 等）
+- 140 个精心设计的 GSAP 动画效果，按 mood / purpose / applicable_to 索引
+- 双语原生（中英文字体栈内置 CJK fallback）
+- 一键导出 PDF / 可分享链接
+
+## 三层动画架构
+
+```
+┌─ Choreography 层 ─ animation-combos.md（10 个 timeline 模板）
+├─ Discovery 层 ─── animation-index.json（140 效果 metadata 索引）
+└─ Code 层 ───────── animation-snippets.js（ID 索引的 GSAP 函数）
+```
+
+Agent 查 combo 拿 timeline → 没匹配就查 index 按字段筛 → 拿到 ID 调 `effects.play_XX(scope)`。
+
+## 文件速查
+
+| 文件 | 角色 |
+|------|------|
+| [SKILL.md](SKILL.md) | 主技能定义，Agent 的入口 |
+| [animation-combos.md](animation-combos.md) | 10 个 combo timeline 模板 + v2 swap 菜单 |
+| [animation-index.json](animation-index.json) | 140 效果 metadata（mood/purpose/applicable_to/pattern_family） |
+| [animation-snippets.js](animation-snippets.js) | 140 ID 索引的 GSAP 函数（带 teardown） |
+| [animation-showcase.html](animation-showcase.html) | 140 效果实时预览（直接浏览器打开） |
+| [ANIMATION_PATTERNS.md](ANIMATION_PATTERNS.md) | 15 核心 pattern 方法论 |
+| [STRUCTURE_PRESETS.md](STRUCTURE_PRESETS.md) | 24 个结构模板 |
+| [STYLE_PRESETS.md 不在仓库] | 50+ 视觉风格（在 next-slide 仓库） |
+| [ASYRE_BRAND_PRESET.md](ASYRE_BRAND_PRESET.md) | Asyre Dark Gold 品牌风格 |
+| [DESIGN_ELEVATION.md](DESIGN_ELEVATION.md) | Impeccable 设计原则 |
+
+## 快速使用
+
+浏览器里直接看 140 个效果：
+```bash
+open animation-showcase.html
+```
+
+按 ID 调用效果：
+```html
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="animation-snippets.js"></script>
+<script>
+  // 播放效果 101（MILESTONE TIMELINE）
+  const handle = effects.play_101(document.querySelector('.my-slide'));
+  // 切页时先清理
+  handle?.teardown?.();
+</script>
+```
+
+按 mood 查效果：
+```bash
+jq '.effects[] | select((.mood | index("elegant")) and .loop == "perpetual") | {id, name}' animation-index.json
+```
+
+## 作为 Claude 技能安装
+
+把整个目录放进 Claude Code 的 skills 目录：
+
+```bash
+git clone https://github.com/Qihe-agent/next-slide-impeccable.git \
+  ~/.claude/skills/next-slide-impeccable
+```
+
+然后在 Claude Code 里说"帮我做个演示 / create a presentation"，Agent 会自动使用这个技能。
+
+## 开发历史
+
+- [ANIMATION_UPGRADE_PLAN.md](ANIMATION_UPGRADE_PLAN.md) — 架构升级蓝图
+- [ANIMATION_REVIEW.md](ANIMATION_REVIEW.md) — Track A 质量审查决策
+- [ANIMATION_GAPS.md](ANIMATION_GAPS.md) — Track E 新效果设计
+- [ANIMATION_QA_NOTES.md](ANIMATION_QA_NOTES.md) — Phase 5 代码质量修复记录
+
+## Powered by
+
+Next Slide engine · Impeccable design principles · GSAP 3.12 · 零运行时依赖
+
+---
+
+<div align="center">
+Made with 💛 by <a href="https://github.com/Qihe-agent">Qihe-agent (Emergence Studio)</a>
+</div>
