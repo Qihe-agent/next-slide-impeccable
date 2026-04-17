@@ -76,40 +76,52 @@ Claude 读文件 → 识别当前风格 → 加 GSAP timeline + 数据图 + 可�
 
 <table>
 <tr>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/01-funnel.gif" width="420" alt="01 · 漏斗"/><br/><b><a href="structures/01-funnel.html">01 · 漏斗</a></b><br/><sub>Funnel · 转化路径</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/02-hub-spoke.gif" width="420" alt="02 · 中心辐射"/><br/><b><a href="structures/02-hub-spoke.html">02 · 中心辐射</a></b><br/><sub>Hub-Spoke · 生态图</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/03-iceberg.gif" width="420" alt="03 · 冰山"/><br/><b><a href="structures/03-iceberg.html">03 · 冰山</a></b><br/><sub>Iceberg · 20/80 隐喻</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/04-bridge.gif" width="420" alt="04 · 转型之桥"/><br/><b><a href="structures/04-bridge.html">04 · 转型之桥</a></b><br/><sub>Bridge · Before/After</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/01-funnel.gif" width="100%" alt="01 · 漏斗"/><br/><b><a href="structures/01-funnel.html">01 · 漏斗</a></b><br/><sub>Funnel · 转化路径</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/02-hub-spoke.gif" width="100%" alt="02 · 中心辐射"/><br/><b><a href="structures/02-hub-spoke.html">02 · 中心辐射</a></b><br/><sub>Hub-Spoke · 生态图</sub></td>
 </tr>
 <tr>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/05-radar-chart.gif" width="420" alt="05 · 雷达图"/><br/><b><a href="structures/05-radar-chart.html">05 · 雷达图</a></b><br/><sub>Radar · 30° 双光束扫描</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/06-dashboard.gif" width="420" alt="06 · 仪表盘"/><br/><b><a href="structures/06-dashboard.html">06 · 仪表盘</a></b><br/><sub>Dashboard · KPI + 图表</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/07-bento-grid-dense.gif" width="420" alt="07 · 格子仪表盘"/><br/><b><a href="structures/07-bento-grid-dense.html">07 · 格子仪表盘</a></b><br/><sub>Bento · 3×3 KPI</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/08-comparison-matrix-dense.gif" width="420" alt="08 · 多维矩阵"/><br/><b><a href="structures/08-comparison-matrix-dense.html">08 · 多维矩阵</a></b><br/><sub>Matrix · N 产品 × M 维度</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/03-iceberg.gif" width="100%" alt="03 · 冰山"/><br/><b><a href="structures/03-iceberg.html">03 · 冰山</a></b><br/><sub>Iceberg · 20/80 隐喻</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/04-bridge.gif" width="100%" alt="04 · 转型之桥"/><br/><b><a href="structures/04-bridge.html">04 · 转型之桥</a></b><br/><sub>Bridge · Before/After</sub></td>
 </tr>
 <tr>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/09-circular-flow.gif" width="420" alt="09 · 循环流程"/><br/><b><a href="structures/09-circular-flow.html">09 · 循环流程</a></b><br/><sub>Circular · 生命周期</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/10-hierarchical-layers.gif" width="420" alt="10 · 层级堆叠"/><br/><b><a href="structures/10-hierarchical-layers.html">10 · 层级堆叠</a></b><br/><sub>Layers · 技术栈 / 协议栈</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/11-linear-progression.gif" width="420" alt="11 · 线性进程"/><br/><b><a href="structures/11-linear-progression.html">11 · 线性进程</a></b><br/><sub>Linear · 时间线 / 里程碑</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/12-swot-analysis.gif" width="420" alt="12 · SWOT 分析"/><br/><b><a href="structures/12-swot-analysis.html">12 · SWOT 分析</a></b><br/><sub>SWOT · 四象限</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/05-radar-chart.gif" width="100%" alt="05 · 雷达图"/><br/><b><a href="structures/05-radar-chart.html">05 · 雷达图</a></b><br/><sub>Radar · 30° 双光束扫描</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/06-dashboard.gif" width="100%" alt="06 · 仪表盘"/><br/><b><a href="structures/06-dashboard.html">06 · 仪表盘</a></b><br/><sub>Dashboard · KPI + 图表</sub></td>
 </tr>
 <tr>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/13-venn-diagram.gif" width="420" alt="13 · 维恩图"/><br/><b><a href="structures/13-venn-diagram.html">13 · 维恩图</a></b><br/><sub>Venn · 交集 / 共同点</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/14-tree-branching.gif" width="420" alt="14 · 树状分支"/><br/><b><a href="structures/14-tree-branching.html">14 · 树状分支</a></b><br/><sub>Tree · 组织架构</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/15-winding-roadmap.gif" width="420" alt="15 · 蜿蜒路线"/><br/><b><a href="structures/15-winding-roadmap.html">15 · 蜿蜒路线</a></b><br/><sub>Roadmap · S 曲线</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/16-story-mountain.gif" width="420" alt="16 · 故事山"/><br/><b><a href="structures/16-story-mountain.html">16 · 故事山</a></b><br/><sub>Story Arc · 5 幕叙事</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/07-bento-grid-dense.gif" width="100%" alt="07 · 格子仪表盘"/><br/><b><a href="structures/07-bento-grid-dense.html">07 · 格子仪表盘</a></b><br/><sub>Bento · 3×3 KPI</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/08-comparison-matrix-dense.gif" width="100%" alt="08 · 多维矩阵"/><br/><b><a href="structures/08-comparison-matrix-dense.html">08 · 多维矩阵</a></b><br/><sub>Matrix · N 产品 × M 维度</sub></td>
 </tr>
 <tr>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/17-structural-breakdown.gif" width="420" alt="17 · 结构拆解"/><br/><b><a href="structures/17-structural-breakdown.html">17 · 结构拆解</a></b><br/><sub>Breakdown · 中心 × 8 模块</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/18-dense-modules.gif" width="420" alt="18 · 密集模块"/><br/><b><a href="structures/18-dense-modules.html">18 · 密集模块</a></b><br/><sub>Dense · 16 模块 · 4 层</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/19-periodic-table.gif" width="420" alt="19 · 周期表"/><br/><b><a href="structures/19-periodic-table.html">19 · 周期表</a></b><br/><sub>Periodic · 24 元素分类</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/20-comparison-table.gif" width="420" alt="20 · 对比表"/><br/><b><a href="structures/20-comparison-table.html">20 · 对比表</a></b><br/><sub>Compare · 3 列 × 8 行</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/09-circular-flow.gif" width="100%" alt="09 · 循环流程"/><br/><b><a href="structures/09-circular-flow.html">09 · 循环流程</a></b><br/><sub>Circular · 生命周期</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/10-hierarchical-layers.gif" width="100%" alt="10 · 层级堆叠"/><br/><b><a href="structures/10-hierarchical-layers.html">10 · 层级堆叠</a></b><br/><sub>Layers · 技术栈 / 协议栈</sub></td>
 </tr>
 <tr>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/21-binary-comparison.gif" width="420" alt="21 · 二元对比"/><br/><b><a href="structures/21-binary-comparison.html">21 · 二元对比</a></b><br/><sub>A vs B · VS 砸下</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/22-jigsaw.gif" width="420" alt="22 · 拼图"/><br/><b><a href="structures/22-jigsaw.html">22 · 拼图</a></b><br/><sub>Jigsaw · 6 块互锁</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/23-isometric-map.gif" width="420" alt="23 · 等距地图"/><br/><b><a href="structures/23-isometric-map.html">23 · 等距地图</a></b><br/><sub>Isometric · 30° 3D</sub></td>
-<td align="center" width="25%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/24-comic-strip.gif" width="420" alt="24 · 漫画格"/><br/><b><a href="structures/24-comic-strip.html">24 · 漫画格</a></b><br/><sub>Comic · 6 panel + action</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/11-linear-progression.gif" width="100%" alt="11 · 线性进程"/><br/><b><a href="structures/11-linear-progression.html">11 · 线性进程</a></b><br/><sub>Linear · 时间线 / 里程碑</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/12-swot-analysis.gif" width="100%" alt="12 · SWOT 分析"/><br/><b><a href="structures/12-swot-analysis.html">12 · SWOT 分析</a></b><br/><sub>SWOT · 四象限</sub></td>
+</tr>
+<tr>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/13-venn-diagram.gif" width="100%" alt="13 · 维恩图"/><br/><b><a href="structures/13-venn-diagram.html">13 · 维恩图</a></b><br/><sub>Venn · 交集 / 共同点</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/14-tree-branching.gif" width="100%" alt="14 · 树状分支"/><br/><b><a href="structures/14-tree-branching.html">14 · 树状分支</a></b><br/><sub>Tree · 组织架构</sub></td>
+</tr>
+<tr>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/15-winding-roadmap.gif" width="100%" alt="15 · 蜿蜒路线"/><br/><b><a href="structures/15-winding-roadmap.html">15 · 蜿蜒路线</a></b><br/><sub>Roadmap · S 曲线</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/16-story-mountain.gif" width="100%" alt="16 · 故事山"/><br/><b><a href="structures/16-story-mountain.html">16 · 故事山</a></b><br/><sub>Story Arc · 5 幕叙事</sub></td>
+</tr>
+<tr>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/17-structural-breakdown.gif" width="100%" alt="17 · 结构拆解"/><br/><b><a href="structures/17-structural-breakdown.html">17 · 结构拆解</a></b><br/><sub>Breakdown · 中心 × 8 模块</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/18-dense-modules.gif" width="100%" alt="18 · 密集模块"/><br/><b><a href="structures/18-dense-modules.html">18 · 密集模块</a></b><br/><sub>Dense · 16 模块 · 4 层</sub></td>
+</tr>
+<tr>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/19-periodic-table.gif" width="100%" alt="19 · 周期表"/><br/><b><a href="structures/19-periodic-table.html">19 · 周期表</a></b><br/><sub>Periodic · 24 元素分类</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/20-comparison-table.gif" width="100%" alt="20 · 对比表"/><br/><b><a href="structures/20-comparison-table.html">20 · 对比表</a></b><br/><sub>Compare · 3 列 × 8 行</sub></td>
+</tr>
+<tr>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/21-binary-comparison.gif" width="100%" alt="21 · 二元对比"/><br/><b><a href="structures/21-binary-comparison.html">21 · 二元对比</a></b><br/><sub>A vs B · VS 砸下</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/22-jigsaw.gif" width="100%" alt="22 · 拼图"/><br/><b><a href="structures/22-jigsaw.html">22 · 拼图</a></b><br/><sub>Jigsaw · 6 块互锁</sub></td>
+</tr>
+<tr>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/23-isometric-map.gif" width="100%" alt="23 · 等距地图"/><br/><b><a href="structures/23-isometric-map.html">23 · 等距地图</a></b><br/><sub>Isometric · 30° 3D</sub></td>
+<td align="center" width="50%"><img src="https://raw.githubusercontent.com/Qihe-agent/next-slide-impeccable/main/structures/previews/24-comic-strip.gif" width="100%" alt="24 · 漫画格"/><br/><b><a href="structures/24-comic-strip.html">24 · 漫画格</a></b><br/><sub>Comic · 6 panel + action</sub></td>
 </tr>
 </table>
 
