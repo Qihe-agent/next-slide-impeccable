@@ -590,7 +590,7 @@ Generate the full presentation using content from Phase 1 and style from Phase 2
 
 - [html-template.md](html-template.md) — HTML architecture and JS features
 - [viewport-base.css](viewport-base.css) — Mandatory CSS (include in full)
-- [animation-patterns.md](animation-patterns.md) — Animation reference for the chosen feeling
+- [ANIMATION_PATTERNS.md](ANIMATION_PATTERNS.md) — Animation reference for the chosen feeling
 
 **Key requirements:**
 
@@ -661,7 +661,7 @@ When generating with design context active, apply these additional principles fr
 
 **For custom style generations (from Step 2.5):**
 1. The `:root` CSS variables come from Step 2.5.2 synthesis — do NOT fall back to a preset
-2. Animation patterns: use [animation-patterns.md](animation-patterns.md) as REFERENCE but adapt timing/easing/choreography to match the design context mood
+2. Animation patterns: use [ANIMATION_PATTERNS.md](ANIMATION_PATTERNS.md) as REFERENCE but adapt timing/easing/choreography to match the design context mood
 3. Background treatments: create custom backgrounds informed by design context aesthetic direction (not limited to preset patterns)
 4. Decorative elements: design unique signature elements that reflect brand personality — these should be the "one thing someone remembers" about this presentation
 5. Apply the {{command_prefix}}frontend-design principle: "Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same."
