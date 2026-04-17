@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonance Arc — Sound Without Boundaries</title>
+
+    <!-- Fonts: Creative Voltage — Syne + Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES — Creative Voltage
+           Electric blue + neon yellow, bold & energetic
+           =========================================== */
+        :root {
+            --bg-primary: #0066ff;
+            --bg-dark: #1a1a2e;
+            --bg-secondary: #12123a;
+            --bg-tertiary: #1e1e4a;
+            --accent: #d4ff00;
+            --accent-secondary: #0066ff;
+            --accent-glow: rgba(212, 255, 0, 0.35);
+            --accent-glow-secondary: rgba(0, 102, 255, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8d0;
+            --text-muted: #7a7a9a;
+            --text-on-blue: #ffffff;
+            --badge-bg: #d4ff00;
+            --badge-text: #1a1a2e;
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --surface: rgba(255, 255, 255, 0.06);
+
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+
+            --title-size: clamp(2rem, 6vw, 5rem);
+            --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+            --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+            --subtitle-size: clamp(0.875rem, 2vw, 1.25rem);
+            --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+            --small-size: clamp(0.65rem, 1vw, 0.875rem);
+            --stat-size: clamp(2rem, 8vw, 6rem);
+
+            --slide-padding: clamp(1.5rem, 4vw, 4rem);
+            --content-gap: clamp(1rem, 2vw, 2rem);
+            --element-gap: clamp(0.25rem, 1vw, 1rem);
+
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --duration-fast: 0.3s;
+            --duration-normal: 0.6s;
+            --duration-slow: 1s;
+            --duration-dramatic: 1.5s;
+        }
+
+        /* ===========================================
+           BASE RESET
+           =========================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===========================================
+           VIEWPORT FITTING: MANDATORY BASE STYLES
+           =========================================== */
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-family: var(--font-body);
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 100%;
+            overflow: hidden;
+            padding: var(--slide-padding);
+        }
+        img { max-width: 100%; object-fit: contain; }
+        h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; hyphens: auto; }
+        p, li, blockquote { overflow-wrap: break-word; }
+
+        /* ===========================================
+           RESPONSIVE BREAKPOINTS
+           =========================================== */
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(0.75rem, 3vw, 2rem);
+                --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+                --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+                --h2-size: clamp(1rem, 3vw, 1.75rem);
+            }
+        }
+        @media (max-height: 600px) {
+            :root {
+                --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+                --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+                --title-size: clamp(1.1rem, 4vw, 2rem);
+                --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+            }
+            .nav-dots, .keyboard-hint, .decorative { display: none; }
+        }
+        @media (max-height: 500px) {
+            :root {
+                --slide-padding: clamp(0.4rem, 2vw, 1rem);
+                --title-size: clamp(1rem, 3.5vw, 1.5rem);
+                --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+                --body-size: clamp(0.65rem, 1vw, 0.85rem);
+            }
+        }
+        @media (max-width: 600px) {
+            :root { --title-size: clamp(1.25rem, 7vw, 2.5rem); }
+            .slide-counter { display: none; }
+            .two-col { flex-direction: column !important; }
+        }
+        @media (max-width: 600px) and (min-height: 700px) {
+            :root {
+                --slide-padding: clamp(1.5rem, 6vw, 3rem);
+                --content-gap: clamp(1rem, 3vw, 2rem);
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.2s !important;
+            }
+            html { scroll-behavior: auto; scroll-snap-type: none; }
+            .reveal, .reveal-scale, .reveal-left, .reveal-right,
+            .reveal-blur, .reveal-slam, .reveal-wipe { opacity: 0; transform: none !important; filter: none !important; clip-path: none !important; transition: opacity 0.2s ease !important; }
+            .visible .reveal, .visible .reveal-scale, .visible .reveal-left,
+            .visible .reveal-right, .visible .reveal-blur, .visible .reveal-slam, .visible .reveal-wipe { opacity: 1; }
+        }
+        @media print {
+            html { scroll-snap-type: none; }
+            .slide { height: auto; min-height: 100vh; overflow: visible; page-break-after: always; }
+            .progress-bar, .nav-dots, .slide-counter { display: none !important; }
+            .reveal, [class*="reveal-"] { opacity: 1 !important; transform: none !important; }
+        }
+
+        /* ===========================================
+           ANIMATIONS
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.85);
+            transition: opacity var(--duration-slow) ease, transform var(--duration-slow) var(--ease-out-expo);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity var(--duration-normal) ease, transform var(--duration-normal) var(--ease-out-expo);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity var(--duration-normal) ease, transform var(--duration-normal) var(--ease-out-expo);
+        }
+        .reveal-blur {
+            opacity: 0;
+            filter: blur(15px);
+            transition: opacity var(--duration-slow) ease, filter var(--duration-slow) var(--ease-out-expo);
+        }
+        .reveal-slam {
+            opacity: 0;
+            transform: translateY(-80px) scale(1.1);
+            transition: opacity 0.3s ease, transform 0.4s var(--ease-out-expo);
+        }
+        .reveal-wipe {
+            clip-path: inset(0 50% 0 50%);
+            opacity: 0;
+            transition: clip-path 1s var(--ease-out-expo), opacity 0.6s ease;
+        }
+        .slide.visible .reveal,
+        .slide.visible .reveal-slam { opacity: 1; transform: translateY(0) scale(1); }
+        .slide.visible .reveal-scale { opacity: 1; transform: scale(1); }
+        .slide.visible .reveal-left,
+        .slide.visible .reveal-right { opacity: 1; transform: translateX(0); }
+        .slide.visible .reveal-blur { opacity: 1; filter: blur(0); }
+        .slide.visible .reveal-wipe { clip-path: inset(0 0 0 0); opacity: 1; }
+
+        .reveal:nth-child(1) { transition-delay: 0.05s; }
+        .reveal:nth-child(2), .reveal-left:nth-child(2) { transition-delay: 0.15s; }
+        .reveal:nth-child(3), .reveal-left:nth-child(3) { transition-delay: 0.25s; }
+        .reveal:nth-child(4) { transition-delay: 0.35s; }
+        .reveal:nth-child(5) { transition-delay: 0.45s; }
+        .reveal:nth-child(6) { transition-delay: 0.55s; }
+        .reveal:nth-child(7) { transition-delay: 0.65s; }
+        .reveal:nth-child(8) { transition-delay: 0.75s; }
+
+        /* ===========================================
+           CREATIVE VOLTAGE SIGNATURE ELEMENTS
+           =========================================== */
+
+        /* Halftone dot pattern */
+        .halftone-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 16px 16px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Split panel backgrounds */
+        .split-blue {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #0044cc 100%);
+        }
+        .split-dark {
+            background: linear-gradient(160deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
+        }
+
+        /* Neon badge */
+        .neon-badge {
+            display: inline-block;
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            font-weight: 700;
+            padding: clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.6rem, 1.2vw, 1rem);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Accent line */
+        .accent-line {
+            width: clamp(40px, 5vw, 80px);
+            height: 4px;
+            background: var(--accent);
+        }
+
+        /* Product image glow */
+        .product-glow {
+            position: relative;
+        }
+        .product-glow::after {
+            content: '';
+            position: absolute;
+            inset: 10%;
+            background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+            filter: blur(40px);
+            z-index: -1;
+        }
+
+        /* Feature card */
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            padding: clamp(1rem, 2vw, 1.5rem);
+            position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        @media (hover: hover) {
+            .feature-card:hover {
+                transform: translateY(-4px);
+                border-color: var(--accent);
+            }
+        }
+        .feature-card .card-icon {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+        }
+
+        /* Spec bar */
+        .spec-bar-track {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: clamp(0.3rem, 0.5vw, 0.5rem);
+        }
+        .spec-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--bg-primary));
+            border-radius: 3px;
+            width: 0%;
+            transition: width 1.2s var(--ease-out-expo);
+        }
+        .slide.visible .spec-bar-fill { width: var(--bar-width); }
+
+        /* Review stars */
+        .stars { color: #ffd700; letter-spacing: 2px; }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--bg-primary));
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+
+        /* Nav dots */
+        .nav-dots {
+            position: fixed;
+            right: clamp(12px, 2vw, 24px);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 9998;
+        }
+        .nav-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+            position: relative;
+        }
+        .nav-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px; height: 44px;
+            border-radius: 50%;
+        }
+        .nav-dot.active {
+            background: var(--accent);
+            transform: scale(1.4);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            bottom: clamp(12px, 2vw, 24px);
+            right: clamp(12px, 2vw, 24px);
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            color: var(--text-muted);
+            z-index: 9998;
+        }
+
+        /* Price card */
+        .price-card {
+            background: var(--surface);
+            border: 2px solid var(--border-subtle);
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            text-align: center;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+            color: var(--text-primary);
+        }
+        .price-card.featured {
+            border-color: var(--accent);
+            background: rgba(212, 255, 0, 0.05);
+            color: var(--text-primary);
+        }
+        @media (hover: hover) { .price-card:hover { transform: translateY(-4px); } }
+        .price-amount {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+        }
+
+        /* Comparison table */
+        .compare-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: clamp(0.5rem, 1vw, 1rem);
+            padding: clamp(0.5rem, 1vw, 0.75rem) 0;
+            border-bottom: 1px solid var(--border-subtle);
+            font-size: var(--body-size);
+            align-items: center;
+        }
+        .compare-row.header {
+            font-family: var(--font-display);
+            font-weight: 700;
+            border-bottom: 2px solid var(--accent);
+            color: var(--text-secondary);
+            font-size: var(--small-size);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .compare-winner { color: var(--accent); font-weight: 700; }
+
+        /* Sound wave pattern */
+        @keyframes wave-drift {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .sound-wave-bg {
+            position: absolute;
+            pointer-events: none;
+            overflow: hidden;
+            opacity: 0.12;
+        }
+        .sound-wave-bg svg {
+            animation: wave-drift 12s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+    <div class="slide-counter" id="slideCounter" aria-live="polite"></div>
+
+    <!-- =================== SLIDE 1: HERO =================== -->
+    <section class="slide split-blue halftone-bg" aria-label="Hero">
+        <div class="sound-wave-bg" style="top: 15%; right: 0; width: 60%; height: 120px;">
+            <svg width="200%" height="120" viewBox="0 0 800 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,60 Q50,20 100,60 Q150,100 200,60 Q250,20 300,60 Q350,100 400,60 Q450,20 500,60 Q550,100 600,60 Q650,20 700,60 Q750,100 800,60" stroke="rgba(212,255,0,0.5)" stroke-width="2" fill="none"/><path d="M0,60 Q50,30 100,60 Q150,90 200,60 Q250,30 300,60 Q350,90 400,60 Q450,30 500,60 Q550,90 600,60 Q650,30 700,60 Q750,90 800,60" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none" transform="translate(0,15)"/></svg>
+        </div>
+        <div class="slide-content" style="align-items: center; text-align: center; position: relative; z-index: 1;">
+            <div class="neon-badge reveal">New Product Launch</div>
+            <h1 class="reveal" style="font-size: var(--title-size); font-family: var(--font-display); font-weight: 800; margin-top: var(--content-gap); line-height: 1.1;">
+                Sonance <span style="color: var(--accent);">Arc</span>
+            </h1>
+            <p class="reveal" style="font-size: var(--h3-size); color: rgba(255,255,255,0.8); margin-top: var(--element-gap); font-family: var(--font-display); font-weight: 400;">
+                Sound Without Boundaries
+            </p>
+            <div class="accent-line reveal" style="margin-top: var(--content-gap);"></div>
+            <p class="reveal" style="font-size: var(--body-size); color: rgba(255,255,255,0.6); margin-top: var(--element-gap); max-width: 500px;">
+                Wireless earbuds reimagined. 50dB ANC, spatial audio, 12-hour battery. Starting at $179.
+            </p>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 2: PROBLEM / VISION =================== -->
+    <section class="slide split-dark halftone-bg" aria-label="Vision">
+        <div class="slide-content" style="position: relative; z-index: 1;">
+            <span class="neon-badge reveal">The Problem</span>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 800; margin-top: var(--content-gap); max-width: 700px;">
+                Your earbuds shouldn't make you choose between <span style="color: var(--accent);">sound quality</span> and <span style="color: var(--accent);">comfort</span>.
+            </h2>
+            <div style="display: flex; gap: var(--content-gap); margin-top: var(--content-gap); flex-wrap: wrap;" class="two-col">
+                <div class="reveal" style="flex: 1; min-width: 200px;">
+                    <div style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.5rem;">&#128266;</div>
+                    <h3 style="font-size: var(--h3-size); font-family: var(--font-display);">Noise, Everywhere</h3>
+                    <p style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
+                        Commutes, offices, gyms. The world is loud and getting louder.
+                    </p>
+                </div>
+                <div class="reveal" style="flex: 1; min-width: 200px;">
+                    <div style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.5rem;">&#9888;&#65039;</div>
+                    <h3 style="font-size: var(--h3-size); font-family: var(--font-display);">Compromised Audio</h3>
+                    <p style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
+                        Most earbuds sacrifice fidelity for features. Tiny drivers, weak bass, flat sound.
+                    </p>
+                </div>
+                <div class="reveal" style="flex: 1; min-width: 200px;">
+                    <div style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.5rem;">&#128267;</div>
+                    <h3 style="font-size: var(--h3-size); font-family: var(--font-display);">Battery Anxiety</h3>
+                    <p style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
+                        Dead by 3pm. Constant charging. Never enough power for your whole day.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 3: PRODUCT REVEAL =================== -->
+    <section class="slide split-dark" aria-label="Product Reveal" style="background: radial-gradient(ellipse at 50% 60%, #002266 0%, var(--bg-dark) 70%);">
+        <div class="slide-content" style="align-items: center; text-align: center; position: relative; z-index: 1;">
+            <span class="neon-badge reveal-slam">Introducing</span>
+            <div class="product-glow reveal-wipe" style="margin-top: var(--content-gap); max-width: min(80vw, 700px);">
+                <img src="images/arc-hero-voltage.webp" alt="Sonance Arc wireless earbuds product shot" style="width: 100%; max-height: min(45vh, 400px); object-fit: contain; border-radius: 4px;">
+            </div>
+            <h2 class="reveal-blur" style="font-size: var(--title-size); font-family: var(--font-display); font-weight: 800; margin-top: var(--content-gap);">
+                Meet <span style="color: var(--accent);">Arc</span>
+            </h2>
+            <p class="reveal" style="font-size: var(--subtitle-size); color: var(--text-secondary); max-width: 550px; margin-top: var(--element-gap);">
+                Dual-driver architecture. Adaptive EQ. 50dB noise cancellation. At just 5.2 grams per earbud.
+            </p>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 4: KEY FEATURES 1 =================== -->
+    <section class="slide split-dark halftone-bg" aria-label="Key Features - Audio">
+        <div class="slide-content" style="position: relative; z-index: 1;">
+            <span class="neon-badge reveal">Audio Engine</span>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 800; margin-top: var(--element-gap);">
+                Engineered to <span style="color: var(--accent);">Move</span> You
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--content-gap); margin-top: var(--content-gap);">
+                <div class="feature-card reveal">
+                    <div class="card-icon">&#127925;</div>
+                    <h3 style="font-size: var(--h3-size); font-family: var(--font-display); font-weight: 700;">Dual-Driver System</h3>
+                    <p style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.4rem; line-height: 1.5;">11mm dynamic + balanced armature. Full-range clarity from sub-bass to crystal highs.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="card-icon">&#127911;</div>
+                    <h3 style="font-size: var(--h3-size); font-family: var(--font-display); font-weight: 700;">50dB ANC</h3>
+                    <p style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.4rem; line-height: 1.5;">Best-in-class active noise cancellation. Silence the world when you need to focus.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="card-icon">&#127760;</div>
+                    <h3 style="font-size: var(--h3-size); font-family: var(--font-display); font-weight: 700;">Spatial Audio</h3>
+                    <p style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.4rem; line-height: 1.5;">Head-tracking spatial audio. Sound that surrounds you and moves with you.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="card-icon">&#128291;</div>
+                    <h3 style="font-size: var(--h3-size); font-family: var(--font-display); font-weight: 700;">Adaptive EQ</h3>
+                    <p style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.4rem; line-height: 1.5;">Auto-adjusts to your unique ear shape. Personalized sound, no tuning required.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 5: KEY FEATURES 2 =================== -->
+    <section class="slide" aria-label="Key Features - Lifestyle" style="padding: 0;">
+        <div style="position: absolute; inset: 0;">
+            <img src="images/arc-lifestyle-running.webp" alt="Person running with Arc earbuds" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.3;">
+        </div>
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,26,46,0.6) 0%, rgba(26,26,46,0.95) 100%);"></div>
+        <div class="slide-content" style="position: relative; z-index: 1;">
+            <span class="neon-badge reveal">Built for Life</span>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 800; margin-top: var(--element-gap);">
+                All Day. <span style="color: var(--accent);">Every Day.</span>
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: var(--content-gap); margin-top: var(--content-gap);">
+                <div class="reveal" style="text-align: center;">
+                    <div class="counter" data-target="12" data-suffix="hrs" style="font-size: var(--stat-size); font-family: var(--font-display); font-weight: 800; color: var(--accent);">0</div>
+                    <div style="font-size: var(--body-size); color: var(--text-secondary);">Earbud Battery</div>
+                </div>
+                <div class="reveal" style="text-align: center;">
+                    <div class="counter" data-target="38" data-suffix="hrs" style="font-size: var(--stat-size); font-family: var(--font-display); font-weight: 800; color: var(--accent);">0</div>
+                    <div style="font-size: var(--body-size); color: var(--text-secondary);">Total with Case</div>
+                </div>
+                <div class="reveal" style="text-align: center;">
+                    <div class="counter" data-target="5" data-suffix=".2g" style="font-size: var(--stat-size); font-family: var(--font-display); font-weight: 800; color: var(--accent);">0</div>
+                    <div style="font-size: var(--body-size); color: var(--text-secondary);">Per Earbud</div>
+                </div>
+            </div>
+            <div style="display: flex; gap: var(--content-gap); margin-top: var(--content-gap); flex-wrap: wrap; justify-content: center;">
+                <div class="neon-badge reveal">IPX5 Water Resistant</div>
+                <div class="neon-badge reveal">3-Device Switching</div>
+                <div class="neon-badge reveal">USB-C Fast Charge</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 6: SPECS COMPARISON =================== -->
+    <section class="slide split-dark halftone-bg" aria-label="Specs Comparison">
+        <div class="slide-content" style="position: relative; z-index: 1;">
+            <span class="neon-badge reveal">How We Stack Up</span>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 800; margin-top: var(--element-gap);">
+                Arc vs. <span style="color: var(--text-secondary);">The Competition</span>
+            </h2>
+            <div style="margin-top: var(--content-gap); max-width: 800px;">
+                <div class="compare-row header reveal">
+                    <span>Specification</span>
+                    <span style="color: var(--accent);">Sonance Arc</span>
+                    <span>AirPods Pro 2</span>
+                </div>
+                <div class="compare-row reveal">
+                    <span>Active Noise Cancellation</span>
+                    <span class="compare-winner">50dB</span>
+                    <span>48dB</span>
+                </div>
+                <div class="compare-row reveal">
+                    <span>Battery Life (earbuds)</span>
+                    <span class="compare-winner">12 hours</span>
+                    <span>6 hours</span>
+                </div>
+                <div class="compare-row reveal">
+                    <span>Total Battery (with case)</span>
+                    <span class="compare-winner">38 hours</span>
+                    <span>30 hours</span>
+                </div>
+                <div class="compare-row reveal">
+                    <span>Weight per Earbud</span>
+                    <span class="compare-winner">5.2g</span>
+                    <span>5.3g</span>
+                </div>
+                <div class="compare-row reveal">
+                    <span>Driver System</span>
+                    <span class="compare-winner">Dual (11mm + BA)</span>
+                    <span>Single</span>
+                </div>
+                <div class="compare-row reveal">
+                    <span>Multi-Device</span>
+                    <span class="compare-winner">3 devices</span>
+                    <span>1 device</span>
+                </div>
+                <div class="compare-row reveal" style="border-bottom: 2px solid var(--accent);">
+                    <span>Price</span>
+                    <span class="compare-winner">$179</span>
+                    <span>$249</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 7: SOCIAL PROOF =================== -->
+    <section class="slide split-dark halftone-bg" aria-label="Reviews">
+        <div class="slide-content" style="position: relative; z-index: 1; align-items: center;">
+            <span class="neon-badge reveal">What They're Saying</span>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 800; margin-top: var(--element-gap); text-align: center;">
+                <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.8 Average
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: var(--content-gap); margin-top: var(--content-gap); max-width: 900px;">
+                <div class="feature-card reveal" style="border-left: 3px solid var(--accent);">
+                    <p style="font-size: var(--body-size); font-style: italic; line-height: 1.6; color: var(--text-secondary);">"Best earbuds of 2026. Nothing else comes close at this price point."</p>
+                    <p style="font-size: var(--small-size); color: var(--accent); margin-top: 0.75rem; font-weight: 700;">&#8212; TechRadar</p>
+                </div>
+                <div class="feature-card reveal" style="border-left: 3px solid var(--accent);">
+                    <p style="font-size: var(--body-size); font-style: italic; line-height: 1.6; color: var(--text-secondary);">"The dual-driver system punches way above its weight. Audiophile-grade in a tiny package."</p>
+                    <p style="font-size: var(--small-size); color: var(--accent); margin-top: 0.75rem; font-weight: 700;">&#8212; The Verge</p>
+                </div>
+                <div class="feature-card reveal" style="border-left: 3px solid var(--accent);">
+                    <p style="font-size: var(--body-size); font-style: italic; line-height: 1.6; color: var(--text-secondary);">"I wore these on a 14-hour flight. They never died, and my ears never hurt. Game changer."</p>
+                    <p style="font-size: var(--small-size); color: var(--accent); margin-top: 0.75rem; font-weight: 700;">&#8212; Sarah K., verified buyer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 8: PRICING =================== -->
+    <section class="slide split-blue halftone-bg" aria-label="Pricing">
+        <div class="slide-content" style="align-items: center; text-align: center; position: relative; z-index: 1;">
+            <span class="neon-badge reveal">Pricing</span>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 800; margin-top: var(--element-gap);">
+                Choose Your Arc
+            </h2>
+            <div style="display: flex; gap: var(--content-gap); margin-top: var(--content-gap); flex-wrap: wrap; justify-content: center; max-width: 700px;">
+                <div class="price-card reveal" style="flex: 1; min-width: 220px;">
+                    <p style="font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-secondary);">Standard</p>
+                    <div class="price-amount" style="margin-top: 0.5rem; color: var(--text-primary);">$179</div>
+                    <ul style="list-style: none; text-align: left; margin-top: var(--content-gap); font-size: var(--body-size); color: var(--text-secondary);">
+                        <li style="padding: 0.3em 0;">&#10003; Sonance Arc Earbuds</li>
+                        <li style="padding: 0.3em 0;">&#10003; USB-C Charging Case</li>
+                        <li style="padding: 0.3em 0;">&#10003; 3 Ear Tip Sizes</li>
+                        <li style="padding: 0.3em 0;">&#10003; USB-C Cable</li>
+                    </ul>
+                </div>
+                <div class="price-card featured reveal" style="flex: 1; min-width: 220px;">
+                    <div class="neon-badge" style="margin-bottom: 0.5rem;">Recommended</div>
+                    <p style="font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-secondary);">Pro</p>
+                    <div class="price-amount" style="margin-top: 0.5rem; color: var(--accent);">$249</div>
+                    <ul style="list-style: none; text-align: left; margin-top: var(--content-gap); font-size: var(--body-size); color: var(--text-secondary);">
+                        <li style="padding: 0.3em 0;">&#10003; Everything in Standard</li>
+                        <li style="padding: 0.3em 0; color: var(--accent);">&#10003; Wireless Charging Case</li>
+                        <li style="padding: 0.3em 0; color: var(--accent);">&#10003; Premium Memory Foam Tips</li>
+                        <li style="padding: 0.3em 0; color: var(--accent);">&#10003; 2-Year Extended Warranty</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 9: CTA =================== -->
+    <section class="slide split-dark halftone-bg" aria-label="Availability">
+        <div class="slide-content" style="align-items: center; text-align: center; position: relative; z-index: 1;">
+            <div class="neon-badge reveal">Available Now</div>
+            <h2 class="reveal" style="font-size: var(--title-size); font-family: var(--font-display); font-weight: 800; margin-top: var(--content-gap); line-height: 1.1;">
+                Pre-Order <span style="color: var(--accent);">Today</span>
+            </h2>
+            <p class="reveal" style="font-size: var(--subtitle-size); color: var(--text-secondary); margin-top: var(--element-gap); max-width: 500px;">
+                Shipping March 2026. Be among the first to experience sound without boundaries.
+            </p>
+            <a href="https://sonance.audio/arc" role="button" class="reveal" style="display: inline-block; margin-top: var(--content-gap); padding: clamp(0.75rem, 1.5vw, 1rem) clamp(2rem, 4vw, 3rem); background: var(--accent); color: var(--badge-text); font-family: var(--font-display); font-size: var(--body-size); font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; min-height: 44px; border-radius: 4px; transition: background 0.3s ease, transform 0.3s ease;">Pre-Order Now &rarr;</a>
+            <p class="reveal" style="font-size: var(--body-size); color: var(--text-muted); margin-top: var(--element-gap);">
+                sonance.audio/arc &nbsp;&nbsp;|&nbsp;&nbsp; #SonanceArc
+            </p>
+        </div>
+        <p style="position: absolute; bottom: clamp(8px, 1.5vw, 16px); left: 50%; transform: translateX(-50%); font-size: var(--small-size); color: var(--text-muted); opacity: 0.5;">
+            Made with <a href="https://nextslide.app" style="color: inherit; text-decoration: underline;" target="_blank">Next Slide</a>
+        </p>
+    </section>
+
+    <script>
+        /* ===========================================
+           SLIDE PRESENTATION CONTROLLER
+           =========================================== */
+        class SlidePresentation {
+            constructor() {
+                this.slides = [...document.querySelectorAll('.slide')];
+                this.currentSlide = 0;
+                this.isAnimating = false;
+                this.touchStartY = 0;
+                this.touchStartX = 0;
+                this.init();
+            }
+            init() {
+                this.setupIntersectionObserver();
+                this.setupKeyboardNav();
+                this.setupTouchNav();
+                this.setupWheelNav();
+                this.setupProgressBar();
+                this.setupNavDots();
+                this.setupSlideCounter();
+                if (this.slides[0]) this.slides[0].classList.add('visible');
+            }
+            setupIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            const idx = this.slides.indexOf(entry.target);
+                            if (idx !== -1) { this.currentSlide = idx; this.updateUI(); }
+                        }
+                    });
+                }, { threshold: 0.5 });
+                this.slides.forEach(slide => observer.observe(slide));
+            }
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.target.getAttribute('contenteditable')) return;
+                    switch (e.key) {
+                        case 'ArrowDown': case 'ArrowRight': case ' ': case 'PageDown':
+                            e.preventDefault(); this.goToSlide(this.currentSlide + 1); break;
+                        case 'ArrowUp': case 'ArrowLeft': case 'PageUp':
+                            e.preventDefault(); this.goToSlide(this.currentSlide - 1); break;
+                        case 'Home': e.preventDefault(); this.goToSlide(0); break;
+                        case 'End': e.preventDefault(); this.goToSlide(this.slides.length - 1); break;
+                    }
+                });
+                document.addEventListener("click",(e)=>{if(!e.target.closest("button,a,.nav,[contenteditable],.slide-nav,.progress"))this.goToSlide(this.currentSlide+1);});
+            }
+            setupTouchNav() {
+                document.addEventListener('touchstart', (e) => { this.touchStartY = e.touches[0].clientY; this.touchStartX = e.touches[0].clientX; }, { passive: true });
+                document.addEventListener('touchend', (e) => {
+                    const dY = this.touchStartY - e.changedTouches[0].clientY;
+                    const dX = this.touchStartX - e.changedTouches[0].clientX;
+                    if (Math.abs(dY) < 50 || Math.abs(dX) > Math.abs(dY)) return;
+                    if (dY > 0) this.goToSlide(this.currentSlide + 1);
+                    else this.goToSlide(this.currentSlide - 1);
+                }, { passive: true });
+            }
+            setupWheelNav() {
+                let wt;
+                document.addEventListener('wheel', (e) => {
+                    clearTimeout(wt);
+                    wt = setTimeout(() => {
+                        if (e.deltaY > 30) this.goToSlide(this.currentSlide + 1);
+                        else if (e.deltaY < -30) this.goToSlide(this.currentSlide - 1);
+                    }, 50);
+                }, { passive: true });
+            }
+            setupProgressBar() { this.progressBar = document.getElementById('progressBar'); }
+            setupNavDots() {
+                const c = document.getElementById('navDots'); if (!c) return;
+                this.slides.forEach((_, i) => {
+                    const d = document.createElement('button');
+                    d.className = 'nav-dot' + (i === 0 ? ' active' : '');
+                    d.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    d.addEventListener('click', () => this.goToSlide(i));
+                    c.appendChild(d);
+                });
+            }
+            setupSlideCounter() { this.counter = document.getElementById('slideCounter'); this.updateUI(); }
+            goToSlide(index) {
+                if (index < 0 || index >= this.slides.length || this.isAnimating) return;
+                this.isAnimating = true;
+                this.currentSlide = index;
+                this.slides[index].scrollIntoView({ behavior: 'smooth' });
+                this.updateUI();
+                setTimeout(() => { this.isAnimating = false; }, 600);
+            }
+            updateUI() {
+                const t = this.slides.length, c = this.currentSlide;
+                if (this.progressBar) this.progressBar.style.width = `${((c + 1) / t) * 100}%`;
+                document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === c));
+                if (this.counter) this.counter.textContent = `${c + 1} / ${t}`;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => new SlidePresentation());
+
+        /* Counter animation */
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseFloat(el.dataset.target);
+                    const suffix = el.dataset.suffix || '';
+                    const prefix = el.dataset.prefix || '';
+                    const duration = 1500;
+                    const start = performance.now();
+                    function tick(now) {
+                        const elapsed = now - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const val = target * eased;
+                        el.textContent = prefix + (Number.isInteger(target) ? Math.round(val) : val.toFixed(1)) + suffix;
+                        if (progress < 1) requestAnimationFrame(tick);
+                    }
+                    requestAnimationFrame(tick);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => counterObserver.observe(c));
+    </script>
+</body>
+</html>

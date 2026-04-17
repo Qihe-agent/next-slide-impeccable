@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina AI — AI-Powered Code Review</title>
+
+    <!-- Fonts: Archivo (display) + Inter (body) — Swiss Modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES — Swiss Modern
+           Clean, precise, Bauhaus-inspired, grid-based
+           =========================================== */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f8f8;
+            --text-primary: #0a0a0a;
+            --text-secondary: #666666;
+            --text-muted: #767676;
+            --accent: #cc2900;
+            --accent-light: rgba(204, 41, 0, 0.08);
+            --accent-medium: rgba(204, 41, 0, 0.15);
+            --grid-line: rgba(0, 0, 0, 0.06);
+            --border: #0a0a0a;
+            --border-subtle: rgba(0, 0, 0, 0.1);
+            --surface: #f4f4f4;
+
+            --font-display: 'Archivo', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'SF Mono', 'Fira Code', monospace;
+
+            --title-size: clamp(2rem, 6vw, 5rem);
+            --h2-size: clamp(1.5rem, 4vw, 3rem);
+            --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+            --subtitle-size: clamp(0.875rem, 2vw, 1.25rem);
+            --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+            --small-size: clamp(0.65rem, 1vw, 0.875rem);
+            --stat-size: clamp(2.5rem, 8vw, 6rem);
+
+            --slide-padding: clamp(1.5rem, 5vw, 5rem);
+            --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+            --element-gap: clamp(0.25rem, 1vw, 1rem);
+
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --duration-fast: 0.3s;
+            --duration-normal: 0.5s;
+        }
+
+        /* ===========================================
+           BASE RESET + VIEWPORT
+           =========================================== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; overflow-x: hidden; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .slide {
+            width: 100vw; height: 100vh; height: 100dvh;
+            overflow: hidden; scroll-snap-align: start;
+            display: flex; flex-direction: column; position: relative;
+            background: var(--bg-primary);
+        }
+
+        .slide-content {
+            flex: 1; display: flex; flex-direction: column;
+            justify-content: center; max-height: 100%;
+            overflow: hidden; padding: var(--slide-padding);
+        }
+
+        h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; hyphens: auto; }
+        p, li, blockquote { overflow-wrap: break-word; }
+
+        /* ===========================================
+           SWISS MODERN — Grid background
+           =========================================== */
+        .grid-bg {
+            background-image:
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: clamp(30px, 5vw, 60px) clamp(30px, 5vw, 60px);
+        }
+
+        /* Red accent bar */
+        .accent-bar {
+            width: clamp(40px, 6vw, 80px); height: 4px;
+            background: var(--accent); margin-bottom: var(--element-gap);
+        }
+
+        /* Oversized slide number */
+        .slide-number {
+            font-family: var(--font-display); font-weight: 900;
+            font-size: clamp(4rem, 12vw, 10rem); color: rgba(0, 0, 0, 0.04);
+            position: absolute; top: var(--slide-padding); right: var(--slide-padding);
+            line-height: 1; pointer-events: none;
+        }
+
+        /* ===========================================
+           ANIMATIONS — Crisp, professional
+           =========================================== */
+        .reveal {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+        .slide.visible .reveal { opacity: 1; transform: translateY(0); }
+
+        .reveal-left {
+            opacity: 0; transform: translateX(-40px);
+            transition: opacity var(--duration-normal) ease, transform var(--duration-normal) var(--ease-out-expo);
+        }
+        .slide.visible .reveal-left { opacity: 1; transform: translateX(0); }
+
+        .reveal:nth-child(1) { transition-delay: 0.05s; }
+        .reveal:nth-child(2) { transition-delay: 0.12s; }
+        .reveal:nth-child(3) { transition-delay: 0.2s; }
+        .reveal:nth-child(4) { transition-delay: 0.28s; }
+        .reveal:nth-child(5) { transition-delay: 0.36s; }
+        .reveal:nth-child(6) { transition-delay: 0.44s; }
+
+        /* ===========================================
+           CSS DATA VISUALIZATIONS
+           =========================================== */
+        .h-bar { display: flex; align-items: center; gap: clamp(8px, 1vw, 16px); margin-bottom: clamp(6px, 1vh, 12px); }
+        .h-bar-label { font-size: var(--small-size); color: var(--text-secondary); width: clamp(60px, 10vw, 100px); text-align: right; flex-shrink: 0; }
+        .h-bar-track { flex: 1; height: clamp(20px, 3vh, 32px); background: var(--surface); border-radius: 2px; overflow: hidden; }
+        .h-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 1.2s var(--ease-out-expo); }
+        .h-bar-value { font-size: var(--small-size); font-weight: 700; color: var(--text-primary); width: 50px; flex-shrink: 0; }
+
+        /* ===========================================
+           PROGRESS BAR + NAV
+           =========================================== */
+        .progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: var(--accent); width: 0%; z-index: 9999;
+            transition: width 0.3s ease;
+        }
+        .nav-dots {
+            position: fixed; right: clamp(12px, 2vw, 24px); top: 50%;
+            transform: translateY(-50%); display: flex;
+            flex-direction: column; gap: 8px; z-index: 9998;
+        }
+        .nav-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--text-muted); border: none; cursor: pointer;
+            transition: all 0.3s ease; padding: 0;
+        }
+        .nav-dot.active { background: var(--accent); transform: scale(1.4); }
+        .slide-counter {
+            position: fixed; bottom: clamp(12px, 2vw, 24px);
+            right: clamp(12px, 2vw, 24px); font-family: var(--font-display);
+            font-size: var(--small-size); color: var(--text-muted); z-index: 9998;
+            font-weight: 700;
+        }
+
+        /* ===========================================
+           RESPONSIVE
+           =========================================== */
+        @media (max-height: 700px) {
+            :root { --slide-padding: clamp(0.75rem, 3vw, 2rem); --content-gap: clamp(0.4rem, 1.5vw, 1rem); --title-size: clamp(1.25rem, 4.5vw, 2.5rem); --h2-size: clamp(1rem, 3vw, 1.75rem); }
+        }
+        @media (max-height: 600px) {
+            :root { --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem); --title-size: clamp(1.1rem, 4vw, 2rem); --body-size: clamp(0.7rem, 1.2vw, 0.95rem); }
+            .nav-dots, .slide-number { display: none; }
+        }
+        @media (max-width: 600px) {
+            :root { --title-size: clamp(1.25rem, 7vw, 2.5rem); }
+            .two-col { flex-direction: column !important; }
+            .slide-counter { display: none; }
+            .grid-bg { background-image: none; }
+        }
+        @media (min-width: 2000px) { .slide-content { max-width: 1600px; margin: 0 auto; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; scroll-behavior: auto !important; }
+            html { scroll-behavior: auto; scroll-snap-type: none; }
+            .reveal, .reveal-left { opacity: 0; transform: none !important; transition: opacity 0.2s ease !important; }
+            .slide.visible .reveal, .slide.visible .reveal-left { opacity: 1; }
+        }
+
+        @media print {
+            html { scroll-snap-type: none; }
+            .slide { height: auto; min-height: 100vh; overflow: visible; page-break-after: always; }
+            .progress-bar, .nav-dots, .slide-counter { display: none !important; }
+            .reveal, .reveal-left { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+    <div class="slide-counter" id="slideCounter" aria-live="polite"></div>
+
+    <!-- =================== SLIDE 1: TITLE =================== -->
+    <section class="slide grid-bg" aria-label="Title">
+        <div class="slide-number">01</div>
+        <div class="slide-content" style="justify-content: flex-end; padding-bottom: clamp(3rem, 8vh, 6rem);">
+            <div class="accent-bar reveal"></div>
+            <h1 class="reveal" style="font-size: var(--title-size); font-family: var(--font-display); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; max-width: 700px;">
+                Lumina AI
+            </h1>
+            <p class="reveal" style="font-size: var(--h3-size); color: var(--text-secondary); margin-top: var(--element-gap); font-family: var(--font-display); font-weight: 500;">
+                AI-Powered Code Review Platform
+            </p>
+            <div class="reveal" style="display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); margin-top: var(--content-gap); font-size: var(--small-size); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em;">
+                <span>Series A</span>
+                <span style="width: 30px; height: 1px; background: var(--text-muted);"></span>
+                <span>Q2 2026</span>
+                <span style="width: 30px; height: 1px; background: var(--text-muted);"></span>
+                <span>Confidential</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 2: PROBLEM =================== -->
+    <section class="slide" aria-label="Problem">
+        <div class="slide-number">02</div>
+        <div class="slide-content">
+            <div class="accent-bar reveal"></div>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 900; line-height: 1.1;">
+                The Problem
+            </h2>
+            <p class="reveal" style="font-size: var(--body-size); color: var(--text-secondary); margin-top: var(--element-gap); max-width: 500px; line-height: 1.7;">
+                Manual code review is a bottleneck that costs engineering teams time and lets bugs slip through.
+            </p>
+            <div class="reveal" style="display: flex; gap: clamp(2rem, 5vw, 5rem); margin-top: var(--content-gap); flex-wrap: wrap;">
+                <div>
+                    <div style="font-size: var(--stat-size); font-family: var(--font-display); font-weight: 900; color: var(--accent); line-height: 1;">
+                        <span class="counter" data-target="4.2" data-decimals="1">0</span>
+                    </div>
+                    <div style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.3em;">hours/week per developer<br>on manual reviews</div>
+                </div>
+                <div>
+                    <div style="font-size: var(--stat-size); font-family: var(--font-display); font-weight: 900; color: var(--text-primary); line-height: 1;">
+                        <span class="counter" data-target="67" data-suffix="%">0</span>
+                    </div>
+                    <div style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.3em;">of bugs still reach<br>production undetected</div>
+                </div>
+            </div>
+            <div class="reveal" style="margin-top: var(--content-gap); padding: clamp(0.8rem, 1.5vw, 1.2rem); border-left: 4px solid var(--accent); background: var(--accent-light); max-width: 500px;">
+                <p style="font-size: var(--body-size); color: var(--text-primary); font-style: italic; line-height: 1.6;">
+                    "We spend more time reviewing code than writing it."
+                </p>
+                <p style="font-size: var(--small-size); color: var(--text-muted); margin-top: 0.3em;">— VP Engineering, Fortune 500 fintech</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 3: SOLUTION =================== -->
+    <section class="slide" aria-label="Solution">
+        <div class="slide-number">03</div>
+        <div class="slide-content">
+            <div class="accent-bar reveal"></div>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 900; line-height: 1.1;">
+                The Solution
+            </h2>
+            <p class="reveal" style="font-size: var(--body-size); color: var(--text-secondary); margin-top: var(--element-gap); max-width: 500px; line-height: 1.7;">
+                Lumina AI reviews every pull request in real-time, delivering human-quality feedback in under two minutes.
+            </p>
+            <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: clamp(0.8rem, 1.5vw, 1.5rem); margin-top: var(--content-gap); max-width: 700px;">
+                <div style="border: 2px solid var(--border); padding: clamp(0.8rem, 1.5vw, 1.2rem);">
+                    <div style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-family: var(--font-display); font-weight: 900; color: var(--accent);">94%</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary); margin-top: 0.3em;">Bug Detection Rate</div>
+                </div>
+                <div style="border: 2px solid var(--border); padding: clamp(0.8rem, 1.5vw, 1.2rem);">
+                    <div style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-family: var(--font-display); font-weight: 900; color: var(--accent);">73%</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary); margin-top: 0.3em;">Time Reduction</div>
+                </div>
+                <div style="border: 2px solid var(--border); padding: clamp(0.8rem, 1.5vw, 1.2rem);">
+                    <div style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-family: var(--font-display); font-weight: 900;">&lt;2m</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary); margin-top: 0.3em;">Average Review Time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 4: PRODUCT =================== -->
+    <section class="slide" aria-label="Product">
+        <div class="slide-number">04</div>
+        <div class="slide-content" style="align-items: center;">
+            <div style="text-align: left; width: 100%; max-width: 900px;">
+                <div class="accent-bar reveal"></div>
+                <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 900; line-height: 1.1;">
+                    Product
+                </h2>
+            </div>
+            <div class="reveal" style="margin-top: var(--content-gap); border: 2px solid var(--border); overflow: hidden; max-width: 900px; width: 100%;">
+                <img src="images/lumina-dashboard-clean.webp" alt="Lumina AI dashboard" loading="lazy" style="width: 100%; max-height: min(45vh, 400px); object-fit: cover; display: block; background: var(--surface); min-height: 200px;">
+            </div>
+            <div class="reveal" style="display: flex; gap: clamp(1.5rem, 3vw, 3rem); margin-top: var(--content-gap); flex-wrap: wrap; max-width: 900px; width: 100%;">
+                <div style="flex: 1; min-width: 150px;">
+                    <div style="font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 700;">Integrations</div>
+                    <div style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.3em;">GitHub, GitLab, Bitbucket</div>
+                </div>
+                <div style="flex: 1; min-width: 150px;">
+                    <div style="font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 700;">Languages</div>
+                    <div style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.3em;">40+ supported languages</div>
+                </div>
+                <div style="flex: 1; min-width: 150px;">
+                    <div style="font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 700;">Setup</div>
+                    <div style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.3em;">5 minutes, zero config</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 5: MARKET =================== -->
+    <section class="slide grid-bg" aria-label="Market">
+        <div class="slide-number">05</div>
+        <div class="slide-content">
+            <div class="accent-bar reveal"></div>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 900; line-height: 1.1;">
+                Market Opportunity
+            </h2>
+            <div class="reveal" style="margin-top: var(--content-gap); max-width: 600px;">
+                <div class="h-bar">
+                    <div class="h-bar-label">TAM</div>
+                    <div class="h-bar-track"><div class="h-bar-fill" style="width: 100%;"></div></div>
+                    <div class="h-bar-value">$12.4B</div>
+                </div>
+                <div class="h-bar">
+                    <div class="h-bar-label">SAM</div>
+                    <div class="h-bar-track"><div class="h-bar-fill" style="width: 33%;"></div></div>
+                    <div class="h-bar-value">$4.1B</div>
+                </div>
+                <div class="h-bar">
+                    <div class="h-bar-label">SOM</div>
+                    <div class="h-bar-track"><div class="h-bar-fill" style="width: 8%;"></div></div>
+                    <div class="h-bar-value">$980M</div>
+                </div>
+            </div>
+            <div class="reveal" style="display: flex; gap: clamp(2rem, 4vw, 4rem); margin-top: var(--content-gap); flex-wrap: wrap;">
+                <div>
+                    <div style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-family: var(--font-display); font-weight: 900; color: var(--accent);">23%</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary);">YoY Market Growth</div>
+                </div>
+                <div>
+                    <div style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-family: var(--font-display); font-weight: 900;">28M+</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary);">Developers Worldwide</div>
+                </div>
+                <div>
+                    <div style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-family: var(--font-display); font-weight: 900;">2.4x</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary);">Expansion Since 2022</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 6: TRACTION =================== -->
+    <section class="slide" aria-label="Traction">
+        <div class="slide-number">06</div>
+        <div class="slide-content">
+            <div class="accent-bar reveal"></div>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 900; line-height: 1.1;">
+                Traction
+            </h2>
+            <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: clamp(1rem, 2vw, 2rem); margin-top: var(--content-gap); max-width: 700px;">
+                <div style="border-top: 4px solid var(--accent); padding-top: clamp(0.5rem, 1vh, 1rem);">
+                    <div style="font-size: clamp(1.8rem, 4.5vw, 3rem); font-family: var(--font-display); font-weight: 900;">$2.1M</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary); margin-top: 0.2em;">ARR</div>
+                </div>
+                <div style="border-top: 4px solid var(--text-primary); padding-top: clamp(0.5rem, 1vh, 1rem);">
+                    <div style="font-size: clamp(1.8rem, 4.5vw, 3rem); font-family: var(--font-display); font-weight: 900;">340+</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary); margin-top: 0.2em;">Enterprise Customers</div>
+                </div>
+                <div style="border-top: 4px solid var(--text-primary); padding-top: clamp(0.5rem, 1vh, 1rem);">
+                    <div style="font-size: clamp(1.8rem, 4.5vw, 3rem); font-family: var(--font-display); font-weight: 900;">180%</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary); margin-top: 0.2em;">Net Revenue Retention</div>
+                </div>
+            </div>
+            <div class="reveal" style="margin-top: var(--content-gap); max-width: 700px;">
+                <div style="font-size: var(--small-size); color: var(--text-muted); margin-bottom: 0.5em; text-transform: uppercase; letter-spacing: 0.1em;">Quarterly ARR Growth</div>
+                <div style="display: flex; align-items: flex-end; gap: clamp(4px, 0.8vw, 10px); height: clamp(80px, 15vh, 150px);">
+                    <div style="flex: 1; height: 5%; background: var(--surface); border-top: 2px solid var(--accent); position: relative;">
+                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: var(--small-size); color: var(--text-muted); white-space: nowrap;">Q1 '25</span>
+                    </div>
+                    <div style="flex: 1; height: 14%; background: var(--surface); border-top: 2px solid var(--accent); position: relative;">
+                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: var(--small-size); color: var(--text-muted); white-space: nowrap;">Q2</span>
+                    </div>
+                    <div style="flex: 1; height: 29%; background: var(--surface); border-top: 2px solid var(--accent); position: relative;">
+                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: var(--small-size); color: var(--text-muted); white-space: nowrap;">Q3</span>
+                    </div>
+                    <div style="flex: 1; height: 48%; background: var(--surface); border-top: 2px solid var(--accent); position: relative;">
+                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: var(--small-size); color: var(--text-muted); white-space: nowrap;">Q4</span>
+                    </div>
+                    <div style="flex: 1; height: 71%; background: var(--surface); border-top: 2px solid var(--accent); position: relative;">
+                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: var(--small-size); color: var(--text-muted); white-space: nowrap;">Q1 '26</span>
+                    </div>
+                    <div style="flex: 1; height: 100%; background: var(--accent-light); border-top: 3px solid var(--accent); position: relative;">
+                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: var(--small-size); color: var(--accent); font-weight: 700; white-space: nowrap;">$2.1M</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 7: BUSINESS MODEL =================== -->
+    <section class="slide" aria-label="Business Model">
+        <div class="slide-number">07</div>
+        <div class="slide-content">
+            <div class="accent-bar reveal"></div>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 900; line-height: 1.1;">
+                Business Model
+            </h2>
+            <div class="reveal" style="display: flex; gap: clamp(1rem, 2.5vw, 2rem); margin-top: var(--content-gap); flex-wrap: wrap; max-width: 700px;">
+                <div style="flex: 1; min-width: 200px; border: 2px solid var(--border-subtle); padding: clamp(1rem, 2vw, 1.5rem);">
+                    <div style="font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); font-weight: 700;">Pro</div>
+                    <div style="font-size: clamp(2rem, 5vw, 3rem); font-family: var(--font-display); font-weight: 900; margin-top: 0.2em;">$49<span style="font-size: var(--small-size); color: var(--text-muted); font-weight: 500;">/seat/mo</span></div>
+                    <ul style="list-style: none; margin-top: 1em; font-size: var(--small-size); color: var(--text-secondary); line-height: 2;">
+                        <li>Unlimited repositories</li>
+                        <li>Real-time PR review</li>
+                        <li>GitHub + GitLab</li>
+                        <li>Standard support</li>
+                    </ul>
+                </div>
+                <div style="flex: 1; min-width: 200px; border: 2px solid var(--accent); padding: clamp(1rem, 2vw, 1.5rem); background: var(--accent-light);">
+                    <div style="font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); font-weight: 700;">Enterprise</div>
+                    <div style="font-size: clamp(2rem, 5vw, 3rem); font-family: var(--font-display); font-weight: 900; margin-top: 0.2em;">$149<span style="font-size: var(--small-size); color: var(--text-muted); font-weight: 500;">/seat/mo</span></div>
+                    <ul style="list-style: none; margin-top: 1em; font-size: var(--small-size); color: var(--text-secondary); line-height: 2;">
+                        <li>Everything in Pro</li>
+                        <li>Security + compliance scans</li>
+                        <li>SOC 2 &middot; SSO &middot; SAML</li>
+                        <li>Dedicated support + SLA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="reveal" style="margin-top: var(--content-gap); font-size: var(--body-size); color: var(--text-secondary); max-width: 500px; line-height: 1.7;">
+                Average contract value: <strong style="color: var(--text-primary);">$48K/year</strong>. 85% of revenue from Enterprise tier.
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 8: TEAM =================== -->
+    <section class="slide grid-bg" aria-label="Team">
+        <div class="slide-number">08</div>
+        <div class="slide-content">
+            <div class="accent-bar reveal"></div>
+            <h2 class="reveal" style="font-size: var(--h2-size); font-family: var(--font-display); font-weight: 900; line-height: 1.1;">
+                Team
+            </h2>
+            <div class="reveal" style="display: flex; gap: clamp(1.5rem, 3vw, 3rem); margin-top: var(--content-gap); flex-wrap: wrap; max-width: 800px;">
+                <div style="flex: 1; min-width: 160px;">
+                    <div style="width: clamp(48px, 6vw, 64px); height: clamp(48px, 6vw, 64px); background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 900; color: #fff; font-size: clamp(0.9rem, 1.5vw, 1.2rem);">SL</div>
+                    <div style="font-family: var(--font-display); font-weight: 900; font-size: var(--body-size); margin-top: 0.8em;">Sarah Lin</div>
+                    <div style="font-size: var(--small-size); color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">CEO</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary); margin-top: 0.3em; line-height: 1.6;">Ex-Google Staff Eng.<br>10+ years ML/NLP</div>
+                </div>
+                <div style="flex: 1; min-width: 160px;">
+                    <div style="width: clamp(48px, 6vw, 64px); height: clamp(48px, 6vw, 64px); background: var(--text-primary); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 900; color: #fff; font-size: clamp(0.9rem, 1.5vw, 1.2rem);">MK</div>
+                    <div style="font-family: var(--font-display); font-weight: 900; font-size: var(--body-size); margin-top: 0.8em;">Marcus Kim</div>
+                    <div style="font-size: var(--small-size); color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">CTO</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary); margin-top: 0.3em; line-height: 1.6;">Ex-Meta Infra Lead<br>Code analysis at scale</div>
+                </div>
+                <div style="flex: 1; min-width: 160px;">
+                    <div style="width: clamp(48px, 6vw, 64px); height: clamp(48px, 6vw, 64px); background: var(--text-primary); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 900; color: #fff; font-size: clamp(0.9rem, 1.5vw, 1.2rem);">RP</div>
+                    <div style="font-family: var(--font-display); font-weight: 900; font-size: var(--body-size); margin-top: 0.8em;">Raj Patel</div>
+                    <div style="font-size: var(--small-size); color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">COO</div>
+                    <div style="font-size: var(--small-size); color: var(--text-secondary); margin-top: 0.3em; line-height: 1.6;">Ex-Stripe Growth<br>Scaled $0 to $50M rev</div>
+                </div>
+            </div>
+            <div class="reveal" style="margin-top: var(--content-gap); font-size: var(--body-size); color: var(--text-secondary); border-top: 2px solid var(--border); padding-top: var(--element-gap); max-width: 500px;">
+                28 engineers &nbsp;&middot;&nbsp; San Francisco HQ &nbsp;&middot;&nbsp; Remote-first
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 9: VISION =================== -->
+    <section class="slide" aria-label="Vision">
+        <div class="slide-number">09</div>
+        <div class="slide-content" style="justify-content: center;">
+            <div class="accent-bar reveal"></div>
+            <h2 class="reveal" style="font-size: var(--title-size); font-family: var(--font-display); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; max-width: 700px;">
+                Every line of code,<br>reviewed by AI.
+            </h2>
+            <p class="reveal" style="font-size: var(--subtitle-size); color: var(--text-secondary); margin-top: var(--content-gap); max-width: 500px; line-height: 1.7;">
+                From code review to security scanning to compliance automation. Lumina is building the quality layer for modern software teams.
+            </p>
+            <div class="reveal" style="margin-top: var(--content-gap); display: flex; gap: clamp(0.5rem, 1vw, 1rem); flex-wrap: wrap;">
+                <span style="font-size: var(--small-size); padding: 0.3em 0.8em; border: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Code Review</span>
+                <span style="font-size: var(--small-size); padding: 0.3em 0.8em; border: 1px solid var(--accent); text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); background: var(--accent-light);">Security</span>
+                <span style="font-size: var(--small-size); padding: 0.3em 0.8em; border: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Compliance</span>
+                <span style="font-size: var(--small-size); padding: 0.3em 0.8em; border: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Auto-Fix</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================== SLIDE 10: THE ASK =================== -->
+    <section class="slide grid-bg" aria-label="The Ask">
+        <div class="slide-number">10</div>
+        <div class="slide-content">
+            <div class="accent-bar reveal"></div>
+            <h2 class="reveal" style="font-size: var(--title-size); font-family: var(--font-display); font-weight: 900; line-height: 1.05;">
+                $15M<br><span style="color: var(--text-secondary); font-size: 0.5em;">Series A</span>
+            </h2>
+            <div class="reveal" style="margin-top: var(--content-gap); max-width: 500px;">
+                <div class="h-bar">
+                    <div class="h-bar-label">R&D</div>
+                    <div class="h-bar-track"><div class="h-bar-fill" style="width: 40%;"></div></div>
+                    <div class="h-bar-value">40%</div>
+                </div>
+                <div class="h-bar">
+                    <div class="h-bar-label">GTM</div>
+                    <div class="h-bar-track"><div class="h-bar-fill" style="width: 35%;"></div></div>
+                    <div class="h-bar-value">35%</div>
+                </div>
+                <div class="h-bar">
+                    <div class="h-bar-label">Ops</div>
+                    <div class="h-bar-track"><div class="h-bar-fill" style="width: 25%;"></div></div>
+                    <div class="h-bar-value">25%</div>
+                </div>
+            </div>
+            <div class="reveal" style="margin-top: var(--content-gap); font-size: var(--body-size); color: var(--text-secondary); max-width: 500px; line-height: 1.7;">
+                Expanding into security automation and building enterprise sales. Target: $10M ARR within 18 months.
+            </div>
+            <div class="reveal" style="margin-top: var(--content-gap);">
+                <span style="display: inline-block; background: var(--accent); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: var(--body-size); padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1.2rem, 2.5vw, 2rem);">
+                    sarah@lumina.ai
+                </span>
+            </div>
+        </div>
+        <p style="position: absolute; bottom: clamp(8px, 1.5vw, 16px); left: 50%; transform: translateX(-50%); font-size: var(--small-size); color: var(--text-muted); opacity: 0.5;">
+            Made with <a href="https://nextslide.app" style="color: inherit; text-decoration: underline;" target="_blank">Next Slide</a>
+        </p>
+    </section>
+
+    <script>
+        /* ===========================================
+           SLIDE PRESENTATION CONTROLLER
+           =========================================== */
+        class SlidePresentation {
+            constructor() {
+                this.slides = [...document.querySelectorAll('.slide')];
+                this.currentSlide = 0;
+                this.isAnimating = false;
+                this.touchStartY = 0;
+                this.touchStartX = 0;
+                this.init();
+            }
+            init() {
+                this.setupIntersectionObserver();
+                this.setupKeyboardNav();
+                this.setupTouchNav();
+                this.setupWheelNav();
+                this.setupProgressBar();
+                this.setupNavDots();
+                this.setupSlideCounter();
+                if (this.slides[0]) this.slides[0].classList.add('visible');
+            }
+            setupIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            const idx = this.slides.indexOf(entry.target);
+                            if (idx !== -1) { this.currentSlide = idx; this.updateUI(); }
+                        }
+                    });
+                }, { threshold: 0.5 });
+                this.slides.forEach(slide => observer.observe(slide));
+            }
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.target.getAttribute('contenteditable')) return;
+                    switch (e.key) {
+                        case 'ArrowDown': case 'ArrowRight': case ' ': case 'PageDown':
+                            e.preventDefault(); this.goToSlide(this.currentSlide + 1); break;
+                        case 'ArrowUp': case 'ArrowLeft': case 'PageUp':
+                            e.preventDefault(); this.goToSlide(this.currentSlide - 1); break;
+                        case 'Home': e.preventDefault(); this.goToSlide(0); break;
+                        case 'End': e.preventDefault(); this.goToSlide(this.slides.length - 1); break;
+                    }
+                });
+                document.addEventListener("click",(e)=>{if(!e.target.closest("button,a,.nav,[contenteditable],.slide-nav,.progress"))this.goToSlide(this.currentSlide+1);});
+            }
+            setupTouchNav() {
+                document.addEventListener('touchstart', (e) => { this.touchStartY = e.touches[0].clientY; this.touchStartX = e.touches[0].clientX; }, { passive: true });
+                document.addEventListener('touchend', (e) => {
+                    const deltaY = this.touchStartY - e.changedTouches[0].clientY;
+                    const deltaX = this.touchStartX - e.changedTouches[0].clientX;
+                    if (Math.abs(deltaY) < 50 || Math.abs(deltaX) > Math.abs(deltaY)) return;
+                    if (deltaY > 0) this.goToSlide(this.currentSlide + 1); else this.goToSlide(this.currentSlide - 1);
+                }, { passive: true });
+            }
+            setupWheelNav() {
+                let wheelTimeout;
+                document.addEventListener('wheel', (e) => { clearTimeout(wheelTimeout); wheelTimeout = setTimeout(() => { if (e.deltaY > 30) this.goToSlide(this.currentSlide + 1); else if (e.deltaY < -30) this.goToSlide(this.currentSlide - 1); }, 50); }, { passive: true });
+            }
+            setupProgressBar() { this.progressBar = document.getElementById('progressBar'); }
+            setupNavDots() {
+                const container = document.getElementById('navDots');
+                if (!container) return;
+                this.slides.forEach((_, i) => { const dot = document.createElement('button'); dot.className = 'nav-dot' + (i === 0 ? ' active' : ''); dot.setAttribute('aria-label', `Go to slide ${i + 1}`); dot.addEventListener('click', () => this.goToSlide(i)); container.appendChild(dot); });
+            }
+            setupSlideCounter() { this.counter = document.getElementById('slideCounter'); this.updateUI(); }
+            goToSlide(index) {
+                if (index < 0 || index >= this.slides.length || this.isAnimating) return;
+                this.isAnimating = true; this.currentSlide = index;
+                this.slides[index].scrollIntoView({ behavior: 'smooth' });
+                this.updateUI(); setTimeout(() => { this.isAnimating = false; }, 600);
+            }
+            updateUI() {
+                const total = this.slides.length; const current = this.currentSlide;
+                if (this.progressBar) this.progressBar.style.width = `${((current + 1) / total) * 100}%`;
+                document.querySelectorAll('.nav-dot').forEach((dot, i) => dot.classList.toggle('active', i === current));
+                if (this.counter) this.counter.textContent = `${current + 1} / ${total}`;
+            }
+        }
+
+        /* Counter animation */
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseFloat(el.dataset.target);
+                    const suffix = el.dataset.suffix || '';
+                    const prefix = el.dataset.prefix || '';
+                    const decimals = parseInt(el.dataset.decimals) || 0;
+                    const duration = 1500;
+                    const start = performance.now();
+                    function tick(now) {
+                        const elapsed = now - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        el.textContent = prefix + (decimals > 0 ? (target * eased).toFixed(decimals) : Math.round(target * eased).toLocaleString()) + suffix;
+                        if (progress < 1) requestAnimationFrame(tick);
+                    }
+                    requestAnimationFrame(tick);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => counterObserver.observe(c));
+
+        document.addEventListener('DOMContentLoaded', () => { new SlidePresentation(); });
+    </script>
+</body>
+</html>
